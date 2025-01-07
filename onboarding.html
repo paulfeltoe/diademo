@@ -1,0 +1,83 @@
+<div class="page-content onboarding">
+    <!-- Step 1: Begin -->
+    <div class="step" id="step1">
+        <!-- Carousel -->
+        <div class="carousel">
+            <div class="carousel-items">
+                <div class="carousel-item active">
+                    <h1>Track Your Health Journey</h1>
+                    <p>Monitor your progress and stay connected with your care team</p>
+                </div>
+                <div class="carousel-item">
+                    <h1>Seamless Communication</h1>
+                    <p>Direct messaging with your healthcare providers</p>
+                </div>
+                <div class="carousel-item">
+                    <h1>Personalized Care Plans</h1>
+                    <p>Get treatment plans tailored to your specific needs</p>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button class="button-primary" onclick="window.nextStep()">Get Started</button>
+            <button class="button-secondary" onclick="window.nextStep()">Sign In</button>
+        </div>
+    </div>
+
+    <!-- Step 2: Sign In -->
+    <div class="step" id="step2" style="display: none;">
+        <div class="auth-container">
+            <h2>Welcome Back</h2>
+            <button class="auth-button google" onclick="window.nextStep()">
+                <img src="assets/google-icon.svg" alt="Google">
+                Sign in with Google
+            </button>
+            <div class="divider">
+                <span>or</span>
+            </div>
+            <button class="auth-button email" onclick="window.nextStep()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Sign in with Email
+            </button>
+        </div>
+    </div>
+
+    <!-- Step 3: Profile -->
+    <div class="step" id="step3" style="display: none;">
+        <div class="profile-container">
+            <button class="import-button">
+                <img src="assets/gusto-logo.svg" alt="Gusto">
+                Import from Gusto
+            </button>
+            
+            <form class="profile-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(555) 555-5555">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="Enter your address">
+                </div>
+                <button type="submit" class="button-primary">Complete Profile</button>
+            </form>
+        </div>
+    </div>
+</div>

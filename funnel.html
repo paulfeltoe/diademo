@@ -1,0 +1,123 @@
+<div class="funnel-container">
+    <!-- Progress Header -->
+    <div class="progress-header">
+        <button id="backButton" class="back-button" onclick="previousStep()" disabled>←</button>
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar" style="width: 10%;">
+                <span id="progressText">Step 1 of 10</span>
+            </div>
+        </div>
+        <button id="closeButton" class="close-button" onclick="closeBottomSheet()">×</button>
+    </div>
+
+    <!-- Question Container -->
+    <div class="question-container">
+        <!-- Steps will be shown/hidden based on current step -->
+        <div class="step" data-step="1">
+            <h2>What can we help you with today?</h2>
+            <div class="search-container">
+                <i class="search-icon">🔍</i>
+                <input type="text" placeholder="Type here" class="search-input" onInput="validateStep1()">
+            </div>
+            <div class="symptoms-pills">
+                <button class="pill" onclick="togglePill(this)">Headache</button>
+                <button class="pill" onclick="togglePill(this)">Fever</button>
+                <button class="pill" onclick="togglePill(this)">Sore Throat</button>
+                <button class="pill" onclick="togglePill(this)">Cough</button>
+                <button class="pill" onclick="togglePill(this)">Back Pain</button>
+                <button class="pill" onclick="togglePill(this)">Allergies</button>
+                <button class="pill" onclick="togglePill(this)">Stomach Pain</button>
+            </div>
+            <div class="button-container">
+                <button onclick="nextStep()" disabled>Continue</button>
+            </div>
+        </div>
+
+        <div class="step" data-step="2" style="display: none;">
+            <h2>Here's What We've Understood So Far</h2>
+            <p class="subtitle">We're almost ready! Take a moment to review your details so we can connect you with the right support.</p>
+            
+            <div class="summary-box">
+                <div class="summary-item">
+                    <strong>Symptom:</strong>
+                    <p>"You mentioned experiencing headaches in the mornings."</p>
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Additional Details:</strong>
+                    <p>"These headaches are sometimes accompanied by nausea and sensitivity to light."</p>
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Frequency & Duration:</strong>
+                    <p>"This has been happening for the past two weeks."</p>
+                </div>
+                
+                <div class="summary-item">
+                    <strong>Impact:</strong>
+                    <p>"You noted that this is affecting your daily routine and causing discomfort."</p>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="primary-button" onclick="nextStep()">Yes, this looks correct</button>
+                <button class="secondary-button" onclick="previousStep()">Add more details</button>
+            </div>
+        </div>
+
+        <div class="step" data-step="3" style="display: none;">
+            <h2>What's your email address?</h2>
+            <input type="email" placeholder="Enter your email">
+        </div>
+
+        <div class="step" data-step="4" style="display: none;">
+            <h2>What's your phone number?</h2>
+            <input type="tel" placeholder="Enter your phone number">
+        </div>
+
+        <div class="step" data-step="5" style="display: none;">
+            <h2>Who is your primary care physician?</h2>
+            <input type="text" placeholder="Enter doctor's name">
+        </div>
+
+        <div class="step" data-step="6" style="display: none;">
+            <h2>What's your blood type?</h2>
+            <select>
+                <option value="">Select blood type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+
+        <div class="step" data-step="7" style="display: none;">
+            <h2>Do you have any allergies?</h2>
+            <textarea placeholder="List your allergies or type 'None'"></textarea>
+        </div>
+
+        <div class="step" data-step="8" style="display: none;">
+            <h2>Emergency Contact Name</h2>
+            <input type="text" placeholder="Enter emergency contact name">
+        </div>
+
+        <div class="step" data-step="9" style="display: none;">
+            <h2>Emergency Contact Relationship</h2>
+            <input type="text" placeholder="Enter relationship">
+        </div>
+
+        <div class="step" data-step="10" style="display: none;">
+            <h2>Emergency Contact Phone</h2>
+            <input type="tel" placeholder="Enter emergency contact phone">
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <!-- <div class="button-container">
+        <button id="nextButton" class="next-button" onclick="nextStep()">Continue</button>
+    </div> -->
+</div>

@@ -1,0 +1,164 @@
+<div class="page-content journey">
+    
+    <div class="journey-header">
+        <button onclick="loadContent('mycare')" class="back-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1>Lower Back Pain</h1>
+        <p class="journey-status">Active since March 15, 2024</p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 60%;">60% Complete</div>
+        </div>
+    </div>
+
+    <!-- Journey Navigation -->
+    <nav class="journey-nav">
+        <a href="#overview" class="journey-nav-item active">Overview</a>
+        <a href="#messages" class="journey-nav-item">Messages</a>
+        <a href="#appointments" class="journey-nav-item">Appointments</a>
+        <a href="#care-team" class="journey-nav-item">Care Team</a>
+        <a href="#documents" class="journey-nav-item">Documents</a>
+    </nav>
+
+    <!-- Overview Section -->
+    <section id="overview" class="journey-section active">
+        <div class="timeline">
+            <h2>Journey Timeline</h2>
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 15, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Journey Started</h3>
+                        <p>Initial assessment completed with Dr. Smith</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 18, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Physical Therapy Session</h3>
+                        <p>First PT session with Jane Wilson</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 22, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Progress Check</h3>
+                        <p>Follow-up assessment - 20% improvement noted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Messages Section -->
+    <section id="messages" class="journey-section">
+        <div class="messages-container">
+            <div class="message">
+                <div class="message-header">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Smith" class="avatar">
+                    <div class="message-info">
+                        <h3>Dr. Smith</h3>
+                        <span class="message-time">Today, 2:30 PM</span>
+                    </div>
+                </div>
+                <p class="message-content">How are the exercises working for you? Any improvement in pain levels?</p>
+            </div>
+            <div class="message">
+                <div class="message-header">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Jane Wilson" class="avatar">
+                    <div class="message-info">
+                        <h3>Jane Wilson (PT)</h3>
+                        <span class="message-time">Yesterday, 4:15 PM</span>
+                    </div>
+                </div>
+                <p class="message-content">Great progress in today's session! Remember to do your home exercises twice daily.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointments Section -->
+    <section id="appointments" class="journey-section">
+        <div class="appointments-container">
+            <div class="appointment-card upcoming">
+                <div class="appointment-status">Upcoming</div>
+                <h3>Physical Therapy Session</h3>
+                <p class="appointment-time">March 25, 2024 - 2:30 PM</p>
+                <p class="appointment-location">City Physical Therapy Center</p>
+                <p class="appointment-provider">with Jane Wilson, PT</p>
+                <div class="appointment-actions">
+                    <button class="button-secondary">Reschedule</button>
+                    <button class="button-primary">Join Video</button>
+                </div>
+            </div>
+            <div class="appointment-card past">
+                <div class="appointment-status">Completed</div>
+                <h3>Follow-up Consultation</h3>
+                <p class="appointment-time">March 22, 2024 - 10:00 AM</p>
+                <p class="appointment-location">Virtual Visit</p>
+                <p class="appointment-provider">with Dr. Smith</p>
+                <div class="appointment-actions">
+                    <button class="button-secondary">View Summary</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Care Team Section -->
+    <section id="care-team" class="journey-section">
+        <div class="care-team-container">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Smith" class="avatar">
+                <div class="team-member-info">
+                    <h3>Dr. Sarah Smith</h3>
+                    <p class="role">Primary Care Physician</p>
+                    <p class="specialty">Internal Medicine</p>
+                    <button class="button-secondary">Message</button>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Jane Wilson" class="avatar">
+                <div class="team-member-info">
+                    <h3>Jane Wilson</h3>
+                    <p class="role">Physical Therapist</p>
+                    <p class="specialty">Sports Medicine, Back Pain</p>
+                    <button class="button-secondary">Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents" class="journey-section">
+        <div class="documents-container">
+            <div class="document-card">
+                <div class="document-icon">📄</div>
+                <div class="document-info">
+                    <h3>Initial Assessment Report</h3>
+                    <p class="document-date">March 15, 2024</p>
+                    <p class="document-type">PDF Document</p>
+                </div>
+                <button class="button-secondary">View</button>
+            </div>
+            <div class="document-card">
+                <div class="document-icon">📊</div>
+                <div class="document-info">
+                    <h3>Exercise Program</h3>
+                    <p class="document-date">March 18, 2024</p>
+                    <p class="document-type">PDF Document</p>
+                </div>
+                <button class="button-secondary">View</button>
+            </div>
+            <div class="document-card">
+                <div class="document-icon">📋</div>
+                <div class="document-info">
+                    <h3>Progress Notes</h3>
+                    <p class="document-date">March 22, 2024</p>
+                    <p class="document-type">PDF Document</p>
+                </div>
+                <button class="button-secondary">View</button>
+            </div>
+        </div>
+    </section>
+</div>
