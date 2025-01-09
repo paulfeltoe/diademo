@@ -1,0 +1,371 @@
+.carousel {
+    min-height: 300px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-items {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--background-secondary);
+    cursor: pointer;
+}
+
+.dot.active {
+    background: var(--primary);
+}
+
+/* Auth Buttons */
+.auth-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.auth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-medium);
+    background: white;
+    cursor: pointer;
+}
+
+.auth-button.google {
+    background: white;
+}
+
+.auth-button.email {
+    background: var(--surface);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border);
+}
+
+.divider span {
+    padding: 0 10px;
+    color: var(--text-secondary);
+}
+
+/* Profile Form */
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 80px; /* Add space for the bottom */
+}
+
+.profile-form {
+    margin-top: 20px;
+}
+
+.profile-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.profile-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.profile-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.profile-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.import-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    margin: 24px 0;
+    border: 1px dashed var(--border);
+    border-radius: var(--border-radius-medium);
+    background: var(--background);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.import-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.import-button svg {
+    flex-shrink: 0;
+}
+
+/* Keep submit button sticky */
+.profile-form .button-primary[type="submit"] {
+    position: sticky;
+    bottom: 20px;
+    width: 100%;
+    margin-top: 20px;
+    background: var(--background);
+    padding: 16px;
+    z-index: 10;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-medium);
+}
+
+.onboarding{
+    margin: 0!important;
+    padding: 0!important;
+    height: 100vh!important;
+}
+
+.onboarding #step1{
+    background-image: url('../assets/images/background.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.onboarding h1{
+    color: white;
+}
+
+.onboarding .step {
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+body.onboarding-page {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.onboarding .button-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.onboarding .button-container button {
+    width: 100%;
+    padding: 16px;
+    border-radius: var(--border-radius-xxlarge);
+    font-size: 16px;
+}
+
+/* Biometric Authentication */
+.biometric-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--background);
+}
+
+.biometric-prompt {
+    text-align: center;
+    padding: 24px;
+}
+
+.fingerprint-icon {
+    color: var(--primary);
+    margin-bottom: 24px;
+}
+
+.fingerprint-sensor {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 40px auto;
+}
+
+.sensor-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.sensor-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+.sensor-circle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary);
+    animation: scan 2s infinite;
+}
+
+/* Face ID Styles */
+.faceid-icon {
+    color: var(--primary);
+    margin-bottom: 24px;
+}
+
+.faceid-scanner {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 40px auto;
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+}
+
+.scan-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary);
+    opacity: 0.6;
+    animation: faceidscan 2s ease-in-out infinite;
+}
+
+@keyframes faceidscan {
+    0% {
+        top: 0;
+        opacity: 0.6;
+    }
+    50% {
+        top: calc(100% - 4px);
+        opacity: 1;
+    }
+    100% {
+        top: 0;
+        opacity: 0.6;
+    }
+}
+
+/* Make entire step 3 clickable */
+#step3 {
+    cursor: pointer;
+}
+
+/* Form Section Styles */
+.profile-form h3 {
+    margin: 20px 0 12px;
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile-form h3:first-of-type {
+    margin-top: 0;
+}
+
+/* Textarea Styles */
+.profile-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-medium);
+    resize: vertical;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.profile-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Section Spacing */
+.profile-form > div:not(:last-child) {
+    margin-bottom: 24px;
+}
+

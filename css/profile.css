@@ -1,0 +1,60 @@
+/* PROFILE */
+.profile-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.profile-avatar {
+    font-size: var(--font-size-medium);
+    margin-bottom: 16px;
+}
+
+.info-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.info-item:last-child {
+    border-bottom: none;
+}
+.info-item label {
+    color: var(--text-primary);
+    font-size: var(--font-size-medium);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.profile-completion {
+    background: var(--background-white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+
+.progress-bar {
+    background: #4CAF50;
+    height: 100%;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    font-size: var(--font-size-medium);
+    line-height: 20px;
+}
+
+.completion-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.completed-tasks, .remaining-tasks {
+    flex: 1;
+}
+
+.completion-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.completion-details li {
+    margin: 8px 0;
+}
