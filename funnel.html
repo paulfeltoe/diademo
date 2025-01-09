@@ -17,17 +17,15 @@
             <h2>What can we help you with today?</h2>
             <div class="search-container">
                 <i class="search-icon">🔍</i>
-                <input type="text" placeholder="Type here" class="search-input" onInput="validateStep1()">
+                <textarea 
+                    class="search-input" 
+                    placeholder="For example: I've been experiencing sinus pressure and congestion for the past week, with thick yellow mucus and facial pain around my nose and eyes..."
+                    onInput="handleInput(this)"
+                    rows="4"
+                ></textarea>
+                <div class="char-count">0/500 characters</div>
             </div>
-            <div class="symptoms-pills">
-                <button class="pill" onclick="togglePill(this)">Headache</button>
-                <button class="pill" onclick="togglePill(this)">Fever</button>
-                <button class="pill" onclick="togglePill(this)">Sore Throat</button>
-                <button class="pill" onclick="togglePill(this)">Cough</button>
-                <button class="pill" onclick="togglePill(this)">Back Pain</button>
-                <button class="pill" onclick="togglePill(this)">Allergies</button>
-                <button class="pill" onclick="togglePill(this)">Stomach Pain</button>
-            </div>
+    
             <div class="button-container">
                 <button onclick="nextStep()" disabled>Continue</button>
             </div>
@@ -39,23 +37,23 @@
             
             <div class="summary-box">
                 <div class="summary-item">
-                    <strong>Symptom:</strong>
-                    <p>"You mentioned experiencing headaches in the mornings."</p>
+                    <strong>Symptoms:</strong>
+                    <p>"You mentioned experiencing sinus pressure and congestion."</p>
                 </div>
                 
                 <div class="summary-item">
                     <strong>Additional Details:</strong>
-                    <p>"These headaches are sometimes accompanied by nausea and sensitivity to light."</p>
+                    <p>"You're having thick yellow mucus discharge and facial pain around your nose and eyes."</p>
                 </div>
                 
                 <div class="summary-item">
-                    <strong>Frequency & Duration:</strong>
-                    <p>"This has been happening for the past two weeks."</p>
+                    <strong>Duration:</strong>
+                    <p>"These symptoms have been present for about a week."</p>
                 </div>
                 
                 <div class="summary-item">
                     <strong>Impact:</strong>
-                    <p>"You noted that this is affecting your daily routine and causing discomfort."</p>
+                    <p>"This is causing discomfort and affecting your daily activities."</p>
                 </div>
             </div>
 
@@ -66,55 +64,335 @@
         </div>
 
         <div class="step" data-step="3" style="display: none;">
-            <h2>What's your email address?</h2>
-            <input type="email" placeholder="Enter your email">
+            <h1>Your Personalized Recommendation</h1>
+            <p class="subtitle">Based on what you've shared, here's what we believe is the best next step for you.</p>
+            
+            <div class="recommendation-card">
+                <div class="recommendation-content">
+                    <h3>We recommend a Video Consultation</h3>
+                    <p class="timing">Recommended within 24 hours to address your sinus symptoms.</p>
+                    
+                    <div class="why-section">
+                        <h4>Why?</h4>
+                        <p>Your symptoms suggest acute sinusitis, which may require proper evaluation and targeted treatment. A video consultation will allow our specialists to assess your symptoms, examine visible signs, and determine if you need antibiotics or other treatments.</p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="#" class="read-more">Read more</a>
+                        <button class="book-now" onclick="nextStep()">BOOK NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alternative-options">
+                <h4>Other options you might consider:</h4>
+                <ul>
+                    <li>
+                        <a href="#" class="option-link">
+                            <span class="option-icon">💊</span>
+                            Get sinus medication
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="option-link">
+                            <span class="option-icon">📚</span>
+                            Learn about sinusitis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="option-link">
+                            <span class="option-icon">✨</span>
+                            Natural remedies for sinus relief
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="step" data-step="4" style="display: none;">
-            <h2>What's your phone number?</h2>
-            <input type="tel" placeholder="Enter your phone number">
+            <h2>Choose an Appointment Time</h2>
+            
+            <div class="week-selector">
+                <button class="week-nav prev" aria-label="Previous week">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                
+                <div class="days-container">
+                    <div class="day-item" data-date="2024-03-25">
+                        <span class="day-name">Mon</span>
+                        <span class="day-number">25</span>
+                        <span class="slots-available">8 slots</span>
+                    </div>
+                    <div class="day-item" data-date="2024-03-26">
+                        <span class="day-name">Tue</span>
+                        <span class="day-number">26</span>
+                        <span class="slots-available">5 slots</span>
+                    </div>
+                    <div class="day-item active" data-date="2024-03-27">
+                        <span class="day-name">Wed</span>
+                        <span class="day-number">27</span>
+                        <span class="slots-available">6 slots</span>
+                    </div>
+                    <div class="day-item" data-date="2024-03-28">
+                        <span class="day-name">Thu</span>
+                        <span class="day-number">28</span>
+                        <span class="slots-available">4 slots</span>
+                    </div>
+                    <div class="day-item" data-date="2024-03-29">
+                        <span class="day-name">Fri</span>
+                        <span class="day-number">29</span>
+                        <span class="slots-available">7 slots</span>
+                    </div>
+                </div>
+
+                <button class="week-nav next" aria-label="Next week">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="time-slots">
+                <div class="time-slot-group">
+                    <h3>Morning</h3>
+                    <div class="slots-grid">
+                        <button class="time-slot" onclick="nextStep()">9:00 AM</button>
+                        <button class="time-slot" onclick="nextStep()">9:30 AM</button>
+                        <button class="time-slot" onclick="nextStep()">10:00 AM</button>
+                        <button class="time-slot" onclick="nextStep()">10:30 AM</button>
+                        <button class="time-slot" onclick="nextStep()">11:00 AM</button>
+                        <button class="time-slot" onclick="nextStep()">11:30 AM</button>
+                    </div>
+                </div>
+
+                <div class="time-slot-group">
+                    <h3>Afternoon</h3>
+                    <div class="slots-grid">
+                        <button class="time-slot" onclick="nextStep()">1:00 PM</button>
+                        <button class="time-slot" onclick="nextStep()">1:30 PM</button>
+                        <button class="time-slot" onclick="nextStep()">2:00 PM</button>
+                        <button class="time-slot" onclick="nextStep()">2:30 PM</button>
+                        <button class="time-slot" onclick="nextStep()">3:00 PM</button>
+                        <button class="time-slot" onclick="nextStep()">3:30 PM</button>
+                    </div>
+                </div>
+
+                <div class="time-slot-group">
+                    <h3>Evening</h3>
+                    <div class="slots-grid">
+                        <button class="time-slot" onclick="nextStep()">4:00 PM</button>
+                        <button class="time-slot" onclick="nextStep()">4:30 PM</button>
+                        <button class="time-slot" onclick="nextStep()">5:00 PM</button>
+                        <button class="time-slot" onclick="nextStep()">5:30 PM</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="step" data-step="5" style="display: none;">
-            <h2>Who is your primary care physician?</h2>
-            <input type="text" placeholder="Enter doctor's name">
+            <h2>Let's Review Your Information</h2>
+            <p class="edit-notice">Editing this information will also update your profile</p>
+
+            <div class="info-section required">
+                <h3>About You <span class="required-tag">Required</span></h3>
+                <div class="info-grid">
+                    <div class="info-item" data-field="name">
+                        <div class="info-header">
+                            <span class="label">Full Name</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">John Smith</span>
+                            <input type="text" class="edit-input" style="display: none" value="John Smith">
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="dob">
+                        <div class="info-header">
+                            <span class="label">Date of Birth</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">01/15/1985</span>
+                            <input type="date" class="edit-input" style="display: none" value="1985-01-15">
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="email">
+                        <div class="info-header">
+                            <span class="label">Email</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">john.doe@example.com</span>
+                            <input type="email" class="edit-input" style="display: none" value="john.doe@example.com">
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="insurance">
+                        <div class="info-header">
+                            <span class="label">Insurance</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">Blue Cross Blue Shield</span>
+                            <input type="text" class="edit-input" style="display: none" value="Blue Cross Blue Shield">
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section required">
+                <h3>Medical History <span class="required-tag">Required</span></h3>
+                <div class="info-grid">
+                    <div class="info-item" data-field="medications">
+                        <div class="info-header">
+                            <span class="label">Current Medications</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <div class="tags">
+                                <span class="tag historical">Lisinopril</span>
+                                <span class="tag historical">Metformin</span>
+                            </div>
+                            <textarea class="edit-input" style="display: none">Lisinopril, Metformin</textarea>
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="history">
+                        <div class="info-header">
+                            <span class="label">Medical History</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <div class="tags">
+                                <span class="tag historical">Hypertension</span>
+                                <span class="tag historical">Type 2 Diabetes</span>
+                            </div>
+                            <textarea class="edit-input" style="display: none">Hypertension, Type 2 Diabetes</textarea>
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section optional">
+                <h3>Custom <span class="optional-tag">Optional</span></h3>
+                <div class="info-grid">
+                    <div class="info-item" data-field="smoker">
+                        <div class="info-header">
+                            <span class="label">Smoking Status</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">Non-smoker</span>
+                            <select class="edit-input" style="display: none">
+                                <option value="non-smoker">Non-smoker</option>
+                                <option value="former">Former smoker</option>
+                                <option value="current">Current smoker</option>
+                            </select>
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="stress">
+                        <div class="info-header">
+                            <span class="label">Stress Level</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">Moderate</span>
+                            <select class="edit-input" style="display: none">
+                                <option value="low">Low</option>
+                                <option value="moderate" selected>Moderate</option>
+                                <option value="high">High</option>
+                            </select>
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-field="conversation">
+                        <div class="info-header">
+                            <span class="label">Preferred Conversation Style</span>
+                            <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
+                        </div>
+                        <div class="info-content">
+                            <span class="value">Direct and brief</span>
+                            <select class="edit-input" style="display: none">
+                                <option value="direct">Direct and brief</option>
+                                <option value="detailed">Detailed and thorough</option>
+                                <option value="casual">Casual and friendly</option>
+                            </select>
+                            <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button class="continue-button" onclick="nextStep()">Continue</button>
+            </div>
         </div>
 
         <div class="step" data-step="6" style="display: none;">
-            <h2>What's your blood type?</h2>
-            <select>
-                <option value="">Select blood type</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-            </select>
+            <div class="confirmation-container">
+                <div class="confirmation-header">
+                    <div class="success-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="#E3F2FD"/>
+                            <path d="M20 27.17L16.83 24L15.41 25.41L20 30L32 18L30.59 16.59L20 27.17Z" fill="#2196F3"/>
+                        </svg>
+                    </div>
+                    <h2>Your Appointment is Confirmed!</h2>
+                    <p class="subtitle">We've got everything we need. Here's what you can expect next.</p>
+                </div>
+
+                <div class="appointment-details">
+                    <div class="detail-item">
+                        <span class="label">Appointment Type</span>
+                        <span class="value">Video Consultation with Dr. Smith</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Date & Time</span>
+                        <span class="value">Friday, November 15 at 10:00 AM (EST)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Location</span>
+                        <span class="value">Join via the Dialogue app</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="primary-button calendar-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15.8333 2.5H15V1.66667H13.3333V2.5H6.66667V1.66667H5V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5ZM15.8333 15.8333H4.16667V6.66667H15.8333V15.8333Z" fill="currentColor"/>
+                        </svg>
+                        Add to my calendar
+                    </button>
+                    <button class="secondary-button waitlist-button" onclick="window.location.href='phone-lock.html'">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9.99 0C4.47 0 0 4.48 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 9.99 0ZM10 18C5.58 18 2 14.42 2 10C2 5.58 5.58 2 10 2C14.42 2 18 5.58 18 10C18 14.42 14.42 18 10 18ZM9.78 5H9.72C9.32 5 9 5.32 9 5.72V10.44C9 10.79 9.18 11.12 9.49 11.3L13.64 13.79C13.98 13.99 14.42 13.89 14.62 13.55C14.83 13.21 14.72 12.76 14.37 12.56L10.5 10.26V5.72C10.5 5.32 10.18 5 9.78 5Z" fill="currentColor"/>
+                        </svg>
+                        Join waitlist for sooner time
+                    </button>
+                    <button class="text-button cancel-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15.8333 5.34167L14.6583 4.16667L10 8.825L5.34167 4.16667L4.16667 5.34167L8.825 10L4.16667 14.6583L5.34167 15.8333L10 11.175L14.6583 15.8333L15.8333 14.6583L11.175 10L15.8333 5.34167Z" fill="currentColor"/>
+                        </svg>
+                        Cancel appointment
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="step" data-step="7" style="display: none;">
-            <h2>Do you have any allergies?</h2>
-            <textarea placeholder="List your allergies or type 'None'"></textarea>
-        </div>
 
-        <div class="step" data-step="8" style="display: none;">
-            <h2>Emergency Contact Name</h2>
-            <input type="text" placeholder="Enter emergency contact name">
-        </div>
-
-        <div class="step" data-step="9" style="display: none;">
-            <h2>Emergency Contact Relationship</h2>
-            <input type="text" placeholder="Enter relationship">
-        </div>
-
-        <div class="step" data-step="10" style="display: none;">
-            <h2>Emergency Contact Phone</h2>
-            <input type="tel" placeholder="Enter emergency contact phone">
-        </div>
-    </div>
 
     <!-- Navigation Buttons -->
     <!-- <div class="button-container">

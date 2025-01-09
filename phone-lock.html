@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Lock Screen</title>
+    <link rel="stylesheet" href="css/phone-lock.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="notch"></div>
+        <div class="status-bar">
+            <span>Carrier</span>
+            <span>100%</span>
+        </div>
+        <div class="time">10:30</div>
+        <div class="date">Wednesday, March 27</div>
+        
+        <div class="notification" onclick="window.location.href='waiting-room.html'" style="cursor: pointer;">
+            <div class="notification-header">
+                <div class="app-icon">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M6 1L7.5 4H10.5L8 6L9 9L6 7.5L3 9L4 6L1.5 4H4.5L6 1Z" fill="white"/>
+                    </svg>
+                </div>
+                <span class="app-name">Dialogue</span>
+                <span class="notification-time">now</span>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">Earlier appointment available!</div>
+                <div class="notification-message">A spot opened up for tomorrow at 2:30 PM. Tap to claim it.</div>
+            </div>
+        </div>
+
+        <div class="bottom-hint">
+            Press home to unlock
+        </div>
+    </div>
+
+    <script src="js/phone-lock.js"></script>
+</body>
+</html> 

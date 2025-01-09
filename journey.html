@@ -1,164 +1,412 @@
-<div class="page-content journey">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey - Dialogue</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/journey.css">
+    <link rel="stylesheet" href="css/care-card.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Existing content -->
+    <div class="journey-container">
+        <div class="page-content journey">
     
-    <div class="journey-header">
-        <button onclick="loadContent('mycare')" class="back-button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-        </button>
-        <h1>Lower Back Pain</h1>
-        <p class="journey-status">Active since March 15, 2024</p>
-        <div class="progress-bar-container">
-            <div class="progress-bar" style="width: 60%;">60% Complete</div>
+            <div class="journey-header">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-chevron-left"></i>
+                    Back
+                </a>
+                <h1>Sinusitis</h1>
+                <div class="journey-status">
+                    <span class="status-indicator active">Open</span>
+                    <span class="status-date">Active since March 15, 2024</span>
+                </div>
+            </div>
+        
+            <!-- Journey Navigation -->
+            <nav class="journey-nav">
+                <a href="#overview" class="journey-nav-item active">
+                    <i class="fas fa-clock"></i>
+                    Summary
+                </a>
+                <a href="#care-plan" class="journey-nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    Care Plan
+                </a>
+                <a href="#messages" class="journey-nav-item">
+                    <i class="fas fa-comments"></i>
+                    Chat
+                </a>
+                <a href="#care-team" class="journey-nav-item">
+                    <i class="fas fa-user-md"></i>
+                    Team
+                </a>
+                <a href="#documents" class="journey-nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    Links
+                </a>
+               
+            </nav>
+        
+            <!-- Overview Section -->
+            <section id="overview" class="journey-section active">
+                <div class="condition-summary">
+                    <h2>Condition Summary</h2>
+                    <div class="summary-content">
+                        <p><strong>Initial Complaint:</strong> Facial pressure, nasal congestion, and headache lasting over 10 days.</p>
+                        <p><strong>Key Findings:</strong> Inflammation of the sinus cavities, possible bacterial infection, moderate congestion in nasal passages.</p>
+                        <p><strong>Current Status:</strong> Responding to antibiotics and nasal steroids. Congestion reduced by approximately 50%.</p>
+                        <p><strong>Treatment Plan:</strong> 10-day course of antibiotics, nasal steroid spray, saline rinses, and humidity management.</p>
+                    </div>
+                    
+                    <!-- Added Quick Actions Section -->
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions-grid">
+                            <a href="#" class="quick-action-card">
+                                <i class="fas fa-book-medical"></i>
+                                <span>Read About Sinusitis</span>
+                            </a>
+                            <a href="#" class="quick-action-card">
+                                <i class="fas fa-calendar-plus"></i>
+                                <span>Book Follow-up</span>
+                            </a>
+                            <a href="#" class="quick-action-card">
+                                <i class="fas fa-spray-can"></i>
+                                <span>Nasal Spray Guide</span>
+                            </a>
+                            <a href="#" class="quick-action-card">
+                                <i class="fas fa-notes-medical"></i>
+                                <span>Track Symptoms</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h2>Journey Timeline</h2>
+                    <div class="timeline-items">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 15, 2024</div>
+                            <div class="timeline-content">
+                                <h3>Journey Started</h3>
+                                <p>Initial assessment completed with Dr. Roberts</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 18, 2024</div>
+                            <div class="timeline-content">
+                                <h3>Treatment Initiated</h3>
+                                <p>Started on antibiotics and nasal steroids</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 22, 2024</div>
+                            <div class="timeline-content">
+                                <h3>Progress Check</h3>
+                                <p>Virtual follow-up - symptoms improving, continue current treatment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Care Plan Section -->
+            <section id="care-plan" class="journey-section">
+                <div class="care-plan-container">
+                    <h2>Your Treatment Plan</h2>
+                    
+                    <div class="care-plan-steps">
+                        <div class="care-plan-step">
+                            <div class="step-header">
+                                <span class="step-number">1</span>
+                                <h3>Medication Schedule</h3>
+                            </div>
+                            <div class="step-content">
+                                <ul>
+                                    <li><strong>Antibiotics:</strong> Take 1 tablet twice daily for 10 days</li>
+                                    <li><strong>Nasal Steroid Spray:</strong> 2 sprays in each nostril every morning</li>
+                                    <li><strong>Important:</strong> Complete entire course of antibiotics even if feeling better</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="care-plan-step">
+                            <div class="step-header">
+                                <span class="step-number">2</span>
+                                <h3>Daily Care Routine</h3>
+                            </div>
+                            <div class="step-content">
+                                <ul>
+                                    <li><strong>Morning:</strong> Use nasal spray, perform saline rinse</li>
+                                    <li><strong>Throughout Day:</strong> Stay hydrated, avoid known allergens</li>
+                                    <li><strong>Evening:</strong> Another saline rinse if needed</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="care-plan-step">
+                            <div class="step-header">
+                                <span class="step-number">3</span>
+                                <h3>Environmental Management</h3>
+                            </div>
+                            <div class="step-content">
+                                <ul>
+                                    <li>Use a humidifier in bedroom</li>
+                                    <li>Elevate head while sleeping</li>
+                                    <li>Avoid temperature extremes</li>
+                                    <li>Keep living spaces dust-free</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="care-plan-step">
+                            <div class="step-header">
+                                <span class="step-number">4</span>
+                                <h3>Monitoring Progress</h3>
+                            </div>
+                            <div class="step-content">
+                                <ul>
+                                    <li>Track symptoms daily using the symptom tracker</li>
+                                    <li>Note any changes in nasal discharge color</li>
+                                    <li>Monitor for fever or worsening pain</li>
+                                    <li>Schedule follow-up in 2 weeks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="care-plan-warning">
+                        <h3>When to Seek Immediate Care</h3>
+                        <ul>
+                            <li>Severe headache or facial pain</li>
+                            <li>High fever (over 102°F/39°C)</li>
+                            <li>Vision changes or eye swelling</li>
+                            <li>Symptoms worsen after initial improvement</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Messages Section -->
+            <section id="messages" class="journey-section">
+                <div class="messages-container">
+                    <div class="messages-list">
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                <div class="message-info">
+                                    <h3>Dr. Roberts</h3>
+                                    <span class="message-time">March 15, 2:30 PM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">Based on your symptoms and examination today, I'm diagnosing you with acute sinusitis. I'm prescribing antibiotics and a nasal steroid spray. Let's start with these and monitor your progress.</p>
+                        </div>
+
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                <div class="message-info">
+                                    <h3>Dr. Roberts</h3>
+                                    <span class="message-time">March 15, 2:31 PM</span>
+                                </div>
+                            </div>
+                            <div class="message-content">
+                                I've prepared a detailed treatment plan for you to follow:
+                                <div class="message-links">
+                                    <a href="#care-plan" class="message-link">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        View Treatment Plan
+                                    </a>
+                                    <a href="#documents" class="message-link">
+                                        <i class="fas fa-file-medical"></i>
+                                        View Prescription Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="message outgoing">
+                            <div class="message-header">
+                                <div class="message-info">
+                                    <h3>You</h3>
+                                    <span class="message-time">March 15, 3:45 PM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">Thank you, Dr. Roberts. Quick question - should I take the antibiotic with food?</p>
+                        </div>
+
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                <div class="message-info">
+                                    <h3>Dr. Roberts</h3>
+                                    <span class="message-time">March 15, 4:00 PM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">Yes, please take the antibiotic with food to minimize stomach upset. Also, make sure to complete the full course even if you start feeling better.</p>
+                        </div>
+
+                        <div class="message outgoing">
+                            <div class="message-header">
+                                <div class="message-info">
+                                    <h3>You</h3>
+                                    <span class="message-time">March 18, 9:15 AM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">The congestion seems a bit better, but I'm still having some pressure in my face. Is this normal?</p>
+                        </div>
+
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                <div class="message-info">
+                                    <h3>Dr. Roberts</h3>
+                                    <span class="message-time">March 18, 10:30 AM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">Yes, this is normal. The pressure typically takes 5-7 days to fully resolve. Continue with the medications and try using a warm compress on your face for comfort. If the pressure becomes severe, let me know.</p>
+                        </div>
+
+                        <div class="message">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
+                                <div class="message-info">
+                                    <h3>Nurse Chen</h3>
+                                    <span class="message-time">March 20, 11:00 AM</span>
+                                </div>
+                            </div>
+                            <p class="message-content">Hi! Just checking in on your progress. How are you feeling with the medications?</p>
+                        </div>
+
+                        <div class="message typing-indicator" style="display: none;">
+                            <div class="message-header">
+                                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
+                                <div class="message-info">
+                                    <h3>Nurse Chen</h3>
+                                    <span class="message-time">Typing...</span>
+                                </div>
+                            </div>
+                            <div class="message-content">
+                                <div class="typing-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-input-container">
+                        <form id="messageForm" class="message-form">
+                            <textarea 
+                                placeholder="Type your message..." 
+                                class="message-input"
+                                rows="3"
+                            ></textarea>
+                            <button type="submit" class="send-button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Appointments Section -->
+            <section id="appointments" class="journey-section">
+                <div class="appointments-container">
+                    <div class="appointment-card upcoming">
+                        <div class="appointment-status">Upcoming</div>
+                        <h3>Follow-up Consultation</h3>
+                        <p class="appointment-time">March 25, 2024 - 2:30 PM</p>
+                        <p class="appointment-location">Virtual Visit</p>
+                        <p class="appointment-provider">with Dr. Roberts</p>
+                        <div class="appointment-actions">
+                            <button class="button-secondary">Reschedule</button>
+                            <button class="button-primary">Join Video</button>
+                        </div>
+                    </div>
+                    <div class="appointment-card past">
+                        <div class="appointment-status">Completed</div>
+                        <h3>Initial Consultation</h3>
+                        <p class="appointment-time">March 15, 2024 - 10:00 AM</p>
+                        <p class="appointment-location">Main Street Clinic</p>
+                        <p class="appointment-provider">with Dr. Roberts</p>
+                        <div class="appointment-actions">
+                            <button class="button-secondary">View Summary</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Care Team Section -->
+            <section id="care-team" class="journey-section">
+                <div class="care-team-container">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                        <div class="team-member-info">
+                            <h3>Dr. Michael Roberts</h3>
+                            <p class="role">Primary Care Physician</p>
+                            <p class="specialty">Family Medicine</p>
+                            <button class="button-secondary">Message</button>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
+                        <div class="team-member-info">
+                            <h3>Emily Chen, RN</h3>
+                            <p class="role">Registered Nurse</p>
+                            <p class="specialty">Primary Care</p>
+                            <button class="button-secondary">Message</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Documents Section -->
+            <section id="documents" class="journey-section">
+                <div class="documents-container">
+                    <div class="document-card">
+                        <div class="document-icon">📄</div>
+                        <div class="document-info">
+                            <h3>Initial Assessment Report</h3>
+                            <p class="document-date">March 15, 2024</p>
+                            <p class="document-type">PDF Document</p>
+                        </div>
+                        <button class="button-secondary">View</button>
+                    </div>
+                    <div class="document-card">
+                        <div class="document-icon">💊</div>
+                        <div class="document-info">
+                            <h3>Prescription Details</h3>
+                            <p class="document-date">March 15, 2024</p>
+                            <p class="document-type">PDF Document</p>
+                        </div>
+                        <button class="button-secondary">View</button>
+                    </div>
+                    <div class="document-card">
+                        <div class="document-icon">📋</div>
+                        <div class="document-info">
+                            <h3>Treatment Instructions</h3>
+                            <p class="document-date">March 15, 2024</p>
+                            <p class="document-type">PDF Document</p>
+                        </div>
+                        <button class="button-secondary">View</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
-    <!-- Journey Navigation -->
-    <nav class="journey-nav">
-        <a href="#overview" class="journey-nav-item active">Overview</a>
-        <a href="#messages" class="journey-nav-item">Messages</a>
-        <a href="#appointments" class="journey-nav-item">Appointments</a>
-        <a href="#care-team" class="journey-nav-item">Care Team</a>
-        <a href="#documents" class="journey-nav-item">Documents</a>
-    </nav>
+    <script src="js/main.js"></script>
+    <script src="js/journey.js"></script>
 
-    <!-- Overview Section -->
-    <section id="overview" class="journey-section active">
-        <div class="timeline">
-            <h2>Journey Timeline</h2>
-            <div class="timeline-items">
-                <div class="timeline-item">
-                    <div class="timeline-date">Mar 15, 2024</div>
-                    <div class="timeline-content">
-                        <h3>Journey Started</h3>
-                        <p>Initial assessment completed with Dr. Smith</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Mar 18, 2024</div>
-                    <div class="timeline-content">
-                        <h3>Physical Therapy Session</h3>
-                        <p>First PT session with Jane Wilson</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">Mar 22, 2024</div>
-                    <div class="timeline-content">
-                        <h3>Progress Check</h3>
-                        <p>Follow-up assessment - 20% improvement noted</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Messages Section -->
-    <section id="messages" class="journey-section">
-        <div class="messages-container">
-            <div class="message">
-                <div class="message-header">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Smith" class="avatar">
-                    <div class="message-info">
-                        <h3>Dr. Smith</h3>
-                        <span class="message-time">Today, 2:30 PM</span>
-                    </div>
-                </div>
-                <p class="message-content">How are the exercises working for you? Any improvement in pain levels?</p>
-            </div>
-            <div class="message">
-                <div class="message-header">
-                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Jane Wilson" class="avatar">
-                    <div class="message-info">
-                        <h3>Jane Wilson (PT)</h3>
-                        <span class="message-time">Yesterday, 4:15 PM</span>
-                    </div>
-                </div>
-                <p class="message-content">Great progress in today's session! Remember to do your home exercises twice daily.</p>
-            </div>
-        </div>
-    </section>
+</body>
+</html>
 
-    <!-- Appointments Section -->
-    <section id="appointments" class="journey-section">
-        <div class="appointments-container">
-            <div class="appointment-card upcoming">
-                <div class="appointment-status">Upcoming</div>
-                <h3>Physical Therapy Session</h3>
-                <p class="appointment-time">March 25, 2024 - 2:30 PM</p>
-                <p class="appointment-location">City Physical Therapy Center</p>
-                <p class="appointment-provider">with Jane Wilson, PT</p>
-                <div class="appointment-actions">
-                    <button class="button-secondary">Reschedule</button>
-                    <button class="button-primary">Join Video</button>
-                </div>
-            </div>
-            <div class="appointment-card past">
-                <div class="appointment-status">Completed</div>
-                <h3>Follow-up Consultation</h3>
-                <p class="appointment-time">March 22, 2024 - 10:00 AM</p>
-                <p class="appointment-location">Virtual Visit</p>
-                <p class="appointment-provider">with Dr. Smith</p>
-                <div class="appointment-actions">
-                    <button class="button-secondary">View Summary</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Care Team Section -->
-    <section id="care-team" class="journey-section">
-        <div class="care-team-container">
-            <div class="team-member">
-                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Smith" class="avatar">
-                <div class="team-member-info">
-                    <h3>Dr. Sarah Smith</h3>
-                    <p class="role">Primary Care Physician</p>
-                    <p class="specialty">Internal Medicine</p>
-                    <button class="button-secondary">Message</button>
-                </div>
-            </div>
-            <div class="team-member">
-                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Jane Wilson" class="avatar">
-                <div class="team-member-info">
-                    <h3>Jane Wilson</h3>
-                    <p class="role">Physical Therapist</p>
-                    <p class="specialty">Sports Medicine, Back Pain</p>
-                    <button class="button-secondary">Message</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Documents Section -->
-    <section id="documents" class="journey-section">
-        <div class="documents-container">
-            <div class="document-card">
-                <div class="document-icon">📄</div>
-                <div class="document-info">
-                    <h3>Initial Assessment Report</h3>
-                    <p class="document-date">March 15, 2024</p>
-                    <p class="document-type">PDF Document</p>
-                </div>
-                <button class="button-secondary">View</button>
-            </div>
-            <div class="document-card">
-                <div class="document-icon">📊</div>
-                <div class="document-info">
-                    <h3>Exercise Program</h3>
-                    <p class="document-date">March 18, 2024</p>
-                    <p class="document-type">PDF Document</p>
-                </div>
-                <button class="button-secondary">View</button>
-            </div>
-            <div class="document-card">
-                <div class="document-icon">📋</div>
-                <div class="document-info">
-                    <h3>Progress Notes</h3>
-                    <p class="document-date">March 22, 2024</p>
-                    <p class="document-type">PDF Document</p>
-                </div>
-                <button class="button-secondary">View</button>
-            </div>
-        </div>
-    </section>
-</div>

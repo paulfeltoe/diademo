@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiting Room</title>
+    <link rel="stylesheet" href="css/waiting-room.css">
+</head>
+<body>
+    <div class="notification-banner" style="display: none;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2C5.6 2 2 5.6 2 10C2 14.4 5.6 18 10 18C14.4 18 18 14.4 18 10C18 5.6 14.4 2 10 2ZM11 14H9V12H11V14ZM11 10H9V6H11V10Z" fill="currentColor"/>
+        </svg>
+        <span>Dr. Smith has joined the call and is reviewing your file</span>
+    </div>
+
+    <!-- Confirmation Section -->
+    <div class="container confirmation-section">
+        <div class="content">
+            <div class="header">
+                <div class="timer-circle">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle class="timer-background" cx="50" cy="50" r="45"/>
+                        <circle class="timer-progress" cx="50" cy="50" r="45"/>
+                    </svg>
+                    <div class="timer-text">
+                        <span class="minutes">3</span>:<span class="seconds">00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message">
+                <h1>Good News! A Spot Just Opened Up for You</h1>
+                <p class="subtitle">We found an earlier appointment based on your preferences. You have a limited time to claim this spot.</p>
+                <p class="timer-message">You have <strong>3 minutes</strong> to claim this spot</p>
+            </div>
+
+            <div class="actions">
+                <button class="primary-button" onclick="acceptAppointment()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/>
+                    </svg>
+                    Accept Appointment
+                </button>
+                <button class="secondary-button" onclick="declineAppointment()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
+                    </svg>
+                    Decline & Stay on Waitlist
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Virtual Waiting Room Section (Initially Hidden) -->
+    <div class="container waiting-room-section" style="display: none;">
+        <div class="header">
+            <h1 class="appointment-starts-text">Your appointment starts in</h1>
+            <div class="countdown">
+                <div class="time-display">
+                    <div class="time-block">
+                        <span class="minutes">10</span>
+                        <label>minutes</label>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-block">
+                        <span class="seconds">00</span>
+                        <label>seconds</label>
+                    </div>
+                </div>
+                <button class="join-call-button" style="display: none;" onclick="window.location.href='call.html'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 10.5V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.5l4 4v-11l-4 4z" fill="currentColor"/>
+                    </svg>
+                    Join Call Now
+                </button>
+            </div>
+            <div class="appointment-details">
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V9H11V15ZM11 7H9V5H11V7Z" fill="#2196F3"/>
+                        </svg>
+                        <h2>Upcoming Consultation</h2>
+                    </div>
+                    <div class="detail-content">
+                        <p class="detail-time">Today at 2:30 PM</p>
+                        <p class="detail-type">Virtual Visit - Initial Consultation</p>
+                        <p class="detail-reason">Reason for visit: Chronic Sinusitis</p>
+                        <p class="detail-provider">With Dr. Sarah Johnson</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="preparation-steps">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 8v8m-4-4h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Update Your Symptoms
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <textarea placeholder="Have your symptoms changed since booking? Let us know here..."></textarea>
+                        <button class="save-button">Save Changes</button>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 10l-4 4m0-4l4 4m4-2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Test Your Setup
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="test-items">
+                            <button class="test-button">Test Camera</button>
+                            <button class="test-button">Test Microphone</button>
+                            <button class="test-button">Test Speakers</button>
+                            <button class="test-button">Check Internet Speed</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4v16m-8-8h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Edit Personal Details
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" value="888-888-8888">
+                        </div>
+                        <button class="save-button">Save Changes</button>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 8v8m-4-4h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Consultation Tips
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="tips">
+                            <div class="tip">
+                                <strong>Find a quiet space</strong>
+                                <p>Ensure you're in a private, well-lit area with minimal background noise.</p>
+                            </div>
+                            <div class="tip">
+                                <strong>Have your information ready</strong>
+                                <p>Keep any relevant medical history or medication lists nearby.</p>
+                            </div>
+                            <div class="tip">
+                                <strong>Test your equipment</strong>
+                                <p>Make sure your camera and microphone are working before the call.</p>
+                            </div>
+                            <div class="tip">
+                                <strong>Be prepared for questions</strong>
+                                <p>Your doctor may ask about your symptoms, medical history, and current medications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+                        </svg>
+                        About Sinusitis
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h3>Common Types</h3>
+                                <ul>
+                                    <li>Acute sinusitis (up to 4 weeks)</li>
+                                    <li>Subacute sinusitis (4-12 weeks)</li>
+                                    <li>Chronic sinusitis (12+ weeks)</li>
+                                    <li>Recurrent sinusitis</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-card">
+                                <h3>Common Triggers</h3>
+                                <ul>
+                                    <li>Viral infections (common cold)</li>
+                                    <li>Allergies</li>
+                                    <li>Nasal polyps</li>
+                                    <li>Environmental irritants</li>
+                                    <li>Deviated septum</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-card">
+                                <h3>When to Seek Help</h3>
+                                <ul>
+                                    <li>Severe facial pain/pressure</li>
+                                    <li>Symptoms lasting over 10 days</li>
+                                    <li>Fever over 102°F (39°C)</li>
+                                    <li>Multiple infections per year</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-card">
+                                <h3>Helpful Tips</h3>
+                                <ul>
+                                    <li>Use a humidifier</li>
+                                    <li>Try nasal irrigation</li>
+                                    <li>Stay hydrated</li>
+                                    <li>Avoid known allergens</li>
+                                    <li>Use steam inhalation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/waiting-room.js"></script>
+</body>
+</html> 

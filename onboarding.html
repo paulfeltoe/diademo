@@ -25,8 +25,8 @@
         </div>
         
         <div class="button-container">
-            <button class="button-primary" onclick="window.nextStep()">Get Started</button>
-            <button class="button-secondary" onclick="window.nextStep()">Sign In</button>
+            <button class="button-primary" onclick="nextStep(event)">Get Started</button>
+            <button class="button-secondary" onclick="nextStep(event)">Sign In</button>
         </div>
     </div>
 
@@ -34,14 +34,14 @@
     <div class="step" id="step2" style="display: none;">
         <div class="auth-container">
             <h2>Welcome Back</h2>
-            <button class="auth-button google" onclick="window.nextStep()">
+            <button class="auth-button google" onclick="nextStep(event)">
                 <img src="assets/google-icon.svg" alt="Google">
                 Sign in with Google
             </button>
             <div class="divider">
                 <span>or</span>
             </div>
-            <button class="auth-button email" onclick="window.nextStep()">
+            <button class="auth-button email" onclick="nextStep(event)">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
@@ -51,15 +51,41 @@
         </div>
     </div>
 
-    <!-- Step 3: Profile -->
+    <!-- Step 3: Biometric Authentication -->
     <div class="step" id="step3" style="display: none;">
+        <div class="biometric-container">
+            <div class="biometric-prompt">
+                <div class="faceid-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 4h6M4 9v2M4 13v2M4 17v2M20 9v2M20 13v2M20 17v2M9 20h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h2>Face ID</h2>
+                <p>Look at the camera to continue</p>
+                <div class="faceid-scanner">
+                    <div class="scan-area"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4: Profile -->
+    <div class="step" id="step4" style="display: none;">
         <div class="profile-container">
+            <h2>Health Profile</h2>
             <button class="import-button">
-                <img src="assets/gusto-logo.svg" alt="Gusto">
-                Import from Gusto
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Import from Sunlife
             </button>
             
             <form class="profile-form">
+                <!-- Personal Information -->
+                <h3>Personal Information</h3>
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" placeholder="Enter your full name">
@@ -76,6 +102,59 @@
                     <label for="address">Address</label>
                     <input type="text" id="address" placeholder="Enter your address">
                 </div>
+
+                <!-- Pharmacy Information -->
+                <h3>Pharmacy Information</h3>
+                <div class="form-group">
+                    <label for="preferredPharmacy">Preferred Pharmacy</label>
+                    <input type="text" id="preferredPharmacy" placeholder="Enter pharmacy name">
+                </div>
+                <div class="form-group">
+                    <label for="pharmacyAddress">Pharmacy Address</label>
+                    <input type="text" id="pharmacyAddress" placeholder="Enter pharmacy address">
+                </div>
+
+                <!-- Medications -->
+                <h3>Current Medications</h3>
+                <div class="form-group">
+                    <label for="medications">List Your Current Medications</label>
+                    <textarea id="medications" rows="3" placeholder="Enter medications, one per line"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="allergies">Allergies</label>
+                    <textarea id="allergies" rows="2" placeholder="List any allergies"></textarea>
+                </div>
+
+                <!-- Emergency Contact -->
+                <h3>Emergency Contact</h3>
+                <div class="form-group">
+                    <label for="emergencyName">Emergency Contact Name</label>
+                    <input type="text" id="emergencyName" placeholder="Enter emergency contact name">
+                </div>
+                <div class="form-group">
+                    <label for="emergencyPhone">Emergency Contact Phone</label>
+                    <input type="tel" id="emergencyPhone" placeholder="(555) 555-5555">
+                </div>
+                <div class="form-group">
+                    <label for="relationship">Relationship</label>
+                    <input type="text" id="relationship" placeholder="e.g., Spouse, Parent, Friend">
+                </div>
+
+                <!-- Insurance Information -->
+                <h3>Insurance Information</h3>
+                <div class="form-group">
+                    <label for="insuranceProvider">Insurance Provider</label>
+                    <input type="text" id="insuranceProvider" placeholder="Enter insurance provider">
+                </div>
+                <div class="form-group">
+                    <label for="policyNumber">Policy Number</label>
+                    <input type="text" id="policyNumber" placeholder="Enter policy number">
+                </div>
+                <div class="form-group">
+                    <label for="groupNumber">Group Number</label>
+                    <input type="text" id="groupNumber" placeholder="Enter group number">
+                </div>
+
                 <button type="submit" class="button-primary">Complete Profile</button>
             </form>
         </div>
