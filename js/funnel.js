@@ -212,7 +212,6 @@ function initializeTimeSlotHandlers() {
             
             const selectedTime = this.textContent.trim();
             const selectedDate = document.querySelector('.day-item.active')?.dataset.date;
-            console.log(`Selected appointment: ${selectedDate} at ${selectedTime}`);
             
             nextStep();
         };
@@ -220,12 +219,7 @@ function initializeTimeSlotHandlers() {
 }
 
 function navigateWeek(direction) {
-    // This would typically update the dates shown in the week selector
-    console.log(`Navigating ${direction}`);
-    // In a real implementation, you would:
-    // 1. Calculate the new dates
-    // 2. Update the day-items with new dates
-    // 3. Load slots for the first day of the new week
+
 }
 
 function enableContinueButton() {

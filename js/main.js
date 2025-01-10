@@ -1,8 +1,14 @@
 async function loadContent(page) {
+    const mainContent = document.getElementById('main-content');
+    if (!mainContent) {
+        console.error('Main content element not found');
+        return;
+    }
+
     try {
         const response = await fetch(`${page}.html`);
         const content = await response.text();
-        document.getElementById('main-content').innerHTML = content;
+        mainContent.innerHTML = content;
         
         if (page === 'explore') {
             setupFilters();
@@ -23,15 +29,15 @@ async function loadContent(page) {
             setupJourneyNavigation();
         } else if (page === 'profile') {
             // Debug logging
-            console.log('Looking for fullscreen button...');
+            // console.log('Looking for fullscreen button...');
             const fullscreenBtn = document.getElementById('fullscreenBtn');
-            console.log('Fullscreen button found:', fullscreenBtn);
+            // console.log('Fullscreen button found:', fullscreenBtn);
             
             // Only setup fullscreen if button exists
             if (fullscreenBtn) {
-                console.log('Setting up fullscreen functionality');
+                // console.log('Setting up fullscreen functionality');
                 fullscreenBtn.addEventListener('click', function() {
-                    console.log('Fullscreen button clicked');
+                    // console.log('Fullscreen button clicked');
                     const elem = document.documentElement;
                     
                     if (document.fullscreenElement || 
@@ -66,7 +72,7 @@ async function loadContent(page) {
                     }
                 });
             } else {
-                console.warn('Fullscreen button not found in the DOM');
+                // console.warn('Fullscreen button not found in the DOM');
             }
         } else if (page === 'onboarding') {
             // Load onboarding.js if not already loaded
@@ -82,8 +88,9 @@ async function loadContent(page) {
             }
         }
     } catch (error) {
-        console.error('Error loading content:', error);
-        document.getElementById('main-content').innerHTML = '<p>Error loading content</p>';
+        if (mainContent) {
+            mainContent.innerHTML = '<p>Error loading content</p>';
+        }
     }
 }
 
@@ -143,17 +150,17 @@ async function openBottomSheet(contentUrl = 'funnel.html') {
         if (contentUrl === 'funnel.html') {
             setTimeout(() => {
                 window.initializeFunnel();
-                console.log('Funnel initialized');
+                // console.log('Funnel initialized');
 
                 // Hook into the nextStep function
                 const originalNextStep = window.nextStep;
                 window.nextStep = function() {
-                    console.log('Next step called');
+                    // console.log('Next step called');
                     originalNextStep();
                     
                     // Check if we're now on step 6
                     if (currentStep === 6) {
-                        console.log('Final step reached - completing funnel');
+                        // console.log('Final step reached - completing funnel');
                         completeFunnel();
                     }
                 };
@@ -238,21 +245,21 @@ function checkFunnelCompletion() {
     const filledState = document.getElementById('filledState');
     
     if (emptyState && filledState) {
-        console.log('Updating funnel state:', hasFunnelCompleted);
+        // console.log('Updating funnel state:', hasFunnelCompleted);
         emptyState.style.display = hasFunnelCompleted ? 'none' : 'block';
         filledState.style.display = hasFunnelCompleted ? 'block' : 'none';
     }
 }
 
 function completeFunnel() {
-    console.log('Completing funnel for condition:', selectedCondition);
+    // console.log('Completing funnel for condition:', selectedCondition);
     
     // Force display changes
     const emptyState = document.getElementById('emptyState');
     const filledState = document.getElementById('filledState');
     
     if (emptyState && filledState) {
-        console.log('Updating state displays');
+        // console.log('Updating state displays');
         emptyState.style.display = 'none';
         filledState.style.display = 'block';
         
@@ -325,7 +332,7 @@ function restoreCarePlanState() {
 // Add this function to handle page refresh
 function handlePageRefresh() {
     if (window.performance && window.performance.navigation.type === 1) {
-        console.log('Page was hard refreshed - resetting session state');
+        // console.log('Page was hard refreshed - resetting session state');
         sessionStorage.clear();
         // On hard refresh, we'll start fresh with localStorage values
         const persistentConditions = JSON.parse(localStorage.getItem('shownConditions') || '[]');
@@ -341,7 +348,7 @@ function checkCarePlanState() {
     const filledState = document.getElementById('filledState');
     
     if (emptyState && filledState) {
-        console.log('Updating care plan state:', hasCarePlan);
+        // console.log('Updating care plan state:', hasCarePlan);
         emptyState.style.display = hasCarePlan ? 'none' : 'block';
         filledState.style.display = hasCarePlan ? 'block' : 'none';
     }
@@ -371,7 +378,7 @@ function toggleFilledState() {
         // Update localStorage
         localStorage.setItem('hasCarePlan', (!isFilledStateVisible).toString());
         
-        console.log('Toggled state:', isFilledStateVisible ? 'empty' : 'filled'); // Debug log
+        // console.log('Toggled state:', isFilledStateVisible ? 'empty' : 'filled'); // Debug log
     }
 }
 
@@ -425,13 +432,13 @@ function goToStep(step) {
     // ... your existing step navigation code ...
     
     if (step === 6 || isStep6Active()) {
-        console.log('Reached step 6 - triggering completion');
+        // console.log('Reached step 6 - triggering completion');
         completeFunnel();
     }
 }
 
 function hardReset() {
-    console.log('Performing hard reset...');
+    // console.log('Performing hard reset...');
     
     // Clear all storage
     localStorage.clear();
@@ -485,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Reset localStorage on hard refresh
     if (window.performance && window.performance.navigation.type === 1) {
-        console.log('Page was hard refreshed - resetting state');
+        // console.log('Page was hard refreshed - resetting state');
         localStorage.removeItem('hasCarePlan');
         localStorage.removeItem('funnelCompleted');
         localStorage.removeItem('shownConditions');
@@ -522,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add global click handler for logo
     document.addEventListener('click', (e) => {
         if (e.target.closest('.logo')) {
-            console.log('Logo clicked - forcing refresh');
+            // console.log('Logo clicked - forcing refresh');
             window.location.reload(true);
         }
     });
@@ -555,15 +562,15 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreCarePlanState();
 
     // Debug logging
-    console.log('Looking for fullscreen button...');
+    // console.log('Looking for fullscreen button...');
     const fullscreenBtn = document.getElementById('fullscreenBtn');
-    console.log('Fullscreen button found:', fullscreenBtn);
+    // console.log('Fullscreen button found:', fullscreenBtn);
     
     // Only setup fullscreen if button exists
     if (fullscreenBtn) {
-        console.log('Setting up fullscreen functionality');
+        // console.log('Setting up fullscreen functionality');
         fullscreenBtn.addEventListener('click', function() {
-            console.log('Fullscreen button clicked');
+            // console.log('Fullscreen button clicked');
             const elem = document.documentElement;
             
             if (document.fullscreenElement || 
@@ -604,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
         document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
     } else {
-        console.warn('Fullscreen button not found in the DOM');
+        // console.warn('Fullscreen button not found in the DOM');
     }
 });
 
@@ -624,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     // Reset sessionStorage on hard refresh
     if (window.performance && window.performance.navigation.type === 1) {
-        console.log('Page was hard refreshed - resetting state');
+        // console.log('Page was hard refreshed - resetting state');
         sessionStorage.clear();
     }
     

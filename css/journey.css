@@ -883,3 +883,142 @@
 .message.outgoing.no-header {
     margin-top: -8px; /* Adjust this value to control spacing between consecutive messages */
 }
+
+/* Hide all journeys by default */
+.journey-container .page-content.journey {
+    display: none;
+}
+
+/* Show active journey when it has the 'active' class */
+.journey-container .page-content.journey.active {
+    display: block;
+}
+
+.complete-journey-button {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: var(--background-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.complete-journey-button:hover {
+    background: var(--background-tertiary);
+    transform: translateY(-1px);
+}
+
+.complete-journey-button i {
+    font-size: 14px;
+}
+
+/* Add styles for resolved journeys */
+.journey-status .status-indicator.resolved {
+    background-color: #e2e8f0;
+    color: #64748b;
+}
+
+/* Style the entire journey header when resolved */
+.journey[data-status="resolved"] .journey-header {
+    opacity: 0.8;
+}
+
+/* Style the journey content when resolved */
+.journey[data-status="resolved"] {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+/* Update status date style when resolved */
+.journey[data-status="resolved"] .status-date {
+    color: #64748b;
+}
+
+/* Reduce visual prominence of navigation when resolved */
+.journey[data-status="resolved"] .journey-nav {
+    opacity: 0.8;
+}
+
+/* Style the content sections when resolved */
+.journey[data-status="resolved"] .journey-section {
+    opacity: 0.85;
+}
+
+/* Style buttons in resolved journeys */
+.journey[data-status="resolved"] .button-primary,
+.journey[data-status="resolved"] .button-secondary {
+    background-color: #e2e8f0;
+    color: #64748b;
+    border-color: #cbd5e1;
+}
+
+/* Style resolved care journey cards */
+.care-journey-card[data-status="resolved"] {
+    opacity: 0.8;
+}
+
+.care-journey-card[data-status="resolved"] .care-card {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.care-journey-card[data-status="resolved"] .status-badge {
+    background-color: #e2e8f0;
+    color: #64748b;
+}
+
+.care-journey-card[data-status="resolved"] h3 {
+    color: #64748b;
+}
+
+.care-journey-card[data-status="resolved"] p,
+.care-journey-card[data-status="resolved"] .care-card-footer span {
+    color: #94a3b8;
+}
+
+.care-journey-card[data-status="resolved"] .care-card-header .date {
+    color: #94a3b8;
+}
+
+/* Style cards in past care plans section */
+.past-care-plans .care-journey-card {
+    opacity: 0.8;
+}
+
+.past-care-plans .care-card {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+    position: relative;
+}
+
+.past-care-plans .status-badge {
+    background-color: #e2e8f0;
+    color: #64748b;
+}
+
+.past-care-plans .care-card h3 {
+    color: #64748b;
+}
+
+.past-care-plans .care-card p,
+.past-care-plans .care-card-footer span {
+    color: #94a3b8;
+}
+
+.past-care-plans .care-card-header .date {
+    color: #94a3b8;
+}
+
+/* Add subtle transition when moving cards */
+.care-journey-card {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Optional: Add a subtle hover effect for past care plans */
+.past-care-plans .care-journey-card:hover {
+    opacity: 0.9;
+}

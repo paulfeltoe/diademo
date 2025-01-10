@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Get journey type from URL parameter or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const journeyType = urlParams.get('type') || localStorage.getItem('lastJourneyType') || 'sinusitis';
+    console.log('Journey type:', journeyType);
+
+    // Store the last viewed journey type
+    localStorage.setItem('lastJourneyType', journeyType);
+
+    // Hide all journeys first
+    document.querySelectorAll('.page-content.journey').forEach(journey => {
+        journey.classList.remove('active');
+    });
+
+    // Show the selected journey
+    const selectedJourney = document.getElementById(`${journeyType}-journey`);
+    if (selectedJourney) {
+        selectedJourney.classList.add('active');
+        
+        // Add complete button to overview section
+        const overviewSection = selectedJourney.querySelector('#overview');
+        
+        if (overviewSection && !overviewSection.querySelector('.complete-journey-button')) {
+            const completeButton = document.createElement('button');
+            completeButton.className = 'complete-journey-button button-secondary';
+            completeButton.innerHTML = '<i class="fas fa-check"></i> Mark as Completed';
+            completeButton.onclick = () => {
+                console.log('Complete button clicked');
+                markJourneyAsComplete(journeyType);
+            };
+            overviewSection.appendChild(completeButton);
+        }
+    }
+
     // Initialize elements
     const messagesList = document.querySelector('.messages-list');
     const typingIndicator = document.querySelector('.typing-indicator');
@@ -252,6 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1500);
         });
     });
+
+    initializeJourneyStatuses();
 });
 
 function resolveEpisode() {
@@ -276,4 +311,143 @@ function resolveEpisode() {
             window.location.href = 'index.html';
         }, 1000);
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all journey navigation items
+    const journeyNavs = document.querySelectorAll('.journey-nav-item');
+    
+    journeyNavs.forEach(navItem => {
+        navItem.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Find the current journey container
+            const currentJourney = this.closest('.journey');
+            
+            // Remove active class from all nav items in this journey
+            currentJourney.querySelectorAll('.journey-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to clicked nav item
+            this.classList.add('active');
+            
+            // Get the section ID from the href
+            const sectionId = this.getAttribute('href').substring(1);
+            
+            // Hide all sections in this journey
+            currentJourney.querySelectorAll('.journey-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            currentJourney.querySelector(`#${sectionId}`).classList.add('active');
+        });
+    });
+});
+
+// Add this function at the end of the file
+function handleReturnButtonClick() {
+    // Store sinusitis as the journey type to show
+    localStorage.setItem('lastJourneyType', 'sinusitis');
+    // Navigate to journey.html
+    window.location.href = 'journey.html';
+}
+
+// Export the function for use in other files
+window.handleReturnButtonClick = handleReturnButtonClick;
+
+// Add these new functions
+function markJourneyAsComplete(journeyType) {
+    console.log('Marking journey as complete:', journeyType);
+    
+    // Update journey page
+    const journeySection = document.getElementById(`${journeyType}-journey`);
+    if (journeySection) {
+        journeySection.setAttribute('data-status', 'resolved');
+        
+        const statusIndicator = journeySection.querySelector('.status-indicator');
+        if (statusIndicator) {
+            statusIndicator.textContent = 'Resolved';
+            statusIndicator.classList.remove('active');
+            statusIndicator.classList.add('resolved');
+        }
+    }
+    
+    // Update card on main page if it exists
+    const journeyCard = document.querySelector(`.care-journey-card.care-card-${journeyType}`);
+    if (journeyCard) {
+        journeyCard.setAttribute('data-status', 'resolved');
+        const statusBadge = journeyCard.querySelector('.status-badge');
+        if (statusBadge) {
+            statusBadge.textContent = 'Resolved';
+            statusBadge.classList.remove('active');
+            statusBadge.classList.add('resolved');
+        }
+    }
+
+    // Store the completion status
+    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
+    const activeConditions = JSON.parse(sessionStorage.getItem('shownConditions') || '[]');
+    
+    // Remove from active and add to resolved
+    const updatedActive = activeConditions.filter(condition => condition !== journeyType);
+    if (!resolvedConditions.includes(journeyType)) {
+        resolvedConditions.push(journeyType);
+    }
+
+    // Update storage
+    sessionStorage.setItem('shownConditions', JSON.stringify(updatedActive));
+    sessionStorage.setItem('resolvedConditions', JSON.stringify(resolvedConditions));
+
+    // Update the complete button
+    const completeButton = document.querySelector('.complete-journey-button');
+    if (completeButton) {
+        completeButton.disabled = true;
+        completeButton.innerHTML = '<i class="fas fa-check"></i> Completed';
+    }
+}
+
+// Make sure the function is available globally
+window.markJourneyAsComplete = markJourneyAsComplete;
+
+function initializeJourneyStatuses() {
+    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
+    
+    // Update journey pages
+    ['sinusitis', 'anxiety', 'rash'].forEach(journeyType => {
+        const journeySection = document.getElementById(`${journeyType}-journey`);
+        if (journeySection) {
+            if (resolvedConditions.includes(journeyType)) {
+                journeySection.setAttribute('data-status', 'resolved');
+                
+                const statusIndicator = journeySection.querySelector('.status-indicator');
+                if (statusIndicator) {
+                    statusIndicator.textContent = 'Resolved';
+                    statusIndicator.classList.remove('active');
+                    statusIndicator.classList.add('resolved');
+                }
+                
+                const completeButton = journeySection.querySelector('.complete-journey-button');
+                if (completeButton) {
+                    completeButton.disabled = true;
+                    completeButton.innerHTML = '<i class="fas fa-check"></i> Completed';
+                }
+            }
+        }
+        
+        // Add card status update
+        const journeyCard = document.querySelector(`.care-journey-card.care-card-${journeyType}`);
+        if (journeyCard) {
+            if (resolvedConditions.includes(journeyType)) {
+                journeyCard.setAttribute('data-status', 'resolved');
+                const statusBadge = journeyCard.querySelector('.status-badge');
+                if (statusBadge) {
+                    statusBadge.textContent = 'Resolved';
+                    statusBadge.classList.remove('active');
+                    statusBadge.classList.add('resolved');
+                }
+            }
+        }
+    });
 }
