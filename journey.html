@@ -13,7 +13,7 @@
 <body>
     <!-- Existing content -->
     <div class="journey-container">
-        <div class="page-content journey">
+        <div class="page-content journey" id="sinusitis-journey">
     
             <div class="journey-header">
                 <a href="index.html" class="back-button">
@@ -57,10 +57,10 @@
                 <div class="condition-summary">
                     <h2>Condition Summary</h2>
                     <div class="summary-content">
-                        <p><strong>Initial Complaint:</strong> Facial pressure, nasal congestion, and headache lasting over 10 days.</p>
-                        <p><strong>Key Findings:</strong> Inflammation of the sinus cavities, possible bacterial infection, moderate congestion in nasal passages.</p>
-                        <p><strong>Current Status:</strong> Responding to antibiotics and nasal steroids. Congestion reduced by approximately 50%.</p>
-                        <p><strong>Treatment Plan:</strong> 10-day course of antibiotics, nasal steroid spray, saline rinses, and humidity management.</p>
+                        <p><strong>Initial Complaint:</strong> Severe nasal congestion, facial pressure, and headache for past week.</p>
+                        <p><strong>Key Findings:</strong> Acute bacterial sinusitis with moderate inflammation of maxillary and frontal sinuses.</p>
+                        <p><strong>Current Status:</strong> Responding to antibiotics, symptoms improving gradually.</p>
+                        <p><strong>Treatment Plan:</strong> 10-day course of antibiotics, nasal steroids, and supportive care.</p>
                     </div>
                     
                     <!-- Added Quick Actions Section -->
@@ -204,30 +204,7 @@
                                     <span class="message-time">March 15, 2:30 PM</span>
                                 </div>
                             </div>
-                            <p class="message-content">Based on your symptoms and examination today, I'm diagnosing you with acute sinusitis. I'm prescribing antibiotics and a nasal steroid spray. Let's start with these and monitor your progress.</p>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Roberts</h3>
-                                    <span class="message-time">March 15, 2:31 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">
-                                I've prepared a detailed treatment plan for you to follow:
-                                <div class="message-links">
-                                    <a href="#care-plan" class="message-link">
-                                        <i class="fas fa-clipboard-list"></i>
-                                        View Treatment Plan
-                                    </a>
-                                    <a href="#documents" class="message-link">
-                                        <i class="fas fa-file-medical"></i>
-                                        View Prescription Details
-                                    </a>
-                                </div>
-                            </div>
+                            <div class="message-content">Based on your symptoms and examination today, I'm diagnosing you with acute sinusitis. I'm prescribing antibiotics and a nasal steroid spray. Let's start with these and monitor your progress.</div>
                         </div>
 
                         <div class="message outgoing">
@@ -237,7 +214,7 @@
                                     <span class="message-time">March 15, 3:45 PM</span>
                                 </div>
                             </div>
-                            <p class="message-content">Thank you, Dr. Roberts. Quick question - should I take the antibiotic with food?</p>
+                            <div class="message-content">Thank you, Dr. Roberts. Quick question - should I take the antibiotic with food?</div>
                         </div>
 
                         <div class="message">
@@ -248,7 +225,7 @@
                                     <span class="message-time">March 15, 4:00 PM</span>
                                 </div>
                             </div>
-                            <p class="message-content">Yes, please take the antibiotic with food to minimize stomach upset. Also, make sure to complete the full course even if you start feeling better.</p>
+                            <div class="message-content">Yes, please take the antibiotic with food to minimize stomach upset. Also, make sure to complete the full course even if you start feeling better.</div>
                         </div>
 
                         <div class="message outgoing">
@@ -258,7 +235,7 @@
                                     <span class="message-time">March 18, 9:15 AM</span>
                                 </div>
                             </div>
-                            <p class="message-content">The congestion seems a bit better, but I'm still having some pressure in my face. Is this normal?</p>
+                            <div class="message-content">The congestion seems a bit better, but I'm still having some pressure in my face. Is this normal?</div>
                         </div>
 
                         <div class="message">
@@ -269,7 +246,7 @@
                                     <span class="message-time">March 18, 10:30 AM</span>
                                 </div>
                             </div>
-                            <p class="message-content">Yes, this is normal. The pressure typically takes 5-7 days to fully resolve. Continue with the medications and try using a warm compress on your face for comfort. If the pressure becomes severe, let me know.</p>
+                            <div class="message-content">Yes, this is normal. The pressure typically takes 5-7 days to fully resolve. Continue with the medications and try using a warm compress on your face for comfort. If the pressure becomes severe, let me know.</div>
                         </div>
 
                         <div class="message">
@@ -280,7 +257,27 @@
                                     <span class="message-time">March 20, 11:00 AM</span>
                                 </div>
                             </div>
-                            <p class="message-content">Hi! Just checking in on your progress. How are you feeling with the medications?</p>
+                            <div class="message-content">
+                                <p>Hi! Just checking in on your progress. How are you feeling with the medications?</p>
+                                <div class="response-options">
+                                    <button class="response-option" data-response="better">
+                                        <i class="fas fa-smile"></i>
+                                        All better
+                                    </button>
+                                    <button class="response-option" data-response="improving">
+                                        <i class="fas fa-meh"></i>
+                                        Some improvement
+                                    </button>
+                                    <button class="response-option" data-response="same">
+                                        <i class="fas fa-meh-blank"></i>
+                                        About the same
+                                    </button>
+                                    <button class="response-option" data-response="worse">
+                                        <i class="fas fa-frown"></i>
+                                        Worse
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="message typing-indicator" style="display: none;">
@@ -355,13 +352,17 @@
                             <button class="button-secondary">Message</button>
                         </div>
                     </div>
+                    
                     <div class="team-member">
                         <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
                         <div class="team-member-info">
                             <h3>Emily Chen, RN</h3>
                             <p class="role">Registered Nurse</p>
                             <p class="specialty">Primary Care</p>
-                            <button class="button-secondary">Message</button>
+                            <div class="team-member-actions">
+                                <button class="button-secondary">Message</button>
+                                <button class="button-primary" onclick="resolveEpisode()">Resolve Episode</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -379,6 +380,7 @@
                         </div>
                         <button class="button-secondary">View</button>
                     </div>
+                    
                     <div class="document-card">
                         <div class="document-icon">💊</div>
                         <div class="document-info">
@@ -388,6 +390,7 @@
                         </div>
                         <button class="button-secondary">View</button>
                     </div>
+                    
                     <div class="document-card">
                         <div class="document-icon">📋</div>
                         <div class="document-info">

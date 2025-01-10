@@ -1,6 +1,7 @@
 let currentStep = 1;
 const totalSteps = 6;
 let recognition = null;
+let selectedCondition = null;
 
 function updateProgress() {
     const progressBar = document.getElementById('progressBar');
@@ -142,9 +143,11 @@ function toggleEdit(button) {
 
 // Export the function to be called from main.js
 window.initializeFunnel = function() {
-    currentStep = 1; // Reset the current step
-    showStep(currentStep); // Show the first step
-    updateProgress(); // Update the progress bar and text
+    currentStep = 1;
+    selectedCondition = null; // Reset selected condition
+    showStep(currentStep);
+    updateProgress();
+    initializeConditionButtons();
 }
 
 function initializeAppointmentSelector() {
@@ -278,3 +281,20 @@ document.addEventListener('DOMContentLoaded', () => {
 Element.prototype.contains = function(text) {
     return this.textContent.includes(text);
 };
+
+function initializeConditionButtons() {
+    const conditionButtons = document.querySelectorAll('.condition-btn');
+    conditionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            conditionButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            // Store selected condition
+            selectedCondition = button.dataset.condition;
+            // Enable next step
+            enableContinueButton();
+            nextStep();
+        });
+    });
+}

@@ -1,36 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Reset localStorage on hard refresh
-    if (window.performance && window.performance.navigation.type === 1) {
-        console.log('Page was hard refreshed - resetting state');
-        localStorage.removeItem('hasCarePlan');
-    }
-
-    // Load initial content (mycare.html by default)
-    loadContent('mycare');
-
-    // Add click handlers to nav items
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all nav items
-            document.querySelectorAll('.nav-item').forEach(navItem => {
-                navItem.classList.remove('active');
-            });
-            
-            // Add active class to clicked item
-            e.target.closest('.nav-item').classList.add('active');
-            
-            // Load the corresponding content
-            const page = e.target.closest('.nav-item').dataset.page;
-            loadContent(page);
-        });
-    });
-
-    // Setup bottom sheet
-    setupBottomSheet();
-});
-
 async function loadContent(page) {
     try {
         const response = await fetch(`${page}.html`);
@@ -45,10 +12,62 @@ async function loadContent(page) {
             window.initializeFunnel();
         } else if (page === 'mycare') {
             setupBottomSheet();
-            checkCarePlanState();
+            // Move state checks here, after content is loaded
+            setTimeout(() => {
+                checkCarePlanState();
+                checkFunnelCompletion();
+                restoreCarePlanState();
+            }, 0);
             setupCareCards();
         } else if (page === 'journey') {
             setupJourneyNavigation();
+        } else if (page === 'profile') {
+            // Debug logging
+            console.log('Looking for fullscreen button...');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            console.log('Fullscreen button found:', fullscreenBtn);
+            
+            // Only setup fullscreen if button exists
+            if (fullscreenBtn) {
+                console.log('Setting up fullscreen functionality');
+                fullscreenBtn.addEventListener('click', function() {
+                    console.log('Fullscreen button clicked');
+                    const elem = document.documentElement;
+                    
+                    if (document.fullscreenElement || 
+                        document.webkitFullscreenElement || 
+                        document.mozFullScreenElement ||
+                        document.msFullscreenElement) {
+                            
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                        }
+                        
+                        this.querySelector('.fullscreen-icon').textContent = '⤢';
+                        
+                    } else {
+                        if (elem.requestFullscreen) {
+                            elem.requestFullscreen();
+                        } else if (elem.webkitRequestFullscreen) {
+                            elem.webkitRequestFullscreen();
+                        } else if (elem.mozRequestFullScreen) {
+                            elem.mozRequestFullScreen();
+                        } else if (elem.msRequestFullscreen) {
+                            elem.msRequestFullscreen();
+                        }
+                        
+                        this.querySelector('.fullscreen-icon').textContent = '⤡';
+                    }
+                });
+            } else {
+                console.warn('Fullscreen button not found in the DOM');
+            }
         } else if (page === 'onboarding') {
             // Load onboarding.js if not already loaded
             if (!window.setupOnboarding) {
@@ -113,20 +132,31 @@ async function openBottomSheet(contentUrl = 'funnel.html') {
     const sheetContent = document.querySelector('.bottom-sheet-content .sheet-content');
 
     try {
-        // Fetch and insert content
         const response = await fetch(contentUrl);
         const content = await response.text();
         sheetContent.innerHTML = content;
 
-        // Show bottom sheet and overlay
         bottomSheet.classList.add('active');
         bottomSheetOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Initialize funnel if it's funnel content
         if (contentUrl === 'funnel.html') {
             setTimeout(() => {
                 window.initializeFunnel();
+                console.log('Funnel initialized');
+
+                // Hook into the nextStep function
+                const originalNextStep = window.nextStep;
+                window.nextStep = function() {
+                    console.log('Next step called');
+                    originalNextStep();
+                    
+                    // Check if we're now on step 6
+                    if (currentStep === 6) {
+                        console.log('Final step reached - completing funnel');
+                        completeFunnel();
+                    }
+                };
             }, 0);
         }
     } catch (error) {
@@ -134,8 +164,6 @@ async function openBottomSheet(contentUrl = 'funnel.html') {
         sheetContent.innerHTML = '<p>Error loading content</p>';
     }
 }
-
-
 
 function navigateToGetCare() {
     // Store a flag in localStorage to indicate the bottom sheet should be opened
@@ -203,17 +231,119 @@ function setupExploreCards() {
     });
 }
 
+function checkFunnelCompletion() {
+    const hasFunnelCompleted = localStorage.getItem('funnelCompleted') === 'true';
+    
+    const emptyState = document.getElementById('emptyState');
+    const filledState = document.getElementById('filledState');
+    
+    if (emptyState && filledState) {
+        console.log('Updating funnel state:', hasFunnelCompleted);
+        emptyState.style.display = hasFunnelCompleted ? 'none' : 'block';
+        filledState.style.display = hasFunnelCompleted ? 'block' : 'none';
+    }
+}
+
+function completeFunnel() {
+    console.log('Completing funnel for condition:', selectedCondition);
+    
+    // Force display changes
+    const emptyState = document.getElementById('emptyState');
+    const filledState = document.getElementById('filledState');
+    
+    if (emptyState && filledState) {
+        console.log('Updating state displays');
+        emptyState.style.display = 'none';
+        filledState.style.display = 'block';
+        
+        // Show the corresponding care journey card
+        const newCard = document.querySelector(`.care-journey-card[href*="type=${selectedCondition}"]`);
+        if (newCard) {
+            newCard.style.display = 'block';
+            
+            // Store shown conditions in sessionStorage
+            const shownConditions = JSON.parse(sessionStorage.getItem('shownConditions') || '[]');
+            if (!shownConditions.includes(selectedCondition)) {
+                shownConditions.push(selectedCondition);
+                sessionStorage.setItem('shownConditions', JSON.stringify(shownConditions));
+            }
+        }
+    }
+    
+    // Update storage
+    localStorage.setItem('funnelCompleted', 'true');
+    localStorage.setItem('hasCarePlan', 'true');
+    sessionStorage.setItem('funnelCompleted', 'true');
+    sessionStorage.setItem('hasCarePlan', 'true');
+    
+    // Force another state check
+    checkFunnelCompletion();
+    checkCarePlanState();
+}
+
+// Update the restore function to handle session state
+function restoreCarePlanState() {
+    const activeConditions = JSON.parse(sessionStorage.getItem('shownConditions') || '[]');
+    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
+    
+    if (activeConditions.length > 0 || resolvedConditions.length > 0) {
+        // Show active cards in main section
+        activeConditions.forEach(condition => {
+            const card = document.querySelector(`.care-journey-card[href*="type=${condition}"]`);
+            if (card) {
+                card.style.display = 'block';
+                // Ensure it's in the active section
+                const activeSection = document.querySelector('.care-section:not(:last-child) .care-cards');
+                if (activeSection && !activeSection.contains(card)) {
+                    activeSection.appendChild(card.cloneNode(true));
+                    card.remove();
+                }
+            }
+        });
+        
+        // Show resolved cards in past section
+        resolvedConditions.forEach(condition => {
+            const card = document.querySelector(`.care-journey-card[href*="type=${condition}"]`);
+            if (card) {
+                card.style.display = 'block';
+                // Update card status
+                const statusBadge = card.querySelector('.status-badge');
+                if (statusBadge) {
+                    statusBadge.textContent = 'Resolved';
+                    statusBadge.classList.remove('active');
+                }
+                // Move to past section
+                const pastSection = document.querySelector('.care-section:last-child .care-cards');
+                if (pastSection && !pastSection.contains(card)) {
+                    pastSection.appendChild(card.cloneNode(true));
+                    card.remove();
+                }
+            }
+        });
+    }
+}
+// Add this function to handle page refresh
+function handlePageRefresh() {
+    if (window.performance && window.performance.navigation.type === 1) {
+        console.log('Page was hard refreshed - resetting session state');
+        sessionStorage.clear();
+        // On hard refresh, we'll start fresh with localStorage values
+        const persistentConditions = JSON.parse(localStorage.getItem('shownConditions') || '[]');
+        if (persistentConditions.length > 0) {
+            sessionStorage.setItem('shownConditions', JSON.stringify(persistentConditions));
+        }
+    }
+}
+
 function checkCarePlanState() {
     const hasCarePlan = localStorage.getItem('hasCarePlan') === 'true';
     const emptyState = document.getElementById('emptyState');
     const filledState = document.getElementById('filledState');
     
     if (emptyState && filledState) {
-        console.log('Updating care plan state:', hasCarePlan); // Debug log
+        console.log('Updating care plan state:', hasCarePlan);
         emptyState.style.display = hasCarePlan ? 'none' : 'block';
         filledState.style.display = hasCarePlan ? 'block' : 'none';
-    } else {
-        console.warn('Care plan state elements not found'); // Debug log
     }
 }
 
@@ -276,6 +406,211 @@ function setupJourneyNavigation() {
         });
     });
 }
+
+function toggleState() {
+    const currentState = localStorage.getItem('funnelCompleted') === 'true';
+    localStorage.setItem('funnelCompleted', (!currentState).toString());
+    localStorage.setItem('hasCarePlan', (!currentState).toString());
+    checkFunnelCompletion();
+    checkCarePlanState();
+}
+
+// Add this function to check if we're on step 6
+function isStep6Active() {
+    return !!document.querySelector('[data-step="6"].active');
+}
+
+// Modify your existing step navigation function to include this check
+function goToStep(step) {
+    // ... your existing step navigation code ...
+    
+    if (step === 6 || isStep6Active()) {
+        console.log('Reached step 6 - triggering completion');
+        completeFunnel();
+    }
+}
+
+function hardReset() {
+    console.log('Performing hard reset...');
+    
+    // Clear all storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Hide all care journey cards
+    document.querySelectorAll('.care-journey-card').forEach(card => {
+        card.style.display = 'none';
+    });
+    
+    // Reset states
+    const emptyState = document.getElementById('emptyState');
+    const filledState = document.getElementById('filledState');
+    
+    if (emptyState && filledState) {
+        emptyState.style.display = 'block';
+        filledState.style.display = 'none';
+    }
+    
+    // Force state checks
+    checkFunnelCompletion();
+    checkCarePlanState();
+}
+
+function showAllIssues() {
+    // Show filled state
+    const emptyState = document.getElementById('emptyState');
+    const filledState = document.getElementById('filledState');
+    
+    if (emptyState && filledState) {
+        emptyState.style.display = 'none';
+        filledState.style.display = 'block';
+    }
+    
+    // Show all care journey cards
+    document.querySelectorAll('.care-journey-card').forEach(card => {
+        card.style.display = 'block';
+    });
+    
+    // Update storage
+    localStorage.setItem('hasCarePlan', 'true');
+    localStorage.setItem('funnelCompleted', 'true');
+    
+    // Store all conditions in session
+    const conditions = ['sinusitis', 'anxiety', 'rash'];
+    sessionStorage.setItem('shownConditions', JSON.stringify(conditions));
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Reset localStorage on hard refresh
+    if (window.performance && window.performance.navigation.type === 1) {
+        console.log('Page was hard refreshed - resetting state');
+        localStorage.removeItem('hasCarePlan');
+        localStorage.removeItem('funnelCompleted');
+        localStorage.removeItem('shownConditions');
+        localStorage.removeItem('activeCondition');
+        localStorage.removeItem('chatHistory');
+        sessionStorage.clear();
+        
+        // Clear chat messages if we're on the journey page
+        const messagesList = document.querySelector('.messages-list');
+        if (messagesList) {
+            // Keep only the initial messages (before any user interaction)
+            const messages = messagesList.querySelectorAll('.message');
+            messages.forEach((message, index) => {
+                // Keep only the first few messages (adjust number as needed)
+                if (index > 4) {
+                    message.remove();
+                }
+            });
+            
+            // Show response options again
+            const responseOptions = document.querySelector('.response-options');
+            if (responseOptions) {
+                responseOptions.style.display = 'block';
+            }
+            
+            // Hide typing indicator
+            const typingIndicator = document.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.style.display = 'none';
+            }
+        }
+    }
+    
+    // Add global click handler for logo
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.logo')) {
+            console.log('Logo clicked - forcing refresh');
+            window.location.reload(true);
+        }
+    });
+
+    // Load initial content (mycare.html by default)
+    loadContent('mycare');
+
+    // Add click handlers to nav items
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(navItem => {
+                navItem.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            e.target.closest('.nav-item').classList.add('active');
+            
+            // Load the corresponding content
+            const page = e.target.closest('.nav-item').dataset.page;
+            loadContent(page);
+        });
+    });
+
+    // Setup bottom sheet
+    setupBottomSheet();
+
+    restoreCarePlanState();
+
+    // Debug logging
+    console.log('Looking for fullscreen button...');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    console.log('Fullscreen button found:', fullscreenBtn);
+    
+    // Only setup fullscreen if button exists
+    if (fullscreenBtn) {
+        console.log('Setting up fullscreen functionality');
+        fullscreenBtn.addEventListener('click', function() {
+            console.log('Fullscreen button clicked');
+            const elem = document.documentElement;
+            
+            if (document.fullscreenElement || 
+                document.webkitFullscreenElement || 
+                document.mozFullScreenElement ||
+                document.msFullscreenElement) {
+                    
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                
+                this.querySelector('.fullscreen-icon').textContent = '⤢';
+                
+            } else {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+                
+                this.querySelector('.fullscreen-icon').textContent = '⤡';
+            }
+        });
+
+        // Listen for fullscreen change to update button icon
+        document.addEventListener('fullscreenchange', updateFullscreenIcon);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
+    } else {
+        console.warn('Fullscreen button not found in the DOM');
+    }
+});
+
+// Check state on page load
+document.addEventListener('DOMContentLoaded', checkFunnelCompletion);
+
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('openCareSheet') === 'true') {
         // Clear the flag
@@ -285,6 +620,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Add this to your DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', () => {
+    // Reset sessionStorage on hard refresh
+    if (window.performance && window.performance.navigation.type === 1) {
+        console.log('Page was hard refreshed - resetting state');
+        sessionStorage.clear();
+    }
+    
+    // Hide all cards initially
+    document.querySelectorAll('.care-journey-card').forEach(card => {
+        card.style.display = 'none';
+    });
+    
+    // Restore any previously shown cards
+    restoreCarePlanState();
+    
+    // Check states
+    checkFunnelCompletion();
+    checkCarePlanState();
+});
+
+// Update the DOMContentLoaded listener
+document.addEventListener('DOMContentLoaded', () => {
+    handlePageRefresh();
+    restoreCarePlanState();
+});
 
 // Update the link to use this function
 document.addEventListener('click', (e) => {
@@ -294,4 +655,20 @@ document.addEventListener('click', (e) => {
     }
 });
 
-
+// Move updateFullscreenIcon function outside DOMContentLoaded
+function updateFullscreenIcon() {
+    const button = document.getElementById('fullscreenBtn');
+    if (button) {
+        const icon = button.querySelector('.fullscreen-icon');
+        if (icon) {
+            if (document.fullscreenElement || 
+                document.webkitFullscreenElement || 
+                document.mozFullScreenElement ||
+                document.msFullscreenElement) {
+                icon.textContent = '⤡';
+            } else {
+                icon.textContent = '⤢';
+            }
+        }
+    }
+}
