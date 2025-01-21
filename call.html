@@ -6,6 +6,7 @@
     <title>Video Call</title>
     <link rel="stylesheet" href="css/call.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="call-container">
@@ -68,7 +69,7 @@
                 <div class="tab-content" id="providerContent" style="display: none;">
                     <h3>Provider Information</h3>
                     <div class="provider-info">
-                        <img src="assets/doctor-avatar.jpg" alt="Dr. Sarah Johnson">
+                        <!-- <img src="assets/doctor-avatar.jpg" alt="Dr. Sarah Johnson"> -->
                         <div class="provider-details">
                             <h4>Dr. Sarah Johnson</h4>
                             <p class="provider-specialty">Family Medicine</p>
@@ -79,34 +80,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="tab-content" id="issueContent" style="display: none;">
-                    <h3>Current Issue</h3>
-                    <div class="issue-details">
-                        <div class="issue-section">
-                            <h4>Primary Concern</h4>
-                            <p>Persistent Headaches</p>
-                        </div>
-                        <div class="issue-section">
-                            <h4>Reported Symptoms</h4>
-                            <ul>
-                                <li>Daily headaches lasting 2-4 hours</li>
-                                <li>Pain typically starts in the afternoon</li>
-                                <li>Mild sensitivity to light</li>
-                                <li>No nausea or vomiting</li>
-                            </ul>
-                        </div>
-                        <div class="issue-section">
-                            <h4>Duration & Frequency</h4>
-                            <p>Started 2 weeks ago</p>
-                            <p>Occurs daily</p>
-                        </div>
-                        <div class="issue-section">
-                            <h4>Previous Treatment</h4>
-                            <p>Over-the-counter pain relievers (limited relief)</p>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class="tab-content" id="filesContent" style="display: none;">
                     <h3>Shared Files</h3>
@@ -145,12 +119,6 @@
                         <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 3C11.66 3 13 4.34 13 6C13 7.66 11.66 9 10 9C8.34 9 7 7.66 7 6C7 4.34 8.34 3 10 3ZM10 17.2C7.5 17.2 5.29 15.92 4 13.98C4.03 11.99 8 10.9 10 10.9C11.99 10.9 15.97 11.99 16 13.98C14.71 15.92 12.5 17.2 10 17.2Z" fill="currentColor"/>
                     </svg>
                     Provider
-                </button>
-                <button class="tab-button" data-tab="issue">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V9H11V15ZM11 7H9V5H11V7Z" fill="currentColor"/>
-                    </svg>
-                    Issue
                 </button>
                 <button class="tab-button" data-tab="files">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -195,10 +163,8 @@
                     <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z" fill="currentColor"/>
                 </svg>
             </button>
-            <button class="control-button" data-tooltip="Share Screen">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.5l4 4v-11l-4 4zM4 6h16v10H4V6z" fill="currentColor"/>
-                </svg>
+            <button class="button-upload-file" data-tooltip="Share File">
+                <i class="fa-solid fa-file-arrow-up"></i>
             </button>
             <button class="control-button end-call" data-tooltip="End Call">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -231,6 +197,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Add this right after the call-container div -->
+    <div class="notification-banner" style="display: none;">
+        Your file has been shared with Dialogue
     </div>
 
     <script src="js/call.js"></script>

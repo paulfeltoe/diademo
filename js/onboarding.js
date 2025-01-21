@@ -190,7 +190,7 @@ function setupOnboarding() {
         }
     };
 
-    // Setup Sunlife import
+    // Setup Sun Life import
     const importButton = document.querySelector('.import-button');
     if (importButton) {
         importButton.addEventListener('click', () => {
@@ -198,41 +198,23 @@ function setupOnboarding() {
             
             // Simulate API call
             setTimeout(() => {
-                const fields = {
-                    // Personal Information
-                    'fullName': 'Sarah Johnson',
-                    'dateOfBirth': '1990-05-15',
-                    'phone': '(415) 555-0123',
-                    'address': '123 Market Street, San Francisco, CA 94105',
-                    
-                    // Pharmacy Information
-                    'preferredPharmacy': 'Walgreens',
-                    'pharmacyAddress': '825 Market St, San Francisco, CA 94103',
-                    
-                    // Medications & Allergies
-                    'medications': 'Lisinopril 10mg daily\nLevothyroxine 50mcg daily\nVitamin D3 2000IU daily',
-                    'allergies': 'Penicillin\nSulfa drugs\nLatex',
-                    
-                    // Emergency Contact
-                    'emergencyName': 'Michael Johnson',
-                    'emergencyPhone': '(415) 555-0189',
-                    'relationship': 'Spouse',
-                    
-                    // Insurance Information
-                    'insuranceProvider': 'Blue Shield of California',
-                    'policyNumber': 'BSC129876543',
-                    'groupNumber': 'G9876543210'
-                };
-                
-                Object.entries(fields).forEach(([id, value]) => {
-                    const input = document.getElementById(id);
-                    if (input) input.value = value;
-                });
-                
-                importButton.innerHTML = '✓ Imported from Sunlife';
-                importButton.style.backgroundColor = 'var(--success-light)';
-                importButton.style.color = 'var(--success)';
-                importButton.style.borderColor = 'var(--success)';
+                // Use fetch instead of import
+                fetch('./config/patientFields.js')
+                    .then(response => response.text())
+                    .then(text => {
+                        // Extract the patientFields object from the module text
+                        const patientFields = eval(`(${text.match(/export const patientFields = ({[\s\S]*?});/)[1]})`);
+                        
+                        Object.entries(patientFields).forEach(([id, value]) => {
+                            const input = document.getElementById(id);
+                            if (input) input.value = value;
+                        });
+                        
+                        importButton.innerHTML = '✓ Imported from Sun Life';
+                        importButton.style.backgroundColor = 'var(--success-light)';
+                        importButton.style.color = 'var(--success)';
+                        importButton.style.borderColor = 'var(--success)';
+                    });
             }, 1500);
         });
     }

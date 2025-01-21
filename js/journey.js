@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get journey type from URL parameter or localStorage
     const urlParams = new URLSearchParams(window.location.search);
     const journeyType = urlParams.get('type') || localStorage.getItem('lastJourneyType') || 'sinusitis';
-    console.log('Journey type:', journeyType);
+    // console.log('Journey type:', journeyType);
 
     // Store the last viewed journey type
     localStorage.setItem('lastJourneyType', journeyType);
@@ -25,18 +25,87 @@ document.addEventListener('DOMContentLoaded', () => {
             completeButton.className = 'complete-journey-button button-secondary';
             completeButton.innerHTML = '<i class="fas fa-check"></i> Mark as Completed';
             completeButton.onclick = () => {
-                console.log('Complete button clicked');
+                // console.log('Complete button clicked');
                 markJourneyAsComplete(journeyType);
             };
             overviewSection.appendChild(completeButton);
         }
     }
 
-    // Initialize elements
-    const messagesList = document.querySelector('.messages-list');
-    const typingIndicator = document.querySelector('.typing-indicator');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = messageForm?.querySelector('.message-input');
+    // Try more specific selectors
+    const activeJourney = document.querySelector('.journey.active');
+    // console.log('Active journey found:', !!activeJourney);
+    
+    if (activeJourney) {
+        const messageForm = activeJourney.querySelector('.message-form');
+        const messageInput = activeJourney.querySelector('.message-input');
+        const sendButton = activeJourney.querySelector('.send-button');
+        const messagesList = activeJourney.querySelector('.messages-list');
+
+        // console.log('Found elements in active journey:', {
+        //     messageForm: !!messageForm,
+        //     messageInput: !!messageInput,
+        //     sendButton: !!sendButton,
+        //     messagesList: !!messagesList
+        // });
+
+        // Function to send message
+        function sendMessage(e) {
+            if (e) e.preventDefault();
+            
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message outgoing';
+                messageDiv.innerHTML = `
+                    <div class="message-header">
+                        <div class="message-info">
+                            <h3>You</h3>
+                            <span class="message-time">Just now</span>
+                        </div>
+                    </div>
+                    <div class="message-content">${message}</div>
+                `;
+                
+                messagesList.appendChild(messageDiv);
+                messageInput.value = '';
+                messageInput.style.height = 'auto';
+                messagesList.scrollTop = messagesList.scrollHeight;
+            }
+        }
+
+        // Event listeners
+        if (messageForm) {
+            messageForm.onsubmit = function(e) {
+                e.preventDefault();
+                sendMessage(e);
+                return false;
+            };
+        }
+
+        if (sendButton) {
+            sendButton.onclick = function(e) {
+                e.preventDefault();
+                sendMessage(e);
+            };
+        }
+
+        if (messageInput) {
+            messageInput.onkeydown = function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage(e);
+                }
+            };
+
+            // Auto-resize textarea
+            messageInput.oninput = function() {
+                messageInput.style.height = 'auto';
+                messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
+            };
+        }
+    }
 
     // Navigation handling
     const navItems = document.querySelectorAll('.journey-nav-item');
@@ -63,27 +132,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load saved messages and status
     const loadSavedState = () => {
+        const activeJourney = document.querySelector('.journey.active');
+        if (!activeJourney) return;
+
+        const messagesList = activeJourney.querySelector('.messages-list');
+        if (!messagesList) return;
+
+        const existingMessages = messagesList.querySelectorAll('.message').length;
         const savedMessages = localStorage.getItem('sinusitis_messages');
         const savedStatus = localStorage.getItem('sinusitis_status');
         
-        if (savedMessages) {
-            // Find the last nurse check-in message
+        if (savedMessages && existingMessages === 0) {
             const lastNurseMessage = messagesList.querySelector('.message:last-of-type');
             if (lastNurseMessage) {
-                // Insert saved messages before the typing indicator
                 lastNurseMessage.insertAdjacentHTML('afterend', savedMessages);
                 messagesList.scrollTop = messagesList.scrollHeight;
             }
         }
 
         if (savedStatus) {
-            updateJourneyStatus(savedStatus, false); // false means don't save to localStorage
+            updateJourneyStatus(savedStatus, false);
         }
     };
 
     // Save messages to localStorage
     const saveMessages = () => {
-        // Get all messages after the initial nurse check-in
+        const activeJourney = document.querySelector('.journey.active');
+        if (!activeJourney) return;
+
+        const messagesList = activeJourney.querySelector('.messages-list');
+        if (!messagesList) return;
+
         const initialMessages = Array.from(messagesList.children);
         const lastNurseCheckInIndex = initialMessages.findIndex(msg => 
             msg.querySelector('.message-content')?.textContent.includes('Just checking in on your progress')
@@ -97,79 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('sinusitis_messages', messagesToSave);
     };
-
-    // Modified message sending function
-    const sendMessage = () => {
-        const message = messageInput.value.trim();
-        if (message) {
-            const messageHTML = `
-                <div class="message outgoing">
-                    <div class="message-header">
-                        <div class="message-info">
-                            <h3>You</h3>
-                            <span class="message-time">Just now</span>
-                        </div>
-                    </div>
-                    <div class="message-content">${message}</div>
-                </div>
-            `;
-            
-            messagesList.insertAdjacentHTML('beforeend', messageHTML);
-            messageInput.value = '';
-            messagesList.scrollTop = messagesList.scrollHeight;
-            saveMessages();
-        }
-    };
-
-    // Response option handling
-    const getNurseResponse = (response) => {
-        switch(response) {
-            case 'better':
-                return `Great to hear you're feeling better! I'll mark this case as resolved. Don't hesitate to reach out if you need anything else!`;
-            case 'improving':
-                return `I'm glad there's some improvement. Keep following the treatment plan and let us know if you need anything.`;
-            case 'same':
-            case 'worse':
-                return `I'm sorry you're not feeling ${response === 'same' ? 'better' : 'well'}. Let's get that fixed right away.
-                    <div class="message-actions">
-                        <button class="action-button" onclick="navigateToSection('appointments')">
-                            <i class="fas fa-calendar-plus"></i>
-                            Book a Follow-up Appointment
-                        </button>
-                    </div>`;
-        }
-    };
-
-    // Modified status update function
-    const updateJourneyStatus = (status, shouldSave = true) => {
-        const statusIndicator = document.querySelector('.status-indicator');
-        statusIndicator.textContent = status === 'resolved' ? 'Resolved' : 'Open';
-        statusIndicator.className = `status-indicator ${status}`;
-        
-        if (shouldSave) {
-            localStorage.setItem('sinusitis_status', status);
-        }
-    };
-
-    // Event listeners
-    if (messageForm && messageInput) {
-        messageForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            sendMessage();
-        });
-
-        messageInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-
-        messageInput.addEventListener('input', () => {
-            messageInput.style.height = 'auto';
-            messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
-        });
-    }
 
     document.querySelectorAll('.response-option').forEach(button => {
         button.addEventListener('click', (e) => {
@@ -194,99 +200,123 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             messagesList.insertAdjacentHTML('beforeend', userMessage);
             saveMessages();
-
-            // Show typing indicator
-            typingIndicator.style.display = 'block';
+            
             messagesList.scrollTop = messagesList.scrollHeight;
-
-            // Simulate nurse response
-            setTimeout(() => {
-                typingIndicator.style.display = 'none';
-                const nurseMessage = `
-                    <div class="message">
-                        <div class="message-header">
-                            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
-                            <div class="message-info">
-                                <h3>Nurse Chen</h3>
-                                <span class="message-time">Just now</span>
-                            </div>
-                        </div>
-                        <div class="message-content">${getNurseResponse(response)}</div>
-                    </div>
-                `;
-                messagesList.insertAdjacentHTML('beforeend', nurseMessage);
-                saveMessages();
-                
-                if (response === 'better') {
-                    setTimeout(() => updateJourneyStatus('resolved'), 500);
-                }
-                
-                messagesList.scrollTop = messagesList.scrollHeight;
-            }, 1500);
         });
     });
 
     // Load saved state when page loads
     loadSavedState();
 
-    // Add this to handle chat responses
-    const responseOptions = document.querySelectorAll('.response-option');
-    
-    responseOptions.forEach(option => {
-        option.addEventListener('click', function() {
+    initializeJourneyStatuses();
+
+    // Load habit tracker
+    const habitTrackerContainer = document.getElementById('habit-tracker-container');
+    if (habitTrackerContainer) {
+        fetch('habit.html')
+            .then(response => response.text())
+            .then(html => {
+                habitTrackerContainer.innerHTML = html;
+                // Initialize the habit tracker
+                const tracker = new HabitTracker();
+            })
+            .catch(error => {});
+    }
+
+    // Add event listeners for response options in sinusitis journey
+    document.querySelectorAll('#sinusitis-journey .response-option').forEach(button => {
+        button.addEventListener('click', function() {
             const response = this.dataset.response;
+            const messagesList = this.closest('.messages-list');
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             
-            // Hide all response options
-            document.querySelector('.response-options').style.display = 'none';
-            
-            // Show typing indicator
-            typingIndicator.style.display = 'block';
-            
-            // Simulate nurse response after delay
-            setTimeout(() => {
-                typingIndicator.style.display = 'none';
-                
-                // Add member's response
-                const messagesContainer = document.querySelector('.messages-list');
-                const memberMessage = document.createElement('div');
-                memberMessage.className = 'message outgoing';
-                memberMessage.innerHTML = `
+            // Add user's response first
+            const userMessage = `
+                <div class="message outgoing">
                     <div class="message-header">
                         <div class="message-info">
                             <h3>You</h3>
-                            <span class="message-time">${new Date().toLocaleTimeString()}</span>
+                            <span class="message-time">${currentTime}</span>
                         </div>
                     </div>
-                    <div class="message-content">${this.innerHTML}</div>
-                `;
-                messagesContainer.insertBefore(memberMessage, typingIndicator);
+                    <div class="message-content">${this.textContent.trim()}</div>
+                </div>
+            `;
+            messagesList.insertAdjacentHTML('beforeend', userMessage);
+            
+            // Disable all response options after selection
+            const responseOptions = this.closest('.response-options');
+            responseOptions.style.pointerEvents = 'none';
+            responseOptions.style.opacity = '0.5';
+            responseOptions.classList.add('disabled');
+            
+            let nurseResponse;
+            
+            if (response === 'better') {
+                // Update journey status to resolved
+                document.querySelector('#sinusitis-journey .status-indicator').textContent = 'Resolved';
+                document.querySelector('#sinusitis-journey .status-indicator').classList.remove('active');
+                document.querySelector('#sinusitis-journey .status-indicator').classList.add('resolved');
                 
-                // If response is "better", add nurse's response and resolve episode
-                if (response === 'better') {
-                    setTimeout(() => {
-                        const nurseMessage = document.createElement('div');
-                        nurseMessage.className = 'message';
-                        nurseMessage.innerHTML = `
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
-                                <div class="message-info">
-                                    <h3>Nurse Chen</h3>
-                                    <span class="message-time">${new Date().toLocaleTimeString()}</span>
-                                </div>
+                nurseResponse = `
+                    <div class="message">
+                        <div class="message-header">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
+                            <div class="message-info">
+                                <h3>Nurse Wilson</h3>
+                                <span class="message-time">${currentTime}</span>
                             </div>
-                            <div class="message-content">That's great to hear! I'll mark this episode as resolved. Remember to reach out if you need anything else!</div>
-                        `;
-                        messagesContainer.insertBefore(nurseMessage, typingIndicator);
-                        
-                        // Resolve the episode after a short delay
-                        setTimeout(resolveEpisode, 1500);
-                    }, 1000);
-                }
-            }, 1500);
+                        </div>
+                        <div class="message-content">
+                            That's great news! I'm so glad you're feeling better. I'll go ahead and close this episode. Remember, if you experience similar symptoms in the future, don't hesitate to reach out to us.
+                        </div>
+                    </div>`;
+                
+                // Mark journey as complete
+                markJourneyAsComplete('sinusitis');
+                
+            } else if (response === 'same') {
+                nurseResponse = `
+                    <div class="message">
+                        <div class="message-header">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
+                            <div class="message-info">
+                                <h3>Nurse Wilson</h3>
+                                <span class="message-time">${currentTime}</span>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            I see you're not experiencing improvement yet. Have you been able to follow the recommended treatment plan, including taking the full course of antibiotics and using the nasal spray as prescribed?
+                        </div>
+                    </div>`;
+            } else if (response === 'worse') {
+                nurseResponse = `
+                    <div class="message">
+                        <div class="message-header">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
+                            <div class="message-info">
+                                <h3>Nurse Wilson</h3>
+                                <span class="message-time">${currentTime}</span>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            I'm sorry to hear you're feeling worse. Given your symptoms are not improving, I recommend scheduling a follow-up appointment with Dr. Roberts to reassess your treatment plan.
+                            <div class="message-actions">
+                                <button onclick="window.location.href='appointments.html'" class="action-button">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Book Follow-up Appointment
+                                </button>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+
+            setTimeout(() => {
+                messagesList.insertAdjacentHTML('beforeend', nurseResponse);
+                messagesList.scrollTop = messagesList.scrollHeight;
+            }, 1000); // Add a small delay to make it feel more natural
         });
     });
-
-    initializeJourneyStatuses();
 });
 
 function resolveEpisode() {
@@ -351,7 +381,7 @@ function handleReturnButtonClick() {
     // Store sinusitis as the journey type to show
     localStorage.setItem('lastJourneyType', 'sinusitis');
     // Navigate to journey.html
-    window.location.href = 'journey.html';
+    window.location.href = 'index.html';
 }
 
 // Export the function for use in other files
@@ -361,6 +391,13 @@ window.handleReturnButtonClick = handleReturnButtonClick;
 function markJourneyAsComplete(journeyType) {
     console.log('Marking journey as complete:', journeyType);
     
+    // Store the resolved status
+    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
+    if (!resolvedConditions.includes(journeyType)) {
+        resolvedConditions.push(journeyType);
+        sessionStorage.setItem('resolvedConditions', JSON.stringify(resolvedConditions));
+    }
+
     // Update journey page
     const journeySection = document.getElementById(`${journeyType}-journey`);
     if (journeySection) {
@@ -372,39 +409,123 @@ function markJourneyAsComplete(journeyType) {
             statusIndicator.classList.remove('active');
             statusIndicator.classList.add('resolved');
         }
-    }
-    
-    // Update card on main page if it exists
-    const journeyCard = document.querySelector(`.care-journey-card.care-card-${journeyType}`);
-    if (journeyCard) {
-        journeyCard.setAttribute('data-status', 'resolved');
-        const statusBadge = journeyCard.querySelector('.status-badge');
-        if (statusBadge) {
-            statusBadge.textContent = 'Resolved';
-            statusBadge.classList.remove('active');
-            statusBadge.classList.add('resolved');
+
+        // Hide message input container
+        const messageInputContainer = journeySection.querySelector('.message-input-container');
+        if (messageInputContainer) {
+            messageInputContainer.style.display = 'none';
+        }
+
+        // Disable all interactive elements in messages
+        const messagesList = journeySection.querySelector('.messages-list');
+        if (messagesList) {
+            // Disable response options
+            const responseOptions = messagesList.querySelectorAll('.response-options');
+            responseOptions.forEach(options => {
+                options.style.pointerEvents = 'none';
+                options.style.opacity = '0.5';
+                options.classList.add('disabled');
+            });
+
+            // Disable any other interactive elements
+            const interactiveElements = messagesList.querySelectorAll('button, .message-link, .action-button');
+            interactiveElements.forEach(element => {
+                element.style.pointerEvents = 'none';
+                element.style.opacity = '0.5';
+                if (element.tagName === 'BUTTON') {
+                    element.disabled = true;
+                }
+            });
+
+            // Add resolved message
+            const resolvedMessage = `
+                <div class="message system">
+                    <div class="message-content">
+                        This care journey has been marked as resolved. The chat is now closed.
+                    </div>
+                </div>
+            `;
+            messagesList.insertAdjacentHTML('beforeend', resolvedMessage);
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+
+        // Update the complete button to become a reopen button
+        const completeButton = journeySection.querySelector('.complete-journey-button');
+        if (completeButton) {
+            completeButton.innerHTML = '<i class="fas fa-refresh"></i> Reopen Journey';
+            completeButton.classList.add('reopen-button');
+            completeButton.onclick = () => reopenJourney(journeyType);
         }
     }
 
-    // Store the completion status
-    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
-    const activeConditions = JSON.parse(sessionStorage.getItem('shownConditions') || '[]');
+    // Move the card to past care plans
+    moveCardToPastCarePlans(journeyType);
+}
+
+function reopenJourney(journeyType) {
+    console.log('Reopening journey:', journeyType);
     
-    // Remove from active and add to resolved
-    const updatedActive = activeConditions.filter(condition => condition !== journeyType);
-    if (!resolvedConditions.includes(journeyType)) {
-        resolvedConditions.push(journeyType);
+    // Remove from resolved conditions in sessionStorage
+    const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
+    const index = resolvedConditions.indexOf(journeyType);
+    if (index > -1) {
+        resolvedConditions.splice(index, 1);
+        sessionStorage.setItem('resolvedConditions', JSON.stringify(resolvedConditions));
     }
 
-    // Update storage
-    sessionStorage.setItem('shownConditions', JSON.stringify(updatedActive));
-    sessionStorage.setItem('resolvedConditions', JSON.stringify(resolvedConditions));
+    // Update journey page
+    const journeySection = document.getElementById(`${journeyType}-journey`);
+    if (journeySection) {
+        // Remove resolved status
+        journeySection.removeAttribute('data-status');
+        
+        // Update status indicator
+        const statusIndicator = journeySection.querySelector('.status-indicator');
+        if (statusIndicator) {
+            statusIndicator.textContent = 'Active';
+            statusIndicator.classList.remove('resolved');
+            statusIndicator.classList.add('active');
+        }
 
-    // Update the complete button
-    const completeButton = document.querySelector('.complete-journey-button');
-    if (completeButton) {
-        completeButton.disabled = true;
-        completeButton.innerHTML = '<i class="fas fa-check"></i> Completed';
+        // Show and reset message input container
+        const messageInputContainer = journeySection.querySelector('.message-input-container');
+        if (messageInputContainer) {
+            messageInputContainer.style.display = '';
+        }
+
+        // Re-enable all interactive elements in messages
+        const messagesList = journeySection.querySelector('.messages-list');
+        if (messagesList) {
+            // Re-enable response options
+            const responseOptions = messagesList.querySelectorAll('.response-options');
+            responseOptions.forEach(options => {
+                options.style = '';
+                options.classList.remove('disabled');
+            });
+
+            // Re-enable other interactive elements
+            const interactiveElements = messagesList.querySelectorAll('button, .message-link, .action-button');
+            interactiveElements.forEach(element => {
+                element.style = '';
+                if (element.tagName === 'BUTTON') {
+                    element.disabled = false;
+                }
+            });
+
+            // Remove the system message about resolution
+            const systemMessage = messagesList.querySelector('.message.system');
+            if (systemMessage) {
+                systemMessage.remove();
+            }
+        }
+
+        // Update the button back to "Mark as Completed"
+        const reopenButton = journeySection.querySelector('.complete-journey-button');
+        if (reopenButton) {
+            reopenButton.innerHTML = '<i class="fas fa-check"></i> Mark as Completed';
+            reopenButton.classList.remove('reopen-button');
+            reopenButton.onclick = () => markJourneyAsComplete(journeyType);
+        }
     }
 }
 
@@ -428,16 +549,44 @@ function initializeJourneyStatuses() {
                     statusIndicator.classList.add('resolved');
                 }
                 
+                // Update complete button to reopen button
                 const completeButton = journeySection.querySelector('.complete-journey-button');
                 if (completeButton) {
-                    completeButton.disabled = true;
-                    completeButton.innerHTML = '<i class="fas fa-check"></i> Completed';
+                    completeButton.innerHTML = '<i class="fas fa-refresh"></i> Reopen Journey';
+                    completeButton.classList.add('reopen-button');
+                    completeButton.onclick = () => reopenJourney(journeyType);
+                }
+
+                // Hide message input and disable interactive elements
+                const messageInputContainer = journeySection.querySelector('.message-input-container');
+                if (messageInputContainer) {
+                    messageInputContainer.style.display = 'none';
+                }
+
+                // Disable all interactive elements in messages
+                const messagesList = journeySection.querySelector('.messages-list');
+                if (messagesList) {
+                    const responseOptions = messagesList.querySelectorAll('.response-options');
+                    responseOptions.forEach(options => {
+                        options.style.pointerEvents = 'none';
+                        options.style.opacity = '0.5';
+                        options.classList.add('disabled');
+                    });
+
+                    const interactiveElements = messagesList.querySelectorAll('button, .message-link, .action-button');
+                    interactiveElements.forEach(element => {
+                        element.style.pointerEvents = 'none';
+                        element.style.opacity = '0.5';
+                        if (element.tagName === 'BUTTON') {
+                            element.disabled = true;
+                        }
+                    });
                 }
             }
         }
         
         // Add card status update
-        const journeyCard = document.querySelector(`.care-journey-card.care-card-${journeyType}`);
+        const journeyCard = document.querySelector(`.care-journey-card[data-journey-type="${journeyType}"]`);
         if (journeyCard) {
             if (resolvedConditions.includes(journeyType)) {
                 journeyCard.setAttribute('data-status', 'resolved');
@@ -450,4 +599,62 @@ function initializeJourneyStatuses() {
             }
         }
     });
+}
+
+function moveCardToPastCarePlans(journeyType) {
+    // Find both sections in the parent mycare page
+    const mycareContent = window.parent.document.querySelector('#mycare-content');
+    if (!mycareContent) {
+        console.log('Mycare content not found');
+        return;
+    }
+
+    const activeSection = mycareContent.querySelector('.care-section:not(.past-care-plans)');
+    const pastSection = mycareContent.querySelector('.care-section.past-care-plans');
+    
+    if (!activeSection || !pastSection) {
+        console.log('Required sections not found');
+        return;
+    }
+
+    // Find the card in the active section
+    const card = activeSection.querySelector(`.care-journey-card[data-journey-type="${journeyType}"]`);
+    if (!card) {
+        console.log('Card not found');
+        return;
+    }
+
+    // Update card status
+    card.setAttribute('data-status', 'resolved');
+    const statusBadge = card.querySelector('.status-badge');
+    if (statusBadge) {
+        statusBadge.textContent = 'Resolved';
+        statusBadge.classList.remove('active');
+        statusBadge.classList.add('resolved');
+    }
+
+    // Find the cards container in the past section
+    const pastCardsContainer = pastSection.querySelector('.care-cards');
+    if (pastCardsContainer) {
+        // Clone the card and move it to past care plans
+        const cardClone = card.cloneNode(true);
+        pastCardsContainer.appendChild(cardClone);
+        // Remove the original card
+        card.remove();
+    }
+}
+
+function updateJourneyStatus(status, saveToStorage = true) {
+    const activeJourney = document.querySelector('.journey.active');
+    if (!activeJourney) return;
+
+    const statusIndicator = activeJourney.querySelector('.status-indicator');
+    if (statusIndicator) {
+        statusIndicator.textContent = status;
+        statusIndicator.className = `status-indicator ${status.toLowerCase()}`;
+    }
+
+    if (saveToStorage) {
+        localStorage.setItem('sinusitis_status', status);
+    }
 }

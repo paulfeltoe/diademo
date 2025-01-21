@@ -55,8 +55,7 @@
 .auth-button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
+    gap: 8px;
     width: 100%;
     padding: 12px;
     margin-bottom: 16px;
@@ -72,6 +71,10 @@
 
 .auth-button.email {
     background: var(--surface);
+}
+
+.auth-button i {
+    font-size: 20px;
 }
 
 .divider {

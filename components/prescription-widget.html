@@ -1,0 +1,113 @@
+<div class="prescription-widget" id="prescription-widget">
+    <div class="widget-card" id="openPrescriptionSheet">
+        <div class="widget-header">
+            <h3>Prescription Status</h3>
+            <span class="status-badge processing">Processing</span>
+        </div>
+        <div class="widget-content">
+            <div class="prescription-info">
+                <i class="fas fa-prescription-bottle-medical"></i>
+                <div class="info-text">
+                    <p class="pharmacy-name">CVS Pharmacy</p>
+                    <p class="eta">Ready by: Today, 4:30 PM</p>
+                </div>
+            </div>
+            <button class="view-details">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Sheet Modal -->
+    <div class="bottom-sheet" id="prescriptionSheet">
+        <div class="sheet-header">
+            <h2>Prescription Details</h2>
+            <button class="close-sheet" id="closePrescriptionSheet">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sheet-content">
+            <!-- Status Section -->
+            <div class="status-section">
+                <div class="status-timeline">
+                    <div class="status-step completed">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Prescribed</span>
+                        <small>Today, 2:00 PM</small>
+                    </div>
+                    <div class="status-step active">
+                        <i class="fas fa-mortar-pestle"></i>
+                        <span>Processing</span>
+                        <small>Est. 1 hour</small>
+                    </div>
+                    <div class="status-step">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ready</span>
+                        <small>Est. 4:30 PM</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pharmacy Details -->
+            <div class="pharmacy-section">
+                <h3>Pharmacy Details</h3>
+                <div class="pharmacy-card">
+                    <div class="pharmacy-info">
+                        <h4>CVS Pharmacy</h4>
+                        <p>123 Main Street, Seattle, WA 98101</p>
+                        <p>Open until 9:00 PM</p>
+                        <p><i class="fas fa-phone"></i> (206) 555-0123</p>
+                    </div>
+                    <div id="pharmacy-map" class="pharmacy-map"></div>
+                </div>
+            </div>
+
+            <!-- Delivery Options -->
+            <div class="delivery-section">
+                <h3>Pickup or Delivery</h3>
+                <div class="delivery-options">
+                    <button class="option-button active">
+                        <i class="fas fa-store"></i>
+                        Pickup
+                    </button>
+                    <button class="option-button">
+                        <i class="fas fa-truck"></i>
+                        Delivery
+                    </button>
+                </div>
+
+                <!-- Delivery Form (hidden by default) -->
+                <div class="delivery-form hidden">
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <input type="text" value="1234 Home Street, Seattle, WA 98102">
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Window</label>
+                        <select>
+                            <option>Today, 5:00 PM - 6:00 PM</option>
+                            <option>Today, 6:00 PM - 7:00 PM</option>
+                            <option>Today, 7:00 PM - 8:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="delivery-fee">
+                        Delivery Fee: $5.99
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="primary-button">
+                    <i class="fas fa-bell"></i>
+                    Enable Notifications
+                </button>
+                <button class="secondary-button">
+                    <i class="fas fa-phone"></i>
+                    Call Pharmacy
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 

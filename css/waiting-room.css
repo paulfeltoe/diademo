@@ -470,6 +470,8 @@ textarea {
     gap: 8px;
     z-index: 1000;
     animation: slideDown 0.3s ease;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
 }
 
 @keyframes slideDown {

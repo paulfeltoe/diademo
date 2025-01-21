@@ -101,20 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const endCallButton = document.querySelector('.end-call');
     
     function handleEndCall() {
-        const confirmed = confirm('Are you sure you want to end the call?');
-        if (confirmed) {
-            window.location.href = 'call-summary.html';
-        }
+        window.location.href = 'call-summary.html';
     }
 
     // Single event listener attachment for end call
     endCallButton.addEventListener('click', handleEndCall);
-
-    // Handle window beforeunload
-    window.addEventListener('beforeunload', (e) => {
-        e.preventDefault();
-        e.returnValue = '';
-    });
 
     // File preview functionality
     const fileItems = document.querySelectorAll('.file-item');
@@ -375,6 +366,45 @@ document.addEventListener('DOMContentLoaded', () => {
         shareScreenButton.classList.remove('active');
     }
 
-    // Add event listener for screen sharing
-    shareScreenButton.addEventListener('click', toggleScreenShare);
+    // Add event listener for screen sharing only if the button exists
+    if (shareScreenButton) {
+        shareScreenButton.addEventListener('click', toggleScreenShare);
+    }
+
+    // Create and append notification banner
+    const notificationBanner = document.createElement('div');
+    notificationBanner.className = 'notification-banner';
+    notificationBanner.textContent = 'Your file has been shared with Dialogue';
+    notificationBanner.style.opacity = '0';
+    notificationBanner.style.display = 'none';
+    document.body.appendChild(notificationBanner);
+
+    // Handle file upload button click
+    console.log('Looking for upload button...');
+    const uploadButton = document.querySelector('.button-upload-file');
+    console.log('Upload button found:', uploadButton);
+    
+    if (uploadButton) {
+        uploadButton.addEventListener('click', () => {
+            notificationBanner.style.display = 'block';
+            // Force a reflow to ensure the transition works
+            notificationBanner.offsetHeight;
+            notificationBanner.style.opacity = '1';
+            
+            setTimeout(() => {
+                notificationBanner.style.opacity = '0';
+                notificationBanner.addEventListener('transitionend', function hideNotification() {
+                    notificationBanner.style.display = 'none';
+                    notificationBanner.removeEventListener('transitionend', hideNotification);
+                });
+            }, 3000);
+        });
+    } else {
+        console.warn('Upload button not found with class .button-upload-file');
+    }
+
+    // Check if endCallButton exists before trying to use it
+    if (endCallButton) {
+        endCallButton.removeAttribute('onclick');
+    }
 }); 

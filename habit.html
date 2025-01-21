@@ -1,0 +1,54 @@
+<div class="habit-tracker">
+    <h3>Daily Progress</h3>
+    
+    <!-- Set initial display state explicitly -->
+    <div class="completion-message" style="display: none;">
+        <i class="fas fa-check-circle"></i>
+        <p>You're all done for today!</p>
+    </div>
+
+    <!-- Set initial display state explicitly -->
+    <div class="habit-grid" style="display: grid;">
+        <div class="habit-item">
+            <div class="habit-header">
+                <i class="fas fa-pills"></i>
+                <span>Medication</span>
+            </div>
+            <div class="habit-checks">
+                <div class="check-item">
+                    <label>Morning</label>
+                    <button class="check-button" data-habit="medication" data-time="morning">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+                <div class="check-item">
+                    <label>Evening</label>
+                    <button class="check-button" data-habit="medication" data-time="evening">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="habit-item">
+            <div class="habit-header">
+                <i class="fas fa-list-check"></i>
+                <span>Daily Care</span>
+            </div>
+            <div class="habit-checks">
+                <div class="check-item">
+                    <label>Nasal Spray</label>
+                    <button class="check-button" data-habit="care" data-type="spray">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+                <div class="check-item">
+                    <label>Saline Rinse</label>
+                    <button class="check-button" data-habit="care" data-type="rinse">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

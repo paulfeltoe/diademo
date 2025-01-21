@@ -1,12 +1,12 @@
 <div class="funnel-container">
     <!-- Progress Header -->
     <div class="progress-header">
-        <button id="backButton" class="back-button" onclick="previousStep()" disabled>←</button>
-        <div class="progress-bar-container">
+        <button id="backButton" class="back-button" onclick="funnelPreviousStep()" disabled>←</button>
+        <!-- <div class="progress-bar-container">
             <div id="progressBar" class="progress-bar" style="width: 10%;">
                 <span id="progressText">Step 1 of 10</span>
             </div>
-        </div>
+        </div> -->
         <button id="closeButton" class="close-button" onclick="closeBottomSheet()">×</button>
     </div>
 
@@ -16,63 +16,120 @@
         <div class="step" data-step="1">
             <h2>What can we help you with today?</h2>
             <div class="search-container">
-                <i class="search-icon">🔍</i>
                 <textarea 
+                    id="symptomsInput"
                     class="search-input" 
-                    placeholder="For example: I've been experiencing sinus pressure and congestion for the past week, with thick yellow mucus and facial pain around my nose and eyes..."
-                    onInput="handleInput(this)"
+                    placeholder="Describe your symptoms here..."
                     rows="4"
                 ></textarea>
                 <div class="char-count">0/500 characters</div>
+                
+                <!-- Container for extracted symptom tags -->
+                <div id="extractedTags" class="tags-container">
+                    <!-- Tags will be dynamically inserted here -->
+                </div>
+                
+                <!-- Container for suggested related symptoms -->
+                <div id="suggestedTags" class="suggested-tags-container">
+                    <h4>Are you experiencing any of these additional symptoms?</h4>
+                    <div class="tags-wrapper">
+                        <!-- Suggested tags will be dynamically inserted here -->
+                    </div>
+                </div>
             </div>
     
+            
+
+            <!-- <div class="suggested-journeys">
+                <h3>Try these journeys</h3>
+                <div class="condition-buttons">
+                    <button class="condition-btn" data-condition="sinusitis">
+                        <span class="condition-icon">🤧</span>
+                        <span class="condition-text">Sinus</span>
+                    </button>
+                    <button class="condition-btn" data-condition="anxiety">
+                        <span class="condition-icon">😰</span>
+                        <span class="condition-text">Anxiety</span>
+                    </button>
+                    <button class="condition-btn" data-condition="rash">
+                        <span class="condition-icon">🔴</span>
+                        <span class="condition-text">Skin & Rash</span>
+                    </button>
+                    <button class="condition-btn" data-condition="outreferral">
+                        <span class="condition-icon">🏥</span>
+                        <span class="condition-text">Outreferral</span>
+                    </button>
+                </div>
+            </div> -->
+
+
             <div class="button-container">
-                <button onclick="nextStep()" disabled>Continue</button>
+                <button onclick="funnelNextStep()" disabled>Continue</button>
             </div>
 
-            <div class="condition-buttons">
-                <button class="condition-btn" data-condition="sinusitis">Sinus</button>
-                <button class="condition-btn" data-condition="anxiety">Anxiety</button>
-                <button class="condition-btn" data-condition="rash">Rash</button>
-            </div>
         </div>
 
+        <!-- New follow-up questions -->
         <div class="step" data-step="2" style="display: none;">
-            <h2>Here's What We've Understood So Far</h2>
-            <p class="subtitle">We're almost ready! Take a moment to review your details so we can connect you with the right support.</p>
+            <h2>Let's get some more details about your symptoms</h2>
+            <p class="subtitle">This helps us better understand your situation</p>
             
-            <div class="summary-box">
-                <div class="summary-item">
-                    <strong>Symptoms:</strong>
-                    <p>"You mentioned experiencing sinus pressure and congestion."</p>
+            <div class="question-group">
+                <h3>How long have you been experiencing these symptoms?</h3>
+                <div class="option-buttons">
+                    <button class="option-btn" onclick="funnelNextStep()">Less than a week</button>
+                    <button class="option-btn" onclick="funnelNextStep()">1-2 weeks</button>
+                    <button class="option-btn" onclick="funnelNextStep()">More than 2 weeks</button>
+                    <button class="option-btn" onclick="funnelNextStep()">It comes and goes</button>
                 </div>
-                
-                <div class="summary-item">
-                    <strong>Additional Details:</strong>
-                    <p>"You're having thick yellow mucus discharge and facial pain around your nose and eyes."</p>
-                </div>
-                
-                <div class="summary-item">
-                    <strong>Duration:</strong>
-                    <p>"These symptoms have been present for about a week."</p>
-                </div>
-                
-                <div class="summary-item">
-                    <strong>Impact:</strong>
-                    <p>"This is causing discomfort and affecting your daily activities."</p>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button class="primary-button" onclick="nextStep()">Yes, this looks correct</button>
-                <button class="secondary-button" onclick="previousStep()">Add more details</button>
             </div>
         </div>
 
         <div class="step" data-step="3" style="display: none;">
-            <h1>Your Personalized Recommendation</h1>
-            <p class="subtitle">Based on what you've shared, here's what we believe is the best next step for you.</p>
+            <h2>What color is your nasal discharge?</h2>
+            <p class="subtitle">This can help indicate the type of infection</p>
             
+            <div class="option-buttons">
+                <button class="option-btn" onclick="funnelNextStep()">Clear</button>
+                <button class="option-btn" onclick="funnelNextStep()">Yellow</button>
+                <button class="option-btn" onclick="funnelNextStep()">Green</button>
+                <button class="option-btn" onclick="funnelNextStep()">Not sure</button>
+            </div>
+        </div>
+
+        <div class="step" data-step="4" style="display: none;">
+            <h2>How would you describe the intensity of your symptoms?</h2>
+            <p class="subtitle">This helps us understand the severity of your condition</p>
+            
+            <div class="checkbox-group">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="severity" value="mild">
+                    Mild - Noticeable but not interfering with daily activities
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="severity" value="moderate">
+                    Moderate - Somewhat limiting daily activities
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="severity" value="severe">
+                    Severe - Significantly impacting daily activities
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="severity" value="variable">
+                    Variable - Symptoms come and go or change in intensity
+                </label>
+            </div>
+
+            <div class="button-container">
+                <button onclick="funnelNextStep()">Continue</button>
+            </div>
+        </div>
+
+        <!-- Step 6 becomes step 5 -->
+        <div class="step" data-step="5" style="display: none;">
+            <!-- <h2>Your Personalized Recommendation</h2>
+            <p class="subtitle">Based on what you've shared, here's what we believe is the best next step for you.</p>
+             -->
             <div class="recommendation-card">
                 <div class="recommendation-content">
                     <h3>We recommend a Video Consultation</h3>
@@ -80,29 +137,22 @@
                     
                     <div class="why-section">
                         <h4>Why?</h4>
-                        <p>Your symptoms suggest acute sinusitis, which may require proper evaluation and targeted treatment. A video consultation will allow our specialists to assess your symptoms, examine visible signs, and determine if you need antibiotics or other treatments.</p>
+                        <p>Based on the symptoms you've described, it's important to have them evaluated soon. Upper respiratory symptoms can impact your daily life and may worsen without proper care. A video consultation will allow our specialists to properly assess your symptoms, understand their severity, and recommend appropriate next steps for relief.</p>
                     </div>
                     
                     <div class="action-buttons">
-                        <a href="#" class="read-more">Read more</a>
-                        <button class="book-now" onclick="nextStep()">BOOK NOW</button>
+                        <button class="book-now" onclick="funnelNextStep()">BOOK NOW</button>
                     </div>
                 </div>
             </div>
 
-            <div class="alternative-options">
+            <!-- <div class="alternative-options">
                 <h4>Other options you might consider:</h4>
                 <ul>
                     <li>
                         <a href="#" class="option-link">
-                            <span class="option-icon">💊</span>
-                            Get sinus medication
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="option-link">
                             <span class="option-icon">📚</span>
-                            Learn about sinusitis
+                            Learn more about common sinus issues
                         </a>
                     </li>
                     <li>
@@ -112,10 +162,10 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
-        <div class="step" data-step="4" style="display: none;">
+        <div class="step" data-step="6" style="display: none;">
             <h2>Choose an Appointment Time</h2>
             
             <div class="week-selector">
@@ -125,32 +175,8 @@
                     </svg>
                 </button>
                 
-                <div class="days-container">
-                    <div class="day-item" data-date="2024-03-25">
-                        <span class="day-name">Mon</span>
-                        <span class="day-number">25</span>
-                        <span class="slots-available">8 slots</span>
-                    </div>
-                    <div class="day-item" data-date="2024-03-26">
-                        <span class="day-name">Tue</span>
-                        <span class="day-number">26</span>
-                        <span class="slots-available">5 slots</span>
-                    </div>
-                    <div class="day-item active" data-date="2024-03-27">
-                        <span class="day-name">Wed</span>
-                        <span class="day-number">27</span>
-                        <span class="slots-available">6 slots</span>
-                    </div>
-                    <div class="day-item" data-date="2024-03-28">
-                        <span class="day-name">Thu</span>
-                        <span class="day-number">28</span>
-                        <span class="slots-available">4 slots</span>
-                    </div>
-                    <div class="day-item" data-date="2024-03-29">
-                        <span class="day-name">Fri</span>
-                        <span class="day-number">29</span>
-                        <span class="slots-available">7 slots</span>
-                    </div>
+                <div class="days-container" id="daysContainer">
+                    <!-- Days will be dynamically inserted by JavaScript -->
                 </div>
 
                 <button class="week-nav next" aria-label="Next week">
@@ -160,44 +186,12 @@
                 </button>
             </div>
 
-            <div class="time-slots">
-                <div class="time-slot-group">
-                    <h3>Morning</h3>
-                    <div class="slots-grid">
-                        <button class="time-slot" onclick="nextStep()">9:00 AM</button>
-                        <button class="time-slot" onclick="nextStep()">9:30 AM</button>
-                        <button class="time-slot" onclick="nextStep()">10:00 AM</button>
-                        <button class="time-slot" onclick="nextStep()">10:30 AM</button>
-                        <button class="time-slot" onclick="nextStep()">11:00 AM</button>
-                        <button class="time-slot" onclick="nextStep()">11:30 AM</button>
-                    </div>
-                </div>
-
-                <div class="time-slot-group">
-                    <h3>Afternoon</h3>
-                    <div class="slots-grid">
-                        <button class="time-slot" onclick="nextStep()">1:00 PM</button>
-                        <button class="time-slot" onclick="nextStep()">1:30 PM</button>
-                        <button class="time-slot" onclick="nextStep()">2:00 PM</button>
-                        <button class="time-slot" onclick="nextStep()">2:30 PM</button>
-                        <button class="time-slot" onclick="nextStep()">3:00 PM</button>
-                        <button class="time-slot" onclick="nextStep()">3:30 PM</button>
-                    </div>
-                </div>
-
-                <div class="time-slot-group">
-                    <h3>Evening</h3>
-                    <div class="slots-grid">
-                        <button class="time-slot" onclick="nextStep()">4:00 PM</button>
-                        <button class="time-slot" onclick="nextStep()">4:30 PM</button>
-                        <button class="time-slot" onclick="nextStep()">5:00 PM</button>
-                        <button class="time-slot" onclick="nextStep()">5:30 PM</button>
-                    </div>
-                </div>
+            <div class="time-slots" id="timeSlots">
+                <!-- Time slots will be dynamically inserted by JavaScript -->
             </div>
         </div>
 
-        <div class="step" data-step="5" style="display: none;">
+        <div class="step" data-step="7" style="display: none;">
             <h2>Let's Review Your Information</h2>
             <p class="edit-notice">Editing this information will also update your profile</p>
 
@@ -210,8 +204,8 @@
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <span class="value">John Smith</span>
-                            <input type="text" class="edit-input" style="display: none" value="John Smith">
+                            <span class="value"></span>
+                            <input type="text" class="edit-input" style="display: none">
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
@@ -222,20 +216,20 @@
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <span class="value">01/15/1985</span>
-                            <input type="date" class="edit-input" style="display: none" value="1985-01-15">
+                            <span class="value"></span>
+                            <input type="date" class="edit-input" style="display: none">
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
 
-                    <div class="info-item" data-field="email">
+                    <div class="info-item" data-field="phone">
                         <div class="info-header">
-                            <span class="label">Email</span>
+                            <span class="label">Phone</span>
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <span class="value">john.doe@example.com</span>
-                            <input type="email" class="edit-input" style="display: none" value="john.doe@example.com">
+                            <span class="value"></span>
+                            <input type="tel" class="edit-input" style="display: none">
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
@@ -246,8 +240,8 @@
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <span class="value">Blue Cross Blue Shield</span>
-                            <input type="text" class="edit-input" style="display: none" value="Blue Cross Blue Shield">
+                            <span class="value"></span>
+                            <input type="text" class="edit-input" style="display: none">
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
@@ -263,26 +257,20 @@
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <div class="tags">
-                                <span class="tag historical">Lisinopril</span>
-                                <span class="tag historical">Metformin</span>
-                            </div>
-                            <textarea class="edit-input" style="display: none">Lisinopril, Metformin</textarea>
+                            <div class="tags"></div>
+                            <textarea class="edit-input" style="display: none"></textarea>
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
 
-                    <div class="info-item" data-field="history">
+                    <div class="info-item" data-field="allergies">
                         <div class="info-header">
-                            <span class="label">Medical History</span>
+                            <span class="label">Allergies</span>
                             <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                         </div>
                         <div class="info-content">
-                            <div class="tags">
-                                <span class="tag historical">Hypertension</span>
-                                <span class="tag historical">Type 2 Diabetes</span>
-                            </div>
-                            <textarea class="edit-input" style="display: none">Hypertension, Type 2 Diabetes</textarea>
+                            <div class="tags"></div>
+                            <textarea class="edit-input" style="display: none"></textarea>
                             <p class="edit-notice" style="display: none">Editing this information will also update your profile</p>
                         </div>
                     </div>
@@ -343,11 +331,11 @@
             </div>
 
             <div class="button-container">
-                <button class="continue-button" onclick="nextStep()">Continue</button>
+                <button class="continue-button" onclick="funnelNextStep()">Continue</button>
             </div>
         </div>
 
-        <div class="step" data-step="6" style="display: none;">
+        <div class="step" data-step="8" style="display: none;">
             <div class="confirmation-container">
                 <div class="confirmation-header">
                     <div class="success-icon">
@@ -367,7 +355,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="label">Date & Time</span>
-                        <span class="value">Friday, November 15 at 10:00 AM (EST)</span>
+                        <span class="value" id="appointmentDateTime"></span>
                     </div>
                     <div class="detail-item">
                         <span class="label">Location</span>
@@ -376,19 +364,19 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button class="primary-button calendar-button" onclick="closeBottomSheet()">
+                    <button class="primary-button calendar-button" onclick="handleCalendarClick()">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M15.8333 2.5H15V1.66667H13.3333V2.5H6.66667V1.66667H5V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5ZM15.8333 15.8333H4.16667V6.66667H15.8333V15.8333Z" fill="currentColor"/>
                         </svg>
                         Add to my calendar
                     </button>
-                    <button class="secondary-button waitlist-button" onclick="window.location.href='phone-lock.html'">
+                    <!-- <button class="secondary-button waitlist-button" onclick="window.location.href='phone-lock.html'">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M9.99 0C4.47 0 0 4.48 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 9.99 0ZM10 18C5.58 18 2 14.42 2 10C2 5.58 5.58 2 10 2C14.42 2 18 5.58 18 10C18 14.42 14.42 18 10 18ZM9.78 5H9.72C9.32 5 9 5.32 9 5.72V10.44C9 10.79 9.18 11.12 9.49 11.3L13.64 13.79C13.98 13.99 14.42 13.89 14.62 13.55C14.83 13.21 14.72 12.76 14.37 12.56L10.5 10.26V5.72C10.5 5.32 10.18 5 9.78 5Z" fill="currentColor"/>
                         </svg>
                         Join waitlist for sooner time
-                    </button>
-                    <button class="text-button cancel-button">
+                    </button> -->
+                    <button class="text-button cancel-button" onclick="handleFunnelCancel()">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M15.8333 5.34167L14.6583 4.16667L10 8.825L5.34167 4.16667L4.16667 5.34167L8.825 10L4.16667 14.6583L5.34167 15.8333L10 11.175L14.6583 15.8333L15.8333 14.6583L11.175 10L15.8333 5.34167Z" fill="currentColor"/>
                         </svg>
@@ -398,10 +386,29 @@
             </div>
         </div>
 
+        <div class="step step-outreferral" style="display: none;">
+            <div class="step-content">
+                <h2>Additional Support Needed</h2>
+                <p>Based on your symptoms, we recommend scheduling with a specialist for a more comprehensive evaluation.</p>
+                
+                <div class="info-box">
+                    <h3>Why are we recommending this?</h3>
+                    <p>Some headache conditions require specialized care and treatment approaches. A specialist can provide:</p>
+                    <ul>
+                        <li>Detailed neurological evaluation</li>
+                        <li>Advanced treatment options</li>
+                        <li>Specialized pain management strategies</li>
+                        <li>Long-term care planning</li>
+                    </ul>
+                </div>
 
+                <div class="button-container">
+                    <button onclick="window.location.href='https://example.com/specialist-referral'" class="primary-button">
+                        Schedule with Specialist
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <!-- Navigation Buttons -->
-    <!-- <div class="button-container">
-        <button id="nextButton" class="next-button" onclick="nextStep()">Continue</button>
-    </div> -->
+    </div>
 </div>

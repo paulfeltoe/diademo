@@ -10,84 +10,41 @@
 <body>
     <div class="summary-container">
         <h1>Call Summary</h1>
-        <div class="call-details">
-            <p class="timestamp">March 25, 2024 - 2:30 PM (30 minutes)</p>
-            <p class="provider">Dr. Sarah Johnson - Family Medicine</p>
-        </div>
+        
+        <section class="summary-section">
+            <h2>Call Details</h2>
+            <div class="call-details">
+                <p class="timestamp">March 25, 2024 - 2:30 PM (30 minutes)</p>
+                <p class="provider">Dr. Sarah Johnson - Family Medicine</p>
+                <p class="technical-details">
+                    Call Quality: Excellent<br>
+                    Connection Type: Video + Audio<br>
+                    Network Status: Stable
+                </p>
+            </div>
+        </section>
 
         <section class="summary-section">
-            <h2>Quick Summary</h2>
+            <h2>Discussion Summary</h2>
             <p>Consultation regarding chronic sinusitis symptoms. Discussed nasal congestion, facial pressure, and discharge. Treatment plan includes antibiotics and nasal steroids. Follow-up scheduled in 2 weeks.</p>
         </section>
 
-        <section class="summary-section">
-            <h2>Action Items</h2>
-            <ul class="action-list">
-                <li class="action-item">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#4CAF50"/>
-                    </svg>
-                    Complete prescribed antibiotic course
-                </li>
-                <li class="action-item">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#4CAF50"/>
-                    </svg>
-                    Use nasal steroid spray as directed
-                </li>
-                <li class="action-item">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z" fill="#4CAF50"/>
-                    </svg>
-                    Start nasal saline rinses
-                </li>
-            </ul>
-        </section>
-
-        <section class="summary-section">
-            <h2>Dialogue is Taking Care Of</h2>
-            <ul class="automation-list">
-                <li class="automation-item">
-                    <div class="automation-status">In Progress</div>
-                    Sending antibiotic and nasal spray prescriptions to your pharmacy
-                </li>
-                <li class="automation-item">
-                    <div class="automation-status">Completed</div>
-                    Updating your medical record with sinusitis diagnosis
-                </li>
-                <li class="automation-item">
-                    <div class="automation-status">Scheduled</div>
-                    Sending appointment reminder 24h before follow-up
-                </li>
-            </ul>
-        </section>
-
-        <section class="summary-section">
-            <h2>Resources & Downloads</h2>
-            <div class="resources-grid">
-                <a href="#" class="resource-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
-                    </svg>
-                    <span>Prescriptions</span>
-                </a>
-                <a href="#" class="resource-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
-                    </svg>
-                    <span>Nasal Rinse Instructions</span>
-                </a>
-                <a href="#" class="resource-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
-                    </svg>
-                    <span>Sinusitis Care Guide</span>
-                </a>
+        <section class="summary-section care-plan-alert">
+            <h2>Care Plan</h2>
+            <div class="alert-message">
+                
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p>Your care provider is currently writing your care plan. It should be ready in 3-5 minutes. We'll alert you when it's ready.</p>
+                
             </div>
         </section>
 
         <button onclick="handleReturnButtonClick()" class="return-button">
-            Home
+            Return to Main Page
         </button>
     </div>
     <script src="js/journey.js"></script>

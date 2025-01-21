@@ -1,39 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const confirmationSection = document.querySelector('.confirmation-section');
     const waitingRoomSection = document.querySelector('.waiting-room-section');
     
-    // Confirmation Timer
-    let confirmationTimeLeft = 3 * 60; // 3 minutes in seconds
-    const confirmMinutesElement = document.querySelector('.confirmation-section .minutes');
-    const confirmSecondsElement = document.querySelector('.confirmation-section .seconds');
-    const timerProgress = document.querySelector('.timer-progress');
-    const circumference = 283; // 2 * π * 45 (circle radius)
-
-    function updateConfirmationTimer() {
-        const minutes = Math.floor(confirmationTimeLeft / 60);
-        const seconds = confirmationTimeLeft % 60;
-        
-        confirmMinutesElement.textContent = minutes;
-        confirmSecondsElement.textContent = seconds.toString().padStart(2, '0');
-        
-        // Update progress circle
-        const progress = (confirmationTimeLeft / (3 * 60)) * circumference;
-        timerProgress.style.strokeDashoffset = circumference - progress;
-        
-        if (confirmationTimeLeft > 0) {
-            confirmationTimeLeft--;
-        } else {
-            clearInterval(confirmationInterval);
-            // Redirect or show expired message
-            window.location.href = 'expired.html';
-        }
-    }
-
-    const confirmationInterval = setInterval(updateConfirmationTimer, 1000);
-    updateConfirmationTimer();
-
     // Waiting Room Timer
-    let appointmentTimeLeft = 0.1 * 60; // 10 minutes in seconds
+    let appointmentTimeLeft = 15; // 30 seconds
     const waitingMinutesElement = document.querySelector('.waiting-room-section .minutes');
     const waitingSecondsElement = document.querySelector('.waiting-room-section .seconds');
     let waitingRoomInterval;
@@ -45,10 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         waitingMinutesElement.textContent = minutes.toString().padStart(2, '0');
         waitingSecondsElement.textContent = seconds.toString().padStart(2, '0');
         
-        // Show notification banner at 30 seconds
-        if (appointmentTimeLeft === 30) {
+        // Show notification banner at 15 seconds and hide after 5 seconds
+        if (appointmentTimeLeft === 10) {
             const banner = document.querySelector('.notification-banner');
             banner.style.display = 'flex';
+            
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 5000); // 5000ms = 5 seconds
         }
         
         if (appointmentTimeLeft > 0) {
@@ -71,24 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Button handlers
-    window.acceptAppointment = () => {
-        clearInterval(confirmationInterval);
-        confirmationSection.style.display = 'none';
-        waitingRoomSection.style.display = 'block';
-        
-        // Start waiting room timer
-        updateWaitingRoomTimer();
-        waitingRoomInterval = setInterval(updateWaitingRoomTimer, 1000);
-        
-        // Initialize accordion
-        initializeAccordion();
-    };
-
-    window.declineAppointment = () => {
-        clearInterval(confirmationInterval);
-        window.history.back();
-    };
+    // Initialize accordion immediately since we don't wait for acceptance
+    initializeAccordion();
+    
+    // Start waiting room timer immediately
+    updateWaitingRoomTimer();
+    waitingRoomInterval = setInterval(updateWaitingRoomTimer, 1000);
 
     // Accordion functionality
     function initializeAccordion() {

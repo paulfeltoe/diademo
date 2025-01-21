@@ -1,6 +1,6 @@
 <div class="page-content">
     <h1>My Profile</h1>
-    <div class="profile-completion">
+    <!-- <div class="profile-completion">
         <h2>Progress</h2>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: 75%;">75%</div>
@@ -23,38 +23,45 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    
     <div class="profile-info">
         <div class="profile-section">
             <h2>Personal Information</h2>
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Date of Birth:</strong> January 1, 1990</p>
-            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="profile-dob"></span></p>
+            <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+            <p><strong>Address:</strong> <span id="profile-address"></span></p>
         </div>
         
         <div class="profile-section">
             <h2>Medical Information</h2>
-            <p><strong>Primary Care:</strong> Dr. Smith</p>
-            <p><strong>Blood Type:</strong> O+</p>
-            <p><strong>Allergies:</strong> None</p>
+            <p><strong>Pharmacy:</strong> <span id="profile-pharmacy"></span></p>
+            <p><strong>Pharmacy Address:</strong> <span id="profile-pharmacy-address"></span></p>
+            <p><strong>Medications:</strong> <span id="profile-medications"></span></p>
+            <p><strong>Allergies:</strong> <span id="profile-allergies"></span></p>
         </div>
         
         <div class="profile-section">
-            <h2>Emergency Contacts</h2>
-            <p><strong>Name:</strong> Jane Doe</p>
-            <p><strong>Relationship:</strong> Spouse</p>
-            <p><strong>Phone:</strong> (555) 123-4567</p>
+            <h2>Emergency Contact</h2>
+            <p><strong>Name:</strong> <span id="profile-emergency-name"></span></p>
+            <p><strong>Relationship:</strong> <span id="profile-relationship"></span></p>
+            <p><strong>Phone:</strong> <span id="profile-emergency-phone"></span></p>
+        </div>
+
+        <div class="profile-section">
+            <h2>Insurance Information</h2>
+            <p><strong>Provider:</strong> <span id="profile-insurance-provider"></span></p>
+            <p><strong>Policy Number:</strong> <span id="profile-policy-number"></span></p>
+            <p><strong>Group Number:</strong> <span id="profile-group-number"></span></p>
         </div>
     </div>
+
     <button id="fullscreenBtn" class="fullscreen-btn">
         <span class="fullscreen-icon">⤢</span>
     </button>
     <a href="#" class="onboarding-link">
         Onboarding
     </a>
-
-    <script src="js/main.js"></script>
 </div> 
 

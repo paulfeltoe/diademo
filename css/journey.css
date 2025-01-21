@@ -512,7 +512,7 @@
     bottom: 0;
     background: var(--background);
     z-index: 1000;
-    padding: 20px;
+    padding: 0px;
     overflow-y: auto;
     animation: slideIn 0.3s ease-out;
 }
@@ -1021,4 +1021,88 @@
 /* Optional: Add a subtle hover effect for past care plans */
 .past-care-plans .care-journey-card:hover {
     opacity: 0.9;
+}
+
+.message.system {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    margin: 16px 0;
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+}
+
+.message.system .message-content {
+    padding: 12px;
+}
+
+/* Add styles for disabled interactive elements */
+.response-options.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.response-options.disabled .response-option {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #94a3b8;
+}
+
+.response-options.disabled .response-option i {
+    color: #94a3b8;
+}
+
+/* Style disabled message links and action buttons */
+.message-link[disabled],
+.action-button[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #94a3b8;
+}
+
+.complete-journey-button.reopen-button {
+    background: var(--background-tertiary);
+    border-color: var(--border);
+    color: var(--text-secondary);
+}
+
+.complete-journey-button.reopen-button:hover {
+    background: var(--background-secondary);
+    color: var(--text-primary);
+}
+
+.complete-journey-button.reopen-button i {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.complete-journey-button.reopen-button:hover i {
+    transform: rotate(180deg);
+}
+
+.message-action-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.message-action-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.status-indicator.resolved {
+    background-color: #4CAF50;
+}
+
+#habit-tracker-container {
+    margin: 24px 0;
 }

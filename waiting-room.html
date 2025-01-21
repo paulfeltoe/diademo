@@ -14,46 +14,8 @@
         <span>Dr. Smith has joined the call and is reviewing your file</span>
     </div>
 
-    <!-- Confirmation Section -->
-    <div class="container confirmation-section">
-        <div class="content">
-            <div class="header">
-                <div class="timer-circle">
-                    <svg class="timer-svg" viewBox="0 0 100 100">
-                        <circle class="timer-background" cx="50" cy="50" r="45"/>
-                        <circle class="timer-progress" cx="50" cy="50" r="45"/>
-                    </svg>
-                    <div class="timer-text">
-                        <span class="minutes">3</span>:<span class="seconds">00</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="message">
-                <h1>Good News! A Spot Just Opened Up for You</h1>
-                <p class="subtitle">We found an earlier appointment based on your preferences. You have a limited time to claim this spot.</p>
-                <p class="timer-message">You have <strong>3 minutes</strong> to claim this spot</p>
-            </div>
-
-            <div class="actions">
-                <button class="primary-button" onclick="acceptAppointment()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" fill="currentColor"/>
-                    </svg>
-                    Accept Appointment
-                </button>
-                <button class="secondary-button" onclick="declineAppointment()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor"/>
-                    </svg>
-                    Decline & Stay on Waitlist
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Virtual Waiting Room Section (Initially Hidden) -->
-    <div class="container waiting-room-section" style="display: none;">
+    <!-- Virtual Waiting Room Section (Remove style="display: none;") -->
+    <div class="container waiting-room-section">
         <div class="header">
             <h1 class="appointment-starts-text">Your appointment starts in</h1>
             <div class="countdown">
@@ -84,9 +46,9 @@
                         <h2>Upcoming Consultation</h2>
                     </div>
                     <div class="detail-content">
-                        <p class="detail-time">Today at 2:30 PM</p>
+                        <!-- <p class="detail-time" id="appointmentTime"></p> -->
                         <p class="detail-type">Virtual Visit - Initial Consultation</p>
-                        <p class="detail-reason">Reason for visit: Chronic Sinusitis</p>
+                        <p class="detail-reason">Reason for visit: Sinus issues</p>
                         <p class="detail-provider">With Dr. Sarah Johnson</p>
                     </div>
                 </div>
@@ -94,6 +56,7 @@
         </div>
 
         <div class="preparation-steps">
+            <h2>While you're waiting...</h2>
             <div class="accordion">
                 <div class="accordion-item">
                     <button class="accordion-header">
@@ -131,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                     <button class="accordion-header">
                         <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M12 4v16m-8-8h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -152,7 +115,7 @@
                         </div>
                         <button class="save-button">Save Changes</button>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="accordion-item">
                     <button class="accordion-header">
@@ -191,7 +154,7 @@
                         <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
                         </svg>
-                        About Sinusitis
+                        Understanding Sinus Health
                         <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
@@ -199,52 +162,88 @@
                     <div class="accordion-content">
                         <div class="info-grid">
                             <div class="info-card">
-                                <h3>Common Types</h3>
+                                <h3>About Your Sinuses</h3>
                                 <ul>
-                                    <li>Acute sinusitis (up to 4 weeks)</li>
-                                    <li>Subacute sinusitis (4-12 weeks)</li>
-                                    <li>Chronic sinusitis (12+ weeks)</li>
-                                    <li>Recurrent sinusitis</li>
+                                    <li>Air-filled cavities in facial bones</li>
+                                    <li>Natural mucus production daily</li>
+                                    <li>Help filter and humidify air</li>
+                                    <li>Connected to nasal passages</li>
+                                    <li>Located in cheeks, forehead, between eyes</li>
                                 </ul>
                             </div>
                             
                             <div class="info-card">
-                                <h3>Common Triggers</h3>
+                                <h3>Common Contributing Factors</h3>
                                 <ul>
-                                    <li>Viral infections (common cold)</li>
-                                    <li>Allergies</li>
-                                    <li>Nasal polyps</li>
+                                    <li>Seasonal changes</li>
                                     <li>Environmental irritants</li>
-                                    <li>Deviated septum</li>
+                                    <li>Changes in air pressure</li>
+                                    <li>Dry or very humid air</li>
+                                    <li>Smoke exposure</li>
+                                    <li>Swimming or diving</li>
                                 </ul>
                             </div>
 
                             <div class="info-card">
-                                <h3>When to Seek Help</h3>
+                                <h3>Preventive Measures</h3>
                                 <ul>
-                                    <li>Severe facial pain/pressure</li>
-                                    <li>Symptoms lasting over 10 days</li>
-                                    <li>Fever over 102°F (39°C)</li>
-                                    <li>Multiple infections per year</li>
+                                    <li>Regular hand washing</li>
+                                    <li>Using air purifiers</li>
+                                    <li>Maintaining good humidity levels (30-50%)</li>
+                                    <li>Avoiding known irritants</li>
+                                    <li>Regular exercise</li>
+                                    <li>Adequate sleep</li>
+                                    <li>Proper hydration</li>
                                 </ul>
                             </div>
 
                             <div class="info-card">
-                                <h3>Helpful Tips</h3>
+                                <h3>Helpful Self-Care Tips</h3>
                                 <ul>
-                                    <li>Use a humidifier</li>
-                                    <li>Try nasal irrigation</li>
-                                    <li>Stay hydrated</li>
-                                    <li>Avoid known allergens</li>
-                                    <li>Use steam inhalation</li>
+                                    <li>Warm compresses on face</li>
+                                    <li>Gentle facial massage</li>
+                                    <li>Staying upright when sleeping</li>
+                                    <li>Using a humidifier at night</li>
+                                    <li>Nasal saline rinses</li>
+                                    <li>Steam inhalation</li>
+                                    <li>Regular physical activity</li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4v16m-8-8h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Confirm your preferred Pharmacy
+                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="form-group">
+                            <label>Pharmacy Name</label>
+                            <input type="text" value="Jean Coutu">
+                        </div>
+                        <div class="form-group">
+                            <label>Pharmacy Address</label>
+                            <input type="text" value="330 Rue Saint-Paul Est, Montréal, QC H2Y 1H3">
+                        </div>
+                        <button class="save-button">Save Changes</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="js/waiting-room.js"></script>
+    <script type="module" src="js/funnel.js"></script>
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function() {
+            window.initializeWaitingRoom();
+        });
+    </script>
 </body>
 </html> 

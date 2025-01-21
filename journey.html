@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/journey.css">
     <!-- <link rel="stylesheet" href="css/care-card.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/habit.css">
+    <link rel="stylesheet" href="css/prescription.css">
 </head>
 <body>
     
@@ -23,7 +25,7 @@
                 </a>
                 <h1>Sinusitis</h1>
                 <div class="journey-status">
-                    <span class="status-indicator active">Open</span>
+                    <!-- <span class="status-indicator active">Open</span> -->
                     <span class="status-date">Active since March 15, 2024</span>
                 </div>
             </div>
@@ -64,7 +66,10 @@
                         <p><strong>Treatment Plan:</strong> 10-day course of antibiotics, nasal steroids, and supportive care.</p>
                     </div>
                     
-                    <!-- Added Quick Actions Section -->
+                    <div id="habit-tracker-container"></div>
+                    
+                    <div id="prescription-widget-container"></div>
+                    
                     <div class="quick-actions">
                         <h3>Quick Actions</h3>
                         <div class="quick-actions-grid">
@@ -258,13 +263,9 @@
                     </div>
 
                     <div class="message-input-container">
-                        <form id="messageForm" class="message-form">
-                            <textarea 
-                                placeholder="Type your message..." 
-                                class="message-input"
-                                rows="3"
-                            ></textarea>
-                            <button type="submit" class="send-button">
+                        <form class="message-form" onsubmit="return false;">
+                            <textarea class="message-input" placeholder="Type your message..."></textarea>
+                            <button type="button" class="send-button">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -412,6 +413,8 @@
                         <p><strong>Current Status:</strong> Engaged in therapy, learning workplace coping strategies.</p>
                         <p><strong>Treatment Approach:</strong> Combination of CBT, mindfulness training, and workplace adjustments.</p>
                     </div>
+                    
+                    <div id="habit-tracker-container"></div>
                     
                     <div class="quick-actions">
                         <h3>Quick Actions</h3>
@@ -700,13 +703,9 @@
                     </div>
 
                     <div class="message-input-container">
-                        <form id="messageForm" class="message-form">
-                            <textarea 
-                                placeholder="Type your message..." 
-                                class="message-input"
-                                rows="3"
-                            ></textarea>
-                            <button type="submit" class="send-button">
+                        <form class="message-form" onsubmit="return false;">
+                            <textarea class="message-input" placeholder="Type your message..."></textarea>
+                            <button type="button" class="send-button">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -856,6 +855,8 @@
                         <p><strong>Current Status:</strong> Moderate symptoms, some improvement with topical treatment.</p>
                         <p><strong>Treatment Plan:</strong> Combination of topical steroids, antihistamines, and trigger identification.</p>
                     </div>
+                    
+                    <div id="habit-tracker-container"></div>
                     
                     <div class="quick-actions">
                         <h3>Quick Actions</h3>
@@ -1023,13 +1024,9 @@
                     </div>
 
                     <div class="message-input-container">
-                        <form id="messageForm" class="message-form">
-                            <textarea 
-                                placeholder="Type your message..." 
-                                class="message-input"
-                                rows="3"
-                            ></textarea>
-                            <button type="submit" class="send-button">
+                        <form class="message-form" onsubmit="return false;">
+                            <textarea class="message-input" placeholder="Type your message..."></textarea>
+                            <button type="button" class="send-button">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -1134,6 +1131,18 @@
 
     <script src="js/main.js"></script>
     <script src="js/journey.js"></script>
+    <script src="js/habit.js"></script>
+    <script src="js/prescription.js"></script>
+    <script>
+        // Load the prescription widget
+        fetch('components/prescription-widget.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('prescription-widget-container').innerHTML = html;
+                // Initialize the prescription tracker
+                const tracker = new PrescriptionTracker();
+            });
+    </script>
 
 </body>
 </html>

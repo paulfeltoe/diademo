@@ -33,10 +33,14 @@
     <!-- Step 2: Sign In -->
     <div class="step" id="step2" style="display: none;">
         <div class="auth-container">
-            <h2>Welcome Back</h2>
+            <h2>Welcome to Dialogue</h2>
             <button class="auth-button google" onclick="nextStep(event)">
-                <img src="assets/google-icon.svg" alt="Google">
-                Sign in with Google
+                <i class="fa-brands fa-google"></i>
+                Sign up with Google
+            </button>
+            <button class="auth-button apple" onclick="nextStep(event)">
+                <i class="fa-brands fa-apple"></i>
+                Sign up with Apple
             </button>
             <div class="divider">
                 <span>or</span>
@@ -46,7 +50,7 @@
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-                Sign in with Email
+                Sign up with Email
             </button>
         </div>
     </div>
@@ -80,7 +84,7 @@
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                Import from Sunlife
+                Import from Sun Life
             </button>
             
             <form class="profile-form">
