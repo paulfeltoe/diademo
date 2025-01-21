@@ -843,11 +843,30 @@ function loadPage(pageName) {
 }
 
 const handleFullscreen = () => {
-  const videoContainer = videoContainerRef.current;
+  // Check if we're on profile.html
+  const isProfilePage = window.location.pathname.includes('profile.html');
   
-  if (!videoContainer) return;
+  if (isProfilePage) {
+    // For profile.html, use standalone display mode
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // Already in standalone mode, do nothing or handle exit if needed
+      return;
+    }
+    
+    // Request standalone mode if supported
+    if (window.navigator.standalone === undefined && window.matchMedia('(display-mode: standalone)').matches === false) {
+      // Create a prompt or message to suggest adding to home screen
+      // as this is the way to achieve standalone mode on most devices
+      const message = 'Add this page to your home screen to view in fullscreen mode';
+      alert(message);
+    }
+    return;
+  }
 
-  // Get the document element for cross-browser compatibility
+  // Original fullscreen logic for other pages
+  const videoContainer = videoContainerRef.current;
+  if (!videoContainer) return;
+  
   const doc = window.document;
   const docEl = doc.documentElement;
 
