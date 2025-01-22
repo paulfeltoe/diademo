@@ -4,10 +4,10 @@ let hasShownPrompt = false; // Flag to ensure we only show the prompt once
 
 // Function to check if migraine card is visible and set up the prompt
 function setupMigrainePrompt() {
-    console.log('setupMigrainePrompt running');
+    // console.log('setupMigrainePrompt running');
     const migraineCard = document.querySelector('a.care-journey-card.care-card-migraines');
-    console.log('migraineCard:', migraineCard);
-    console.log('migraineCard display:', migraineCard && window.getComputedStyle(migraineCard).display);
+    // console.log('migraineCard:', migraineCard);
+    // console.log('migraineCard display:', migraineCard && window.getComputedStyle(migraineCard).display);
     
     if (migraineCard && window.getComputedStyle(migraineCard).display === 'block' && !hasShownPrompt) {
         console.log('Setting up 5 second timeout for bottom sheet');
@@ -15,12 +15,12 @@ function setupMigrainePrompt() {
         
         // Clear the interval since we found the card
         if (window.migraineCheckInterval) {
-            console.log('Clearing check interval');
+            // console.log('Clearing check interval');
             clearInterval(window.migraineCheckInterval);
         }
         
         setTimeout(() => {
-            console.log('5 second timeout triggered');
+            // console.log('5 second timeout triggered');
             openBottomSheet();
             
             // Add a small delay to ensure bottom sheet is open before updating content
@@ -35,18 +35,18 @@ function setupMigrainePrompt() {
                             <button class="secondary-button" onclick="handleImportChoice(false)">No thanks</button>
                         </div>
                     `;
-                    console.log('Bottom sheet content updated');
+                    // console.log('Bottom sheet content updated');
                 }
             }, 100); // Small delay to ensure bottom sheet is open
             
-            console.log('Bottom sheet opened');
+            // console.log('Bottom sheet opened');
         }, 5000);
     }
 }
 
 // Make handleImportChoice globally available
 window.handleImportChoice = function(accepted) {
-    console.log('Import choice made:', accepted);
+    // console.log('Import choice made:', accepted);
     
     closeBottomSheet();
     
@@ -60,7 +60,7 @@ window.handleImportChoice = function(accepted) {
 
 // Initial check when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded - starting periodic checks');
+    // console.log('DOM Content Loaded - starting periodic checks');
     // Store interval ID so we can clear it later
     window.migraineCheckInterval = setInterval(setupMigrainePrompt, 2000);
 }); 

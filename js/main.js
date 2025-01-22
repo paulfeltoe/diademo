@@ -15,12 +15,7 @@ async function loadContent(page) {
             setupBottomSheet();
             setupExploreCards();
         } else if (page === 'funnel') {
-            // Replace the direct call with a check
-            if (typeof window.initializeFunnel === 'function') {
-                window.initializeFunnel();
-            } else {
-                console.log('Funnel initialization function not yet available');
-            }
+            window.initializeFunnel();
         } else if (page === 'mycare') {
             setupBottomSheet();
             // Check if we should show filled state and which conditions
@@ -160,12 +155,7 @@ async function openBottomSheet(contentUrl = 'funnel.html') {
 
         if (contentUrl === 'funnel.html') {
             setTimeout(() => {
-                // Replace the direct call with a check
-                if (typeof window.initializeFunnel === 'function') {
-                    window.initializeFunnel();
-                } else {
-                    console.log('Funnel initialization function not yet available');
-                }
+                window.initializeFunnel();
                 // console.log('Funnel initialized');
 
                 // Store original function reference before it gets overwritten

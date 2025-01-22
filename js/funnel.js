@@ -4,6 +4,8 @@ let currentStep = 1;
 const totalSteps = 8;
 let recognition = null;
 let selectedCondition = null;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Replace with your actual API key
+console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY);
 let extractedTags = new Map(); // Using Map to store tag data: { text: { source: 'extracted'|'selected' } }
 let suggestedTags = new Set();
 let selectedAppointmentDateTime = null;
@@ -359,12 +361,14 @@ function loadTimeSlots(date) {
 
 async function analyzeSymptoms(text) {
     try {
-        const response = await fetch('/api/analyze-symptoms', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
             },
             body: JSON.stringify({
+                model: "gpt-3.5-turbo",
                 messages: [
                     {
                         role: "system",
@@ -381,7 +385,8 @@ async function analyzeSymptoms(text) {
                         role: "user",
                         content: text
                     }
-                ]
+                ],
+                temperature: 0.3
             })
         });
 
@@ -421,12 +426,14 @@ async function analyzeSymptoms(text) {
 
 async function extractSymptoms(text) {
     try {
-        const response = await fetch('/api/extract-symptoms', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
             },
             body: JSON.stringify({
+                model: "gpt-3.5-turbo",
                 messages: [
                     {
                         role: "system",
@@ -445,7 +452,8 @@ async function extractSymptoms(text) {
                         role: "user",
                         content: text
                     }
-                ]
+                ],
+                temperature: 0.3
             })
         });
 
@@ -460,13 +468,38 @@ async function extractSymptoms(text) {
 
 async function getRelatedSymptoms(symptoms) {
     try {
-        const response = await fetch('/api/get-related-symptoms', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                symptoms: Array.from(symptoms)
+                model: "gpt-3.5-turbo",
+                messages: [
+                    {
+                        role: "system",
+                        content: `You are a medical symptom analyzer. Given a list of symptoms, suggest related symptoms that commonly occur together based on medical knowledge.
+                        Rules:
+                        - Always return exactly 5 related symptoms
+                        - Include both physical and mental health symptoms when relevant
+                        - For anxiety/mental health symptoms, suggest related psychological and physical manifestations
+                        - Only suggest medically recognized symptoms
+                        - Use standard medical terminology
+                        - Consider common symptom clusters and medical conditions
+                        - Ensure suggestions are different from the input symptoms
+                        - Return only a JSON array of related symptoms, no other text
+                        Example physical input: ["headache", "nausea"]
+                        Example physical output: ["sensitivity to light", "dizziness", "vomiting", "neck stiffness", "fatigue"]
+                        Example mental input: ["excessive worry", "restlessness"]
+                        Example mental output: ["difficulty sleeping", "racing thoughts", "muscle tension", "irritability", "difficulty concentrating"]`
+                    },
+                    {
+                        role: "user",
+                        content: JSON.stringify(Array.from(symptoms))
+                    }
+                ],
+                temperature: 0.3
             })
         });
 
@@ -1273,29 +1306,6 @@ function handleOutreferralComplete() {
 
 // Make showStep available globally
 window.showStep = showStep;
-
-// Export the initialization function
-window.initializeFunnel = function() {
-    console.log('Initializing funnel');
-    // Your existing funnel initialization code here
-    
-    // Show initial step
-    showStep('1');
-    
-    // Set up event listeners
-    setupEventListeners();
-};
-
-function setupEventListeners() {
-    // ... existing event listener setup code ...
-}
-
-// Make sure this script runs after DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    if (typeof window.initializeFunnel === 'function') {
-        window.initializeFunnel();
-    }
-});
 
 
 
