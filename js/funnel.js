@@ -4,7 +4,6 @@ let currentStep = 1;
 const totalSteps = 8;
 let recognition = null;
 let selectedCondition = null;
-const apiKey = process.env.OPENAI_API_KEY; // Replace with your actual API key
 let extractedTags = new Map(); // Using Map to store tag data: { text: { source: 'extracted'|'selected' } }
 let suggestedTags = new Set();
 let selectedAppointmentDateTime = null;
@@ -360,14 +359,12 @@ function loadTimeSlots(date) {
 
 async function analyzeSymptoms(text) {
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('/api/analyze-symptoms', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
                 messages: [
                     {
                         role: "system",
@@ -384,8 +381,7 @@ async function analyzeSymptoms(text) {
                         role: "user",
                         content: text
                     }
-                ],
-                temperature: 0.3
+                ]
             })
         });
 
@@ -425,14 +421,12 @@ async function analyzeSymptoms(text) {
 
 async function extractSymptoms(text) {
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('/api/extract-symptoms', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
                 messages: [
                     {
                         role: "system",
@@ -451,8 +445,7 @@ async function extractSymptoms(text) {
                         role: "user",
                         content: text
                     }
-                ],
-                temperature: 0.3
+                ]
             })
         });
 
@@ -467,38 +460,13 @@ async function extractSymptoms(text) {
 
 async function getRelatedSymptoms(symptoms) {
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('/api/get-related-symptoms', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [
-                    {
-                        role: "system",
-                        content: `You are a medical symptom analyzer. Given a list of symptoms, suggest related symptoms that commonly occur together based on medical knowledge.
-                        Rules:
-                        - Always return exactly 5 related symptoms
-                        - Include both physical and mental health symptoms when relevant
-                        - For anxiety/mental health symptoms, suggest related psychological and physical manifestations
-                        - Only suggest medically recognized symptoms
-                        - Use standard medical terminology
-                        - Consider common symptom clusters and medical conditions
-                        - Ensure suggestions are different from the input symptoms
-                        - Return only a JSON array of related symptoms, no other text
-                        Example physical input: ["headache", "nausea"]
-                        Example physical output: ["sensitivity to light", "dizziness", "vomiting", "neck stiffness", "fatigue"]
-                        Example mental input: ["excessive worry", "restlessness"]
-                        Example mental output: ["difficulty sleeping", "racing thoughts", "muscle tension", "irritability", "difficulty concentrating"]`
-                    },
-                    {
-                        role: "user",
-                        content: JSON.stringify(Array.from(symptoms))
-                    }
-                ],
-                temperature: 0.3
+                symptoms: Array.from(symptoms)
             })
         });
 
