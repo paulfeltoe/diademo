@@ -1,11 +1,12 @@
 import { patientFields } from '../config/patientFields.js';
+import { OPENAI_API_KEY } from './build.js';
 
 let currentStep = 1;
 const totalSteps = 8;
 let recognition = null;
 let selectedCondition = null;
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Replace with your actual API key
-console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY);
+// const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Replace with your actual API key
+// console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY);
 let extractedTags = new Map(); // Using Map to store tag data: { text: { source: 'extracted'|'selected' } }
 let suggestedTags = new Set();
 let selectedAppointmentDateTime = null;
@@ -365,7 +366,7 @@ async function analyzeSymptoms(text) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
@@ -430,7 +431,7 @@ async function extractSymptoms(text) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
@@ -472,7 +473,7 @@ async function getRelatedSymptoms(symptoms) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
