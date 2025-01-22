@@ -15,7 +15,12 @@ async function loadContent(page) {
             setupBottomSheet();
             setupExploreCards();
         } else if (page === 'funnel') {
-            window.initializeFunnel();
+            // Replace the direct call with a check
+            if (typeof window.initializeFunnel === 'function') {
+                window.initializeFunnel();
+            } else {
+                console.log('Funnel initialization function not yet available');
+            }
         } else if (page === 'mycare') {
             setupBottomSheet();
             // Check if we should show filled state and which conditions
@@ -37,7 +42,7 @@ async function loadContent(page) {
             
             // Debug logging
             // console.log('Looking for fullscreen button...');
-            console.log('Fullscreen button found:', !!document.getElementById('fullscreenBtn'));
+            // console.log('Fullscreen button found:', !!document.getElementById('fullscreenBtn'));
             
             // Only setup fullscreen if button exists
             if (document.getElementById('fullscreenBtn')) {
@@ -155,7 +160,12 @@ async function openBottomSheet(contentUrl = 'funnel.html') {
 
         if (contentUrl === 'funnel.html') {
             setTimeout(() => {
-                window.initializeFunnel();
+                // Replace the direct call with a check
+                if (typeof window.initializeFunnel === 'function') {
+                    window.initializeFunnel();
+                } else {
+                    console.log('Funnel initialization function not yet available');
+                }
                 // console.log('Funnel initialized');
 
                 // Store original function reference before it gets overwritten
@@ -495,7 +505,7 @@ function showAllIssues() {
     localStorage.setItem('funnelCompleted', 'true');
     
     // Store all conditions in session
-    const conditions = ['sinusitis', 'anxiety', 'rash'];
+    const conditions = ['sinusitis', 'anxiety', 'rash', 'migraines'];
     sessionStorage.setItem('shownConditions', JSON.stringify(conditions));
 }
 
@@ -573,7 +583,8 @@ function updateMyCareState(showFilledState, activeConditions = []) {
             // Extract condition from the card's class or href
             const cardCondition = card.classList.contains('care-card-anxiety') ? 'anxiety' :
                                 card.classList.contains('care-card-sinusitis') ? 'sinusitis' :
-                                card.classList.contains('care-card-rash') ? 'rash' : null;
+                                card.classList.contains('care-card-rash') ? 'rash' :
+                                card.classList.contains('care-card-migraines') ? 'migraines' : null;
             
             // console.log('Card condition:', cardCondition);
             // Show/hide based on activeConditions
@@ -657,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Debug logging
     // console.log('Looking for fullscreen button...');
-    console.log('Fullscreen button found:', !!document.getElementById('fullscreenBtn'));
+    // console.log('Fullscreen button found:', !!document.getElementById('fullscreenBtn'));
     
     // Only setup fullscreen if button exists
     if (document.getElementById('fullscreenBtn')) {
@@ -809,98 +820,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Add this function to handle dynamic page loading
 function loadPage(pageName) {
     const mainContent = document.getElementById('main-content');
-    
-    // Don't reload if we're already on this page
-    if (mainContent.dataset.currentPage === pageName) {
-        return;
-    }
-    
+    if (!mainContent) return;
+
     fetch(`${pageName}.html`)
         .then(response => response.text())
         .then(html => {
             mainContent.innerHTML = html;
-            mainContent.dataset.currentPage = pageName;
             
-            // If this is the profile page, load the profile script only once
-            if (pageName === 'profile') {
-                // Check if script is already loaded
-                if (!document.querySelector('script[src="js/profile.js"]')) {
-                    const script = document.createElement('script');
-                    script.type = 'module';
-                    script.src = 'js/profile.js';
-                    document.body.appendChild(script);
-                }
+            // Check for care plan ready button after mycare page loads
+            if (pageName === 'mycare') {
+                // console.log('MyCare page loaded dynamically');
+                
+                // Simple 5 second timer to show care plan ready button
+                setTimeout(() => {
+                    const carePlanReadyButton = document.querySelector('.care-plan-ready');
+                    const carePlanReadyMessage = document.querySelector('.care-plan-ready-message');
+                    
+                    if (carePlanReadyButton) {
+                        carePlanReadyButton.style.display = 'block';
+                    }
+                    if (carePlanReadyMessage) {
+                        carePlanReadyMessage.style.display = 'none';
+                    }
+                    // console.log('Button shown and message hidden');
+                }, 5000);
             }
-            
-            // Update active state of nav items
-            updateNavActiveState(pageName);
-        })
-        .catch(error => {
-            console.error('Error loading page:', error);
         });
 }
 
-const handleFullscreen = () => {
-  // Check if we're on profile.html
-  const isProfilePage = window.location.pathname.includes('profile.html');
-  
-  if (isProfilePage) {
-    // For profile.html, use standalone display mode
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      // Already in standalone mode, do nothing or handle exit if needed
-      return;
-    }
-    
-    // Request standalone mode if supported
-    if (window.navigator.standalone === undefined && window.matchMedia('(display-mode: standalone)').matches === false) {
-      // Create a prompt or message to suggest adding to home screen
-      // as this is the way to achieve standalone mode on most devices
-      const message = 'Add this page to your home screen to view in fullscreen mode';
-      alert(message);
-    }
-    return;
-  }
+// Update the navigation click handlers to use this function
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = item.dataset.page;
+        loadPage(page);
+        // Update active state
+        document.querySelectorAll('.nav-item').forEach(navItem => {
+            navItem.classList.remove('active');
+        });
+        item.classList.add('active');
+    });
+});
 
-  // Original fullscreen logic for other pages
-  const videoContainer = videoContainerRef.current;
-  if (!videoContainer) return;
-  
-  const doc = window.document;
-  const docEl = doc.documentElement;
+// Initial page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadPage('mycare');
+});
 
-  // Check if fullscreen is currently active
-  const isFullscreen = doc.fullscreenElement || 
-    doc.webkitFullscreenElement || 
-    doc.mozFullScreenElement || 
-    doc.msFullscreenElement;
-
-  try {
-    if (!isFullscreen) {
-      // Request fullscreen with fallbacks for different browsers
-      if (videoContainer.requestFullscreen) {
-        videoContainer.requestFullscreen();
-      } else if (videoContainer.webkitRequestFullscreen) {
-        videoContainer.webkitRequestFullscreen();
-      } else if (videoContainer.mozRequestFullScreen) {
-        videoContainer.mozRequestFullScreen();
-      } else if (videoContainer.msRequestFullscreen) {
-        videoContainer.msRequestFullscreen();
-      }
-    } else {
-      // Exit fullscreen with fallbacks
-      if (doc.exitFullscreen) {
-        doc.exitFullscreen();
-      } else if (doc.webkitExitFullscreen) {
-        doc.webkitExitFullscreen();
-      } else if (doc.mozCancelFullScreen) {
-        doc.mozCancelFullScreen();
-      } else if (doc.msExitFullscreen) {
-        doc.msExitFullscreen();
-      }
-    }
-  } catch (error) {
-    console.error('Fullscreen error:', error);
-  }
-};

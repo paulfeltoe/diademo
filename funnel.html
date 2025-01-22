@@ -386,7 +386,7 @@
             </div>
         </div>
 
-        <div class="step step-outreferral" style="display: none;">
+        <div class="step step-outreferral" data-step="outreferral" style="display: none;">
             <div class="step-content">
                 <h2>Additional Support Needed</h2>
                 <p>Based on your symptoms, we recommend scheduling with a specialist for a more comprehensive evaluation.</p>
@@ -403,9 +403,143 @@
                 </div>
 
                 <div class="button-container">
-                    <button onclick="window.location.href='https://example.com/specialist-referral'" class="primary-button">
-                        Schedule with Specialist
+                    <button onclick="handleOutreferralNext()" class="primary-button">
+                        Find Available Specialists
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="step step-outreferral-clinics" data-step="outreferral-clinics" style="display: none;">
+            <h2>Available Specialists Near You</h2>
+            <p class="subtitle">We've found several specialists who can help with your condition</p>
+            
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label>Distance</label>
+                    <select class="filter-select" onchange="filterClinics()">
+                        <option value="5">Within 5 miles</option>
+                        <option value="10">Within 10 miles</option>
+                        <option value="25">Within 25 miles</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Wait Time</label>
+                    <select class="filter-select" onchange="filterClinics()">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="twoweeks">Next 2 Weeks</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Rating</label>
+                    <select class="filter-select" onchange="filterClinics()">
+                        <option value="4">4+ Stars</option>
+                        <option value="3">3+ Stars</option>
+                        <option value="all">All Ratings</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="clinics-list">
+                <div class="clinic-card" onclick="handleClinicSelection(1)">
+                    <div class="clinic-info">
+                        <h3>Neurological Center of Excellence</h3>
+                        <div class="rating">★★★★★ 4.8 (234 reviews)</div>
+                        <p>1.2 miles away • Next available: Today</p>
+                    </div>
+                </div>
+                <div class="clinic-card" onclick="handleClinicSelection(2)">
+                    <div class="clinic-info">
+                        <h3>Advanced Headache Institute</h3>
+                        <div class="rating">★★★★☆ 4.2 (156 reviews)</div>
+                        <p>2.5 miles away • Next available: Tomorrow</p>
+                    </div>
+                </div>
+                <div class="clinic-card" onclick="handleClinicSelection(3)">
+                    <div class="clinic-info">
+                        <h3>City Neurology Partners</h3>
+                        <div class="rating">★★★★★ 4.9 (89 reviews)</div>
+                        <p>3.8 miles away • Next available: This Week</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step step-outreferral-details" data-step="outreferral-details" style="display: none;">
+            <div class="provider-details">
+                <button class="back-link" onclick="funnelPreviousStep()">← Back to list</button>
+                
+                <div class="provider-header">
+                    <h2>Neurological Center of Excellence</h2>
+                    <div class="rating">★★★★★ 4.8 (234 reviews)</div>
+                    <p>1.2 miles away • 123 Medical Drive, Suite 100</p>
+                </div>
+
+                <div class="provider-info">
+                    <h3>About the Practice</h3>
+                    <p>Specialized in treating complex neurological conditions with a focus on patient-centered care. Our team of board-certified specialists provides comprehensive evaluations and personalized treatment plans.</p>
+                    
+                    <h3>Meet Your Provider</h3>
+                    <div class="provider-profile">
+                        <!-- <img src="doctor-avatar.jpg" alt="Dr. Sarah Smith" class="provider-avatar"> -->
+                        <div class="provider-bio">
+                            <h4>Dr. Sarah Smith, MD</h4>
+                            <p>Board Certified Neurologist with 15+ years of experience in treating complex headache conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Available Appointments</h3>
+                    <div class="appointment-slots">
+                        <button class="time-slot">Today at 2:30 PM</button>
+                        <button class="time-slot">Today at 4:15 PM</button>
+                        <button class="time-slot">Tomorrow at 9:00 AM</button>
+                        <button class="time-slot">Tomorrow at 11:30 AM</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="step step-outreferral-confirmation" data-step="outreferral-confirmation" style="display: none;">
+            <div class="confirmation-container">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="24" fill="#E3F2FD"/>
+                        <path d="M20 27.17L16.83 24L15.41 25.41L20 30L32 18L30.59 16.59L20 27.17Z" fill="#2196F3"/>
+                    </svg>
+                </div>
+                
+                <h2>Your Appointment is Confirmed!</h2>
+                <p>We've scheduled your visit with Dr. Sarah Smith at Neurological Center of Excellence.</p>
+                
+                <div class="appointment-details">
+                    <div class="detail-item">
+                        <span class="label">Date & Time</span>
+                        <span class="value" id="confirmedDateTime">Today at 2:30 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Location</span>
+                        <span class="value">123 Medical Drive, Suite 100</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Provider</span>
+                        <span class="value">Dr. Sarah Smith, MD</span>
+                    </div>
+                </div>
+
+                <div class="follow-up-message">
+                    <p>We'll check in with you in a few days to see how it went.</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="primary-button" onclick="handleOutreferralComplete()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M15.8333 2.5H15V1.66667H13.3333V2.5H6.66667V1.66667H5V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5Z" fill="currentColor"/>
+                        </svg>
+                        Add to Calendar
+                    </button>
+                    <button class="text-button" onclick="closeBottomSheet()">Done</button>
                 </div>
             </div>
         </div>

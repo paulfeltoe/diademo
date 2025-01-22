@@ -378,9 +378,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add this function at the end of the file
 function handleReturnButtonClick() {
+    console.log('Return button clicked');
+    
     // Store sinusitis as the journey type to show
     localStorage.setItem('lastJourneyType', 'sinusitis');
-    // Navigate to journey.html
+    
+    // Navigate to index.html
     window.location.href = 'index.html';
 }
 
@@ -536,7 +539,7 @@ function initializeJourneyStatuses() {
     const resolvedConditions = JSON.parse(sessionStorage.getItem('resolvedConditions') || '[]');
     
     // Update journey pages
-    ['sinusitis', 'anxiety', 'rash'].forEach(journeyType => {
+    ['sinusitis', 'anxiety', 'rash', 'migraines'].forEach(journeyType => {
         const journeySection = document.getElementById(`${journeyType}-journey`);
         if (journeySection) {
             if (resolvedConditions.includes(journeyType)) {

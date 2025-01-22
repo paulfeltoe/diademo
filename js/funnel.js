@@ -4,7 +4,7 @@ let currentStep = 1;
 const totalSteps = 8;
 let recognition = null;
 let selectedCondition = null;
-const OPENAI_API_KEY = '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'; // Replace with your actual API key
+const apiKey = process.env.OPENAI_API_KEY; // Replace with your actual API key
 let extractedTags = new Map(); // Using Map to store tag data: { text: { source: 'extracted'|'selected' } }
 let suggestedTags = new Set();
 let selectedAppointmentDateTime = null;
@@ -20,29 +20,42 @@ function updateProgress() {
     }
 }
 
-function showStep(step) {
-    // console.log('showStep called with step:', step);
-    document.querySelectorAll('.step').forEach(el => {
-        const currentStep = parseInt(el.dataset.step);
-        // console.log('Processing step:', currentStep);
-        if (currentStep === parseInt(step)) {  // Convert step to integer for comparison
-            el.style.display = 'block';
-            // console.log(`Step ${currentStep} shown`);
-            if (currentStep === 6) {
-                // console.log('Initializing step 6 display');
-                updateDaysDisplay();
-            }
-        } else {
-            el.style.display = 'none';
-            // console.log(`Step ${currentStep} hidden`);
-        }
+function showStep(stepId) {
+    // Hide all steps
+    document.querySelectorAll('.step').forEach(step => {
+        step.style.display = 'none';
     });
+    
+    // Show the target step
+    const targetStep = document.querySelector(`.step[data-step="${stepId}"]`);
+    if (targetStep) {
+        targetStep.style.display = 'block';
+    }
+    
+    // Update back button state
+    const backButton = document.getElementById('backButton');
+    if (backButton) {
+        backButton.disabled = stepId === '1';
+    }
 }
 
 function nextStep() {
     const currentStepElement = document.querySelector('.step[style*="display: block"]') || 
                               document.querySelector('.step[style*="display: flex"]');
     if (!currentStepElement) return;
+
+    // Add special handling for outreferral condition
+    if (selectedCondition === "outreferral") {
+        // Hide current step
+        currentStepElement.style.display = 'none';
+        
+        // Show outreferral step
+        const outreferralStep = document.querySelector('.step-outreferral');
+        if (outreferralStep) {
+            outreferralStep.style.display = 'block';
+            return; // Exit early as this is a terminal state
+        }
+    }
 
     const nextStepNumber = parseInt(currentStepElement.dataset.step) + 1;
     
@@ -169,7 +182,7 @@ function handleInput(textarea) {
             continueButton.disabled = true;
         }
 
-        console.log('Input cleared - Tags and condition reset');
+        // console.log('Input cleared - Tags and condition reset');
         return; // Exit early after clearing
     }
     
@@ -280,19 +293,13 @@ function updateSlotGroup(groupName, slots) {
 }
 
 function initializeTimeSlotHandlers() {
+    // console.log('Initializing time slot handlers');
     const timeSlots = document.querySelectorAll('.time-slot:not([disabled])');
     timeSlots.forEach(slot => {
+        // console.log('Adding click handler to time slot:', slot.textContent);
         slot.onclick = function() {
-            document.querySelectorAll('.time-slot').forEach(s => {
-                s.classList.remove('selected');
-            });
-            
-            this.classList.add('selected');
-            
-            const selectedTime = this.textContent.trim();
-            const selectedDate = document.querySelector('.day-item.active')?.dataset.date;
-            
-            nextStep();
+            // console.log('Time slot clicked:', this.textContent.trim());
+            handleTimeSlotSelection(this.textContent.trim());
         };
     });
 }
@@ -385,10 +392,10 @@ async function analyzeSymptoms(text) {
         const data = await response.json();
         const condition = data.choices[0].message.content.toLowerCase().trim();
         
-        console.log('OpenAI analyzed condition:', condition);
+        // console.log('OpenAI analyzed condition:', condition);
         
         // Update selectedCondition based on the analysis
-        if (['sinusitis', 'outreferral', 'anxiety', 'rash'].includes(condition)) {
+        if (['sinusitis', 'outreferral', 'anxiety', 'rash', 'migraines'].includes(condition)) {
             selectedCondition = condition;
             // Persist the selected condition
             localStorage.setItem('selectedCondition', condition);
@@ -891,11 +898,9 @@ function generateUnavailableSlots(date, totalSlots) {
 }
 
 function updateDaysDisplay(startDate = new Date()) {
-    console.log('updateDaysDisplay called with date:', startDate);
     const daysContainer = document.getElementById('daysContainer');
     
     if (!daysContainer) {
-        console.error('Days container not found');
         return;
     }
 
@@ -1204,6 +1209,11 @@ window.selectTimeSlot = selectTimeSlot;
 window.handleFunnelCancel = handleFunnelCancel;
 window.initializeWaitingRoom = initializeWaitingRoom;
 window.handleCalendarClick = handleCalendarClick;
+// Add these new functions to the window object
+window.handleOutreferralNext = handleOutreferralNext;
+window.handleClinicSelection = handleClinicSelection;
+window.handleTimeSlotSelection = handleTimeSlotSelection;
+window.handleOutreferralComplete = handleOutreferralComplete;
 
 function handleCalendarClick() {
     // First update the conditions like handleFunnelCancel does
@@ -1219,3 +1229,106 @@ function handleCalendarClick() {
     // Then proceed to phone-lock.html
     window.location.href = 'phone-lock.html';
 }
+
+function handleOutreferralNext() {
+    // Hide all steps first
+    document.querySelectorAll('.step').forEach(step => {
+        step.style.display = 'none';
+    });
+    // Show the clinics step
+    const clinicsStep = document.querySelector('.step[data-step="outreferral-clinics"]');
+    if (clinicsStep) {
+        clinicsStep.style.display = 'block';
+    }
+}
+
+function handleClinicSelection(clinicId) {
+    // Hide all steps first
+    document.querySelectorAll('.step').forEach(step => {
+        step.style.display = 'none';
+    });
+    
+    // Show the details step
+    const detailsStep = document.querySelector('.step[data-step="outreferral-details"]');
+    if (detailsStep) {
+        detailsStep.style.display = 'block';
+        // Initialize time slot handlers after showing the step
+        initializeTimeSlotHandlers();
+    }
+}
+
+function handleTimeSlotSelection(timeSlot) {
+    // Hide all steps first
+    document.querySelectorAll('.step').forEach(step => {
+        step.style.display = 'none';
+    });
+    
+    // Store selected time slot
+    const confirmedDateTimeElement = document.getElementById('confirmedDateTime');
+    if (confirmedDateTimeElement) {
+        confirmedDateTimeElement.textContent = timeSlot;
+    }
+    
+    // Show the confirmation step
+    const confirmationStep = document.querySelector('.step[data-step="outreferral-confirmation"]');
+    if (confirmationStep) {
+        confirmationStep.style.display = 'block';
+    }
+}
+
+function handleOutreferralComplete() {
+    // Set the condition to migraines
+    selectedCondition = 'migraines';
+    
+    // Get current active conditions and add migraines if not present
+    const activeConditions = getCurrentActiveConditions();
+    if (!activeConditions.includes(selectedCondition)) {
+        activeConditions.push(selectedCondition);
+    }
+    
+    // Store the updated conditions
+    sessionStorage.setItem('shownConditions', JSON.stringify(activeConditions));
+    
+    // Save state and selected condition to localStorage
+    localStorage.setItem('hasCarePlan', 'true');
+    localStorage.setItem('selectedCondition', selectedCondition);
+    
+    // Close the bottom sheet
+    closeBottomSheet();
+    
+    // Wait for bottom sheet animation to complete, then redirect
+    navigateToMyCare({
+        showFilledState: true,
+        activeConditions: activeConditions
+    });
+}
+
+// Make showStep available globally
+window.showStep = showStep;
+
+// Export the initialization function
+window.initializeFunnel = function() {
+    console.log('Initializing funnel');
+    // Your existing funnel initialization code here
+    
+    // Show initial step
+    showStep('1');
+    
+    // Set up event listeners
+    setupEventListeners();
+};
+
+function setupEventListeners() {
+    // ... existing event listener setup code ...
+}
+
+// Make sure this script runs after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof window.initializeFunnel === 'function') {
+        window.initializeFunnel();
+    }
+});
+
+
+
+

@@ -48,7 +48,7 @@
         </div>
         <div class="empty-card info-card">
             <h2>Take a Quick Tour</h2>
-            <img src="assets/images/video-tour.svg" alt="App tour video thumbnail">
+            <!-- <img src="assets/images/video-tour.svg" alt="App tour video thumbnail"> -->
             <p>New to the app? Watch a 2-minute video to learn how to make the most of your care experience.</p>
             <button class="secondary-button" onclick="startAppTour()">Watch Tour</button>
         </div>
@@ -64,10 +64,8 @@
                             <span class="date">Started Mar 15, 2024</span>
                         </div>
                         <h3>Sinusitis</h3>
-                        <p>Respiratory Care Program</p>
-                        <div class="care-card-footer">
-                            <span>Next: Follow-up - Tomorrow 2:30 PM</span>
-                        </div>
+                        <p class="care-plan-ready-message">Your provider is writing your care plan. It should be ready in 3-5 minutes.</p>
+                        <button class="secondary-button care-plan-ready"> Your care plan is ready </button>
                     </div>
                 </a>
 
@@ -78,12 +76,10 @@
                             <span class="date">Started Mar 1, 2024</span>
                         </div>
                         <h3>Anxiety Management</h3>
-                        <p>Mental Health Support</p>
-                        <div class="care-card-footer">
-                            <span>Next: Therapy Session - Friday 1:00 PM</span>
-                        </div>
+                        
                     </div>
                 </a>
+
                 <a href="journey.html?type=rash" class="care-journey-card care-card-rash">
                     <div class="care-card">
                         <div class="care-card-header">
@@ -91,10 +87,18 @@
                             <span class="date">Started Feb 28, 2024</span>
                         </div>
                         <h3>Unexplained Rash</h3>
-                        <p>Dermatology Consultation</p>
-                        <div class="care-card-footer">
-                            <span>Next: Follow-up - Thursday 10:00 AM</span>
+                        
+                    </div>
+                </a>
+
+                <a href="journey.html?type=migraine" class="care-journey-card care-card-migraines">
+                    <div class="care-card active">
+                        <div class="care-card-header">
+                            <span class="status-badge active">Active</span>
+                            <span class="date">Started Mar 10, 2024</span>
                         </div>
+                        <h3>Chronic Migraines</h3>
+                        
                     </div>
                 </a>
             </div>
@@ -128,7 +132,39 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/journey.css">
+    
 </head>
+
+<!-- <script>
+    // Function to check if migraine card is visible and set up the prompt
+    function setupMigrainePrompt() {
+        const migraineCard = document.querySelector('.care-card-migraines');
+        if (migraineCard && window.getComputedStyle(migraineCard).display === 'block') {
+            setTimeout(() => {
+                const sheetContent = document.querySelector('.bottom-sheet-content .sheet-content');
+                if (sheetContent) {
+                    sheetContent.innerHTML = `
+                        <h2>Care Plan Sharing Available</h2>
+                        <p>Dr. X has made sharing available. Do you give permission to import into Dialogue? We can help you further now that we have diagnosis.</p>
+                        <div class="button-group">
+                            <button class="primary-button" onclick="handleImportChoice(true)">Yes, import my care plan</button>
+                            <button class="secondary-button" onclick="handleImportChoice(false)">No thanks</button>
+                        </div>
+                    `;
+                }
+                openBottomSheet();
+            }, 5000);
+        }
+    }
+
+    // Make handleImportChoice globally available
+    window.handleImportChoice = function(accepted) {
+        closeBottomSheet();
+    };
+
+    // Call setup immediately
+    setupMigrainePrompt();
+</script> -->
 
 
 

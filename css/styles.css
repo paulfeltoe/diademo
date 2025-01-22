@@ -286,3 +286,7 @@ body.onboarding .bottom-nav {
     cursor: pointer;
     z-index: 1000;
 }
+
+.care-plan-ready {
+    display: none;
+}
