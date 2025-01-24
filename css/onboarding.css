@@ -181,7 +181,7 @@
 .onboarding{
     margin: 0!important;
     padding: 0!important;
-    height: 100vh!important;
+    height: 100dvh!important;
 }
 
 .onboarding #step1{
@@ -196,7 +196,7 @@
 }
 
 .onboarding .step {
-    height: 100vh;
+    height: 100dvh;
     overflow-y: auto;
     padding: 20px;
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
@@ -205,7 +205,7 @@
 body.onboarding-page {
     padding: 0;
     margin: 0;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }
 
@@ -231,7 +231,7 @@ body.onboarding-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 100dvh;
     background: var(--background);
 }
 

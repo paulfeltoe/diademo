@@ -73,7 +73,7 @@
     box-sizing: border-box;
     position: relative; /* Add positioning context */
     min-height: 0; /* Critical for Firefox scrolling */
-    max-height: calc(100vh - 180px);
+    max-height: calc(100dvh - 180px);
 }
 
 .step {

@@ -180,7 +180,7 @@
 .messages-container {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 200px);
+    height: calc(100dvh - 200px);
     background: #f5f7f9;
 }
 

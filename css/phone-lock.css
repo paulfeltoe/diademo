@@ -1,14 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100dvh;
     background: url('https://source.unsplash.com/random/1080x1920?nature') center/cover no-repeat;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .phone-container {
     /* max-width: 375px; */
-    height: 100vh;
+    height: 100dvh;
     margin: 0 auto;
     position: relative;
     background: rgba(0,0,0,0.3);
