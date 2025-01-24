@@ -314,7 +314,11 @@ body.onboarding .bottom-nav {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px 0;
+    padding: var(--spacing-medium);
+}
+
+.filled-state {
+    padding: var(--spacing-medium);
 }
 
 .empty-card {
@@ -409,16 +413,14 @@ body.onboarding .bottom-nav {
     background: none;
     cursor: pointer;
     z-index: 1000;
+    margin-bottom: 100px;
 }
 
 .care-plan-ready {
     display: none;
 }
 
-.page-content {
-    padding: var(--spacing-medium);
-    padding-bottom: 100px;
-}
+
 
 .page-content.journey {
     position: fixed;
@@ -431,4 +433,9 @@ body.onboarding .bottom-nav {
     padding: 0px;
     overflow-y: auto;
     animation: slideIn 0.3s ease-out;
+}
+
+.profile-info{
+    padding: var(--spacing-medium);
+    padding-bottom: 100px;
 }
