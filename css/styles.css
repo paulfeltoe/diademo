@@ -417,6 +417,7 @@ body.onboarding .bottom-nav {
 
 .page-content {
     padding: var(--spacing-medium);
+    padding-bottom: 100px;
 }
 
 .page-content.journey {
