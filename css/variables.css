@@ -17,6 +17,7 @@
     /* Utility Colors */
     --border: #e0e0e0;
     --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-slight: rgba(0, 0, 0, 0.02);
     --overlay: rgba(0, 0, 0, 0.5);
 
 

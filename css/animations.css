@@ -58,13 +58,7 @@
 }
 
 /* Navigation Transitions */
-.nav-item {
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
 
-.nav-item.active {
-    animation: scaleIn 0.3s ease forwards;
-}
 
 /* Content Transitions */
 .content {

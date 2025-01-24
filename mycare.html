@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
 <header>
     <div class="header-content">
         <div class="logo">
@@ -8,8 +12,6 @@
 </header>
 
 <div class="page-content">
-    <h1>Hello, Paul
-    </h1>
     <div id="emptyState" class="empty-state">
         <div class="empty-card progress-card">
             <h2>Complete Your Setup</h2>
@@ -40,7 +42,6 @@
                 </div>
             </div>
         </div>
-
         <div class="empty-card info-card">
             <h2>Need support from a care provider?</h2>
             <p>Personalized guidance is just a click away.</p>
@@ -127,44 +128,6 @@
         </div>
     </div>
 </div> 
-
-<head>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/journey.css">
-    
-</head>
-
-<!-- <script>
-    // Function to check if migraine card is visible and set up the prompt
-    function setupMigrainePrompt() {
-        const migraineCard = document.querySelector('.care-card-migraines');
-        if (migraineCard && window.getComputedStyle(migraineCard).display === 'block') {
-            setTimeout(() => {
-                const sheetContent = document.querySelector('.bottom-sheet-content .sheet-content');
-                if (sheetContent) {
-                    sheetContent.innerHTML = `
-                        <h2>Care Plan Sharing Available</h2>
-                        <p>Dr. X has made sharing available. Do you give permission to import into Dialogue? We can help you further now that we have diagnosis.</p>
-                        <div class="button-group">
-                            <button class="primary-button" onclick="handleImportChoice(true)">Yes, import my care plan</button>
-                            <button class="secondary-button" onclick="handleImportChoice(false)">No thanks</button>
-                        </div>
-                    `;
-                }
-                openBottomSheet();
-            }, 5000);
-        }
-    }
-
-    // Make handleImportChoice globally available
-    window.handleImportChoice = function(accepted) {
-        closeBottomSheet();
-    };
-
-    // Call setup immediately
-    setupMigrainePrompt();
-</script> -->
 
 
 

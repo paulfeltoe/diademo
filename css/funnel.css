@@ -618,10 +618,11 @@ textarea {
     gap: 8px;
 }
 
+/* Consolidate tag styles */
 .tag {
     padding: 6px 12px;
     border-radius: 16px;
-    font-size: 14px;
+    font-size: var(--font-size-medium);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -629,15 +630,15 @@ textarea {
 }
 
 .tag.extracted {
-    background: #E3F2FD;
-    color: #1976D2;
-    border: 1px solid #1976D2;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
 .tag.selected {
-    background: #E8F5E9;
-    color: #2E7D32;
-    border: 1px solid #2E7D32;
+    background: var(--background-white);
+    color: var(--text-primary);
+    border: 1px solid var(--primary);
 }
 
 .tag .remove {
@@ -650,35 +651,36 @@ textarea {
     opacity: 1;
 }
 
+/* Consolidate suggested tags styles */
 .suggested-tags-container {
-    margin-top: 16px;
+    margin-top: var(--spacing-medium);
 }
 
 .suggested-tags-container h4 {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
+    font-size: var(--font-size-medium);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-small);
 }
 
 .tags-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--spacing-small);
 }
 
 .suggested-tag {
-    background: #F5F5F5;
-    color: #666;
+    background: var(--surface);
+    color: var(--text-secondary);
     padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 14px;
+    border-radius: var(--border-radius-xxlarge);
+    font-size: var(--font-size-medium);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .suggested-tag:hover {
-    background: #E3F2FD;
-    color: #1976D2;
+    background: var(--primary-light);
+    color: var(--primary);
 }
 
 .continue-button {
@@ -1089,476 +1091,7 @@ textarea {
 
 .tag {
     padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-}
-
-.tag.extracted {
-    background: #E3F2FD;
-    color: #1976D2;
-    border: 1px solid #1976D2;
-}
-
-.tag.selected {
-    background: #E8F5E9;
-    color: #2E7D32;
-    border: 1px solid #2E7D32;
-}
-
-.tag .remove {
-    cursor: pointer;
-    opacity: 0.6;
-    font-size: 18px;
-}
-
-.tag .remove:hover {
-    opacity: 1;
-}
-
-.suggested-tags-container {
-    margin-top: 16px;
-}
-
-.suggested-tags-container h4 {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-}
-
-.tags-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.suggested-tag {
-    background: #F5F5F5;
-    color: #666;
-    padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.suggested-tag:hover {
-    background: #E3F2FD;
-    color: #1976D2;
-}
-
-.continue-button {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.2s ease;
-}
-
-.continue-button:hover {
-    background: #1976D2;
-}
-
-/* Step 5 - Appointment Selector Styles */
-.week-selector {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 0;
-    margin-bottom: 24px;
-    border-bottom: 1px solid #eee;
-}
-
-.week-nav {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    background: white;
-    color: #666;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.week-nav:hover {
-    background: #f5f5f5;
-    color: #333;
-}
-
-.days-container {
-    flex: 1;
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    padding: 4px 0;
-}
-
-.days-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-}
-
-.day-item {
-    flex: 1;
-    min-width: 80px;
-    padding: 12px 8px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: white;
-}
-
-.day-item:hover {
-    border-color: #2196F3;
-    background: #f8f9fa;
-}
-
-.day-item.active {
-    border-color: #2196F3;
-    background: #e3f2fd;
-}
-
-.day-name {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 4px;
-}
-
-.day-number {
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 4px;
-}
-
-.slots-available {
-    font-size: 12px;
-    color: #666;
-}
-
-.time-slots {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.time-slot-group h3 {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 12px;
-    font-weight: 500;
-}
-
-.slots-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 8px;
-}
-
-.time-slot {
-    padding: 12px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    background: white;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
-}
-
-.time-slot:hover {
-    border-color: #2196F3;
-    background: #f8f9fa;
-}
-
-.time-slot.selected {
-    border-color: #2196F3;
-    background: #e3f2fd;
-    color: #2196F3;
-}
-
-.time-slot:disabled {
-    background: #f5f5f5;
-    color: #999;
-    cursor: not-allowed;
-    border-color: #eee;
-}
-
-.bottom-sheet {
-    transition: transform 0.3s ease-in-out;
-}
-
-.bottom-sheet.closing {
-    transform: translateY(100%);
-}
-
-/* Confirmation Screen Styles */
-.confirmation-container {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 24px;
-}
-
-.confirmation-header {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-.success-icon {
-    margin-bottom: 8px;
-}
-
-.confirmation-header h2 {
-    font-size: 24px;
-    color: #1a1a1a;
-    margin: 0;
-}
-
-.subtitle {
-    color: #666;
-    font-size: 16px;
-    margin: 0;
-}
-
-.appointment-details {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.detail-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.detail-item .label {
-    font-size: 14px;
-    color: #666;
-}
-
-.detail-item .value {
-    font-size: 16px;
-    color: #1a1a1a;
-    font-weight: 500;
-}
-
-.action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.primary-button,
-.secondary-button,
-.text-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.primary-button {
-    background: #2196F3;
-    color: white;
-}
-
-.primary-button:hover {
-    background: #1976D2;
-}
-
-.secondary-button {
-    background: #E3F2FD;
-    color: #2196F3;
-}
-
-.secondary-button:hover {
-    background: #BBDEFB;
-}
-
-.text-button {
-    background: none;
-    color: #666;
-}
-
-.text-button:hover {
-    background: #f5f5f5;
-}
-
-.calendar-button svg,
-.waitlist-button svg,
-.cancel-button svg {
-    width: 20px;
-    height: 20px;
-}
-
-.suggested-journeys {
-    margin-top: 32px;
-}
-
-.analysis-result {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #666;
-    display: none;
-}
-
-.suggested-journeys h3 {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 16px;
-}
-
-.condition-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
-}
-
-.condition-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 16px;
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.condition-btn:hover {
-    background: #f8f9fa;
-    border-color: #2196F3;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.condition-btn.active {
-    background: #e3f2fd;
-    border-color: #2196F3;
-    color: #2196F3;
-}
-
-.condition-icon {
-    font-size: 24px;
-}
-
-.condition-text {
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-}
-
-/* Option Buttons Styles */
-.option-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.option-btn {
-    padding: 16px;
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: left;
-    font-size: 16px;
-    color: #333;
-}
-
-.option-btn:hover {
-    background: #f8f9fa;
-    border-color: #2196F3;
-}
-
-.option-btn.active {
-    background: #e3f2fd;
-    border-color: #2196F3;
-    color: #2196F3;
-}
-
-/* Checkbox Group Styles */
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 16px 0;
-}
-
-.checkbox-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.checkbox-option:hover {
-    background: #f8f9fa;
-    border-color: #2196F3;
-}
-
-.checkbox-option input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-}
-
-
-.tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.tag {
-    padding: 6px 12px;
-    border-radius: 16px;
+    border-radius: 100px;
     font-size: 14px;
     display: flex;
     align-items: center;
