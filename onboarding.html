@@ -1,4 +1,5 @@
 <div class="page-content onboarding">
+    <img class="onboarding-logo" src="assets/images/logo-orange.svg" alt="Health App Logo">
     <!-- Step 1: Begin -->
     <div class="step" id="step1">
         <!-- Carousel -->
@@ -25,15 +26,14 @@
         </div>
         
         <div class="button-container">
-            <button class="button-primary" onclick="nextStep(event)">Get Started</button>
-            <button class="button-secondary" onclick="nextStep(event)">Sign In</button>
+            <button class="primary-button" onclick="nextStep(event)">Get Started</button>
+            <button class="secondary-button" onclick="nextStep(event)">Sign In</button>
         </div>
     </div>
 
     <!-- Step 2: Sign In -->
     <div class="step" id="step2" style="display: none;">
         <div class="auth-container">
-            <h2>Welcome to Dialogue</h2>
             <button class="auth-button google" onclick="nextStep(event)">
                 <i class="fa-brands fa-google"></i>
                 Sign up with Google
@@ -59,17 +59,7 @@
     <div class="step" id="step3" style="display: none;">
         <div class="biometric-container">
             <div class="biometric-prompt">
-                <div class="faceid-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 4h6M4 9v2M4 13v2M4 17v2M20 9v2M20 13v2M20 17v2M9 20h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </div>
-                <h2>Face ID</h2>
-                <p>Look at the camera to continue</p>
-                <div class="faceid-scanner">
-                    <div class="scan-area"></div>
-                </div>
+                <img class="facetime" src="assets/images/Face_ID_logo.svg" alt="Health App Logo">
             </div>
         </div>
     </div>
@@ -77,7 +67,7 @@
     <!-- Step 4: Profile -->
     <div class="step" id="step4" style="display: none;">
         <div class="profile-container">
-            <h2>Health Profile</h2>
+            <h1>Health Profile</h1>
             <button class="import-button">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -159,7 +149,7 @@
                     <input type="text" id="groupNumber" placeholder="Enter group number">
                 </div>
 
-                <button type="submit" class="button-primary">Complete Profile</button>
+                <button type="submit" class="primary-button">Complete Profile</button>
             </form>
         </div>
     </div>

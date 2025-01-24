@@ -75,6 +75,7 @@ body {
 }
 header {
     background-color: var(--background);
+    padding: var(--spacing-medium);
 }
 nav ul {
     list-style: none;
@@ -94,10 +95,10 @@ main {
     margin: 0 auto;
 }
 
-#main-content {
+/* #main-content {
     padding:15px;
     padding-bottom: 100px;
-}
+} */
 
 footer {
     text-align: center;
@@ -128,6 +129,8 @@ h2 {
 h3 {
     /* color: var(--text-primary); */
     font-size: var(--font-size-medium);
+    font-family: 'Poynter', sans-serif;
+    font-weight: var(--font-weight-xlarge);
 }
 p{
     color: var(--text-primary);
@@ -139,7 +142,18 @@ button{
     font-size: 16px;
     cursor: pointer;
     padding: 12px;
-    border-radius: 100px;
+    border: none;
+
+    font-weight: var(--font-weight-xlarge);
+    text-transform: uppercase;
+    font-size: var(--font-size-small);
+    padding-left: var(--spacing-medium);
+    padding-right: var(--spacing-medium);
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-xxlarge);
+
+
+
 }
 
 
@@ -151,26 +165,63 @@ button{
 }
 
 .primary-button {
-    background: #4CAF50;
+    background: var(--color-primary);
     color: white;
     border: none;
+    font-weight: var(--font-weight-xlarge);
+    text-transform: uppercase;
+    /* font-size: var(--font-size-medium); */
+    padding-left: var(--spacing-medium);
+    padding-right: var(--spacing-medium);
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-xxlarge);
 }
 
 .secondary-button {
     background: white;
-    color: #4CAF50;
-    border: 1px solid #4CAF50;
-    
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    font-weight: var(--font-weight-xlarge);
+    text-transform: uppercase;
+    /* font-size: var(--font-size-medium); */
+    padding-left: var(--spacing-medium);
+    padding-right: var(--spacing-medium);
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-xxlarge);
 }
 
 
 .primary-button:hover {
-    background: #0066d6;
+    background: var(--color-primary-dark);
 }
 
 
 .secondary-button:hover {
     background: #f8f9fa;
+}
+
+.button-container {
+    position: sticky; /* Change from absolute to sticky */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: right;
+    z-index: 1; /* Ensure button stays on top */
+    flex-shrink: 0; /* Prevent container from shrinking */
+}
+
+.next-button {
+    padding: 12px 24px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background: #45a049;
 }
 
 .button-container button:disabled {
@@ -362,4 +413,21 @@ body.onboarding .bottom-nav {
 
 .care-plan-ready {
     display: none;
+}
+
+.page-content {
+    padding: var(--spacing-medium);
+}
+
+.page-content.journey {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    z-index: 1000;
+    padding: 0px;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease-out;
 }

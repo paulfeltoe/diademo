@@ -211,9 +211,9 @@ function setupOnboarding() {
                         });
                         
                         importButton.innerHTML = '✓ Imported from Sun Life';
-                        importButton.style.backgroundColor = 'var(--success-light)';
-                        importButton.style.color = 'var(--success)';
-                        importButton.style.borderColor = 'var(--success)';
+                        // importButton.style.backgroundColor = 'var(--success-light)';
+                        // importButton.style.color = 'var(--success)';
+                        // importButton.style.borderColor = 'var(--success)';
                     });
             }, 1500);
         });

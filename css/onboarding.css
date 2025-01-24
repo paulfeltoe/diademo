@@ -1,28 +1,35 @@
 .carousel {
-    min-height: 300px;
-    /* display: flex;
-    flex-direction: column; */
+    /* min-height: 300px; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-items {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 80px;
 }
 
 .carousel-item {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     opacity: 0;
     transition: opacity 0.3s ease;
     text-align: center;
+    pointer-events: none; /* Prevent interaction with hidden items */ 
 }
 
 .carousel-item.active {
     opacity: 1;
+    pointer-events: auto; /* Re-enable interaction for active item */
 }
 
-.carousel-items {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
+.carousel-item h1 {
+    margin-bottom: 5px;
+    font-size: var(--font-size-xxlarge);
 }
 
 .carousel-dots {
@@ -33,15 +40,17 @@
 }
 
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--background-secondary);
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .dot.active {
-    background: var(--primary);
+    background: var(--color-primary);
+    opacity: 1;
 }
 
 /* Auth Buttons */
@@ -50,31 +59,87 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
+    margin: auto 0;
+}
+
+.onboarding-logo {
+    width: 1000px;
+    opacity: 0.08;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -10000;
+    pointer-events: none;
+    fill: var(--color-primary-dark);
+    filter: blur(10px);
 }
 
 .auth-button {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 12px;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     margin-bottom: 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius-medium);
-    background: white;
+    border-radius: var(--border-radius-xxlarge);
     cursor: pointer;
+    /* font-size: 16px; */
+    transition: all 0.2s ease;
+    text-align: center;
+
 }
 
 .auth-button.google {
-    background: white;
+    background: #fff;
+    border: 1px solid #dadce0;
+    color: #3c4043;
+}
+
+.auth-button.google:hover {
+    background: #f8f9fa;
+    box-shadow: 0 1px 3px rgba(60,64,67,0.3);
+}
+
+.auth-button.google i {
+    color: #4285f4;
+}
+
+.auth-button.apple {
+    background: #000;
+    border: none;
+    color: #fff;
+}
+
+.auth-button.apple:hover {
+    background: #333;
+}
+
+.auth-button.apple i {
+    font-size: 20px;
 }
 
 .auth-button.email {
     background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
 }
 
-.auth-button i {
-    font-size: 20px;
+.auth-button.email:hover {
+    background: var(--background);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.auth-button.email svg {
+    color: var(--text-secondary);
+    height: 20px;
+    width: 20px;
+}
+
+.auth-button.email:hover svg {
+    color: var(--primary);
 }
 
 .divider {
@@ -132,106 +197,114 @@
     width: 100%;
     padding: 12px;
     margin: 24px 0;
-    border: 1px dashed var(--border);
+    /* border: 1px dashed var(--color-primary-dark); */
     border-radius: var(--border-radius-medium);
-    background: var(--background);
-    color: var(--text-secondary);
+    background: var(--primary);
+    color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: var(--border-radius-xxlarge);
 }
 
-.import-button:hover {
+/* .import-button:hover {
     border-color: var(--primary);
     color: var(--primary);
     background: var(--primary-light);
-}
+} */
 
 .import-button svg {
     flex-shrink: 0;
 }
 
 /* Keep submit button sticky */
-.profile-form .button-primary[type="submit"] {
+.profile-form .primary-button[type="submit"] {
     position: sticky;
     bottom: 20px;
     width: 100%;
-    margin-top: 20px;
-    background: var(--background);
-    padding: 16px;
+    /* margin-top: 20px; */
+    /* background: var(--background); */
+    /* padding: 16px; */
     z-index: 10;
 }
 
-.form-group {
-    margin-bottom: 16px;
+.onboarding .form-group {
+    margin-bottom: 6px;
 }
 
-.form-group label {
+.onboarding .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
     color: var(--text-secondary);
+    font-size: var(--font-size-medium);
+    /* font-family: 'Poynter'; */
 }
 
-.form-group input {
+.onboarding .form-group input {
     width: 100%;
     padding: 12px;
+    font-size: var(--font-size-medium);
     border: 1px solid var(--border);
     border-radius: var(--border-radius-medium);
+    margin-bottom: 6px;
 }
 
-.onboarding{
+.onboarding {
     margin: 0!important;
     padding: 0!important;
     height: 100dvh!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.onboarding #step1{
+/* .onboarding #step1{
     background-image: url('../assets/images/background.png');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
-.onboarding h1{
-    color: white;
-}
 
 .onboarding .step {
-    height: 100dvh;
     overflow-y: auto;
     padding: 20px;
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
 }
 
-
 .onboarding .button-container {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 16px;
 }
 
-.onboarding .button-container button {
+/* .onboarding .button-container button {
     width: 100%;
     padding: 16px;
     border-radius: var(--border-radius-xxlarge);
-    font-size: 16px;
-}
+    
+} */
 
 /* Biometric Authentication */
 .biometric-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100dvh;
-    background: var(--background);
+    /* min-height: 100dvh; */
+    /* background: var(--background); */
 }
 
 .biometric-prompt {
     text-align: center;
     padding: 24px;
+}
+
+.facetime-logo {
+    opacity: 0.1;
 }
 
 .fingerprint-icon {
@@ -351,8 +424,7 @@
     border: 1px solid var(--border);
     border-radius: var(--border-radius-medium);
     resize: vertical;
-    font-family: inherit;
-    font-size: inherit;
+    font-size: var(--font-size-medium);
 }
 
 .profile-form textarea:focus {
@@ -362,7 +434,7 @@
 }
 
 /* Section Spacing */
-.profile-form > div:not(:last-child) {
+/* .profile-form > div:not(:last-child) {
     margin-bottom: 24px;
-}
+} */
 

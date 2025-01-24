@@ -504,18 +504,7 @@
 
 
 /* Full Page Journey */
-.page-content.journey {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--background);
-    z-index: 1000;
-    padding: 0px;
-    overflow-y: auto;
-    animation: slideIn 0.3s ease-out;
-}
+
 
 @keyframes slideIn {
     from {
