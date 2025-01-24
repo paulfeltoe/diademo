@@ -687,6 +687,9 @@ function removeTag(text) {
     debouncedAnalyzeSymptoms(document.getElementById('symptomsInput'));
 }
 
+// Add removeTag to window object
+window.removeTag = removeTag;
+
 // Function to add a suggested tag
 function addSuggestedTag(text) {
     extractedTags.set(text, { source: 'selected' });

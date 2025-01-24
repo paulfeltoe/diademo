@@ -1,5 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('animations.css');
 @import url('bottomsheet.css');
 @import url('call-summary.css');
@@ -18,10 +18,27 @@
 
 
 
+
 @font-face {
     font-family: 'Poynter';
-    src: url('../assets/fonts/Poynter.otf') format('opentype');
+    src: url('../assets/fonts/PoynterOSDisplay-Roman.otf') format('opentype');
     font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poynter';
+    src: url('../assets/fonts/PoynterOSDisplay-Semibold.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poynter';
+    src: url('../assets/fonts/PoynterOSDisplay-Bold.otf') format('opentype');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
@@ -35,7 +52,11 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     overscroll-behavior: none;
+    -webkit-overflow-scrolling: none;
 }
 body {
     height: 100%;
@@ -70,9 +91,13 @@ nav ul li a:hover {
     color: var(--text-secondary);
 }
 main {
-    max-width: 800px;
     margin: 0 auto;
 }
+
+#main-content {
+    padding:15px;
+}
+
 footer {
     text-align: center;
     padding: 1rem;
@@ -81,24 +106,26 @@ footer {
 }
 
 
-/* MAIN PAGES */
+/* MAIN PAGES
 .my-care, .explore, .profile {
     padding: 20px;
-}
+} */
 
 /* VARIABLES */
 h1 {
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     font-size: var(--font-size-xlarge);
     font-family: 'Poynter', sans-serif;
+    line-height: var(--font-size-xlarge);
 }
 h2 {
-    color: var(--text-primary);
+    /* color: var(--text-primary); */
     font-size: var(--font-size-large);
     font-family: 'Poynter', sans-serif;
+    font-weight: var(--font-weight-xlarge);
 }
 h3 {
-    color: var(--text-primary);
+    /* color: var(--text-primary); */
     font-size: var(--font-size-medium);
 }
 p{
@@ -106,12 +133,50 @@ p{
     font-size: var(--font-size-medium);
 }
 button{
-    font-size: var(--font-size-medium);
+    transition: all 0.3s ease;
+    border-radius: 100px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 100px;
 }
 
 
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+}
+
+.primary-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.secondary-button {
+    background: white;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    
+}
 
 
+.primary-button:hover {
+    background: #0066d6;
+}
+
+
+.secondary-button:hover {
+    background: #f8f9fa;
+}
+
+.button-container button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
 
 .header-content {
@@ -229,20 +294,7 @@ body.onboarding .bottom-nav {
     display: block;
 }
 
-.primary-button {
-    background: #007AFF;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
 
-.primary-button:hover {
-    background: #0066d6;
-}
 
 .care-journey-card {
     text-decoration: none;

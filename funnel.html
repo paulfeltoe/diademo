@@ -1,20 +1,23 @@
 <div class="funnel-container">
     <!-- Progress Header -->
     <div class="progress-header">
-        <button id="backButton" class="back-button" onclick="funnelPreviousStep()" disabled>←</button>
-        <!-- <div class="progress-bar-container">
-            <div id="progressBar" class="progress-bar" style="width: 10%;">
-                <span id="progressText">Step 1 of 10</span>
-            </div>
-        </div> -->
-        <button id="closeButton" class="close-button" onclick="closeBottomSheet()">×</button>
+        <button id="backButton" class="back-button" onclick="funnelPreviousStep()" disabled>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <button id="closeButton" class="back-button" onclick="closeBottomSheet()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
     </div>
 
     <!-- Question Container -->
     <div class="question-container">
         <!-- Steps will be shown/hidden based on current step -->
         <div class="step" data-step="1">
-            <h2>What can we help you with today?</h2>
+            <h1>What can we help you with today?</h1>
             <div class="search-container">
                 <textarea 
                     id="symptomsInput"
@@ -64,7 +67,7 @@
 
 
             <div class="button-container">
-                <button onclick="funnelNextStep()" disabled>Continue</button>
+                <button class="primary-button" onclick="funnelNextStep()" disabled>Continue</button>
             </div>
 
         </div>

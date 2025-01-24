@@ -202,12 +202,6 @@
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
 }
 
-body.onboarding-page {
-    padding: 0;
-    margin: 0;
-    height: 100dvh;
-    overflow: hidden;
-}
 
 .onboarding .button-container {
     padding: 20px;
