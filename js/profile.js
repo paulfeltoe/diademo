@@ -139,24 +139,4 @@ if (mainContent) {
         subtree: true,
         characterData: true
     });
-}
-
-document.addEventListener('click', (e) => {
-    if (e.target.matches('.nav-link')) {
-        e.preventDefault();
-        const page = e.target.dataset.page;
-        
-        // Hide bottom nav for specific pages
-        const bottomNav = document.querySelector('.bottom-nav');
-        if (bottomNav) {
-            const pagesWithoutNav = ['call-summary', 'call', 'finish', 'onboarding', 'phone-lock', 'waiting-room'];
-            if (pagesWithoutNav.includes(page)) {
-                bottomNav.style.display = 'none';
-            } else {
-                bottomNav.style.display = 'flex';
-            }
-        }
-        
-        loadContent(page);
-    }
-}); 
+} 
