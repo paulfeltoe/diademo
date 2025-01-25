@@ -1,8 +1,50 @@
+/* .onboarding-page {
+    background: #EC9876;
+    position: relative;
+    min-height: 100vh;
+}
+
+.onboarding-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: luminosity;
+    z-index: 1;
+}
+
+.onboarding-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%
+    );
+    z-index: 2;
+} */
+
+/* Ensure content stays above all backgrounds */
+/* .onboarding-page > * {
+    position: relative;
+    z-index: 3;
+} */
+
 .carousel {
     /* min-height: 300px; */
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .carousel-items {
@@ -10,7 +52,8 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    height: 80px;
+    height: 130px;
+    width: 75%;
 }
 
 .carousel-item {
@@ -28,7 +71,7 @@
 }
 
 .carousel-item h1 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: var(--font-size-xxlarge);
 }
 
@@ -63,16 +106,14 @@
 }
 
 .onboarding-logo {
-    width: 800px;
-    opacity: 0.08;
+    width: 45px;
     position: fixed;
-    top: 50%;
+    top: 250px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -10000;
     pointer-events: none;
-    fill: var(--color-primary-dark);
-    filter: blur(10px);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.05));
 }
 
 .auth-button {
@@ -146,6 +187,7 @@
     display: flex;
     align-items: center;
     margin: 20px 0;
+    font-size: var(--font-size-small);
 }
 
 .divider::before,
@@ -193,6 +235,7 @@
 .import-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     width: 100%;
     padding: 12px;
@@ -204,6 +247,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: var(--border-radius-xxlarge);
+    text-align: center;
 }
 
 /* .import-button:hover {
@@ -246,6 +290,11 @@
     border: 1px solid var(--border);
     border-radius: var(--border-radius-medium);
     margin-bottom: 6px;
+    background: var(--background);
+}
+
+.onboarding .form-group input::placeholder {
+    opacity: 0.5;
 }
 
 .onboarding {
@@ -294,8 +343,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* min-height: 100dvh; */
-    /* background: var(--background); */
+    animation: breathe 2s ease-in-out infinite;
 }
 
 .biometric-prompt {
@@ -303,100 +351,15 @@
     padding: 24px;
 }
 
-.facetime-logo {
-    opacity: 0.1;
-}
-
-.fingerprint-icon {
-    color: var(--primary);
-    margin-bottom: 24px;
-}
-
-.fingerprint-sensor {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    margin: 40px auto;
-}
-
-.sensor-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-.sensor-circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: var(--primary);
-    border-radius: 50%;
-    opacity: 0.1;
-}
-
-@keyframes scan {
-    0% { transform: translateY(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(100%); opacity: 0; }
-}
-
-.sensor-circle::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--primary);
-    animation: scan 2s infinite;
-}
-
-/* Face ID Styles */
-.faceid-icon {
-    color: var(--primary);
-    margin-bottom: 24px;
-}
-
-.faceid-scanner {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 40px auto;
-    border: 2px solid var(--primary);
-    border-radius: 20px;
-}
-
-.scan-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--primary);
-    opacity: 0.6;
-    animation: faceidscan 2s ease-in-out infinite;
-}
-
-@keyframes faceidscan {
+@keyframes breathe {
     0% {
-        top: 0;
-        opacity: 0.6;
+        transform: scale(0.97);
     }
     50% {
-        top: calc(100% - 4px);
-        opacity: 1;
+        transform: scale(1.03);
     }
     100% {
-        top: 0;
-        opacity: 0.6;
+        transform: scale(0.97);
     }
 }
 

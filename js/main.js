@@ -384,9 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('click', (e) => {
-    if (e.target.matches('.onboarding-link')) {
-        e.preventDefault();
-        loadContent('onboarding');
-    }
-});
+// document.addEventListener('click', (e) => {
+//     if (e.target.matches('.onboarding-link')) {
+//         e.preventDefault();
+//         loadContent('onboarding');
+//     }
+// });

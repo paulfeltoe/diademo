@@ -43,24 +43,51 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/Inter.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/Inter.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/Inter.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* DEFAULT STYLES */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: none;
+    letter-spacing: -0.2px;
 }
 body {
     height: 100%;
-    
     margin: 0;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -119,38 +146,40 @@ h1 {
     font-size: var(--font-size-xlarge);
     font-family: 'Poynter', sans-serif;
     line-height: var(--font-size-xlarge);
+    color: var(--text-primary);
 }
 h2 {
     /* color: var(--text-primary); */
     font-size: var(--font-size-large);
     font-family: 'Poynter', sans-serif;
     font-weight: var(--font-weight-xlarge);
+    color: var(--text-primary);
 }
 h3 {
     /* color: var(--text-primary); */
     font-size: var(--font-size-medium);
     font-family: 'Poynter', sans-serif;
     font-weight: var(--font-weight-xlarge);
+    color: var(--text-primary);
 }
 p{
     color: var(--text-primary);
     font-size: var(--font-size-medium);
+    
 }
 button{
     transition: all 0.3s ease;
-    border-radius: 100px;
+    border-radius: var(--border-radius-xxlarge);
     font-size: 16px;
     cursor: pointer;
     padding: 12px;
     border: none;
 
-    font-weight: var(--font-weight-xlarge);
-    text-transform: uppercase;
-    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-large);
+    font-size: var(--font-size-medium);
     padding-left: var(--spacing-medium);
     padding-right: var(--spacing-medium);
-    letter-spacing: 1px;
-    border-radius: var(--border-radius-xxlarge);
+    border-radius: var(--border-radius-medium);
 
 
 
@@ -168,26 +197,12 @@ button{
     background: var(--color-primary);
     color: white;
     border: none;
-    font-weight: var(--font-weight-xlarge);
-    text-transform: uppercase;
-    /* font-size: var(--font-size-medium); */
-    padding-left: var(--spacing-medium);
-    padding-right: var(--spacing-medium);
-    letter-spacing: 1px;
-    border-radius: var(--border-radius-xxlarge);
 }
 
 .secondary-button {
     background: white;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
-    font-weight: var(--font-weight-xlarge);
-    text-transform: uppercase;
-    /* font-size: var(--font-size-medium); */
-    padding-left: var(--spacing-medium);
-    padding-right: var(--spacing-medium);
-    letter-spacing: 1px;
-    border-radius: var(--border-radius-xxlarge);
 }
 
 
@@ -252,7 +267,6 @@ button{
     padding-right: var(--spacing-medium);
     height: 40px;
     font-weight: var(--font-weight-xlarge);
-    letter-spacing: 1px;
 }
 
 .logo {
