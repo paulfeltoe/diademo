@@ -804,16 +804,7 @@ function getCurrentActiveConditions() {
     return existingConditions;
 }
 
-// Update the cancel button in funnel.html
-function handleFunnelCancel() {
-    // console.log('Cancelling funnel with selected condition:', selectedCondition);
-    const activeConditions = getCurrentActiveConditions();
-    // console.log('Active conditions after update:', activeConditions);
-    navigateToMyCare({
-        showFilledState: true,
-        activeConditions: activeConditions
-    });
-}
+
 
 // Function to format date as "Mon 25"
 function formatDayDisplay(date) {
@@ -1211,7 +1202,6 @@ window.initializeFunnel = initializeFunnel;
 window.togglePill = togglePill;
 window.toggleEdit = toggleEdit;
 window.selectTimeSlot = selectTimeSlot;
-window.handleFunnelCancel = handleFunnelCancel;
 window.initializeWaitingRoom = initializeWaitingRoom;
 window.handleCalendarClick = handleCalendarClick;
 // Add these new functions to the window object
@@ -1221,18 +1211,32 @@ window.handleTimeSlotSelection = handleTimeSlotSelection;
 window.handleOutreferralComplete = handleOutreferralComplete;
 
 function handleCalendarClick() {
-    // First update the conditions like handleFunnelCancel does
-    const activeConditions = getCurrentActiveConditions();
+    console.log('Handling calendar click');
     
-    // Store the updated conditions
-    sessionStorage.setItem('shownConditions', JSON.stringify(activeConditions));
+    // Get current active conditions from localStorage
+    const activeConditions = JSON.parse(localStorage.getItem('activeConditions') || '[]');
+    console.log('Current active conditions:', activeConditions);
     
-    // Save state and selected condition to localStorage (same as handleFunnelComplete)
+    // Add selected condition if not present
+    if (selectedCondition && !activeConditions.includes(selectedCondition)) {
+        activeConditions.push(selectedCondition);
+        console.log(`Added "${selectedCondition}" to active conditions`);
+    } else if (selectedCondition) {
+        console.log(`"${selectedCondition}" was already an active condition`);
+    } else {
+        console.warn('No condition was selected when handling calendar click');
+    }
+    
+    // Store the updated conditions in localStorage
+    localStorage.setItem('activeConditions', JSON.stringify(activeConditions));
+    console.log('Updated active conditions:', activeConditions);
+    
+    // Save additional state
     localStorage.setItem('hasCarePlan', 'true');
     localStorage.setItem('selectedCondition', selectedCondition);
     
-    // Then proceed to phone-lock.html
-    window.location.href = 'phone-lock.html';
+    // Redirect to phone-lock.html
+    window.location.href = 'phone-lock.html?type=funnel';
 }
 
 function handleOutreferralNext() {
@@ -1284,28 +1288,33 @@ function handleTimeSlotSelection(timeSlot) {
 function handleOutreferralComplete() {
     // Set the condition to migraines
     selectedCondition = 'migraines';
+    console.log(`Setting selected condition to: "${selectedCondition}"`);
     
-    // Get current active conditions and add migraines if not present
-    const activeConditions = getCurrentActiveConditions();
+    // Get current active conditions from localStorage
+    const activeConditions = JSON.parse(localStorage.getItem('activeConditions') || '[]');
+    console.log('Current active conditions:', activeConditions);
+    
+    // Add migraines if not present
     if (!activeConditions.includes(selectedCondition)) {
         activeConditions.push(selectedCondition);
+        console.log(`Added "${selectedCondition}" to active conditions`);
+    } else {
+        console.log(`"${selectedCondition}" was already an active condition`);
     }
     
-    // Store the updated conditions
-    sessionStorage.setItem('shownConditions', JSON.stringify(activeConditions));
+    // Store the updated conditions in localStorage
+    localStorage.setItem('activeConditions', JSON.stringify(activeConditions));
+    console.log('Updated active conditions:', activeConditions);
     
-    // Save state and selected condition to localStorage
+    // Save additional state
     localStorage.setItem('hasCarePlan', 'true');
     localStorage.setItem('selectedCondition', selectedCondition);
     
     // Close the bottom sheet
     closeBottomSheet();
     
-    // Wait for bottom sheet animation to complete, then redirect
-    navigateToMyCare({
-        showFilledState: true,
-        activeConditions: activeConditions
-    });
+    // Redirect to index.html
+    window.location.href = 'index.html';
 }
 
 // Make showStep available globally

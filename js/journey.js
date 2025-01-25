@@ -376,19 +376,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add this function at the end of the file
-function handleReturnButtonClick() {
-    console.log('Return button clicked');
+// Update the back button handler with logging
+// function handleBackButton(e) {
+//     e.preventDefault();
+//     console.log('Back button clicked');
     
-    // Store sinusitis as the journey type to show
-    localStorage.setItem('lastJourneyType', 'sinusitis');
+//     // Store sinusitis as the journey type to show
+//     localStorage.setItem('lastJourneyType', 'sinusitis');
     
-    // Navigate to index.html
-    window.location.href = 'index.html';
-}
+//     // Navigate to index.html
+//     window.location.href = 'index.html';
+// }
 
-// Export the function for use in other files
-window.handleReturnButtonClick = handleReturnButtonClick;
+// // Add event listener for back buttons
+// document.addEventListener('DOMContentLoaded', () => {
+//     const backButtons = document.querySelectorAll('.back-button');
+//     console.log('Found back buttons:', backButtons.length);
+    
+//     backButtons.forEach(button => {
+//         button.addEventListener('click', handleBackButton);
+//     });
+// });
+
+
 
 // Add these new functions
 function markJourneyAsComplete(journeyType) {
