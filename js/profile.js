@@ -123,6 +123,22 @@ function initializeProfile(mutations) {
     }
 }
 
+function clearCache() {
+    if ('caches' in window) {
+        // Clear all caches
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    return caches.delete(cacheName);
+                })
+            );
+        }).then(function() {
+            // Reload the page after clearing cache
+            window.location.reload(true);
+        });
+    }
+}
+
 // Listen for both DOM content loaded and navigation events
 document.addEventListener('DOMContentLoaded', () => {
     initializeProfile();
