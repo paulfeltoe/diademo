@@ -65,7 +65,14 @@
     overscroll-behavior: none;
     -webkit-overflow-scrolling: none;
     letter-spacing: -0.2px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
 }
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     height: 100%;
     margin: 0;
