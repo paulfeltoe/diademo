@@ -123,7 +123,7 @@ function initializeProfile(mutations) {
     }
 }
 
-function clearCache() {
+window.clearCache = function clearCache() {
     if ('caches' in window) {
         // Clear all caches
         caches.keys().then(function(cacheNames) {
