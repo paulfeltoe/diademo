@@ -2,18 +2,30 @@ body {
     margin: 0;
     padding: 0;
     height: 100dvh;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
 .phone-container {
-    /* max-width: 375px; */
     height: 100dvh;
     margin: 0 auto;
     position: relative;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
     overflow: hidden;
-    background: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1080&h=1920&fit=crop') center/cover no-repeat;
+}
+
+.phone-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1610943021017-c25fb1806840?q=80&w=1080&h=1920&fit=crop') center/cover no-repeat;
+    filter: blur(5px) brightness(0.8);
+    transform: scale(1.1); /* Prevent blur edges from showing */
+    z-index: -1;
 }
 
 .status-bar {
@@ -29,8 +41,7 @@ body {
     line-height: 40px;
     color: white;
     text-align: center;
-    /* margin-top: 100px; */
-    font-size: var(--font-size-medium);
+    margin-top: 150px;
 }
 
 .date {

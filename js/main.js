@@ -7,10 +7,19 @@ async function loadContent(page) {
     }
 
     try {
-        // console.log(`Loading content for page: ${page}`);
+        // Fade out current content
+        mainContent.style.opacity = '0';
+        await new Promise(resolve => setTimeout(resolve, 150)); // Wait for fade out
+
+        // Load new content
         const response = await fetch(`${page}.html`);
         const content = await response.text();
         mainContent.innerHTML = content;
+
+        // Fade in new content
+        setTimeout(() => {
+            mainContent.style.opacity = '1';
+        }, 50);
         
         if (page === 'explore') {
         } else if (page === 'funnel') {
@@ -358,38 +367,43 @@ function updateNavIcons() {
     navItems.forEach(item => {
         const icon = item.querySelector('i');
         if (icon) {
-            if (item.classList.contains('active')) {
-                // For heart icon
-                if (icon.classList.contains('fa-heart')) {
-                    icon.classList.remove('fa-regular', 'fa-heart');
-                    icon.classList.add('fa-solid', 'fa-heart');
+            // Add transition class before changing icons
+            icon.classList.add('icon-transition');
+            
+            // Set a tiny timeout to ensure the transition class is applied before changes
+            setTimeout(() => {
+                if (item.classList.contains('active')) {
+                    // For heart icon
+                    if (icon.classList.contains('fa-heart')) {
+                        icon.classList.remove('fa-regular', 'fa-heart');
+                        icon.classList.add('fa-solid', 'fa-heart');
+                    }
+                    // For user icon
+                    if (icon.classList.contains('fa-circle-user')) {
+                        icon.classList.remove('fa-regular', 'fa-circle-user');
+                        icon.classList.add('fa-solid', 'fa-circle-user');
+                    }
+                    if (icon.classList.contains('fa-bookmark')) {
+                        icon.classList.remove('fa-regular', 'fa-bookmark');
+                        icon.classList.add('fa-solid', 'fa-bookmark');
+                    }
+                } else {
+                    // For heart icon
+                    if (icon.classList.contains('fa-heart')) {
+                        icon.classList.remove('fa-solid', 'fa-heart');
+                        icon.classList.add('fa-regular', 'fa-heart');
+                    }
+                    // For user icon
+                    if (icon.classList.contains('fa-circle-user')) {
+                        icon.classList.remove('fa-solid', 'fa-circle-user');
+                        icon.classList.add('fa-regular', 'fa-circle-user');
+                    }
+                    if (icon.classList.contains('fa-bookmark')) {
+                        icon.classList.remove('fa-solid', 'fa-bookmark');
+                        icon.classList.add('fa-regular', 'fa-bookmark');
+                    }
                 }
-                // For user icon
-                if (icon.classList.contains('fa-circle-user')) {
-                    icon.classList.remove('fa-regular', 'fa-circle-user');
-                    icon.classList.add('fa-solid', 'fa-circle-user');
-                }
-
-                if (icon.classList.contains('fa-bookmark')) {
-                    icon.classList.remove('fa-regular', 'fa-bookmark');
-                    icon.classList.add('fa-solid', 'fa-bookmark');
-                }
-            } else {
-                // For heart icon
-                if (icon.classList.contains('fa-heart')) {
-                    icon.classList.remove('fa-solid', 'fa-heart');
-                    icon.classList.add('fa-regular', 'fa-heart');
-                }
-                // For user icon
-                if (icon.classList.contains('fa-circle-user')) {
-                    icon.classList.remove('fa-solid', 'fa-circle-user');
-                    icon.classList.add('fa-regular', 'fa-circle-user');
-                }
-                if (icon.classList.contains('fa-bookmark')) {
-                    icon.classList.remove('fa-solid', 'fa-bookmark');
-                    icon.classList.add('fa-regular', 'fa-bookmark');
-                }
-            }
+            }, 10);
         }
     });
 }

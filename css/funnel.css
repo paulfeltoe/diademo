@@ -55,17 +55,17 @@
 .question-container {
     flex: 1;
     overflow-y: auto;
-    padding: 5px;
+    /* padding: 5px; */
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     box-sizing: border-box;
     position: relative; /* Add positioning context */
     min-height: 0; /* Critical for Firefox scrolling */
-    max-height: calc(100dvh - 180px);
 }
 
 .step {
     transition: opacity 0.3s ease;
+    
 }
 
 .step h1 {
@@ -442,7 +442,8 @@ textarea {
 }
 
 .info-section {
-    margin-bottom: 32px;
+    margin-top: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
 }
 
 .info-section h3 {
@@ -472,22 +473,33 @@ textarea {
 
 .info-grid {
     display: grid;
-    gap: 16px;
+    gap: 8px;
 }
 
 .info-item {
     background: white;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 16px;
+    padding: var(--spacing-medium);
+    border: 1px solid var(--text-superlight);
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    color: var(--primary);
+    box-shadow: var(--box-shadow-small-slight);
+    padding-bottom: 6px;
+
+
 }
 
 .info-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
+    font-size: var(--font-size-small);
+    height: 15px;
 }
+
 
 .label {
     font-weight: 500;
@@ -499,15 +511,16 @@ textarea {
     border: none;
     color: #2196F3;
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--font-size-small);
 }
 
 .edit-button:hover {
     text-decoration: underline;
 }
 
-.info-content .value {
+.info-content {
     color: #666;
+    font-size: var(--font-size-medium);
 }
 
 .edit-input {
@@ -642,6 +655,7 @@ textarea {
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
+    padding: 10px
 }
 
 .week-nav:hover {
@@ -779,7 +793,7 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 0px;
 }
 
 .success-icon {
@@ -795,7 +809,6 @@ textarea {
 
 
 .appointment-details {
-    background: #f8f9fa;
     border-radius: 12px;
     padding: 24px;
     display: flex;
@@ -807,15 +820,16 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    
 }
 
 .detail-item .label {
-    font-size: 14px;
+    font-size: var(--font-size-small);
     color: #666;
 }
 
 .detail-item .value {
-    font-size: 16px;
+    font-size: var(--font-size-medium);
     color: #1a1a1a;
     font-weight: 500;
 }
