@@ -34,7 +34,7 @@
                 
                 <!-- Container for suggested related symptoms -->
                 <div id="suggestedTags" class="suggested-tags-container">
-                    <h4>Are you experiencing any of these additional symptoms?</h4>
+                    <p>Are you experiencing any of these additional symptoms?</p>
                     <div class="tags-wrapper">
                         <!-- Suggested tags will be dynamically inserted here -->
                     </div>
@@ -74,11 +74,10 @@
 
         <!-- New follow-up questions -->
         <div class="step" data-step="2" style="display: none;">
-            <h2>Let's get some more details about your symptoms</h2>
-            <p class="subtitle">This helps us better understand your situation</p>
+            <h1>How long have you been experiencing these symptoms?</h1>
+            <p>This helps us better understand your situation</p>
             
             <div class="question-group">
-                <h3>How long have you been experiencing these symptoms?</h3>
                 <div class="option-buttons">
                     <button class="option-btn" onclick="funnelNextStep()">Less than a week</button>
                     <button class="option-btn" onclick="funnelNextStep()">1-2 weeks</button>
@@ -89,8 +88,8 @@
         </div>
 
         <div class="step" data-step="3" style="display: none;">
-            <h2>What color is your nasal discharge?</h2>
-            <p class="subtitle">This can help indicate the type of infection</p>
+            <h1>What color is your nasal discharge?</h1>
+            <p>This can help indicate the type of issue</p>
             
             <div class="option-buttons">
                 <button class="option-btn" onclick="funnelNextStep()">Clear</button>
@@ -101,75 +100,39 @@
         </div>
 
         <div class="step" data-step="4" style="display: none;">
-            <h2>How would you describe the intensity of your symptoms?</h2>
-            <p class="subtitle">This helps us understand the severity of your condition</p>
-            
-            <div class="checkbox-group">
-                <label class="checkbox-option">
-                    <input type="checkbox" name="severity" value="mild">
-                    Mild - Noticeable but not interfering with daily activities
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="severity" value="moderate">
-                    Moderate - Somewhat limiting daily activities
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="severity" value="severe">
-                    Severe - Significantly impacting daily activities
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="severity" value="variable">
-                    Variable - Symptoms come and go or change in intensity
-                </label>
+            <h1>How would you describe the intensity of your symptoms?</h1>
+            <p>This helps us understand the severity of your condition</p>
+            <div class="question-group"></div>
+                <div class="option-buttons">
+                    <button class="option-btn" onclick="funnelNextStep()">Mild - Noticeable but not interfering with daily activities</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Moderate - Somewhat limiting daily activities</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Severe - Significantly impacting daily activities</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Variable - Symptoms come and go or change in intensity</button>
+                </div>
             </div>
 
-            <div class="button-container">
+            <!-- <div class="button-container">
                 <button onclick="funnelNextStep()">Continue</button>
-            </div>
+            </div> -->
         </div>
 
         <!-- Step 6 becomes step 5 -->
         <div class="step" data-step="5" style="display: none;">
-            <!-- <h2>Your Personalized Recommendation</h2>
-            <p class="subtitle">Based on what you've shared, here's what we believe is the best next step for you.</p>
-             -->
-            <div class="recommendation-card">
-                <div class="recommendation-content">
-                    <h3>We recommend a Video Consultation</h3>
-                    <p class="timing">Recommended within 24 hours to address your sinus symptoms.</p>
+            <h1>We recommend a Video Consultation</h1>
+            <p>Recommended within 24 hours to address your sinus symptoms.</p>
                     
-                    <div class="why-section">
-                        <h4>Why?</h4>
-                        <p>Based on the symptoms you've described, it's important to have them evaluated soon. Upper respiratory symptoms can impact your daily life and may worsen without proper care. A video consultation will allow our specialists to properly assess your symptoms, understand their severity, and recommend appropriate next steps for relief.</p>
-                    </div>
-                    
-                    <div class="action-buttons">
-                        <button class="book-now" onclick="funnelNextStep()">BOOK NOW</button>
-                    </div>
-                </div>
+            <div class="why-section">
+                <h3>Why?</h3>
+                <p>Based on the symptoms you've described, it's important to have them evaluated soon. Upper respiratory symptoms can impact your daily life and may worsen without proper care. A video consultation will allow our specialists to properly assess your symptoms, understand their severity, and recommend appropriate next steps for relief.</p>
             </div>
-
-            <!-- <div class="alternative-options">
-                <h4>Other options you might consider:</h4>
-                <ul>
-                    <li>
-                        <a href="#" class="option-link">
-                            <span class="option-icon">📚</span>
-                            Learn more about common sinus issues
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="option-link">
-                            <span class="option-icon">✨</span>
-                            Natural remedies for sinus relief
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
+            
+            <div class="action-buttons">
+                <button onclick="funnelNextStep()">Book Consultation Now</button>
+            </div>
         </div>
 
         <div class="step" data-step="6" style="display: none;">
-            <h2>Choose an Appointment Time</h2>
+            <h1>Choose an Appointment Time</h1>
             
             <div class="week-selector">
                 <button class="week-nav prev" aria-label="Previous week">
@@ -195,8 +158,8 @@
         </div>
 
         <div class="step" data-step="7" style="display: none;">
-            <h2>Let's Review Your Information</h2>
-            <p class="edit-notice">Editing this information will also update your profile</p>
+            <h1>Let's Review Your Information</h1>
+            <p>Editing this information will also update your profile</p>
 
             <div class="info-section required">
                 <h3>About You <span class="required-tag">Required</span></h3>

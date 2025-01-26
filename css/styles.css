@@ -238,7 +238,7 @@ button{
 .add-button {
     float: right;
     background-image: var(--background-tertiary);
-    color: var(--text-primary);
+    color: #4c2609;
     border: none;
     border-radius: 20px;
     font-size: var(--font-size-medium);
@@ -246,7 +246,11 @@ button{
     padding-left: var(--spacing-medium);
     padding-right: var(--spacing-medium);
     height: 40px;
-    font-weight: var(--font-weight-xlarge);
+    font-weight: var(--font-weight-large);
+    gap: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {

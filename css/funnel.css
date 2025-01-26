@@ -22,21 +22,7 @@
     justify-content: space-between;
 }
 
-.progress-bar-container {
-    flex: 0 1 auto; /* Take up remaining space */
-    min-width: 0; /* Allow container to shrink below content size */
-    height: 20px;
-    overflow: hidden;
-    width: 100%;
-}
 
-.progress-bar {
-    height: 10px;
-    border-radius: 2px;
-    overflow: hidden;
-    transition: width 0.3s ease;
-    height: 100%;
-}
 
 .back-button,
 .close-button {
@@ -83,7 +69,7 @@
 }
 
 .step h1 {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding-top: 20px;
 }
 
@@ -125,7 +111,7 @@ textarea {
     margin-bottom: 24px;
 }
 
-.primary-button {
+/* .primary-button {
     background: #4CAF50;
     color: white;
     border: none;
@@ -138,7 +124,7 @@ textarea {
 
 .primary-button:hover {
     background: #45a049;
-}
+} */
 
 /* Care Cards Styles */
 .care-section {
@@ -201,7 +187,7 @@ textarea {
     margin-bottom: 16px;
 }
 
-.progress-bar {
+/* .progress-bar {
     background: #4CAF50;
     height: 100%;
     border-radius: 8px;
@@ -210,7 +196,7 @@ textarea {
 
 .progress-bar.completed {
     background: #9e9e9e;
-}
+} */
 
 .care-card-footer {
     color: #666;
@@ -265,11 +251,7 @@ textarea {
     border-color: #4CAF50;
 }
 
-.subtitle {
-    color: #666;
-    margin-bottom: 24px;
-    line-height: 1.5;
-}
+
 
 .summary-box {
     background: #f8f9fa;
@@ -546,23 +528,36 @@ textarea {
 .tag {
     padding: 6px 12px;
     border-radius: 16px;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
     display: flex;
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
+    box-shadow: var(--box-shadow-small-slight);
 }
 
 .tag.extracted {
-    background: var(--primary-light);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-light);
     border: 1px solid var(--primary);
 }
 
 .tag.selected {
-    background: var(--background-white);
-    color: var(--text-primary);
-    border: 1px solid var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--text-superlight);
+}
+
+.suggested-tags-container .tag.extracted {
+
+    background: white;
+    border: 1px solid var(--text-superlight);
+    border-radius: var(--border-radius-xxlarge);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    color: var(--primary);
+    box-shadow: var(--box-shadow-small-slight);
 }
 
 .tag .remove {
@@ -581,8 +576,8 @@ textarea {
     margin-top: var(--spacing-medium);
 }
 
-.suggested-tags-container h4 {
-    font-size: var(--font-size-medium);
+.suggested-tags-container p {
+    font-size: var(--font-size-small);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-small);
 }
@@ -671,7 +666,7 @@ textarea {
 .day-item {
     flex: 1;
     min-width: 80px;
-    padding: 12px 8px;
+    padding: 8px 8px;
     border: 1px solid #eee;
     border-radius: 8px;
     display: flex;
@@ -695,14 +690,16 @@ textarea {
 .day-name {
     font-size: 14px;
     color: #666;
-    margin-bottom: 4px;
+    /* margin-bottom: 4px; */
+    line-height: 20px;
 }
 
 .day-number {
     font-size: 20px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 4px;
+    line-height: 20px;
+    /* margin-bottom: 4px; */
 }
 
 .slots-available {
@@ -716,12 +713,12 @@ textarea {
     gap: 24px;
 }
 
-.time-slot-group h3 {
+/* .time-slot-group h3 {
     color: #666;
     font-size: 14px;
     margin-bottom: 12px;
     font-weight: 500;
-}
+} */
 
 .slots-grid {
     display: grid;
@@ -731,14 +728,16 @@ textarea {
 
 .time-slot {
     padding: 12px;
-    border: 1px solid #eee;
-    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
     background: white;
-    color: #333;
-    font-size: 14px;
+    border: 1px solid var(--text-superlight);
+    border-radius: var(--border-radius-xxlarge);
     cursor: pointer;
     transition: all 0.2s ease;
-    text-align: center;
+    color: var(--primary);
+    box-shadow: var(--box-shadow-small-slight);
+    font-size: var(--font-size-medium);
 }
 
 .time-slot:hover {
@@ -793,11 +792,7 @@ textarea {
     margin: 0;
 }
 
-.subtitle {
-    color: #666;
-    font-size: 16px;
-    margin: 0;
-}
+
 
 .appointment-details {
     background: #f8f9fa;
@@ -948,20 +943,20 @@ textarea {
 .option-buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 6px;
+    margin-top: var(--spacing-large);
 }
 
 .option-btn {
-    padding: 16px;
     background: white;
-    border: 1px solid #eee;
-    border-radius: 8px;
+    border: 1px solid var(--text-superlight);
+    border-radius: var(--border-radius-xxlarge);
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: left;
-    font-size: 16px;
-    color: #333;
+    color: var(--primary);
+    box-shadow: var(--box-shadow-small-slight);
+    font-size: var(--font-size-medium);
 }
 
 .option-btn:hover {
@@ -1013,7 +1008,7 @@ textarea {
     margin-top: 12px;
 }
 
-.tag {
+/* .tag {
     padding: 6px 12px;
     border-radius: 100px;
     font-size: 14px;
@@ -1021,9 +1016,9 @@ textarea {
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
-}
+} */
 
-.tag.extracted {
+/* .tag.extracted {
     background: #E3F2FD;
     color: #1976D2;
     border: 1px solid #1976D2;
@@ -1033,7 +1028,7 @@ textarea {
     background: #E8F5E9;
     color: #2E7D32;
     border: 1px solid #2E7D32;
-}
+} */
 
 .tag .remove {
     cursor: pointer;

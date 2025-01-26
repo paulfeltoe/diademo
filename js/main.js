@@ -22,11 +22,14 @@ async function loadContent(page) {
         } else if (page === 'journey') {
             setupJourneyNavigation();
         } else if (page === 'profile') {
-            // Load the profile script as a module
-            const script = document.createElement('script');
-            script.type = 'module';
-            script.src = 'js/profile.js';
-            document.body.appendChild(script);
+            // Check if script is already loaded
+            if (!document.querySelector('script[src="js/profile.js"]')) {
+                // Load the profile script as a module only if it hasn't been loaded
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.src = 'js/profile.js';
+                document.body.appendChild(script);
+            }
             
             // Debug logging
             // console.log('Looking for fullscreen button...');
@@ -348,6 +351,61 @@ function handleReturnButtonClick() {
     // Instead of trying to load content, redirect to index.html
     window.location.href = 'index.html';
 }
+
+function updateNavIcons() {
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    navItems.forEach(item => {
+        const icon = item.querySelector('i');
+        if (icon) {
+            if (item.classList.contains('active')) {
+                // For heart icon
+                if (icon.classList.contains('fa-heart')) {
+                    icon.classList.remove('fa-regular', 'fa-heart');
+                    icon.classList.add('fa-solid', 'fa-heart');
+                }
+                // For user icon
+                if (icon.classList.contains('fa-circle-user')) {
+                    icon.classList.remove('fa-regular', 'fa-circle-user');
+                    icon.classList.add('fa-solid', 'fa-circle-user');
+                }
+
+                if (icon.classList.contains('fa-bookmark')) {
+                    icon.classList.remove('fa-regular', 'fa-bookmark');
+                    icon.classList.add('fa-solid', 'fa-bookmark');
+                }
+            } else {
+                // For heart icon
+                if (icon.classList.contains('fa-heart')) {
+                    icon.classList.remove('fa-solid', 'fa-heart');
+                    icon.classList.add('fa-regular', 'fa-heart');
+                }
+                // For user icon
+                if (icon.classList.contains('fa-circle-user')) {
+                    icon.classList.remove('fa-solid', 'fa-circle-user');
+                    icon.classList.add('fa-regular', 'fa-circle-user');
+                }
+                if (icon.classList.contains('fa-bookmark')) {
+                    icon.classList.remove('fa-solid', 'fa-bookmark');
+                    icon.classList.add('fa-regular', 'fa-bookmark');
+                }
+            }
+        }
+    });
+}
+
+// Call when page loads
+document.addEventListener('DOMContentLoaded', updateNavIcons);
+
+// Call when navigation changes
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-item')) {
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+        e.target.closest('.nav-item').classList.add('active');
+        updateNavIcons();
+    }
+});
 
 
 // 6. Page Initialization

@@ -1029,7 +1029,7 @@ function generateTimeSlots(selectedDate) {
     if (morningSlots) {
         html += `
             <div class="time-slot-group">
-                <h3>Morning</h3>
+                <h2>Morning</h2>
                 <div class="slots-grid">
                     ${morningSlots}
                 </div>
@@ -1053,7 +1053,7 @@ function generateTimeSlots(selectedDate) {
     if (afternoonSlots) {
         html += `
             <div class="time-slot-group">
-                <h3>Afternoon</h3>
+                <h2>Afternoon</h2>
                 <div class="slots-grid">
                     ${afternoonSlots}
                 </div>
@@ -1077,7 +1077,7 @@ function generateTimeSlots(selectedDate) {
     if (eveningSlots) {
         html += `
             <div class="time-slot-group">
-                <h3>Evening</h3>
+                <h2>Evening</h2>
                 <div class="slots-grid">
                     ${eveningSlots}
                 </div>

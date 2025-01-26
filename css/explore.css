@@ -56,7 +56,7 @@
     padding: 5px 10px;
     border-radius: 15px;
     font-size: var(--font-size-medium);
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 .filter-pills {
     margin: 20px 0;

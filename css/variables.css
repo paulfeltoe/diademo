@@ -2,17 +2,18 @@
     /* Primary Colors */
     --primary: #333333;
     --primary-dark: #1b1b1b;
-    --primary-light: #e6f0ff;
+    --primary-light: #ffffff;
 
     /* Neutral Colors */
     --background: #ffffff;
     --background-white: white;
     --background-secondary: #c5c5c5;
-    --background-tertiary: linear-gradient(90deg, #EC9876 0.38%, #C4E6F1 100.38%);      
+    --background-tertiary: linear-gradient(90deg, #EC9876 0%, #C4E6F1 100%);      
     --surface: #f4f4f4;
     --text-primary: #333333;
     --text-secondary: #666666;
     --text-tertiary: #999999;
+    --text-superlight: #e7e7e7;
 
     /* Utility Colors */
     --border: #e0e0e0;
@@ -42,7 +43,10 @@
     /* Box Shadow */
     --box-shadow-small: 0 2px 4px var(--shadow);
     --box-shadow-medium: 0 4px 8px var(--shadow);
-    --box-shadow-large: 0 8px 16px var(--shadow);   
+    --box-shadow-large: 0 8px 16px var(--shadow);
+    --box-shadow-small-slight: 0 2px 4px var(--shadow-slight);
+    --box-shadow-medium-slight: 0 4px 8px var(--shadow-slight);
+    --box-shadow-large-slight: 0 8px 16px var(--shadow-slight); 
 
     /* Font Weight */
     --font-weight-small: 300;
