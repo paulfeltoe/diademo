@@ -105,6 +105,15 @@ div::-webkit-scrollbar {
     height: 0 !important;
 }
 
+html, body, .phone-container {
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    position: relative;
+}
+
 body {
     height: 100%;
     margin: 0;

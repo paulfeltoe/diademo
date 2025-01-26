@@ -39,7 +39,7 @@ body {
     line-height: 40px;
     color: white;
     text-align: center;
-    margin-top: 150px;
+    
 }
 
 .date {
@@ -47,6 +47,7 @@ body {
     text-align: center;
     font-size: 20px;
     margin-top: 8px;
+    margin-top: 150px;
 }
 
 .notification {
