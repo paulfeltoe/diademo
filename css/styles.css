@@ -132,6 +132,11 @@ body {
 header {
     background-color: var(--background);
     padding: var(--spacing-medium);
+    position: fixed; /* Change to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
 }
 nav ul {
     list-style: none;
@@ -284,6 +289,11 @@ button{
 
 }
 
+.header-spacer {
+    height: 100px; /* Adjust this value to match your header height */
+    display: block;
+}
+
 
 .add-button {
     float: right;
@@ -388,7 +398,7 @@ body.onboarding .bottom-nav {
 }
 
 .empty-card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
