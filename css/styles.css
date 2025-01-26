@@ -118,6 +118,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
     line-height: 1.6;
     background-color: var(--background);
+    overscroll-behavior: none;
 }
 header {
     background-color: var(--background);
@@ -139,6 +140,7 @@ nav ul li a:hover {
 }
 main {
     margin: 0 auto;
+    overflow-y: auto;
 }
 
 /* #main-content {
@@ -475,7 +477,9 @@ body.onboarding .bottom-nav {
     display: none;
 }
 
-
+.page-content{
+    overflow-y: auto
+}
 
 .page-content.journey {
     position: fixed;
