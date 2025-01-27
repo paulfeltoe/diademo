@@ -51,12 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close tab content when clicking outside
     document.addEventListener('click', (event) => {
-        const isTabButton = event.target.closest('.tab-button');
+        // First check if we clicked a tab button
+        const clickedTabButton = event.target.closest('.tab-button');
+        if (clickedTabButton) {
+            return; // Exit early if we clicked a tab button
+        }
+
         const isTabContent = event.target.closest('.tab-content');
         
         // Only close if we're clicking outside both the button and content
-        // AND we have an active tab AND this isn't the initial click that opened the tab
-        if (!isTabButton && !isTabContent && activeTab && !event.target.matches('.tab-button')) {
+        if (!isTabContent && activeTab) {
             const activeButton = document.querySelector(`.tab-button[data-tab="${activeTab}"]`);
             const activeContent = document.getElementById(`${activeTab}Content`);
             
@@ -100,14 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Single implementation for end call functionality
-    const endCallButton = document.querySelector('.end-call');
-    
     function handleEndCall() {
         window.location.href = 'call-summary.html';
     }
-
-    // Single event listener attachment for end call
-    endCallButton.addEventListener('click', handleEndCall);
 
     // File preview functionality
     const fileItems = document.querySelectorAll('.file-item');
@@ -332,9 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
         selfVideoContainer.style.display = isVideoEnabled ? 'block' : 'none';
     });
 
-    // Remove onclick attribute from HTML
-    endCallButton.removeAttribute('onclick');
-
     // Add screen sharing functionality
     const shareScreenButton = document.querySelector('[data-tooltip="Share Screen"]');
     let screenStream = null;
@@ -428,10 +424,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
         console.warn('Upload button not found with class .button-upload-file');
-    }
-
-    // Check if endCallButton exists before trying to use it
-    if (endCallButton) {
-        endCallButton.removeAttribute('onclick');
     }
 }); 

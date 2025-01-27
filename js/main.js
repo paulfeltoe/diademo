@@ -424,17 +424,16 @@ document.addEventListener('click', (e) => {
 
 // 6. Page Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // console.log('DOMContentLoaded event fired');
-    
-    // Load initial content
-    loadContent('mycare');  // Always start with mycare
+    // Don't auto-load mycare if we're on call-summary page
+    if (!window.location.pathname.includes('call-summary.html')) {
+        loadContent('mycare');  // Only load mycare on other pages
+    }
     
     // Setup navigation
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const page = item.dataset.page;
-            // console.log('Navigation clicked:', page);
             
             // Update active state
             document.querySelectorAll('.nav-item').forEach(navItem => {

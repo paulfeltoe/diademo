@@ -93,29 +93,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // Test button handlers with success state
     const testButtons = document.querySelectorAll('.test-button');
     testButtons.forEach(button => {
-        let isSuccess = false; // Track success state
+        let isSuccess = false;
 
-        button.addEventListener('click', () => {
-            if (isSuccess) return; // Don't run test if already successful
+        button.addEventListener('click', async () => {
+            if (isSuccess) return;
 
-            const originalText = button.textContent;
-            button.textContent = 'Testing...';
-            button.disabled = true;
+            const buttonText = button.textContent;
             
-            setTimeout(() => {
-                isSuccess = true;
-                button.textContent = 'Test Complete ✓';
-                button.classList.add('success');
-                button.disabled = false;
+            // Handle different test types
+            if (buttonText === 'Test Camera') {
+                button.textContent = 'Testing Camera...';
+                button.disabled = true;
 
-                // Update button style for success state
-                button.innerHTML = `
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 0C3.6 0 0 3.6 0 8C0 12.4 3.6 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0ZM7 11.4L3.6 8L5 6.6L7 8.6L11 4.6L12.4 6L7 11.4Z" fill="currentColor"/>
-                    </svg>
-                    Test Successful
-                `;
-            }, 2000);
+                try {
+                    // Request camera permission
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        video: {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 }
+                        }
+                    });
+                    
+                    // Stop the stream immediately after getting permission
+                    stream.getTracks().forEach(track => track.stop());
+                    
+                    // Update button to success state
+                    isSuccess = true;
+                    button.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 0C3.6 0 0 3.6 0 8C0 12.4 3.6 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0ZM7 11.4L3.6 8L5 6.6L7 8.6L11 4.6L12.4 6L7 11.4Z" fill="currentColor"/>
+                        </svg>
+                        Camera Ready
+                    `;
+                    button.classList.add('success');
+                    button.disabled = false;
+
+                } catch (err) {
+                    console.error('Camera test failed:', err);
+                    button.textContent = 'Camera Access Denied';
+                    button.classList.add('error');
+                    setTimeout(() => {
+                        button.textContent = 'Test Camera';
+                        button.classList.remove('error');
+                        button.disabled = false;
+                    }, 2000);
+                }
+            } else {
+                // Original test button behavior for other buttons
+                button.textContent = 'Testing...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    isSuccess = true;
+                    button.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 0C3.6 0 0 3.6 0 8C0 12.4 3.6 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0ZM7 11.4L3.6 8L5 6.6L7 8.6L11 4.6L12.4 6L7 11.4Z" fill="currentColor"/>
+                        </svg>
+                        Test Successful
+                    `;
+                    button.classList.add('success');
+                    button.disabled = false;
+                }, 2000);
+            }
         });
     });
 

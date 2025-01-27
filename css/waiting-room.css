@@ -89,7 +89,7 @@
 }
 
 .waiting-room-section {
-    height: 100dvh;
+    height: 100%;
     padding: 100px var(--spacing-xlarge) ;
 }
 
@@ -406,6 +406,7 @@ textarea {
     background: var(--color-primary);
     color: white;
     padding: 24px;
+    padding-top: 100px;
     display: flex;
     text-align: center;
     align-items: center;

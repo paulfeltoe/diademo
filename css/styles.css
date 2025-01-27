@@ -565,3 +565,17 @@ body.onboarding .bottom-nav {
 .icon-transition.fa-regular {
     transform: scale(1);
 }
+
+.care-plan-ready-message{
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.care-plan-ready-message .button-group{
+    width: 100%;
+    margin-top: 20px;
+}

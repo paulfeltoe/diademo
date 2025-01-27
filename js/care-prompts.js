@@ -29,12 +29,14 @@ function setupMigrainePrompt() {
                     const sheetContent = document.querySelector('.bottom-sheet-content .sheet-content');
                     if (sheetContent) {
                         sheetContent.innerHTML = `
-                            <h2>Care Plan Sharing Available</h2>
+                        <div class="care-plan-ready-message">
+                            <h1>Care Plan Sharing Available</h1>
                             <p>Dr. X has made sharing available. Do you give permission to import into Dialogue? We can help you further now that we have diagnosis.</p>
                             <div class="button-group">
                                 <button class="primary-button" onclick="handleImportChoice(true)">Yes, import my care plan</button>
                                 <button class="secondary-button" onclick="handleImportChoice(false)">No thanks</button>
                             </div>
+                        </div>
                         `;
                         // console.log('Bottom sheet content updated');
                     }

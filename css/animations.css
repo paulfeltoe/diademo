@@ -188,14 +188,6 @@
     transition: all 0.3s ease;
 }
 
-.tab-button:hover {
-    transform: translateY(-2px);
-}
-
-.tab-button.active {
-    transform: scale(1.05);
-}
-
 /* Input Fields */
 .input-field {
     transition: all 0.3s ease;

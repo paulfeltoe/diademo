@@ -1,13 +1,7 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100dvh;
 
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
-}
 
 .phone-container {
-    height: 100dvh;
+    height: 100%;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -61,6 +55,7 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     margin-top: 20px;
+    color: white;
     
 }
 

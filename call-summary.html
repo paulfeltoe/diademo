@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
-    <title>Call Summary</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+        <title>Call Summary</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
-    <div class="summary-container">
-        <h1>Call Summary</h1>
-        
-        <section class="summary-section">
-            <h2>Call Details</h2>
-            <p class="timestamp">March 25, 2024 - 2:30 PM (30 minutes)</p>
-            <p class="provider">Dr. Sarah Tremblay - Family Medicine</p>
-        </section>
 
-        <section class="summary-section">
-            <h2>Discussion Summary</h2>
-            <p>Consultation regarding chronic sinusitis symptoms. Discussed nasal congestion, facial pressure, and discharge. Treatment plan includes antibiotics and nasal steroids. Follow-up scheduled in 2 weeks.</p>
-        </section>
+    <main id="main-content">
+        <div class="page-content">
 
-        <section class="summary-section care-plan-alert">
-            <h2>Care Plan</h2>
-            <div class="alert-message">
+            <div class="summary-container">
+                <h1>Call Summary</h1>
                 
-                <div class="summary-typing-dots">
-                    <span>&bull;</span>
-                    <span>&bull;</span>
-                    <span>&bull;</span>
-                </div>
-                <p>Your care provider is currently writing your care plan. It should be ready in 3-5 minutes. We'll alert you when it's ready.</p>
-            </div>
-        </section>
+                <section class="summary-section">
+                    <h2>Call Details</h2>
+                    <p class="timestamp">March 25, 2024 - 2:30 PM (30 minutes)</p>
+                    <p class="provider">Dr. Sarah Tremblay - Family Medicine</p>
+                </section>
 
-        <button class="primary-button" onclick="handleReturnButtonClick()">
-            Continue
-        </button>
-    </div>
+                <section class="summary-section">
+                    <h2>Discussion Summary</h2>
+                    <p>Consultation regarding chronic sinusitis symptoms. Discussed nasal congestion, facial pressure, and discharge. Treatment plan includes antibiotics and nasal steroids. Follow-up scheduled in 2 weeks.</p>
+                </section>
+
+                <section class="summary-section care-plan-alert">
+                    <h2>Care Plan</h2>
+                    <div class="alert-message">
+                        
+                        <div class="summary-typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>Your care provider is currently writing your care plan. It should be ready in 3-5 minutes. We'll alert you when it's ready.</p>
+                    </div>
+                </section>
+
+                <button class="primary-button" onclick="handleReturnButtonClick()">
+                    Continue
+                </button>
+            </div>
+
+        </div>
+    </main>
     <script src="js/journey.js"></script>
     <script src="js/main.js"></script>
 </body>
