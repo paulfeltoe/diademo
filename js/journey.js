@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                         <div class="message-content">
-                            I'm sorry to hear you're feeling worse. Given your symptoms are not improving, I recommend scheduling a follow-up appointment with Dr. Roberts to reassess your treatment plan.
+                            I'm sorry to hear you're feeling worse. Given your symptoms are not improving, I recommend scheduling a follow-up appointment with Dr. Tremblay to reassess your treatment plan.
                             <div class="message-actions">
                                 <button onclick="window.location.href='appointments.html'" class="action-button">
                                     <i class="fas fa-calendar-plus"></i>

@@ -579,3 +579,13 @@ body.onboarding .bottom-nav {
     width: 100%;
     margin-top: 20px;
 }
+
+.littlerobot {
+    height: 100px;
+    width: auto;
+    opacity: 0.1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
