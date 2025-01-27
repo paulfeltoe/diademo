@@ -126,7 +126,7 @@ body {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     line-height: 1.6;
-    background-color: var(--background);
+    background: var(--background);
     overscroll-behavior: none;
 }
 header {
@@ -154,7 +154,7 @@ nav ul li a:hover {
 }
 main {
     margin: 0 auto;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 
@@ -219,6 +219,8 @@ ul{
 }
 ul, li{
     color: var(--text-primary);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
 }
 
 
@@ -530,8 +532,8 @@ body.onboarding .bottom-nav {
 }
 
 .page-content{
-    overflow-y: auto;
-    height: 100dvh;
+    /* overflow-y: auto; */
+    height: 100%;
 }
 
 /* .page-content.journey {

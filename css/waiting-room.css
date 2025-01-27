@@ -406,7 +406,7 @@ textarea {
     background: var(--color-primary);
     color: white;
     padding: 24px;
-    padding-top: 100px;
+    padding-top: 50px;
     display: flex;
     text-align: center;
     align-items: center;

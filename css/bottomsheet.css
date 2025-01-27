@@ -60,7 +60,7 @@
 }
 .sheet-content {
     /* padding-top: 20px; */
-    overflow-y: auto;
+    /* overflow-y: auto; */
     height: 100%;
 }
 .sheet-image {

@@ -1,5 +1,12 @@
 // 1. Core Page Loading
 async function loadContent(page) {
+    // Don't load content if we're on specific pages
+    if (window.location.pathname.includes('journey.html') || 
+        window.location.pathname.includes('call.html') ||
+        window.location.pathname.includes('call-summary.html')) {
+        return;
+    }
+
     const mainContent = document.getElementById('main-content');
     if (!mainContent) {
         console.error('Main content element not found');
@@ -424,9 +431,10 @@ document.addEventListener('click', (e) => {
 
 // 6. Page Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Don't auto-load mycare if we're on call-summary page
-    if (!window.location.pathname.includes('call-summary.html')) {
-        loadContent('mycare');  // Only load mycare on other pages
+    // Only load mycare content if we're on the index page
+    if (window.location.pathname === '/' || 
+        window.location.pathname.includes('index.html')) {
+        loadContent('mycare');
     }
     
     // Setup navigation

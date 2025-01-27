@@ -1,3 +1,7 @@
+#prescriptionSheet .action-buttons{
+    padding-bottom: 24px;
+}
+
 .prescription-widget {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
@@ -90,6 +94,8 @@
 
 .bottom-sheet.active {
     bottom: 0;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .sheet-header {
@@ -102,6 +108,7 @@
 .sheet-header h2 {
     margin: 0;
     font-size: 20px;
+    padding: 16px;
 }
 
 .close-sheet {
@@ -189,7 +196,7 @@
 }
 
 .pharmacy-map {
-    height: 200px;
+    height: 100px;
     border-radius: 8px;
     margin-top: 16px;
     background: #e0e0e0;
@@ -302,3 +309,7 @@
     opacity: 1;
     visibility: visible;
 } 
+
+.status-section, .pharmacy-section, .delivery-section, .action-buttons{
+    padding: 0 24px;
+}

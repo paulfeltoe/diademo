@@ -1,11 +1,15 @@
 /* Journey Header */
 .journey-header {
-    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 12px;
     background: white;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
     gap: 16px;
+    padding-top: 50px;
 }
 
 .journey-header h1 {
@@ -22,7 +26,7 @@
     text-decoration: none;
     color: var(--text-secondary);
     font-size: 0.9rem;
-    padding: 6px 8px;
+    padding: 0px;
     border-radius: 6px;
     transition: all 0.2s ease;
 }
@@ -68,12 +72,15 @@
 
 /* Journey Navigation */
 .journey-nav {
-    padding: 4px 16px;
+    position: sticky;
+    top: 104px; /* Height of header (74px) + some padding */
+    z-index: 99;
     background: white;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     gap: 16px;
     overflow-x: auto;
+    padding: 4px 16px;
 }
 
 .journey-nav-item {
@@ -515,15 +522,13 @@
 }
 
 .condition-summary {
-    background: #f8f9fa;
-    border-radius: 8px;
+
     padding: 20px;
     margin-bottom: 30px;
 }
 
 .condition-summary h2 {
     margin-bottom: 15px;
-    color: #2c3e50;
 }
 
 .summary-content p {
@@ -531,9 +536,7 @@
     line-height: 1.5;
 }
 
-.summary-content strong {
-    color: #34495e;
-}
+
 
 .quick-actions {
     margin-top: 24px;
@@ -550,7 +553,7 @@
 .quick-actions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    gap: 8px;
 }
 
 .quick-action-card {
@@ -558,11 +561,13 @@
     align-items: center;
     gap: 12px;
     padding: 16px;
-    background-color: var(--background-secondary);
-    border-radius: var(--border-radius-medium);
     text-decoration: none;
     color: var(--text-primary);
     transition: all 0.2s ease;
+    border-radius: var(--border-radius-xxlarge);
+    background: var(--background);
+    border: 1px solid var(--border);
+    box-shadow: var(--box-shadow-small-slight);
 }
 
 .quick-action-card:hover {
@@ -571,8 +576,8 @@
 }
 
 .quick-action-card i {
-    font-size: 20px;
-    color: var(--primary-color);
+    font-size: 16px;
+    color: var(--color-primary);
 }
 
 .quick-action-card span {
@@ -624,7 +629,7 @@
 }
 
 .step-content li {
-    margin-bottom: 10px;
+
     padding-left: 20px;
     position: relative;
 }

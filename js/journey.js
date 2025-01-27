@@ -9,27 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hide all journeys first
     document.querySelectorAll('.page-content.journey').forEach(journey => {
-        journey.classList.remove('active');
+        journey.style.display = 'none';
     });
 
     // Show the selected journey
     const selectedJourney = document.getElementById(`${journeyType}-journey`);
     if (selectedJourney) {
-        selectedJourney.classList.add('active');
-        
-        // Add complete button to overview section
-        const overviewSection = selectedJourney.querySelector('#overview');
-        
-        if (overviewSection && !overviewSection.querySelector('.complete-journey-button')) {
-            const completeButton = document.createElement('button');
-            completeButton.className = 'complete-journey-button button-secondary';
-            completeButton.innerHTML = '<i class="fas fa-check"></i> Mark as Completed';
-            completeButton.onclick = () => {
-                // console.log('Complete button clicked');
-                markJourneyAsComplete(journeyType);
-            };
-            overviewSection.appendChild(completeButton);
-        }
+        selectedJourney.style.display = 'block';
     }
 
     // Try more specific selectors
@@ -317,6 +303,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000); // Add a small delay to make it feel more natural
         });
     });
+
+    // Bottom sheet functionality
+    const bottomSheet = document.getElementById('prescriptionSheet');
+    const closeButton = document.getElementById('closePrescriptionSheet');
+    
+    if (bottomSheet && closeButton) {
+        // Close button handler
+        closeButton.addEventListener('click', () => {
+            bottomSheet.classList.remove('active');
+        });
+
+        // Action button handlers
+        const notifyButton = bottomSheet.querySelector('.primary-button');
+        const callButton = bottomSheet.querySelector('.secondary-button');
+
+        if (notifyButton) {
+            notifyButton.addEventListener('click', async () => {
+                try {
+                    const permission = await Notification.requestPermission();
+                    if (permission === 'granted') {
+                        alert('Notifications enabled! We\'ll keep you updated on your prescription status.');
+                    }
+                } catch (error) {
+                    console.error('Error enabling notifications:', error);
+                }
+            });
+        }
+
+        if (callButton) {
+            callButton.addEventListener('click', () => {
+                window.location.href = 'tel:5145550123';
+            });
+        }
+    }
 });
 
 function resolveEpisode() {

@@ -9,1527 +9,1449 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    
-    <div class="journey-container">
-        <!-- Sinusitis Journey -->
-        <div class="page-content journey" id="sinusitis-journey">
-    
-            <div class="journey-header">
-                <a href="#" class="back-button" onclick="handleReturnButtonClick()">
-                    <i class="fas fa-chevron-left"></i>
-                    Back
-                </a>
-                <h1>Sinusitis</h1>
-                <div class="journey-status">
-                    <!-- <span class="status-indicator active">Open</span> -->
-                    <span class="status-date">Active since March 15, 2024</span>
-                </div>
-            </div>
-        
-            <!-- Journey Navigation -->
-            <nav class="journey-nav">
-                <a href="#overview" class="journey-nav-item active">
-                    <i class="fas fa-clock"></i>
-                    Summary
-                </a>
-                <a href="#care-plan" class="journey-nav-item">
-                    <i class="fas fa-clipboard-list"></i>
-                    Care Plan
-                </a>
-                <a href="#messages" class="journey-nav-item">
-                    <i class="fas fa-comments"></i>
-                    Chat
-                </a>
-                <a href="#care-team" class="journey-nav-item">
-                    <i class="fas fa-user-md"></i>
-                    Team
-                </a>
-                <a href="#documents" class="journey-nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Links
-                </a>
-               
-            </nav>
-        
-            <!-- Overview Section -->
-            <section id="overview" class="journey-section active">
-                <div class="condition-summary">
-                    <h2>Condition Summary</h2>
-                    <div class="summary-content">
-                        <p><strong>Initial Complaint:</strong> Severe nasal congestion, facial pressure, and headache for past week.</p>
-                        <p><strong>Key Findings:</strong> Acute bacterial sinusitis with moderate inflammation of maxillary and frontal sinuses.</p>
-                        <p><strong>Current Status:</strong> Responding to antibiotics, symptoms improving gradually.</p>
-                        <p><strong>Treatment Plan:</strong> 10-day course of antibiotics, nasal steroids, and supportive care.</p>
+    <main id="main-content">
+        <div class="page-content">
+            <div class="journey-container">
+                <div class="page-content journey" id="sinusitis-journey">
+            
+                    <div class="journey-header">
+                        <a href="#" class="back-button" onclick="handleReturnButtonClick()">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <h1>Sinusitis</h1>
                     </div>
+                
+                    <!-- Journey Navigation -->
+                    <nav class="journey-nav">
+                        <a href="#overview" class="journey-nav-item active">
+                            <i class="fas fa-clock"></i>
+                            Overview
+                        </a>
+                        <a href="#care-plan" class="journey-nav-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Care Plan
+                        </a>
+                        <a href="#messages" class="journey-nav-item">
+                            <i class="fas fa-comments"></i>
+                            Chat
+                        </a>
+                        <a href="#care-team" class="journey-nav-item">
+                            <i class="fas fa-user-md"></i>
+                            Team
+                        </a>
+                        <a href="#documents" class="journey-nav-item">
+                            <i class="fas fa-file-alt"></i>
+                            Links
+                        </a>
                     
-                    <div id="habit-tracker-container"></div>
-                    
-                    
-                    
-                    <div class="quick-actions">
-                        <h3>Quick Actions</h3>
-                        <div class="quick-actions-grid">
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-book-medical"></i>
-                                <span>Read About Sinusitis</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-calendar-plus"></i>
-                                <span>Book Follow-up</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-spray-can"></i>
-                                <span>Nasal Spray Guide</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-notes-medical"></i>
-                                <span>Track Symptoms</span>
-                            </a>
+                    </nav>
+                
+                    <!-- Overview Section -->
+                    <section id="overview" class="journey-section active">
+                        <div class="condition-summary">
+                            <h2>Condition Summary</h2>
+                            <div class="summary-content">
+                                <p>Initial Complaint: Severe nasal congestion, facial pressure, and headache for past week.</p>
+                                <p>Key Findings: Acute bacterial sinusitis with moderate inflammation of maxillary and frontal sinuses.</p>
+                                <p>Current Status: Responding to antibiotics, symptoms improving gradually.</p>
+                                <p>Treatment Plan: 10-day course of antibiotics, nasal steroids, and supportive care.</p>
+                            </div>
+                            
+                            <!-- <div id="habit-tracker-container"></div> -->
+                            
+                            
+                            
+                            <div class="quick-actions">
+                                <h3>Quick Actions</h3>
+                                <div class="quick-actions-grid">
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-book-medical"></i>
+                                        <span>Read About Sinusitis</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-calendar-plus"></i>
+                                        <span>Book Follow-up</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-spray-can"></i>
+                                        <span>Nasal Spray Guide</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-notes-medical"></i>
+                                        <span>Track Symptoms</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="timeline">
-                    <h2>Journey Timeline</h2>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 15, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Journey Started</h3>
-                                <p>Initial assessment completed with Dr. Roberts</p>
+                        <!-- <div class="timeline">
+                            <h2>Journey Timeline</h2>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 15, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Journey Started</h3>
+                                        <p>Initial assessment completed with Dr. Roberts</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 18, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Treatment Initiated</h3>
+                                        <p>Started on antibiotics and nasal steroids</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 22, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Progress Check</h3>
+                                        <p>Virtual follow-up - symptoms improving, continue current treatment</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 18, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Treatment Initiated</h3>
-                                <p>Started on antibiotics and nasal steroids</p>
+                        </div> -->
+                    </section>
+                
+                    <!-- Care Plan Section -->
+                    <section id="care-plan" class="journey-section">
+                        <div class="care-plan-container">
+                            <h2>Your Treatment Plan</h2>
+                            
+                            <div class="care-plan-steps">
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Prescribed Medications</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Amoxicillin-Clavulanate:</strong> 875/125mg tablet twice daily for 10 days</li>
+                                            <li><strong>Fluticasone Nasal Spray:</strong> 2 sprays in each nostril once daily</li>
+                                            <li><strong>Saline Nasal Spray:</strong> As needed for congestion</li>
+                                            <li><strong>Important:</strong> Complete entire course of antibiotics even if symptoms improve</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Symptom Management</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Pain Relief:</strong> Acetaminophen or ibuprofen as needed for pain/fever</li>
+                                            <li><strong>Nasal Irrigation:</strong> Use saline rinse 2-3 times daily</li>
+                                            <li><strong>Steam Inhalation:</strong> 10-15 minutes, 3-4 times daily</li>
+                                            <li><strong>Hydration:</strong> Drink 8-10 glasses of water daily</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Home Care Instructions</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Sleep Position:</strong> Elevate head with extra pillows</li>
+                                            <li><strong>Air Quality:</strong> Use a humidifier at night, clean regularly</li>
+                                            <li><strong>Environment:</strong> Avoid smoke, strong fragrances, and known allergens</li>
+                                            <li><strong>Rest:</strong> Get adequate sleep and avoid strenuous activities</li>
+                                            <li><strong>Temperature:</strong> Apply warm compress to face for 5-10 minutes, 3-4 times daily</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Follow-up Plan</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Virtual Check-in:</strong> Scheduled for 5 days from initial visit</li>
+                                            <li><strong>Monitoring:</strong> Track temperature and symptoms daily</li>
+                                            <li><strong>Duration:</strong> Expect improvement within 3-5 days of treatment</li>
+                                            <li><strong>Recovery:</strong> Full resolution typically within 10-14 days</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 22, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Progress Check</h3>
-                                <p>Virtual follow-up - symptoms improving, continue current treatment</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Care Plan Section -->
-            <section id="care-plan" class="journey-section">
-                <div class="care-plan-container">
-                    <h2>Your Treatment Plan</h2>
-                    
-                    <div class="care-plan-steps">
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">1</span>
-                                <h3>Medication Schedule</h3>
-                            </div>
-                            <div class="step-content">
+
+                            <div class="care-plan-warning">
+                                <h3>When to Seek Immediate Care</h3>
                                 <ul>
-                                    <li><strong>Antibiotics:</strong> Take 1 tablet twice daily for 10 days</li>
-                                    <li><strong>Nasal Steroid Spray:</strong> 2 sprays in each nostril every morning</li>
-                                    <li><strong>Important:</strong> Complete entire course of antibiotics even if feeling better</li>
+                                    <li>Severe headache or facial pain that worsens</li>
+                                    <li>Fever above 102°F (39°C) that persists</li>
+                                    <li>Vision changes, eye swelling, or severe redness</li>
+                                    <li>Symptoms worsen after initial improvement</li>
+                                    <li>Neck stiffness or severe confusion</li>
+                                    <li>Difficulty breathing or shortness of breath</li>
                                 </ul>
                             </div>
                         </div>
+                    </section>
+                
+                    <!-- Messages Section -->
+                    <section id="messages" class="journey-section">
+                        <div class="messages-container">
+                            <div class="messages-list">
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Michael Roberts</h3>
+                                            <span class="message-time">March 15, 9:30 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Based on your symptoms and examination, you have acute bacterial sinusitis. I'm prescribing a 10-day course of antibiotics and nasal steroids. It's important to complete the full course of antibiotics even if you start feeling better.</div>
+                                </div>
 
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">2</span>
-                                <h3>Daily Care Routine</h3>
+                                <div class="message outgoing">
+                                    <div class="message-header">
+                                        <div class="message-info">
+                                            <h3>You</h3>
+                                            <span class="message-time">March 15, 10:15 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Thank you, Dr. Roberts. Should I continue using the saline rinse as well?</div>
+                                </div>
+
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Michael Roberts</h3>
+                                            <span class="message-time">March 15, 10:30 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Yes, absolutely! The saline rinse will help clear your sinuses and improve the effectiveness of the nasal steroids. Use it 2-3 times daily, especially before the steroid spray.</div>
+                                </div>
+
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Nurse Wilson</h3>
+                                            <span class="message-time">March 22, 2:00 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">
+                                        <p>How are you feeling after a week of treatment? Have your symptoms improved?</p>
+                                        <div class="response-options">
+                                            <button class="response-option" data-response="better">
+                                                <i class="fas fa-smile"></i>
+                                                Much better
+                                            </button>
+                                            <button class="response-option" data-response="same">
+                                                <i class="fas fa-meh"></i>
+                                                About the same
+                                            </button>
+                                            <button class="response-option" data-response="worse">
+                                                <i class="fas fa-frown"></i>
+                                                Getting worse
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li><strong>Morning:</strong> Use nasal spray, perform saline rinse</li>
-                                    <li><strong>Throughout Day:</strong> Stay hydrated, avoid known allergens</li>
-                                    <li><strong>Evening:</strong> Another saline rinse if needed</li>
-                                </ul>
+
+                            <div class="message-input-container">
+                                <form class="message-form" onsubmit="return false;">
+                                    <textarea class="message-input" placeholder="Type your message..."></textarea>
+                                    <button type="button" class="send-button">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">3</span>
-                                <h3>Environmental Management</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Use a humidifier in bedroom</li>
-                                    <li>Elevate head while sleeping</li>
-                                    <li>Avoid temperature extremes</li>
-                                    <li>Keep living spaces dust-free</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">4</span>
-                                <h3>Monitoring Progress</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Track symptoms daily using the symptom tracker</li>
-                                    <li>Note any changes in nasal discharge color</li>
-                                    <li>Monitor for fever or worsening pain</li>
-                                    <li>Schedule follow-up in 2 weeks</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="care-plan-warning">
-                        <h3>When to Seek Immediate Care</h3>
-                        <ul>
-                            <li>Severe headache or facial pain</li>
-                            <li>High fever (over 102°F/39°C)</li>
-                            <li>Vision changes or eye swelling</li>
-                            <li>Symptoms worsen after initial improvement</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Messages Section -->
-            <section id="messages" class="journey-section">
-                <div class="messages-container">
-                    <div class="messages-list">
-                        <div class="message">
-                            <div class="message-header">
+                    </section>
+                
+                    <!-- Care Team Section -->
+                    <section id="care-team" class="journey-section">
+                        <div class="care-team-container">
+                            <div class="team-member">
                                 <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Roberts</h3>
-                                    <span class="message-time">March 15, 9:30 AM</span>
+                                <div class="team-member-info">
+                                    <h3>Dr. Michael Roberts</h3>
+                                    <p class="role">Primary Care Physician</p>
+                                    <p class="specialty">Family Medicine</p>
+                                    <button class="button-secondary">Message</button>
                                 </div>
                             </div>
-                            <div class="message-content">Based on your symptoms and examination, you have acute bacterial sinusitis. I'm prescribing a 10-day course of antibiotics and nasal steroids. It's important to complete the full course of antibiotics even if you start feeling better.</div>
-                        </div>
-
-                        <div class="message outgoing">
-                            <div class="message-header">
-                                <div class="message-info">
-                                    <h3>You</h3>
-                                    <span class="message-time">March 15, 10:15 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Thank you, Dr. Roberts. Should I continue using the saline rinse as well?</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Roberts</h3>
-                                    <span class="message-time">March 15, 10:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Yes, absolutely! The saline rinse will help clear your sinuses and improve the effectiveness of the nasal steroids. Use it 2-3 times daily, especially before the steroid spray.</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
+                            
+                            <div class="team-member">
                                 <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
-                                <div class="message-info">
-                                    <h3>Nurse Wilson</h3>
-                                    <span class="message-time">March 22, 2:00 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">
-                                <p>How are you feeling after a week of treatment? Have your symptoms improved?</p>
-                                <div class="response-options">
-                                    <button class="response-option" data-response="better">
-                                        <i class="fas fa-smile"></i>
-                                        Much better
-                                    </button>
-                                    <button class="response-option" data-response="same">
-                                        <i class="fas fa-meh"></i>
-                                        About the same
-                                    </button>
-                                    <button class="response-option" data-response="worse">
-                                        <i class="fas fa-frown"></i>
-                                        Getting worse
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message-input-container">
-                        <form class="message-form" onsubmit="return false;">
-                            <textarea class="message-input" placeholder="Type your message..."></textarea>
-                            <button type="button" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Care Team Section -->
-            <section id="care-team" class="journey-section">
-                <div class="care-team-container">
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Roberts" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Michael Roberts</h3>
-                            <p class="role">Primary Care Physician</p>
-                            <p class="specialty">Family Medicine</p>
-                            <button class="button-secondary">Message</button>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Sarah Wilson, RN</h3>
-                            <p class="role">Registered Nurse</p>
-                            <p class="specialty">Patient Care Coordinator</p>
-                            <div class="team-member-actions">
-                                <button class="button-secondary">Message</button>
-                                <button class="button-primary">Schedule Check-in</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Chen" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Lisa Chen</h3>
-                            <p class="role">ENT Specialist</p>
-                            <p class="specialty">Available for referral if needed</p>
-                            <button class="button-secondary">Request Consultation</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Documents Section -->
-            <section id="documents" class="journey-section">
-                <div class="documents-container">
-                    <div class="document-card">
-                        <div class="document-icon">📄</div>
-                        <div class="document-info">
-                            <h3>Initial Diagnosis Report</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">💊</div>
-                        <div class="document-info">
-                            <h3>Medication Guide</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Guide</p>
-                        </div>
-                        <button class="button-secondary">Open</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">👃</div>
-                        <div class="document-info">
-                            <h3>Nasal Spray Instructions</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">Video Tutorial</p>
-                        </div>
-                        <button class="button-secondary">Watch</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">🧴️</div>
-                        <div class="document-info">
-                            <h3>Symptom Tracking Log</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">Interactive Form</p>
-                        </div>
-                        <button class="button-secondary">Update</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">🏠</div>
-                        <div class="document-info">
-                            <h3>Home Care Guidelines</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Anxiety Journey -->
-        <div class="page-content journey" id="anxiety-journey">
-            <div class="journey-header">
-                <a href="#" class="back-button" onclick="handleReturnButtonClick()">
-                    <i class="fas fa-chevron-left"></i>
-                    Back
-                </a>
-                <h1>Work-Related Anxiety</h1>
-                <div class="journey-status">
-                    <span class="status-indicator active">Open</span>
-                    <span class="status-date">Active since March 1, 2024</span>
-                </div>
-            </div>
-
-            <nav class="journey-nav">
-                <a href="#overview" class="journey-nav-item active">
-                    <i class="fas fa-clock"></i>
-                    Summary
-                </a>
-                <a href="#care-plan" class="journey-nav-item">
-                    <i class="fas fa-clipboard-list"></i>
-                    Care Plan
-                </a>
-                <a href="#messages" class="journey-nav-item">
-                    <i class="fas fa-comments"></i>
-                    Chat
-                </a>
-                <a href="#care-team" class="journey-nav-item">
-                    <i class="fas fa-user-md"></i>
-                    Team
-                </a>
-                <a href="#documents" class="journey-nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Links
-                </a>
-            </nav>
-
-            <section id="overview" class="journey-section active">
-                <div class="condition-summary">
-                    <h2>Condition Summary</h2>
-                    <div class="summary-content">
-                        <p><strong>Initial Complaint:</strong> Experiencing intense anxiety during work presentations, team meetings, and when facing deadlines.</p>
-                        <p><strong>Key Symptoms:</strong> Racing heart, difficulty sleeping, overthinking work scenarios, avoidance of team interactions.</p>
-                        <p><strong>Current Status:</strong> Engaged in therapy, learning workplace coping strategies.</p>
-                        <p><strong>Treatment Approach:</strong> Combination of CBT, mindfulness training, and workplace adjustments.</p>
-                    </div>
-                    
-                    <div id="habit-tracker-container"></div>
-                    
-                    <div class="quick-actions">
-                        <h3>Quick Actions</h3>
-                        <div class="quick-actions-grid">
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-heart"></i>
-                                <span>Calm Now</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-calendar-plus"></i>
-                                <span>Book Session</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Track Progress</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-users"></i>
-                                <span>Support Group</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline">
-                    <h2>Journey Timeline</h2>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 1, 2024</div>
-                            <div class="timeline-content">
-                                <h3>First Reached Out</h3>
-                                <p>After panic attack during team presentation</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 5, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Started Treatment</h3>
-                                <p>Initial therapy session and workplace accommodation plan</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 15, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Progress Check</h3>
-                                <p>Successfully led small team meeting using new coping strategies</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="progress-tracker">
-                    <h2>Weekly Progress</h2>
-                    <div class="tracker-grid">
-                        <div class="tracker-card">
-                            <h3>Anxiety Levels</h3>
-                            <div class="tracker-stats">
-                                <div class="stat">
-                                    <span class="label">During Meetings</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 65%"></div>
-                                    </div>
-                                </div>
-                                <div class="stat">
-                                    <span class="label">Deadline Stress</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 70%"></div>
-                                    </div>
-                                </div>
-                                <div class="stat">
-                                    <span class="label">Team Interactions</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 45%"></div>
+                                <div class="team-member-info">
+                                    <h3>Sarah Wilson, RN</h3>
+                                    <p class="role">Registered Nurse</p>
+                                    <p class="specialty">Patient Care Coordinator</p>
+                                    <div class="team-member-actions">
+                                        <button class="button-secondary">Message</button>
+                                        <button class="button-primary">Schedule Check-in</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="tracker-card">
-                            <h3>Coping Tools Used</h3>
-                            <ul class="coping-list">
-                                <li><i class="fas fa-check"></i> Breathing exercises: 12 times</li>
-                                <li><i class="fas fa-check"></i> Mindfulness breaks: 8 times</li>
-                                <li><i class="fas fa-check"></i> Workplace walks: 5 times</li>
-                                <li><i class="fas fa-check"></i> Support check-ins: 3 times</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            <section id="care-plan" class="journey-section">
-                <div class="care-plan-container">
-                    <h2>Your Workplace Anxiety Management Plan</h2>
+                            <div class="team-member">
+                                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Chen" class="avatar">
+                                <div class="team-member-info">
+                                    <h3>Dr. Lisa Chen</h3>
+                                    <p class="role">ENT Specialist</p>
+                                    <p class="specialty">Available for referral if needed</p>
+                                    <button class="button-secondary">Request Consultation</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                    <!-- Documents Section -->
+                    <section id="documents" class="journey-section">
+                        <div class="documents-container">
+                            <div class="document-card">
+                                <div class="document-icon">📄</div>
+                                <div class="document-info">
+                                    <h3>Initial Diagnosis Report</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">💊</div>
+                                <div class="document-info">
+                                    <h3>Medication Guide</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">PDF Guide</p>
+                                </div>
+                                <button class="button-secondary">Open</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">👃</div>
+                                <div class="document-info">
+                                    <h3>Nasal Spray Instructions</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">Video Tutorial</p>
+                                </div>
+                                <button class="button-secondary">Watch</button>
+                            </div>
+
+                            <div class="document-card">
+                                <div class="document-icon">🧴️</div>
+                                <div class="document-info">
+                                    <h3>Symptom Tracking Log</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">Interactive Form</p>
+                                </div>
+                                <button class="button-secondary">Update</button>
+                            </div>
+
+                            <div class="document-card">
+                                <div class="document-icon">🏠</div>
+                                <div class="document-info">
+                                    <h3>Home Care Guidelines</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="page-content journey" id="migraine-journey">
+            
+                    <div class="journey-header">
+                        <a href="#" class="back-button" onclick="handleReturnButtonClick()">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <h1>Chronic Migraines</h1>
+                    </div>
+                
+                    <!-- Journey Navigation -->
+                    <nav class="journey-nav">
+                        <a href="#overview" class="journey-nav-item active">
+                            <i class="fas fa-clock"></i>
+                            Overview
+                        </a>
+                        <a href="#care-plan" class="journey-nav-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Care Plan
+                        </a>
                     
-                    <div class="care-plan-steps">
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">1</span>
-                                <h3>Daily Work Routine</h3>
+                    </nav>
+                
+                    <!-- Overview Section -->
+                    <section id="overview" class="journey-section active">
+                        <div class="condition-summary">
+                            <h2>Condition Summary</h2>
+                            <div class="summary-content">
+                                <p><strong>Initial Complaint:</strong> Recurring severe headaches with visual aura, nausea, and light sensitivity.</p>
+                                <p><strong>Key Findings:</strong> Classic migraine pattern, potential triggers identified including stress and certain foods.</p>
+                                <p><strong>Current Status:</strong> 2-3 episodes per month, responding to preventive measures.</p>
+                                <p><strong>Treatment Plan:</strong> Combination of preventive medication, acute treatment, and lifestyle modifications.</p>
                             </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li><strong>Morning:</strong> 10-min meditation before work</li>
-                                    <li><strong>During Work:</strong> Scheduled breaks every 2 hours</li>
-                                    <li><strong>After Work:</strong> Decompression routine</li>
-                                    <li><strong>Evening:</strong> Work-free relaxation time</li>
-                                </ul>
+                            
+                            <!-- <div id="habit-tracker-container"></div> -->
+                            <div class="prescription-widget" id="prescription-widget">
+                                <div class="widget-card" id="openPrescriptionSheet">
+                                    <div class="widget-header">
+                                        <h3>Prescription Status</h3>
+                                        <span class="status-badge processing">Processing</span>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="prescription-info">
+                                            <i class="fas fa-prescription-bottle-medical"></i>
+                                            <div class="info-text">
+                                                <p class="pharmacy-name">Jean Coutu</p>
+                                                <p class="eta">Ready by: Today, 6:30 PM</p>
+                                            </div>
+                                        </div>
+                                        <button class="view-details">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                                <!-- Bottom Sheet Modal -->
+                                <div class="bottom-sheet" id="prescriptionSheet">
+                                    <div class="sheet-header">
+                                        <h2>Prescription Details</h2>
+                                        <button class="close-sheet" id="closePrescriptionSheet">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="sheet-content">
+                                        <!-- Status Section -->
+                                        <div class="status-section">
+                                            <div class="status-timeline">
+                                                <div class="status-step completed">
+                                                    <i class="fas fa-file-medical"></i>
+                                                    <span>Prescribed</span>
+                                                    <small>Today, 2:00 PM</small>
+                                                </div>
+                                                <div class="status-step active">
+                                                    <i class="fas fa-mortar-pestle"></i>
+                                                    <span>Processing</span>
+                                                    <small>Est. 1 hour</small>
+                                                </div>
+                                                <div class="status-step">
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <span>Ready</span>
+                                                    <small>Est. 6:30 PM</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Pharmacy Details -->
+                                        <div class="pharmacy-section">
+                                            <h3>Pharmacy Details</h3>
+                                            <div class="pharmacy-card">
+                                                <div class="pharmacy-info">
+                                                    <h4>Jean Coutu</h4>
+                                                    <p>123 Main Street, Montréal, QC</p>
+                                                    <p>Open until 9:00 PM</p>
+                                                    <p><i class="fas fa-phone"></i> (206) 555-0123</p>
+                                                </div>
+                                                <div id="pharmacy-map" class="pharmacy-map"></div>
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Delivery Options -->
+                                        <div class="delivery-section">
+                                            <h3>Pickup or Delivery</h3>
+                                            <div class="delivery-options">
+                                                <button class="option-button active">
+                                                    <i class="fas fa-store"></i>
+                                                    Pickup
+                                                </button>
+                                                <button class="option-button">
+                                                    <i class="fas fa-truck"></i>
+                                                    Delivery
+                                                </button>
+                                            </div>
+                            
+                                            <!-- Delivery Form (hidden by default) -->
+                                            <div class="delivery-form hidden">
+                                                <div class="form-group">
+                                                    <label>Delivery Address</label>
+                                                    <input type="text" value="1234 Home Street, Seattle, WA 98102">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Delivery Window</label>
+                                                    <select>
+                                                        <option>Today, 5:00 PM - 6:00 PM</option>
+                                                        <option>Today, 6:00 PM - 7:00 PM</option>
+                                                        <option>Today, 7:00 PM - 8:00 PM</option>
+                                                    </select>
+                                                </div>
+                                                <div class="delivery-fee">
+                                                    Delivery Fee: $5.99
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Action Buttons -->
+                                        <div class="action-buttons">
+                                            <button class="primary-button" onclick="window.location.href = 'phone-lock.html?type=migraine'; return false;">
+                                                <i class="fas fa-bell"></i>
+                                                Enable Notifications
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                            
+                            
+                            <!-- <div id="bottomSheet" class="bottom-sheet active">
+                                <div class="bottom-sheet-content">
+                                    <div class="sheet-content"> -->
+                            
+                            
+                            <div class="quick-actions">
+                                <h3>Quick Actions</h3>
+                                <div class="quick-actions-grid">
+                                    <a href="#" class="quick-action-card" onclick="window.location.href = 'phone-lock.html?type=migraine'; return false;">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>Log Episode</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-pills"></i>
+                                        <span>Medication Guide</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-moon"></i>
+                                        <span>Sleep Log</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Food Diary</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">2</span>
-                                <h3>Meeting Strategies</h3>
+                        <!-- <div class="timeline">
+                            <h2>Journey Timeline</h2>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 15, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Journey Started</h3>
+                                        <p>Initial assessment completed with Dr. Roberts</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 18, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Treatment Initiated</h3>
+                                        <p>Started on antibiotics and nasal steroids</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 22, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Progress Check</h3>
+                                        <p>Virtual follow-up - symptoms improving, continue current treatment</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="step-content">
+                        </div> -->
+                    </section>
+                
+                    <!-- Care Plan Section -->
+                    <section id="care-plan" class="journey-section">
+                        <div class="care-plan-container">
+                            <h2>Your Migraine Management Plan</h2>
+                            
+                            <div class="care-plan-steps">
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Prescribed Medications</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Preventive Treatment:</strong>
+                                                <ul>
+                                                    <li>Propranolol 40mg twice daily</li>
+                                                    <li>Magnesium supplement 400mg daily</li>
+                                                    <li>Vitamin B2 (Riboflavin) 400mg daily</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Acute Treatment:</strong>
+                                                <ul>
+                                                    <li>Sumatriptan 50mg at onset of migraine (max 2 doses/24hrs)</li>
+                                                    <li>Ondansetron 4mg as needed for nausea</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Important:</strong> Do not use acute medication more than 2-3 times per week to prevent rebound headaches</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Trigger Management</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Sleep:</strong> Maintain consistent sleep schedule (7-9 hours)</li>
+                                            <li><strong>Diet:</strong> Avoid identified triggers:
+                                                <ul>
+                                                    <li>Aged cheeses and processed meats</li>
+                                                    <li>Caffeine (limit to 200mg daily)</li>
+                                                    <li>Artificial sweeteners</li>
+                                                    <li>Red wine and other alcoholic beverages</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Environment:</strong> 
+                                                <ul>
+                                                    <li>Reduce bright/flickering lights exposure</li>
+                                                    <li>Minimize screen time with blue light filter</li>
+                                                    <li>Avoid strong perfumes and chemical odors</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Stress:</strong> Practice stress reduction techniques daily</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Lifestyle Modifications</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Exercise:</strong> 
+                                                <ul>
+                                                    <li>30 minutes of low-impact exercise 3-4 times weekly</li>
+                                                    <li>Regular neck and shoulder stretches</li>
+                                                    <li>Gentle yoga or tai chi recommended</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Hydration:</strong> Minimum 2L water daily</li>
+                                            <li><strong>Meals:</strong> Regular meal times, avoid skipping meals</li>
+                                            <li><strong>Relaxation:</strong> 
+                                                <ul>
+                                                    <li>Daily meditation or deep breathing exercises</li>
+                                                    <li>Progressive muscle relaxation before bed</li>
+                                                    <li>Regular massage therapy sessions</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <h3>Monitoring & Follow-up</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Daily Tracking:</strong>
+                                                <ul>
+                                                    <li>Log migraine frequency, intensity, and duration</li>
+                                                    <li>Record potential triggers and medication use</li>
+                                                    <li>Track sleep patterns and stress levels</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Follow-up Schedule:</strong>
+                                                <ul>
+                                                    <li>Virtual check-in every 2 weeks</li>
+                                                    <li>Full evaluation every 3 months</li>
+                                                    <li>Medication review every 6 months</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="care-plan-warning">
+                                <h3>When to Seek Immediate Care</h3>
                                 <ul>
-                                    <li>Prepare talking points in advance</li>
-                                    <li>Practice grounding techniques</li>
-                                    <li>Use "pause and breathe" method</li>
-                                    <li>Schedule recovery time after meetings</li>
+                                    <li>Sudden, severe headache ("thunderclap" headache)</li>
+                                    <li>Migraine with confusion or difficulty speaking</li>
+                                    <li>New neurological symptoms (weakness, vision changes)</li>
+                                    <li>Fever with severe headache and neck stiffness</li>
+                                    <li>Headache following head injury</li>
+                                    <li>Migraine lasting more than 72 hours despite treatment</li>
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">3</span>
-                                <h3>Stress Management</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Break large projects into smaller tasks</li>
-                                    <li>Set realistic deadlines</li>
-                                    <li>Communicate workload concerns early</li>
-                                    <li>Use time-blocking technique</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">4</span>
-                                <h3>Support System</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Weekly therapy sessions</li>
-                                    <li>Monthly check-ins with supervisor</li>
-                                    <li>Peer support group meetings</li>
-                                    <li>Emergency contact plan</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="workplace-accommodations">
-                        <h3>Current Workplace Adjustments</h3>
-                        <div class="accommodations-grid">
-                            <div class="accommodation">
-                                <i class="fas fa-clock"></i>
-                                <h4>Flexible Hours</h4>
-                                <p>Adjusted start times for therapy appointments</p>
-                            </div>
-                            <div class="accommodation">
-                                <i class="fas fa-door-open"></i>
-                                <h4>Quiet Space</h4>
-                                <p>Access to private work area when needed</p>
-                            </div>
-                            <div class="accommodation">
-                                <i class="fas fa-users"></i>
-                                <h4>Meeting Support</h4>
-                                <p>Option to attend virtually when needed</p>
-                            </div>
-                            <div class="accommodation">
-                                <i class="fas fa-tasks"></i>
-                                <h4>Workload Management</h4>
-                                <p>Regular priority review with manager</p>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
+                
+                    <!-- Add this right after the care-plan section -->
+                    
                 </div>
-            </section>
-
-            <section id="resources" class="journey-section">
-                <div class="resources-container">
-                    <h2>Work Anxiety Resources</h2>
-                    <div class="resources-grid">
-                        <div class="resource-card">
-                            <i class="fas fa-book"></i>
-                            <h3>Learning Center</h3>
-                            <ul>
-                                <li>Workplace Anxiety Guide</li>
-                                <li>Presentation Skills Workshop</li>
-                                <li>Time Management Tools</li>
-                            </ul>
-                            <button class="button-secondary">Access Resources</button>
-                        </div>
-                        <div class="resource-card">
-                            <i class="fas fa-hands-helping"></i>
-                            <h3>Support Network</h3>
-                            <ul>
-                                <li>Professional Support Group</li>
-                                <li>Peer Mentoring Program</li>
-                                <li>Crisis Support Contacts</li>
-                            </ul>
-                            <button class="button-secondary">Connect Now</button>
-                        </div>
-                        <div class="resource-card">
-                            <i class="fas fa-tools"></i>
-                            <h3>Coping Tools</h3>
-                            <ul>
-                                <li>Anxiety Management Apps</li>
-                                <li>Breathing Exercise Guide</li>
-                                <li>Workplace Meditation</li>
-                            </ul>
-                            <button class="button-secondary">View Tools</button>
+                <div class="page-content journey" id="anxiety-journey">
+                    <div class="journey-header">
+                        <a href="#" class="back-button" onclick="handleReturnButtonClick()">
+                            <i class="fas fa-chevron-left"></i>
+                            Back
+                        </a>
+                        <h1>Work-Related Anxiety</h1>
+                        <div class="journey-status">
+                            <span class="status-indicator active">Open</span>
+                            <span class="status-date">Active since March 1, 2024</span>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- Messages Section -->
-            <section id="messages" class="journey-section">
-                <div class="messages-container">
-                    <div class="messages-list">
-                        <div class="message">
-                            <div class="message-header">
+                    <nav class="journey-nav">
+                        <a href="#overview" class="journey-nav-item active">
+                            <i class="fas fa-clock"></i>
+                            Summary
+                        </a>
+                        <a href="#care-plan" class="journey-nav-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Care Plan
+                        </a>
+                        <a href="#messages" class="journey-nav-item">
+                            <i class="fas fa-comments"></i>
+                            Chat
+                        </a>
+                        <a href="#care-team" class="journey-nav-item">
+                            <i class="fas fa-user-md"></i>
+                            Team
+                        </a>
+                        <a href="#documents" class="journey-nav-item">
+                            <i class="fas fa-file-alt"></i>
+                            Links
+                        </a>
+                    </nav>
+
+                    <section id="overview" class="journey-section active">
+                        <div class="condition-summary">
+                            <h2>Condition Summary</h2>
+                            <div class="summary-content">
+                                <p><strong>Initial Complaint:</strong> Experiencing intense anxiety during work presentations, team meetings, and when facing deadlines.</p>
+                                <p><strong>Key Symptoms:</strong> Racing heart, difficulty sleeping, overthinking work scenarios, avoidance of team interactions.</p>
+                                <p><strong>Current Status:</strong> Engaged in therapy, learning workplace coping strategies.</p>
+                                <p><strong>Treatment Approach:</strong> Combination of CBT, mindfulness training, and workplace adjustments.</p>
+                            </div>
+                            
+                            <div id="habit-tracker-container"></div>
+                            
+                            <div class="quick-actions">
+                                <h3>Quick Actions</h3>
+                                <div class="quick-actions-grid">
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Calm Now</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-calendar-plus"></i>
+                                        <span>Book Session</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Track Progress</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-users"></i>
+                                        <span>Support Group</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline">
+                            <h2>Journey Timeline</h2>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 1, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>First Reached Out</h3>
+                                        <p>After panic attack during team presentation</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 5, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Started Treatment</h3>
+                                        <p>Initial therapy session and workplace accommodation plan</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 15, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Progress Check</h3>
+                                        <p>Successfully led small team meeting using new coping strategies</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="progress-tracker">
+                            <h2>Weekly Progress</h2>
+                            <div class="tracker-grid">
+                                <div class="tracker-card">
+                                    <h3>Anxiety Levels</h3>
+                                    <div class="tracker-stats">
+                                        <div class="stat">
+                                            <span class="label">During Meetings</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 65%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="label">Deadline Stress</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 70%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="label">Team Interactions</span>
+                                            <div class="progress-bar">
+                                                <div class="progress" style="width: 45%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tracker-card">
+                                    <h3>Coping Tools Used</h3>
+                                    <ul class="coping-list">
+                                        <li><i class="fas fa-check"></i> Breathing exercises: 12 times</li>
+                                        <li><i class="fas fa-check"></i> Mindfulness breaks: 8 times</li>
+                                        <li><i class="fas fa-check"></i> Workplace walks: 5 times</li>
+                                        <li><i class="fas fa-check"></i> Support check-ins: 3 times</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="care-plan" class="journey-section">
+                        <div class="care-plan-container">
+                            <h2>Your Workplace Anxiety Management Plan</h2>
+                            
+                            <div class="care-plan-steps">
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">1</span>
+                                        <h3>Daily Work Routine</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Morning:</strong> 10-min meditation before work</li>
+                                            <li><strong>During Work:</strong> Scheduled breaks every 2 hours</li>
+                                            <li><strong>After Work:</strong> Decompression routine</li>
+                                            <li><strong>Evening:</strong> Work-free relaxation time</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">2</span>
+                                        <h3>Meeting Strategies</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li>Prepare talking points in advance</li>
+                                            <li>Practice grounding techniques</li>
+                                            <li>Use "pause and breathe" method</li>
+                                            <li>Schedule recovery time after meetings</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">3</span>
+                                        <h3>Stress Management</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li>Break large projects into smaller tasks</li>
+                                            <li>Set realistic deadlines</li>
+                                            <li>Communicate workload concerns early</li>
+                                            <li>Use time-blocking technique</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">4</span>
+                                        <h3>Support System</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li>Weekly therapy sessions</li>
+                                            <li>Monthly check-ins with supervisor</li>
+                                            <li>Peer support group meetings</li>
+                                            <li>Emergency contact plan</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="workplace-accommodations">
+                                <h3>Current Workplace Adjustments</h3>
+                                <div class="accommodations-grid">
+                                    <div class="accommodation">
+                                        <i class="fas fa-clock"></i>
+                                        <h4>Flexible Hours</h4>
+                                        <p>Adjusted start times for therapy appointments</p>
+                                    </div>
+                                    <div class="accommodation">
+                                        <i class="fas fa-door-open"></i>
+                                        <h4>Quiet Space</h4>
+                                        <p>Access to private work area when needed</p>
+                                    </div>
+                                    <div class="accommodation">
+                                        <i class="fas fa-users"></i>
+                                        <h4>Meeting Support</h4>
+                                        <p>Option to attend virtually when needed</p>
+                                    </div>
+                                    <div class="accommodation">
+                                        <i class="fas fa-tasks"></i>
+                                        <h4>Workload Management</h4>
+                                        <p>Regular priority review with manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="resources" class="journey-section">
+                        <div class="resources-container">
+                            <h2>Work Anxiety Resources</h2>
+                            <div class="resources-grid">
+                                <div class="resource-card">
+                                    <i class="fas fa-book"></i>
+                                    <h3>Learning Center</h3>
+                                    <ul>
+                                        <li>Workplace Anxiety Guide</li>
+                                        <li>Presentation Skills Workshop</li>
+                                        <li>Time Management Tools</li>
+                                    </ul>
+                                    <button class="button-secondary">Access Resources</button>
+                                </div>
+                                <div class="resource-card">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <h3>Support Network</h3>
+                                    <ul>
+                                        <li>Professional Support Group</li>
+                                        <li>Peer Mentoring Program</li>
+                                        <li>Crisis Support Contacts</li>
+                                    </ul>
+                                    <button class="button-secondary">Connect Now</button>
+                                </div>
+                                <div class="resource-card">
+                                    <i class="fas fa-tools"></i>
+                                    <h3>Coping Tools</h3>
+                                    <ul>
+                                        <li>Anxiety Management Apps</li>
+                                        <li>Breathing Exercise Guide</li>
+                                        <li>Workplace Meditation</li>
+                                    </ul>
+                                    <button class="button-secondary">View Tools</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Messages Section -->
+                    <section id="messages" class="journey-section">
+                        <div class="messages-container">
+                            <div class="messages-list">
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Thompson" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Sarah Thompson</h3>
+                                            <span class="message-time">March 1, 10:30 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Thank you for sharing your experiences today. I understand work has been particularly challenging. Let's work together on developing strategies to manage your anxiety. I'm recommending weekly CBT sessions to start.</div>
+                                </div>
+
+                                <div class="message outgoing">
+                                    <div class="message-header">
+                                        <div class="message-info">
+                                            <h3>You</h3>
+                                            <span class="message-time">March 1, 11:45 AM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Thank you, Dr. Thompson. I'm feeling hopeful about getting help. Should I start the breathing exercises right away?</div>
+                                </div>
+
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Thompson" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Sarah Thompson</h3>
+                                            <span class="message-time">March 1, 12:00 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Yes, absolutely! I've added some guided breathing exercises to your resources. Try the 4-7-8 technique we discussed whenever you feel anxious. Remember, it takes practice to become effective.</div>
+                                </div>
+
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Alex Chen" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Alex Chen, Therapist</h3>
+                                            <span class="message-time">March 15, 2:00 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">
+                                        <p>How have you been feeling since our session? Have you been able to practice the mindfulness techniques at work?</p>
+                                        <div class="response-options">
+                                            <button class="response-option" data-response="good">
+                                                <i class="fas fa-smile"></i>
+                                                Very helpful
+                                            </button>
+                                            <button class="response-option" data-response="okay">
+                                                <i class="fas fa-meh"></i>
+                                                Still practicing
+                                            </button>
+                                            <button class="response-option" data-response="difficult">
+                                                <i class="fas fa-frown"></i>
+                                                Finding it difficult
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-input-container">
+                                <form class="message-form" onsubmit="return false;">
+                                    <textarea class="message-input" placeholder="Type your message..."></textarea>
+                                    <button type="button" class="send-button">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                
+                    <!-- Care Team Section -->
+                    <section id="care-team" class="journey-section">
+                        <div class="care-team-container">
+                            <div class="team-member">
                                 <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Thompson" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Thompson</h3>
-                                    <span class="message-time">March 1, 10:30 AM</span>
+                                <div class="team-member-info">
+                                    <h3>Dr. Sarah Thompson</h3>
+                                    <p class="role">Psychiatrist</p>
+                                    <p class="specialty">Anxiety & Depression Specialist</p>
+                                    <button class="button-secondary">Message</button>
                                 </div>
                             </div>
-                            <div class="message-content">Thank you for sharing your experiences today. I understand work has been particularly challenging. Let's work together on developing strategies to manage your anxiety. I'm recommending weekly CBT sessions to start.</div>
-                        </div>
-
-                        <div class="message outgoing">
-                            <div class="message-header">
-                                <div class="message-info">
-                                    <h3>You</h3>
-                                    <span class="message-time">March 1, 11:45 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Thank you, Dr. Thompson. I'm feeling hopeful about getting help. Should I start the breathing exercises right away?</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Thompson" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Thompson</h3>
-                                    <span class="message-time">March 1, 12:00 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Yes, absolutely! I've added some guided breathing exercises to your resources. Try the 4-7-8 technique we discussed whenever you feel anxious. Remember, it takes practice to become effective.</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
+                            
+                            <div class="team-member">
                                 <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Alex Chen" class="avatar">
-                                <div class="message-info">
-                                    <h3>Alex Chen, Therapist</h3>
-                                    <span class="message-time">March 15, 2:00 PM</span>
+                                <div class="team-member-info">
+                                    <h3>Alex Chen, LMFT</h3>
+                                    <p class="role">Licensed Therapist</p>
+                                    <p class="specialty">Cognitive Behavioral Therapy</p>
+                                    <div class="team-member-actions">
+                                        <button class="button-secondary">Message</button>
+                                        <button class="button-primary">Schedule Session</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="message-content">
-                                <p>How have you been feeling since our session? Have you been able to practice the mindfulness techniques at work?</p>
-                                <div class="response-options">
-                                    <button class="response-option" data-response="good">
-                                        <i class="fas fa-smile"></i>
-                                        Very helpful
-                                    </button>
-                                    <button class="response-option" data-response="okay">
-                                        <i class="fas fa-meh"></i>
-                                        Still practicing
-                                    </button>
-                                    <button class="response-option" data-response="difficult">
-                                        <i class="fas fa-frown"></i>
-                                        Finding it difficult
-                                    </button>
+
+                            <div class="team-member">
+                                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60" alt="Support Group" class="avatar">
+                                <div class="team-member-info">
+                                    <h3>Workplace Anxiety Support Group</h3>
+                                    <p class="role">Group Therapy</p>
+                                    <p class="specialty">Meets Wednesdays at 6:00 PM</p>
+                                    <button class="button-secondary">Join Next Session</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
+                
+                    <!-- Documents Section -->
+                    <section id="documents" class="journey-section">
+                        <div class="documents-container">
+                            <div class="document-card">
+                                <div class="document-icon">📄</div>
+                                <div class="document-info">
+                                    <h3>Initial Assessment Report</h3>
+                                    <p class="document-date">March 1, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">💊</div>
+                                <div class="document-info">
+                                    <h3>CBT Workbook</h3>
+                                    <p class="document-date">March 5, 2024</p>
+                                    <p class="document-type">Interactive PDF</p>
+                                </div>
+                                <button class="button-secondary">Open</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">🧘‍♀️</div>
+                                <div class="document-info">
+                                    <h3>Guided Meditation Audio</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">Audio Files</p>
+                                </div>
+                                <button class="button-secondary">Listen</button>
+                            </div>
 
-                    <div class="message-input-container">
-                        <form class="message-form" onsubmit="return false;">
-                            <textarea class="message-input" placeholder="Type your message..."></textarea>
-                            <button type="button" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Care Team Section -->
-            <section id="care-team" class="journey-section">
-                <div class="care-team-container">
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Dr. Thompson" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Sarah Thompson</h3>
-                            <p class="role">Psychiatrist</p>
-                            <p class="specialty">Anxiety & Depression Specialist</p>
-                            <button class="button-secondary">Message</button>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800&auto=format&fit=crop&q=60" alt="Alex Chen" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Alex Chen, LMFT</h3>
-                            <p class="role">Licensed Therapist</p>
-                            <p class="specialty">Cognitive Behavioral Therapy</p>
-                            <div class="team-member-actions">
-                                <button class="button-secondary">Message</button>
-                                <button class="button-primary">Schedule Session</button>
+                            <div class="document-card">
+                                <div class="document-icon">📱</div>
+                                <div class="document-info">
+                                    <h3>Anxiety Tracking App Guide</h3>
+                                    <p class="document-date">March 15, 2024</p>
+                                    <p class="document-type">PDF Guide</p>
+                                </div>
+                                <button class="button-secondary">Download</button>
+                            </div>
+
+                            <div class="document-card">
+                                <div class="document-icon">📝</div>
+                                <div class="document-info">
+                                    <h3>Workplace Stress Management Tips</h3>
+                                    <p class="document-date">March 18, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60" alt="Support Group" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Workplace Anxiety Support Group</h3>
-                            <p class="role">Group Therapy</p>
-                            <p class="specialty">Meets Wednesdays at 6:00 PM</p>
-                            <button class="button-secondary">Join Next Session</button>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-            </section>
-        
-            <!-- Documents Section -->
-            <section id="documents" class="journey-section">
-                <div class="documents-container">
-                    <div class="document-card">
-                        <div class="document-icon">📄</div>
-                        <div class="document-info">
-                            <h3>Initial Assessment Report</h3>
-                            <p class="document-date">March 1, 2024</p>
-                            <p class="document-type">PDF Document</p>
+                <div class="page-content journey" id="rash-journey">
+                    <div class="journey-header">
+                        <a href="#" class="back-button" onclick="handleReturnButtonClick()">
+                            <i class="fas fa-chevron-left"></i>
+                            Back
+                        </a>
+                        <h1>Unexplained Rash</h1>
+                        <div class="journey-status">
+                            <span class="status-indicator active">Open</span>
+                            <span class="status-date">Active since February 28, 2024</span>
                         </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">💊</div>
-                        <div class="document-info">
-                            <h3>CBT Workbook</h3>
-                            <p class="document-date">March 5, 2024</p>
-                            <p class="document-type">Interactive PDF</p>
-                        </div>
-                        <button class="button-secondary">Open</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">🧘‍♀️</div>
-                        <div class="document-info">
-                            <h3>Guided Meditation Audio</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">Audio Files</p>
-                        </div>
-                        <button class="button-secondary">Listen</button>
                     </div>
 
-                    <div class="document-card">
-                        <div class="document-icon">📱</div>
-                        <div class="document-info">
-                            <h3>Anxiety Tracking App Guide</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Guide</p>
-                        </div>
-                        <button class="button-secondary">Download</button>
-                    </div>
+                    <!-- Journey Navigation -->
+                    <nav class="journey-nav">
+                        <a href="#overview" class="journey-nav-item active">
+                            <i class="fas fa-clock"></i>
+                            Summary
+                        </a>
+                        <a href="#care-plan" class="journey-nav-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            Care Plan
+                        </a>
+                        <a href="#messages" class="journey-nav-item">
+                            <i class="fas fa-comments"></i>
+                            Chat
+                        </a>
+                        <a href="#care-team" class="journey-nav-item">
+                            <i class="fas fa-user-md"></i>
+                            Team
+                        </a>
+                        <a href="#documents" class="journey-nav-item">
+                            <i class="fas fa-file-alt"></i>
+                            Links
+                        </a>
+                    </nav>
 
-                    <div class="document-card">
-                        <div class="document-icon">📝</div>
-                        <div class="document-info">
-                            <h3>Workplace Stress Management Tips</h3>
-                            <p class="document-date">March 18, 2024</p>
-                            <p class="document-type">PDF Document</p>
+                    <!-- Overview Section -->
+                    <section id="overview" class="journey-section active">
+                        <div class="condition-summary">
+                            <h2>Condition Summary</h2>
+                            <div class="summary-content">
+                                <p><strong>Initial Complaint:</strong> Red, itchy rash on upper back, appeared suddenly with no known trigger.</p>
+                                <p><strong>Key Findings:</strong> Possible contact dermatitis or allergic reaction, pending allergy testing results.</p>
+                                <p><strong>Current Status:</strong> Moderate symptoms, some improvement with topical treatment.</p>
+                                <p><strong>Treatment Plan:</strong> Combination of topical steroids, antihistamines, and trigger identification.</p>
+                            </div>
+                            
+                            <div id="habit-tracker-container"></div>
+                            
+                            <div class="quick-actions">
+                                <h3>Quick Actions</h3>
+                                <div class="quick-actions-grid">
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Upload Photo</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-calendar-plus"></i>
+                                        <span>Book Follow-up</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        <span>Symptom Log</span>
+                                    </a>
+                                    <a href="#" class="quick-action-card">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <span>Trigger List</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                </div>
-            </section>
-        </div>
 
-        <!-- Rash Journey -->
-        <div class="page-content journey" id="rash-journey">
-            <div class="journey-header">
-                <a href="#" class="back-button" onclick="handleReturnButtonClick()">
-                    <i class="fas fa-chevron-left"></i>
-                    Back
-                </a>
-                <h1>Unexplained Rash</h1>
-                <div class="journey-status">
-                    <span class="status-indicator active">Open</span>
-                    <span class="status-date">Active since February 28, 2024</span>
+                        <div class="timeline">
+                            <h2>Journey Timeline</h2>
+                            <div class="timeline-items">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Feb 28, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Initial Consultation</h3>
+                                        <p>Virtual assessment with Dr. Martinez, prescribed topical treatment</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 2, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Allergy Testing Scheduled</h3>
+                                        <p>Comprehensive patch testing appointment booked</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Mar 5, 2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Treatment Update</h3>
+                                        <p>Mild improvement noted, continuing current treatment plan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Care Plan Section -->
+                    <section id="care-plan" class="journey-section">
+                        <div class="care-plan-container">
+                            <h2>Your Treatment Plan</h2>
+                            
+                            <div class="care-plan-steps">
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">1</span>
+                                        <h3>Medication Schedule</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Topical Steroid:</strong> Apply thin layer twice daily</li>
+                                            <li><strong>Antihistamine:</strong> Take one tablet daily before bed</li>
+                                            <li><strong>Moisturizer:</strong> Apply fragrance-free lotion after shower</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">2</span>
+                                        <h3>Skin Care Routine</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li><strong>Bathing:</strong> Use lukewarm water, gentle soap</li>
+                                            <li><strong>Clothing:</strong> Wear loose, cotton clothing</li>
+                                            <li><strong>Environment:</strong> Keep skin cool and dry</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">3</span>
+                                        <h3>Trigger Management</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li>Document all new products used</li>
+                                            <li>Note any dietary changes</li>
+                                            <li>Track environmental exposures</li>
+                                            <li>Monitor stress levels</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="care-plan-step">
+                                    <div class="step-header">
+                                        <span class="step-number">4</span>
+                                        <h3>Monitoring Progress</h3>
+                                    </div>
+                                    <div class="step-content">
+                                        <ul>
+                                            <li>Daily photos of affected area</li>
+                                            <li>Track itching severity (1-10 scale)</li>
+                                            <li>Note any spread or changes</li>
+                                            <li>Record treatment effectiveness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="care-plan-warning">
+                                <h3>When to Seek Immediate Care</h3>
+                                <ul>
+                                    <li>Severe spreading of rash</li>
+                                    <li>Development of blisters</li>
+                                    <li>Difficulty breathing</li>
+                                    <li>Fever or severe swelling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Messages Section -->
+                    <section id="messages" class="journey-section">
+                        <div class="messages-container">
+                            <div class="messages-list">
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Elena Martinez</h3>
+                                            <span class="message-time">Feb 28, 2:30 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Based on the photos you've shared, this appears to be contact dermatitis. Let's start with a topical steroid and try to identify potential triggers. Can you send daily photos to track the progress?</div>
+                                </div>
+
+                                <div class="message outgoing">
+                                    <div class="message-header">
+                                        <div class="message-info">
+                                            <h3>You</h3>
+                                            <span class="message-time">Feb 28, 3:15 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Yes, I'll start tracking with photos. Should I also note down any new products I've used recently?</div>
+                                </div>
+
+                                <div class="message">
+                                    <div class="message-header">
+                                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
+                                        <div class="message-info">
+                                            <h3>Dr. Elena Martinez</h3>
+                                            <span class="message-time">Feb 28, 3:30 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">Absolutely! Please log any new products from the last 2 weeks - including laundry detergent, soaps, and lotions. We'll review these during your patch testing appointment.</div>
+                                </div>
+                            </div>
+
+                            <div class="message-input-container">
+                                <form class="message-form" onsubmit="return false;">
+                                    <textarea class="message-input" placeholder="Type your message..."></textarea>
+                                    <button type="button" class="send-button">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Care Team Section -->
+                    <section id="care-team" class="journey-section">
+                        <div class="care-team-container">
+                            <div class="team-member">
+                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
+                                <div class="team-member-info">
+                                    <h3>Dr. Elena Martinez</h3>
+                                    <p class="role">Dermatologist</p>
+                                    <p class="specialty">Contact Dermatitis Specialist</p>
+                                    <button class="button-secondary">Message</button>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
+                                <div class="team-member-info">
+                                    <h3>Nurse Sarah Wilson</h3>
+                                    <p class="role">Dermatology Nurse</p>
+                                    <p class="specialty">Allergy Testing Coordinator</p>
+                                    <div class="team-member-actions">
+                                        <button class="button-secondary">Message</button>
+                                        <button class="button-primary">Schedule Check-in</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="team-member">
+                                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Lee" class="avatar">
+                                <div class="team-member-info">
+                                    <h3>Dr. James Lee</h3>
+                                    <p class="role">Allergist</p>
+                                    <p class="specialty">Patch Testing Specialist</p>
+                                    <button class="button-secondary">Schedule Consultation</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Documents Section -->
+                    <section id="documents" class="journey-section">
+                        <div class="documents-container">
+                            <div class="document-card">
+                                <div class="document-icon">📄</div>
+                                <div class="document-info">
+                                    <h3>Initial Dermatology Report</h3>
+                                    <p class="document-date">February 28, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">📸</div>
+                                <div class="document-info">
+                                    <h3>Rash Photo Timeline</h3>
+                                    <p class="document-date">Updated Daily</p>
+                                    <p class="document-type">Image Gallery</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                            
+                            <div class="document-card">
+                                <div class="document-icon">📝</div>
+                                <div class="document-info">
+                                    <h3>Trigger Tracking Log</h3>
+                                    <p class="document-date">March 5, 2024</p>
+                                    <p class="document-type">Interactive Form</p>
+                                </div>
+                                <button class="button-secondary">Open</button>
+                            </div>
+
+                            <div class="document-card">
+                                <div class="document-icon">🧪</div>
+                                <div class="document-info">
+                                    <h3>Patch Testing Information</h3>
+                                    <p class="document-date">March 2, 2024</p>
+                                    <p class="document-type">PDF Guide</p>
+                                </div>
+                                <button class="button-secondary">Download</button>
+                            </div>
+
+                            <div class="document-card">
+                                <div class="document-icon">🧴</div>
+                                <div class="document-info">
+                                    <h3>Safe Products List</h3>
+                                    <p class="document-date">March 6, 2024</p>
+                                    <p class="document-type">PDF Document</p>
+                                </div>
+                                <button class="button-secondary">View</button>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-
-            <!-- Journey Navigation -->
-            <nav class="journey-nav">
-                <a href="#overview" class="journey-nav-item active">
-                    <i class="fas fa-clock"></i>
-                    Summary
-                </a>
-                <a href="#care-plan" class="journey-nav-item">
-                    <i class="fas fa-clipboard-list"></i>
-                    Care Plan
-                </a>
-                <a href="#messages" class="journey-nav-item">
-                    <i class="fas fa-comments"></i>
-                    Chat
-                </a>
-                <a href="#care-team" class="journey-nav-item">
-                    <i class="fas fa-user-md"></i>
-                    Team
-                </a>
-                <a href="#documents" class="journey-nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Links
-                </a>
-            </nav>
-
-            <!-- Overview Section -->
-            <section id="overview" class="journey-section active">
-                <div class="condition-summary">
-                    <h2>Condition Summary</h2>
-                    <div class="summary-content">
-                        <p><strong>Initial Complaint:</strong> Red, itchy rash on upper back, appeared suddenly with no known trigger.</p>
-                        <p><strong>Key Findings:</strong> Possible contact dermatitis or allergic reaction, pending allergy testing results.</p>
-                        <p><strong>Current Status:</strong> Moderate symptoms, some improvement with topical treatment.</p>
-                        <p><strong>Treatment Plan:</strong> Combination of topical steroids, antihistamines, and trigger identification.</p>
-                    </div>
-                    
-                    <div id="habit-tracker-container"></div>
-                    
-                    <div class="quick-actions">
-                        <h3>Quick Actions</h3>
-                        <div class="quick-actions-grid">
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-camera"></i>
-                                <span>Upload Photo</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-calendar-plus"></i>
-                                <span>Book Follow-up</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-clipboard-check"></i>
-                                <span>Symptom Log</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Trigger List</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline">
-                    <h2>Journey Timeline</h2>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-date">Feb 28, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Initial Consultation</h3>
-                                <p>Virtual assessment with Dr. Martinez, prescribed topical treatment</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 2, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Allergy Testing Scheduled</h3>
-                                <p>Comprehensive patch testing appointment booked</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 5, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Treatment Update</h3>
-                                <p>Mild improvement noted, continuing current treatment plan</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Care Plan Section -->
-            <section id="care-plan" class="journey-section">
-                <div class="care-plan-container">
-                    <h2>Your Treatment Plan</h2>
-                    
-                    <div class="care-plan-steps">
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">1</span>
-                                <h3>Medication Schedule</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li><strong>Topical Steroid:</strong> Apply thin layer twice daily</li>
-                                    <li><strong>Antihistamine:</strong> Take one tablet daily before bed</li>
-                                    <li><strong>Moisturizer:</strong> Apply fragrance-free lotion after shower</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">2</span>
-                                <h3>Skin Care Routine</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li><strong>Bathing:</strong> Use lukewarm water, gentle soap</li>
-                                    <li><strong>Clothing:</strong> Wear loose, cotton clothing</li>
-                                    <li><strong>Environment:</strong> Keep skin cool and dry</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">3</span>
-                                <h3>Trigger Management</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Document all new products used</li>
-                                    <li>Note any dietary changes</li>
-                                    <li>Track environmental exposures</li>
-                                    <li>Monitor stress levels</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">4</span>
-                                <h3>Monitoring Progress</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Daily photos of affected area</li>
-                                    <li>Track itching severity (1-10 scale)</li>
-                                    <li>Note any spread or changes</li>
-                                    <li>Record treatment effectiveness</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="care-plan-warning">
-                        <h3>When to Seek Immediate Care</h3>
-                        <ul>
-                            <li>Severe spreading of rash</li>
-                            <li>Development of blisters</li>
-                            <li>Difficulty breathing</li>
-                            <li>Fever or severe swelling</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Messages Section -->
-            <section id="messages" class="journey-section">
-                <div class="messages-container">
-                    <div class="messages-list">
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Martinez</h3>
-                                    <span class="message-time">Feb 28, 2:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Based on the photos you've shared, this appears to be contact dermatitis. Let's start with a topical steroid and try to identify potential triggers. Can you send daily photos to track the progress?</div>
-                        </div>
-
-                        <div class="message outgoing">
-                            <div class="message-header">
-                                <div class="message-info">
-                                    <h3>You</h3>
-                                    <span class="message-time">Feb 28, 3:15 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Yes, I'll start tracking with photos. Should I also note down any new products I've used recently?</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Martinez</h3>
-                                    <span class="message-time">Feb 28, 3:30 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Absolutely! Please log any new products from the last 2 weeks - including laundry detergent, soaps, and lotions. We'll review these during your patch testing appointment.</div>
-                        </div>
-                    </div>
-
-                    <div class="message-input-container">
-                        <form class="message-form" onsubmit="return false;">
-                            <textarea class="message-input" placeholder="Type your message..."></textarea>
-                            <button type="button" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Care Team Section -->
-            <section id="care-team" class="journey-section">
-                <div class="care-team-container">
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&auto=format&fit=crop&q=60" alt="Dr. Martinez" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Elena Martinez</h3>
-                            <p class="role">Dermatologist</p>
-                            <p class="specialty">Contact Dermatitis Specialist</p>
-                            <button class="button-secondary">Message</button>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Wilson" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Nurse Sarah Wilson</h3>
-                            <p class="role">Dermatology Nurse</p>
-                            <p class="specialty">Allergy Testing Coordinator</p>
-                            <div class="team-member-actions">
-                                <button class="button-secondary">Message</button>
-                                <button class="button-primary">Schedule Check-in</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Lee" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. James Lee</h3>
-                            <p class="role">Allergist</p>
-                            <p class="specialty">Patch Testing Specialist</p>
-                            <button class="button-secondary">Schedule Consultation</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Documents Section -->
-            <section id="documents" class="journey-section">
-                <div class="documents-container">
-                    <div class="document-card">
-                        <div class="document-icon">📄</div>
-                        <div class="document-info">
-                            <h3>Initial Dermatology Report</h3>
-                            <p class="document-date">February 28, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">📸</div>
-                        <div class="document-info">
-                            <h3>Rash Photo Timeline</h3>
-                            <p class="document-date">Updated Daily</p>
-                            <p class="document-type">Image Gallery</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">📝</div>
-                        <div class="document-info">
-                            <h3>Trigger Tracking Log</h3>
-                            <p class="document-date">March 5, 2024</p>
-                            <p class="document-type">Interactive Form</p>
-                        </div>
-                        <button class="button-secondary">Open</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">🧪</div>
-                        <div class="document-info">
-                            <h3>Patch Testing Information</h3>
-                            <p class="document-date">March 2, 2024</p>
-                            <p class="document-type">PDF Guide</p>
-                        </div>
-                        <button class="button-secondary">Download</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">🧴</div>
-                        <div class="document-info">
-                            <h3>Safe Products List</h3>
-                            <p class="document-date">March 6, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                </div>
-            </section>
         </div>
-
-        <!-- Migraine Journey -->
-        <div class="page-content journey" id="migraine-journey">
-            <div class="journey-header">
-                <a href="#" class="back-button" onclick="handleReturnButtonClick()">
-                    <i class="fas fa-chevron-left"></i>
-                    Back
-                </a>
-                <h1>Chronic Migraines</h1>
-                <div class="journey-status">
-                    <span class="status-indicator active">Open</span>
-                    <span class="status-date">Active since March 10, 2024</span>
-                </div>
-            </div>
-
-            <!-- Journey Navigation -->
-            <nav class="journey-nav">
-                <a href="#overview" class="journey-nav-item active">
-                    <i class="fas fa-clock"></i>
-                    Summary
-                </a>
-                <a href="#care-plan" class="journey-nav-item">
-                    <i class="fas fa-clipboard-list"></i>
-                    Care Plan
-                </a>
-                <a href="#messages" class="journey-nav-item">
-                    <i class="fas fa-comments"></i>
-                    Chat
-                </a>
-                <a href="#care-team" class="journey-nav-item">
-                    <i class="fas fa-user-md"></i>
-                    Team
-                </a>
-                <a href="#documents" class="journey-nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Links
-                </a>
-            </nav>
-
-            <!-- Overview Section -->
-            <section id="overview" class="journey-section active">
-                <div class="condition-summary">
-                    <h2>Condition Summary</h2>
-                    <div class="summary-content">
-                        <p><strong>Initial Complaint:</strong> Recurring severe headaches with visual aura, nausea, and light sensitivity.</p>
-                        <p><strong>Key Findings:</strong> Classic migraine pattern, potential triggers identified including stress and certain foods.</p>
-                        <p><strong>Current Status:</strong> 2-3 episodes per month, responding to preventive measures.</p>
-                        <p><strong>Treatment Plan:</strong> Combination of preventive medication, acute treatment, and lifestyle modifications.</p>
-                    </div>
-                    
-                    <div id="prescription-widget-container"></div>
-
-                    <div id="habit-tracker-container"></div>
-                    
-                    <div class="quick-actions">
-                        <h3>Quick Actions</h3>
-                        <div class="quick-actions-grid">
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Log Episode</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-pills"></i>
-                                <span>Medication Guide</span>
-                            </a>
-                            <a href="#" class="quick-action-card" onclick="window.location.href = 'phone-lock.html?type=migraine'; return false;">
-                                <i class="fas fa-moon"></i>
-                                <span>Sleep Log</span>
-                            </a>
-                            <a href="#" class="quick-action-card">
-                                <i class="fas fa-utensils"></i>
-                                <span>Food Diary</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline">
-                    <h2>Journey Timeline</h2>
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 10, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Initial Neurologist Visit</h3>
-                                <p>Comprehensive assessment and diagnosis with Dr. Patel</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 15, 2024</div>
-                            <div class="timeline-content">
-                                <h3>Treatment Started</h3>
-                                <p>Began preventive medication and trigger tracking</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 20, 2024</div>
-                            <div class="timeline-content">
-                                <h3>First Follow-up</h3>
-                                <p>Treatment response review and lifestyle adjustments</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="progress-tracker">
-                    <h2>Monthly Progress</h2>
-                    <div class="tracker-grid">
-                        <div class="tracker-card">
-                            <h3>Migraine Patterns</h3>
-                            <div class="tracker-stats">
-                                <div class="stat">
-                                    <span class="label">Frequency</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 60%"></div>
-                                    </div>
-                                </div>
-                                <div class="stat">
-                                    <span class="label">Intensity</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 45%"></div>
-                                    </div>
-                                </div>
-                                <div class="stat">
-                                    <span class="label">Duration</span>
-                                    <div class="progress-bar">
-                                        <div class="progress" style="width: 55%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="tracker-card">
-                            <h3>Identified Triggers</h3>
-                            <ul class="trigger-list">
-                                <li><i class="fas fa-check"></i> Lack of sleep</li>
-                                <li><i class="fas fa-check"></i> Stress levels</li>
-                                <li><i class="fas fa-check"></i> Certain foods</li>
-                                <li><i class="fas fa-check"></i> Screen time</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Care Plan Section -->
-            <section id="care-plan" class="journey-section">
-                <div class="care-plan-container">
-                    <h2>Your Migraine Management Plan</h2>
-                    
-                    <div class="care-plan-steps">
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">1</span>
-                                <h3>Medication Protocol</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li><strong>Preventive:</strong> Daily medication at bedtime</li>
-                                    <li><strong>Acute Treatment:</strong> Take at first sign of aura</li>
-                                    <li><strong>Rescue Medication:</strong> For breakthrough pain</li>
-                                    <li><strong>Anti-nausea:</strong> As needed during episodes</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">2</span>
-                                <h3>Lifestyle Management</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Maintain regular sleep schedule</li>
-                                    <li>Stay hydrated (2-3L water daily)</li>
-                                    <li>Regular exercise program</li>
-                                    <li>Stress reduction techniques</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">3</span>
-                                <h3>Trigger Avoidance</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Follow elimination diet plan</li>
-                                    <li>Manage screen exposure</li>
-                                    <li>Avoid known triggers</li>
-                                    <li>Track environmental factors</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="care-plan-step">
-                            <div class="step-header">
-                                <span class="step-number">4</span>
-                                <h3>Episode Management</h3>
-                            </div>
-                            <div class="step-content">
-                                <ul>
-                                    <li>Use dark, quiet room during episodes</li>
-                                    <li>Apply cold/hot compress</li>
-                                    <li>Practice relaxation techniques</li>
-                                    <li>Document episode details</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="care-plan-warning">
-                        <h3>When to Seek Emergency Care</h3>
-                        <ul>
-                            <li>Worst headache of your life</li>
-                            <li>Unusual neurological symptoms</li>
-                            <li>Fever with neck stiffness</li>
-                            <li>Loss of consciousness</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Messages Section -->
-            <section id="messages" class="journey-section">
-                <div class="messages-container">
-                    <div class="messages-list">
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Patel" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Raj Patel</h3>
-                                    <span class="message-time">Mar 10, 10:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Based on your symptoms and history, you're experiencing classic migraines. Let's start with a preventive medication and work on identifying your triggers. Please keep a detailed diary of episodes.</div>
-                        </div>
-
-                        <div class="message outgoing">
-                            <div class="message-header">
-                                <div class="message-info">
-                                    <h3>You</h3>
-                                    <span class="message-time">Mar 10, 11:15 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Thank you, Dr. Patel. Should I start the food diary right away? And what should I do if I get an aura?</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Patel" class="avatar">
-                                <div class="message-info">
-                                    <h3>Dr. Raj Patel</h3>
-                                    <span class="message-time">Mar 10, 11:30 AM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">Yes, please start the food diary immediately. When you experience an aura, take your prescribed medication right away and find a quiet, dark place if possible. The earlier you treat it, the more effective it will be.</div>
-                        </div>
-
-                        <div class="message">
-                            <div class="message-header">
-                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
-                                <div class="message-info">
-                                    <h3>Nurse Chen</h3>
-                                    <span class="message-time">Mar 20, 2:00 PM</span>
-                                </div>
-                            </div>
-                            <div class="message-content">
-                                <p>How are you responding to the preventive medication? Have you noticed any changes in your migraine frequency?</p>
-                                <div class="response-options">
-                                    <button class="response-option" data-response="better">
-                                        <i class="fas fa-smile"></i>
-                                        Less frequent
-                                    </button>
-                                    <button class="response-option" data-response="same">
-                                        <i class="fas fa-meh"></i>
-                                        About the same
-                                    </button>
-                                    <button class="response-option" data-response="worse">
-                                        <i class="fas fa-frown"></i>
-                                        More frequent
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="message-input-container">
-                        <form class="message-form" onsubmit="return false;">
-                            <textarea class="message-input" placeholder="Type your message..."></textarea>
-                            <button type="button" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Care Team Section -->
-            <section id="care-team" class="journey-section">
-                <div class="care-team-container">
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=60" alt="Dr. Patel" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Raj Patel</h3>
-                            <p class="role">Neurologist</p>
-                            <p class="specialty">Headache Specialist</p>
-                            <button class="button-secondary">Message</button>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&auto=format&fit=crop&q=60" alt="Nurse Chen" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Emily Chen, RN</h3>
-                            <p class="role">Neurology Nurse</p>
-                            <p class="specialty">Migraine Care Coordinator</p>
-                            <div class="team-member-actions">
-                                <button class="button-secondary">Message</button>
-                                <button class="button-primary">Schedule Check-in</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60" alt="Dr. Kim" class="avatar">
-                        <div class="team-member-info">
-                            <h3>Dr. Sarah Kim</h3>
-                            <p class="role">Pain Management Specialist</p>
-                            <p class="specialty">Available for consultation</p>
-                            <button class="button-secondary">Request Consultation</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        
-            <!-- Documents Section -->
-            <section id="documents" class="journey-section">
-                <div class="documents-container">
-                    <div class="document-card">
-                        <div class="document-icon">📄</div>
-                        <div class="document-info">
-                            <h3>Neurologist Assessment</h3>
-                            <p class="document-date">March 10, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">📊</div>
-                        <div class="document-info">
-                            <h3>Migraine Diary Template</h3>
-                            <p class="document-date">March 10, 2024</p>
-                            <p class="document-type">Interactive Form</p>
-                        </div>
-                        <button class="button-secondary">Open</button>
-                    </div>
-                    
-                    <div class="document-card">
-                        <div class="document-icon">🍎</div>
-                        <div class="document-info">
-                            <h3>Dietary Triggers Guide</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Guide</p>
-                        </div>
-                        <button class="button-secondary">Download</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">💊</div>
-                        <div class="document-info">
-                            <h3>Medication Instructions</h3>
-                            <p class="document-date">March 15, 2024</p>
-                            <p class="document-type">PDF Document</p>
-                        </div>
-                        <button class="button-secondary">View</button>
-                    </div>
-
-                    <div class="document-card">
-                        <div class="document-icon">🧘‍♀️</div>
-                        <div class="document-info">
-                            <h3>Relaxation Techniques</h3>
-                            <p class="document-date">March 20, 2024</p>
-                            <p class="document-type">Video Tutorial</p>
-                        </div>
-                        <button class="button-secondary">Watch</button>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
+    </main>
 
     <script src="js/main.js"></script>
     <script src="js/journey.js"></script>
     <script src="js/habit.js"></script>
     <script src="js/prescription.js"></script>
-    <script>
-        // Load the prescription widget
-        fetch('components/prescription-widget.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('prescription-widget-container').innerHTML = html;
-                // Initialize the prescription tracker
-                const tracker = new PrescriptionTracker();
-            });
-    </script>
+
 
 </body>
 </html>
