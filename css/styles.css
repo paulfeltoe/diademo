@@ -126,7 +126,7 @@ body {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     line-height: 1.6;
-    background: var(--background);
+    background-color: var(--background);
     overscroll-behavior: none;
 }
 header {
@@ -154,7 +154,7 @@ nav ul li a:hover {
 }
 main {
     margin: 0 auto;
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 
 
@@ -219,8 +219,6 @@ ul{
 }
 ul, li{
     color: var(--text-primary);
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-medium);
 }
 
 
@@ -247,7 +245,7 @@ textarea:focus {
 #main-content {
     transition: opacity 150ms ease-in-out;
     opacity: 1;
-    height: 100dvh;
+    height: 100%;
 }
 
 
@@ -532,11 +530,11 @@ body.onboarding .bottom-nav {
 }
 
 .page-content{
-    /* overflow-y: auto; */
+    overflow-y: auto;
     height: 100%;
 }
 
-/* .page-content.journey {
+.page-content.journey {
     position: fixed;
     top: 0;
     left: 0;
@@ -547,7 +545,7 @@ body.onboarding .bottom-nav {
     padding: 0px;
     overflow-y: auto;
     animation: slideIn 0.3s ease-out;
-} */
+}
 
 .profile-info{
     padding: var(--spacing-medium);

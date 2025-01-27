@@ -1,9 +1,10 @@
 // 1. Core Page Loading
 async function loadContent(page) {
-    // Don't load content if we're on specific pages
-    if (window.location.pathname.includes('journey.html') || 
-        window.location.pathname.includes('call.html') ||
-        window.location.pathname.includes('call-summary.html')) {
+    // Don't load content on specific pages
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('journey.html') || 
+        currentPath.includes('call.html') || 
+        currentPath.includes('call-summary.html')) {
         return;
     }
 
@@ -16,7 +17,7 @@ async function loadContent(page) {
     try {
         // Fade out current content
         mainContent.style.opacity = '0';
-        await new Promise(resolve => setTimeout(resolve, 150)); // Wait for fade out
+        await new Promise(resolve => setTimeout(resolve, 150));
 
         // Load new content
         const response = await fetch(`${page}.html`);
@@ -431,28 +432,34 @@ document.addEventListener('click', (e) => {
 
 // 6. Page Initialization
 document.addEventListener('DOMContentLoaded', () => {
+    // Get the current page path
+    const currentPath = window.location.pathname;
+    
     // Only load mycare content if we're on the index page
-    if (window.location.pathname === '/' || 
-        window.location.pathname.includes('index.html')) {
+    if (currentPath === '/' || 
+        currentPath === '/index.html' || 
+        currentPath.endsWith('index.html')) {
         loadContent('mycare');
     }
     
-    // Setup navigation
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = item.dataset.page;
-            
-            // Update active state
-            document.querySelectorAll('.nav-item').forEach(navItem => {
-                navItem.classList.remove('active');
+    // Setup navigation only if we're not on journey.html
+    if (!currentPath.includes('journey.html')) {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = item.dataset.page;
+                
+                // Update active state
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                item.classList.add('active');
+                
+                // Load the new page content
+                loadContent(page);
             });
-            item.classList.add('active');
-            
-            // Load the new page content
-            loadContent(page);
         });
-    });
+    }
     
     // Setup logo reset handler
     document.addEventListener('click', (e) => {

@@ -94,7 +94,8 @@
 
 .bottom-sheet.active {
     bottom: 0;
-    max-height: 90vh;
+    height: 90vh;
+
     overflow-y: auto;
 }
 
