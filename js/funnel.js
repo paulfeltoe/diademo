@@ -106,6 +106,29 @@ function previousStep() {
                               document.querySelector('.step[style*="display: flex"]');
     if (!currentStepElement) return;
 
+    // Special handling for outreferral steps
+    if (currentStepElement.classList.contains('step-outreferral-details')) {
+        // Hide current step
+        currentStepElement.style.display = 'none';
+        // Show clinics list step
+        const clinicsStep = document.querySelector('.step-outreferral-clinics');
+        if (clinicsStep) {
+            clinicsStep.style.display = 'block';
+        }
+        return;
+    }
+
+    if (currentStepElement.classList.contains('step-outreferral-clinics')) {
+        // Hide current step
+        currentStepElement.style.display = 'none';
+        // Show initial outreferral step
+        const outreferralStep = document.querySelector('.step-outreferral');
+        if (outreferralStep) {
+            outreferralStep.style.display = 'flex';
+        }
+        return;
+    }
+
     const prevStepNumber = parseInt(currentStepElement.dataset.step) - 1;
     
     // Hide current step
@@ -1319,6 +1342,36 @@ function handleOutreferralComplete() {
 
 // Make showStep available globally
 window.showStep = showStep;
+
+// Add this function near the other clinic-related functions
+function filterClinics() {
+    const distanceFilter = document.querySelector('select[onchange="filterClinics()"]:nth-of-type(1)').value;
+    const waitTimeFilter = document.querySelector('select[onchange="filterClinics()"]:nth-of-type(2)').value;
+    const ratingFilter = document.querySelector('select[onchange="filterClinics()"]:nth-of-type(3)').value;
+
+    // Get all clinic cards
+    const clinicCards = document.querySelectorAll('.clinic-card');
+
+    clinicCards.forEach(card => {
+        // Get clinic data from the card
+        const distance = parseFloat(card.querySelector('p').textContent.split('miles')[0]);
+        const waitTime = card.querySelector('p').textContent.split('•')[1].trim();
+        const rating = parseFloat(card.querySelector('.rating').textContent.split(' ')[0].replace('★', ''));
+
+        // Apply filters
+        const meetsDistance = distance <= parseFloat(distanceFilter);
+        const meetsWaitTime = (waitTimeFilter === 'today' && waitTime.includes('Today')) ||
+                             (waitTimeFilter === 'week' && (waitTime.includes('Today') || waitTime.includes('Tomorrow') || waitTime.includes('This Week'))) ||
+                             (waitTimeFilter === 'twoweeks');
+        const meetsRating = ratingFilter === 'all' || rating >= parseFloat(ratingFilter);
+
+        // Show/hide based on filters
+        card.style.display = (meetsDistance && meetsWaitTime && meetsRating) ? 'block' : 'none';
+    });
+}
+
+// Add to window object so it's accessible from HTML
+window.filterClinics = filterClinics;
 
 
 

@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const isTabButton = event.target.closest('.tab-button');
         const isTabContent = event.target.closest('.tab-content');
         
-        if (!isTabButton && !isTabContent && activeTab) {
+        // Only close if we're clicking outside both the button and content
+        // AND we have an active tab AND this isn't the initial click that opened the tab
+        if (!isTabButton && !isTabContent && activeTab && !event.target.matches('.tab-button')) {
             const activeButton = document.querySelector(`.tab-button[data-tab="${activeTab}"]`);
             const activeContent = document.getElementById(`${activeTab}Content`);
             
@@ -153,15 +155,35 @@ document.addEventListener('DOMContentLoaded', () => {
     
     async function startVideoStream() {
         try {
+            // First check if video element exists
+            if (!selfVideo) {
+                console.error('Self video element not found');
+                return;
+            }
+
+            console.log('Requesting camera access...');
             const stream = await navigator.mediaDevices.getUserMedia({ 
-                video: true,
-                audio: false // Set to true if you want to enable audio as well
+                video: {
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                },
+                audio: false
             });
             
+            console.log('Camera access granted, setting up video stream...');
             selfVideo.srcObject = stream;
-            selfVideo.play();
+            await selfVideo.play().catch(err => {
+                console.error('Error playing video:', err);
+            });
         } catch (err) {
             console.error('Error accessing camera:', err);
+            // More specific error handling
+            if (err.name === 'NotAllowedError') {
+                console.error('Camera permission denied');
+            } else if (err.name === 'NotFoundError') {
+                console.error('No camera found');
+            }
+            
             // Fallback to placeholder video if camera access fails
             selfVideo.innerHTML = `
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-from-home-talking-in-a-video-call-13999-large.mp4" type="video/mp4">
@@ -169,7 +191,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    startVideoStream();
+    // Wait for DOM to be fully loaded before starting video
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startVideoStream);
+    } else {
+        startVideoStream();
+    }
 
     // Cleanup when leaving page
     window.addEventListener('beforeunload', () => {

@@ -204,10 +204,9 @@
 
 /* Profile Form */
 .profile-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 80px; /* Add space for the bottom */
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .profile-form {
@@ -300,7 +299,7 @@
 .onboarding {
     margin: 0!important;
     padding: 0!important;
-    height: 100dvh!important;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -318,6 +317,7 @@
     overflow-y: auto;
     padding: 20px;
     -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    justify-content: center;
 }
 
 .onboarding .button-container {

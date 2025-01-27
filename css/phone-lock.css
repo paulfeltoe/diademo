@@ -36,7 +36,7 @@ body {
 
 .time {
     font-size: 60px;
-    line-height: 40px;
+    line-height: 70px;
     color: white;
     text-align: center;
     
@@ -61,6 +61,7 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     margin-top: 20px;
+    
 }
 
 .notification:hover {
@@ -100,7 +101,7 @@ body {
 }
 
 .notification-content {
-    font-size: 14px;
+    font-size: var(--font-size-small);
     line-height: 1.4;
 }
 

@@ -140,6 +140,10 @@
     padding: 5px;
 }
 
+.preparation-steps{
+    padding-bottom: 20px;
+}
+
 .accordion {
     background: white;
     border-radius: 12px;

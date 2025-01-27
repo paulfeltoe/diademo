@@ -107,7 +107,7 @@ div::-webkit-scrollbar {
     height: 0 !important;
 }
 
-html, body, .phone-container {
+html, body {
     margin: 0;
     height: 100dvh;
     min-height: 100dvh;
@@ -157,10 +157,6 @@ main {
     overflow-y: auto;
 }
 
-/* #main-content {
-    padding:15px;
-    padding-bottom: 100px;
-} */
 
 footer {
     text-align: center;
@@ -244,6 +240,12 @@ textarea {
 input:focus,
 textarea:focus {
     border-color: var(--color-primary); /* Or any other custom styling you prefer */
+}
+
+#main-content {
+    transition: opacity 150ms ease-in-out;
+    opacity: 1;
+    height: 100%;
 }
 
 
@@ -528,7 +530,8 @@ body.onboarding .bottom-nav {
 }
 
 .page-content{
-    overflow-y: auto
+    overflow-y: auto;
+    height: 100%;
 }
 
 .page-content.journey {
@@ -549,10 +552,7 @@ body.onboarding .bottom-nav {
     padding-bottom: 100px;
 }
 
-#main-content {
-    transition: opacity 150ms ease-in-out;
-    opacity: 1;
-}
+
 
 .icon-transition {
     transition: all 0.2s ease-in-out;

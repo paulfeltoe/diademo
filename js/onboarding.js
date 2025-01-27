@@ -131,7 +131,7 @@ function setupOnboarding() {
                 
                 if (currentStepElement && nextStepElement) {
                     currentStepElement.style.display = 'none';
-                    nextStepElement.style.display = 'block';
+                    nextStepElement.style.display = 'flex';
                     updateProgress();
                     
                     // Add click handler for step 3 immediately after showing it
@@ -139,7 +139,7 @@ function setupOnboarding() {
                         currentStep = 4;
                         const step4 = document.getElementById('step4');
                         nextStepElement.style.display = 'none';
-                        step4.style.display = 'block';
+                        step4.style.display = 'flex';
                         updateProgress();
                     });
                 }
@@ -153,7 +153,7 @@ function setupOnboarding() {
                 
                 if (currentStepElement && nextStepElement) {
                     currentStepElement.style.display = 'none';
-                    nextStepElement.style.display = 'block';
+                    nextStepElement.style.display = 'flex';
                     updateProgress();
                 }
                 return;
@@ -166,7 +166,7 @@ function setupOnboarding() {
         
         if (currentStepElement && nextStepElement) {
             currentStepElement.style.display = 'none';
-            nextStepElement.style.display = 'block';
+            nextStepElement.style.display = 'flex';
             updateProgress();
         }
     };
@@ -179,7 +179,7 @@ function setupOnboarding() {
             
             if (currentStepElement && prevStepElement) {
                 currentStepElement.style.display = 'none';
-                prevStepElement.style.display = 'block';
+                prevStepElement.style.display = 'flex';
                 
                 // Update progress bar
                 if (progressBar && progressText) {
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentStep = 4;
             const step4 = document.getElementById('step4');
             step3.style.display = 'none';
-            step4.style.display = 'block';
+            step4.style.display = 'flex';
             updateProgress();
         });
     }
