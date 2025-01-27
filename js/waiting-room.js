@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const waitingRoomSection = document.querySelector('.waiting-room-section');
     
     // Waiting Room Timer
-    let appointmentTimeLeft = 15; // 30 seconds
+    let appointmentTimeLeft = 30; // 30 seconds
     const waitingMinutesElement = document.querySelector('.waiting-room-section .minutes');
     const waitingSecondsElement = document.querySelector('.waiting-room-section .seconds');
     let waitingRoomInterval;

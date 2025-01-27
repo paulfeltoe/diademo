@@ -32,9 +32,9 @@
                                 AI Highlights
                             </h4>
                             <div class="highlights-list">
-                                <div class="highlight-item">Patient reports daily headaches lasting 2-4 hours</div>
-                                <div class="highlight-item">Pain typically starts in the afternoon</div>
-                                <div class="highlight-item">No previous history of migraines</div>
+                                <div class="highlight-item">Patient reports sinus pressure and congestion for 2 weeks</div>
+                                <div class="highlight-item">Symptoms worse in the morning and when bending forward</div>
+                                <div class="highlight-item">No fever or recent cold symptoms reported</div>
                             </div>
                         </div>
                         
@@ -47,10 +47,10 @@
                             </h4>
                             <div class="transcription-content">
                                 <div class="transcription-item">
-                                    <span class="speaker">Dr. Johnson:</span> How long have you been experiencing these headaches?
+                                    <span class="speaker">Dr. Tremblay:</span> How long have you been experiencing this sinus pain?
                                 </div>
                                 <div class="transcription-item">
-                                    <span class="speaker">You:</span> They started about two weeks ago...
+                                    <span class="speaker">You:</span> It started about two weeks ago...
                                 </div>
                             </div>
                         </div>
@@ -70,9 +70,9 @@
                 <div class="tab-content" id="providerContent" style="display: none;">
                     <h3>Provider Information</h3>
                     <div class="provider-info">
-                        <!-- <img src="assets/doctor-avatar.jpg" alt="Dr. Sarah Johnson"> -->
+                        <!-- <img src="assets/doctor-avatar.jpg" alt="Dr. Sarah Tremblay"> -->
                         <div class="provider-details">
-                            <h4>Dr. Sarah Johnson</h4>
+                            <h4>Dr. Sarah Tremblay</h4>
                             <p class="provider-specialty">Family Medicine</p>
                             <p class="provider-experience">15 years experience</p>
                             <p class="provider-education">MD - University of Washington</p>
@@ -93,18 +93,8 @@
                                 </svg>
                                 <span class="file-extension">PDF</span>
                             </div>
-                            <span>Medical History.pdf</span>
+                            <span>Shared_file.pdf</span>
                             <span class="file-time">2:15 PM</span>
-                        </div>
-                        <div class="file-item" data-file="blood-work">
-                            <div class="file-icon pdf">
-                                <svg class="file-type-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M4 0C2.9 0 2 .9 2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H4zm0 2h7v5h5v11H4V2z" fill="currentColor"/>
-                                </svg>
-                                <span class="file-extension">PDF</span>
-                            </div>
-                            <span>Recent Blood Work.pdf</span>
-                            <span class="file-time">2:17 PM</span>
                         </div>
                     </div>
                 </div>
@@ -139,7 +129,7 @@
                     <source src="https://assets.mixkit.co/videos/4834/4834-720.mp4" type="video/mp4">
                 </video>
 
-                <div class="participant-name">Dr. Sarah Johnson</div>
+                <div class="participant-name">Dr. Sarah Tremblay</div>
             </div>
             <div class="self-video">
                 <!-- Patient's video - empty source as it will be set by JavaScript -->
@@ -176,6 +166,13 @@
         </div>
     </div>
 
+    <!-- <div class="notification-banner" style="display: none;">
+        <div class="notification-banner-content">
+            <i class="fa-regular fa-file"></i>
+            Your file has been shared with Dialogue
+        </div>
+    </div> -->
+
     <!-- Add file preview modal -->
     <div class="file-preview-modal" style="display: none;">
         <div class="modal-content">
@@ -202,9 +199,7 @@
     </div>
 
     <!-- Add this right after the call-container div -->
-    <div class="notification-banner" style="display: none;">
-        Your file has been shared with Dialogue
-    </div>
+    
 
     <script src="js/call.js"></script>
 </body>

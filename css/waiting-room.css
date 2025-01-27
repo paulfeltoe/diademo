@@ -1,10 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100dvh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
-    background: #f8f9fa;
-}
+
 
 .container {
     max-width: 768px;
@@ -94,12 +88,17 @@ body {
     gap: 12px;
 }
 
+.waiting-room-section {
+    height: 100dvh;
+    padding: 100px var(--spacing-xlarge) ;
+}
 
 
 /* Waiting Room Section Styles */
 .waiting-room-section .header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: var(--spacing-xlarge);
+    
 }
 
 .countdown {
@@ -109,6 +108,8 @@ body {
     gap: 8px;
     font-size: 48px;
     font-weight: 200;
+    line-height: 60px;
+    
 }
 
 .time-block {
@@ -118,9 +119,10 @@ body {
 }
 
 .time-block span {
-    color: #2196F3;
-    font-weight: 600;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-xlarge);
     min-width: 80px;
+    font-size: 50px;
 }
 
 .time-block label {
@@ -130,9 +132,12 @@ body {
 }
 
 .separator {
-    color: #2196F3;
-    font-weight: 200;
-    margin-top: -20px;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-xlarge);
+    font-size: var(--font-size-xxlarge);
+    letter-spacing: -1px;
+    margin-top: -5px;
+    padding: 5px;
 }
 
 .accordion {
@@ -140,6 +145,8 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
 }
 
 .accordion-item {
@@ -155,14 +162,17 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 20px;
-    background: none;
+    padding: var(--spacing-medium);
+    background: white;
     border: none;
-    font-size: 16px;
-    font-weight: 500;
     color: #1a1a1a;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.accordion-header i {
+    width: 24px;
+    color: var(--color-primary);
 }
 
 .accordion-header:hover {
@@ -176,10 +186,12 @@ body {
 .accordion-header .chevron {
     margin-left: auto;
     transition: transform 0.2s ease;
+    opacity: 0.5;
 }
 
 .accordion-item.active .chevron {
     transform: rotate(180deg);
+    opacity: 0.5;
 }
 
 .accordion-content {
@@ -294,9 +306,9 @@ textarea {
 }
 
 @media (max-width: 480px) {
-    .container {
+    /* .container {
         padding: 16px;
-    }
+    } */
     
     .confirmation-section .content {
         padding: 24px;
@@ -317,17 +329,17 @@ textarea {
 
 /* Add after the countdown styles */
 .appointment-details {
-    margin-top: 32px;
-    padding: 0 16px;
+    padding: 0;
+    font-size: var(--font-size-small);
 }
 
 .detail-card {
     background: white;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    max-width: 400px;
     margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 .detail-header {
@@ -338,14 +350,12 @@ textarea {
 }
 
 .detail-header h2 {
-    font-size: 18px;
     color: #1a1a1a;
     margin: 0;
 }
 
 .detail-content {
     color: #666;
-    font-size: 15px;
     line-height: 1.5;
 }
 
@@ -359,7 +369,7 @@ textarea {
 }
 
 .detail-type {
-    font-weight: 500;
+    font-weight: var(--font-weight-xlarge);
     color: #1a1a1a;
 }
 
@@ -367,15 +377,7 @@ textarea {
     color: #666;
 }
 
-@media (max-width: 480px) {
-    .appointment-details {
-        padding: 0 8px;
-    }
-    
-    .detail-card {
-        padding: 16px;
-    }
-}
+
 
 /* Add after the accordion styles */
 .info-grid-waiting-room {
@@ -385,42 +387,10 @@ textarea {
     margin-top: 8px;
 }
 
-.info-card {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 16px;
-}
 
-.info-card h3 {
-    font-size: 16px;
-    color: #2196F3;
-    margin: 0 0 12px 0;
-}
 
-.info-card ul {
-    margin: 0;
-    padding-left: 20px;
-}
 
-.info-card li {
-    color: #666;
-    margin-bottom: 8px;
-    line-height: 1.4;
-}
 
-.info-card li:last-child {
-    margin-bottom: 0;
-}
-
-@media (max-width: 480px) {
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .info-card {
-        padding: 12px;
-    }
-}
 
 /* Add at the top, after body styles */
 .notification-banner {
@@ -428,10 +398,12 @@ textarea {
     /* top: 20px;
     left: 50%;
     transform: translateX(-50%); */
-    background: #e3f2fd;
-    color: #1976d2c5;
-    padding: 12px;
+    width: 100%;
+    background: var(--color-primary);
+    color: white;
+    padding: 24px;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -439,6 +411,10 @@ textarea {
     animation: slideDown 0.3s ease;
     opacity: 1;
     transition: opacity 0.5s ease-out;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-large);
+    line-height: 1;
+
 }
 
 @keyframes slideDown {
@@ -484,15 +460,16 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 0px;
 }
 
 .join-call-button {
     display: flex;
+    letter-spacing: -1px;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: #4CAF50;
+    background: var(--color-primary);
     color: white;
     border: none;
     padding: 16px 32px;
@@ -501,22 +478,5 @@ textarea {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    animation: pulse 2s infinite;
+    border-radius: 100px;
 }
-
-.join-call-button:hover {
-    background: #43A047;
-    transform: translateY(-2px);
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-    }
-} 

@@ -80,10 +80,10 @@
             <p>This helps us understand the severity of your condition</p>
             <div class="question-group"></div>
                 <div class="option-buttons">
-                    <button class="option-btn" onclick="funnelNextStep()">Mild - Noticeable but not interfering with daily activities</button>
-                    <button class="option-btn" onclick="funnelNextStep()">Moderate - Somewhat limiting daily activities</button>
-                    <button class="option-btn" onclick="funnelNextStep()">Severe - Significantly impacting daily activities</button>
-                    <button class="option-btn" onclick="funnelNextStep()">Variable - Symptoms come and go or change in intensity</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Mild - Noticeable</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Moderate - Somewhat limiting </button>
+                    <button class="option-btn" onclick="funnelNextStep()">Severe - Significant impact</button>
+                    <button class="option-btn" onclick="funnelNextStep()">Variable - Symptoms come and go</button>
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                 <p>Based on the symptoms you've described, it's important to have them evaluated soon. Upper respiratory symptoms can impact your daily life and may worsen without proper care. A video consultation will allow our specialists to properly assess your symptoms, understand their severity, and recommend appropriate next steps for relief.</p>
             </div>
             <div class="button-container">
-                <button class="special-button" onclick="funnelNextStep()"><i class="fa-regular fa-calendar"></i> Book Consultation Now</button>
+                <button class="primary-button" onclick="funnelNextStep()"><i class="fa-regular fa-calendar"></i> Book Consultation Now</button>
             </div>
         </div>
 
@@ -219,12 +219,12 @@
             </div>
 
             <div class="button-container">
-                <button class="continue-button special-button" onclick="funnelNextStep()">Continue</button>
+                <button class="continue-button primary-button" onclick="funnelNextStep()">Continue</button>
             </div>
         </div>
 
         <div class="step" data-step="8" style="display: none;">
-            <div class="confirmation-container">
+            <!-- <div class="confirmation-container"> -->
                 <div class="confirmation-header">
                     <div class="success-icon">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -239,7 +239,7 @@
                 <div class="appointment-details">
                     <div class="detail-item">
                         <span class="label">Appointment Type</span>
-                        <span class="value">Video Consultation with Dr. Smith</span>
+                        <span class="value">Video Consultation with Dr. Tremblay</span>
                     </div>
                     <div class="detail-item">
                         <span class="label">Date & Time</span>
@@ -251,12 +251,9 @@
                     </div>
                 </div>
 
-                <div class="action-buttons">
-                    <button class="primary-button calendar-button special-button" onclick="handleCalendarClick()">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M15.8333 2.5H15V1.66667H13.3333V2.5H6.66667V1.66667H5V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5ZM15.8333 15.8333H4.16667V6.66667H15.8333V15.8333Z" fill="currentColor"/>
-                        </svg>
-                        Add to my calendar
+                <div class="button-container">
+                    <button class="primary-button calendar-button" onclick="handleCalendarClick()">
+                        Continue
                     </button>
                     <!-- <button class="secondary-button waitlist-button" onclick="window.location.href='phone-lock.html'">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -266,7 +263,7 @@
                     </button> -->
                     
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
 
         <div class="step step-outreferral" data-step="outreferral" style="display: none;">
@@ -365,9 +362,9 @@
                     
                     <h3>Meet Your Provider</h3>
                     <div class="provider-profile">
-                        <!-- <img src="doctor-avatar.jpg" alt="Dr. Sarah Smith" class="provider-avatar"> -->
+                        <!-- <img src="doctor-avatar.jpg" alt="Dr. Sarah Tremblay" class="provider-avatar"> -->
                         <div class="provider-bio">
-                            <h4>Dr. Sarah Smith, MD</h4>
+                            <h4>Dr. Sarah Tremblay, MD</h4>
                             <p>Board Certified Neurologist with 15+ years of experience in treating complex headache conditions.</p>
                         </div>
                     </div>
@@ -385,7 +382,7 @@
         </div>
 
         <div class="step step-outreferral-confirmation" data-step="outreferral-confirmation" style="display: none;">
-            <div class="confirmation-container">
+            <!-- <div class="confirmation-container"> -->
                 <div class="success-icon">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                         <circle cx="24" cy="24" r="24" fill="#E3F2FD"/>
@@ -394,7 +391,7 @@
                 </div>
                 
                 <h2>Your Appointment is Confirmed!</h2>
-                <p>We've scheduled your visit with Dr. Sarah Smith at Neurological Center of Excellence.</p>
+                <p>We've scheduled your visit with Dr. Sarah Tremblay at Neurological Center of Excellence.</p>
                 
                 <div class="appointment-details">
                     <div class="detail-item">
@@ -407,7 +404,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="label">Provider</span>
-                        <span class="value">Dr. Sarah Smith, MD</span>
+                        <span class="value">Dr. Sarah Tremblay, MD</span>
                     </div>
                 </div>
 
@@ -415,7 +412,7 @@
                     <p>We'll check in with you in a few days to see how it went.</p>
                 </div>
 
-                <div class="action-buttons">
+                <div class="button-container">
                     <button class="primary-button" onclick="handleOutreferralComplete()">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M15.8333 2.5H15V1.66667H13.3333V2.5H6.66667V1.66667H5V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V4.16667C17.5 3.25 16.75 2.5 15.8333 2.5Z" fill="currentColor"/>
@@ -423,7 +420,7 @@
                         Add to Calendar
                     </button>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
 
     </div>

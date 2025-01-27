@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Subtitle simulation
     const subtitleScript = [
         {
-            speaker: "Dr. Johnson",
+            speaker: "Dr. Tremblay",
             text: "Hello! I understand you've been experiencing sinus problems recently?",
             duration: 3000
         },
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 3500
         },
         {
-            speaker: "Dr. Johnson",
+            speaker: "Dr. Tremblay",
             text: "Can you describe your symptoms? Any nasal discharge or difficulty breathing?",
             duration: 3000
         },
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 3500
         },
         {
-            speaker: "Dr. Johnson",
+            speaker: "Dr. Tremblay",
             text: "Have you noticed if anything makes these symptoms better or worse?",
             duration: 3000
         },
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const words = subtitle.text.split(' ');
         let currentWordIndex = 0;
         subtitleContainer.innerHTML = `
-            <div class="subtitle ${subtitle.speaker === 'Dr. Johnson' ? 'doctor' : 'patient'}">
+            <div class="subtitle ${subtitle.speaker === 'Dr. Tremblay' ? 'doctor' : 'patient'}">
                 <span class="speaker">${subtitle.speaker}:</span> 
                 <span class="words"></span>
                 <span class="typing-indicator">▋</span>

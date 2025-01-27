@@ -31,7 +31,7 @@ function showStep(stepId) {
     // Show the target step
     const targetStep = document.querySelector(`.step[data-step="${stepId}"]`);
     if (targetStep) {
-        targetStep.style.display = 'block';
+        targetStep.style.display = 'flex';
     }
     
     // Update back button state
@@ -54,7 +54,7 @@ function nextStep() {
         // Show outreferral step
         const outreferralStep = document.querySelector('.step-outreferral');
         if (outreferralStep) {
-            outreferralStep.style.display = 'block';
+            outreferralStep.style.display = 'flex';
             return; // Exit early as this is a terminal state
         }
     }
@@ -70,7 +70,7 @@ function nextStep() {
     } else {
         const nextStepElement = document.querySelector(`.step[data-step="${nextStepNumber}"]`);
         if (nextStepElement) {
-            nextStepElement.style.display = 'block';
+            nextStepElement.style.display = 'flex';
             currentStep = nextStepNumber;
             updateProgress();
             
@@ -114,7 +114,7 @@ function previousStep() {
     // Show previous step
     const prevStepElement = document.querySelector(`.step[data-step="${prevStepNumber}"]`);
     if (prevStepElement) {
-        prevStepElement.style.display = 'block';
+        prevStepElement.style.display = 'flex';
         currentStep = prevStepNumber; // Update current step
         updateProgress();
     }

@@ -64,8 +64,17 @@
 }
 
 .step {
+    height: 100%;
+    display: flex;          /* Add display flex */
+    flex-direction: column; /* Stack children vertically */
+    position: relative;     /* For proper child positioning */
+    opacity: 0;
     transition: opacity 0.3s ease;
-    
+}
+
+.step[style*="display: flex"],
+.step[style*="display: block"] {
+    opacity: 1;
 }
 
 .step h1 {
@@ -781,12 +790,12 @@ textarea {
 }
 
 /* Confirmation Screen Styles */
-.confirmation-container {
+/* .confirmation-container {
     display: flex;
     flex-direction: column;
     gap: 32px;
     padding: 24px;
-}
+} */
 
 .confirmation-header {
     text-align: center;

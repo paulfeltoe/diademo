@@ -84,6 +84,8 @@ body,
 .funnel-container,
 .bottom-sheet-content,
 .profile-container,
+.onboarding-page,
+.onboarding,
 textarea,
 select,
 div {
@@ -107,7 +109,6 @@ div::-webkit-scrollbar {
 
 html, body, .phone-container {
     margin: 0;
-    padding: 0;
     height: 100dvh;
     min-height: 100dvh;
     max-height: 100dvh;
@@ -115,7 +116,6 @@ html, body, .phone-container {
 }
 
 body {
-    height: 100%;
     margin: 0;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -216,8 +216,34 @@ button{
     padding-right: var(--spacing-medium);
     border-radius: var(--border-radius-medium);
 
+}
+
+ul{
+    padding: var(--spacing-medium);
+}
+ul, li{
+    color: var(--text-primary);
+}
 
 
+input, 
+textarea {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* If you want to remove the iOS-specific styling */
+input, 
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* If you still want to show a custom focus state, you can add: */
+input:focus,
+textarea:focus {
+    border-color: var(--color-primary); /* Or any other custom styling you prefer */
 }
 
 
@@ -232,10 +258,12 @@ button{
     background: var(--color-primary);
     color: white;
     border: none;
+    width: 100%;
 }
 
 .secondary-button {
     background: white;
+    width: 100%;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
 }
@@ -251,13 +279,16 @@ button{
 }
 
 .button-container {
-    position: sticky; /* Change from absolute to sticky */
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
-    text-align: right;
+    /* text-align: right; */
     z-index: 1; /* Ensure button stays on top */
     flex-shrink: 0; /* Prevent container from shrinking */
+    margin-top: auto;      /* Push to bottom */
+    padding: 16px 0;       /* Add some padding */
+    background: var(--background);
 }
 
 .next-button {

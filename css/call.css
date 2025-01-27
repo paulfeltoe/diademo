@@ -25,7 +25,7 @@ body {
 }
 
 .time-remaining {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 8px;
     color: #fff;
@@ -451,7 +451,6 @@ body {
     
     .info-tabs {
         overflow-x: auto;
-        padding-bottom: 8px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
@@ -655,7 +654,7 @@ body {
 /* Subtitle styles */
 .subtitle-container {
     position: absolute;
-    bottom: 180px;
+    bottom: 140px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -668,7 +667,7 @@ body {
 
 .subtitle {
     background: rgba(0, 0, 0, 0.8);
-    padding: 12px 24px;
+    padding: 12px;
     border-radius: 8px;
     font-size: 16px;
     line-height: 1.4;
@@ -676,24 +675,24 @@ body {
     margin: 0 auto;
     display: inline-block;
     min-width: 300px;
+    color: white;
+    font-size: var(--font-size-medium) !important;
 }
 
 .subtitle.doctor .speaker {
-    color: #4CAF50;
-    font-weight: 500;
+    color: var(--color-primary);
 }
 
 .subtitle.patient .speaker {
-    color: #2196F3;
-    font-weight: 500;
+    color: var(--color-primary);
 }
 
 .typing-indicator {
     display: inline-block;
-    color: #4CAF50;
     animation: blink 0.8s infinite;
     font-weight: bold;
     margin-left: 2px;
+    color:white;
 }
 
 @keyframes blink {
@@ -703,6 +702,7 @@ body {
 
 .words {
     display: inline;
+    color: white;
 }
 
 /* Update translation button active state */
@@ -715,4 +715,53 @@ body {
 
 .button-upload-file .fa-file-arrow-up {
     font-size: 20px; /* Matches the SVG icons size */
+}
+
+/* Update notification banner styles to match waiting-room.css */
+.notification-banner {
+    position: fixed;
+    top: 0;  /* Changed from bottom positioning */
+    left: 0;
+    width: 100%;
+    background: var(--color-primary);
+    color: white;
+    padding: 24px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 1000;
+    animation: slideDown 0.3s ease;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-large);
+    line-height: 1;
+}
+
+.notification-banner-content {
+    max-width: 768px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-banner-content {
+        padding: 0 16px;
+    }
 } 

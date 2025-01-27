@@ -1,16 +1,8 @@
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100dvh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
-    background: #f5f5f5;
-    color: #333;
-}
-
 .summary-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
+    padding: 100px 24px;
+    height: 100dvh;
+    width: 100dvw;
+    text-align: center;
 }
 
 h1 {
@@ -137,49 +129,55 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .summary-container {
+    /* .summary-container {
         margin: 20px auto;
         padding: 16px;
-    }
+    } */
 
     .resources-grid {
         grid-template-columns: 1fr;
     }
 }
 
-.typing-indicator {
+.summary-typing-dots {
     display: flex;
-    gap: 4px;
-    padding: 8px 0;
+    gap: 8px;
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
 }
 
-.typing-indicator span {
+.summary-typing-dots span {
+    display: block;
+    
     width: 8px;
     height: 8px;
-    background-color: #FFA726;
+    background-color: var(--color-primary);
     border-radius: 50%;
-    animation: typing 1.4s infinite ease-in-out;
+    animation: summary-typing-animation 1.4s infinite ease-in-out;
 }
 
-.typing-indicator span:nth-child(1) {
+.summary-typing-dots span:nth-child(1) {
     animation-delay: 0s;
 }
 
-.typing-indicator span:nth-child(2) {
+.summary-typing-dots span:nth-child(2) {
     animation-delay: 0.2s;
 }
 
-.typing-indicator span:nth-child(3) {
+.summary-typing-dots span:nth-child(3) {
     animation-delay: 0.4s;
 }
 
-@keyframes typing {
+@keyframes summary-typing-animation {
     0%, 100% {
         transform: translateY(0);
         opacity: 0.4;
     }
     50% {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         opacity: 1;
     }
-} 
+}
+
