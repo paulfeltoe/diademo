@@ -269,27 +269,26 @@
         <div class="step step-outreferral" data-step="outreferral" style="display: none;">
 
             <h1>Additional Support Needed</h1>
-            <p>Based on your symptoms, we recommend scheduling with a specialist for a more comprehensive evaluation.</p>
+            <p>Based on your symptoms, we recommend scheduling with a general practitioner for a more comprehensive evaluation.</p>
                     
             <div class="why-section">
                 <h3>Why are we recommending this?</h3>
-                <p>Some headache conditions require specialized care and treatment approaches. A specialist can provide:</p>
+                <p>Some headache conditions require in-person care and treatment approaches. A GP can provide:</p>
                     <ul>
                         <li>Detailed neurological evaluation</li>
-                        <li>Advanced treatment options</li>
-                        <li>Specialized pain management strategies</li>
+                        <li>Pain management strategies</li>
                         <li>Long-term care planning</li>
                     </ul>
             </div>
             <div class="button-container">
-                <button class="primary-button" onclick="handleOutreferralNext()"><i class="fa-regular fa-calendar"></i> Find Available Specialists</button>
+                <button class="primary-button" onclick="handleOutreferralNext()"><i class="fa-regular fa-calendar"></i> Find Available Providers</button>
             </div>
 
         </div>
 
         <div class="step step-outreferral-clinics" data-step="outreferral-clinics" style="display: none;">
-            <h1>Available Specialists Near You</h1>
-            <p>We've found several specialists who can help with your needs</p>
+            <h1>Available Providers Near You</h1>
+            <p>We've found several providers who can help with your needs</p>
             
             <div class="filters-container">
                 <div class="filter-group">
@@ -321,21 +320,21 @@
             <div class="clinics-list">
                 <div class="clinic-card" onclick="handleClinicSelection(1)">
                     <div class="clinic-info">
-                        <h3>Neurological Center of Excellence</h3>
+                        <h3>Downtown Family Practice</h3>
                         <div class="rating">★★★★★ 4.8 (234 reviews)</div>
                         <p>1.2 miles away • Next available: Today</p>
                     </div>
                 </div>
                 <div class="clinic-card" onclick="handleClinicSelection(2)">
                     <div class="clinic-info">
-                        <h3>Advanced Headache Institute</h3>
+                        <h3>Westmount Medical Clinic</h3>
                         <div class="rating">★★★★☆ 4.2 (156 reviews)</div>
                         <p>2.5 miles away • Next available: Tomorrow</p>
                     </div>
                 </div>
                 <div class="clinic-card" onclick="handleClinicSelection(3)">
                     <div class="clinic-info">
-                        <h3>City Neurology Partners</h3>
+                        <h3>Plateau Health Centre</h3>
                         <div class="rating">★★★★★ 4.9 (89 reviews)</div>
                         <p>3.8 miles away • Next available: This Week</p>
                     </div>
@@ -348,21 +347,21 @@
                 <button class="back-link" onclick="funnelPreviousStep()">← Back to list</button>
                 
                 <div class="provider-header">
-                    <h2>Neurological Center of Excellence</h2>
+                    <h1>Downtown Family Practice</h1>
                     <div class="rating">★★★★★ 4.8 (234 reviews)</div>
-                    <p>1.2 miles away • 123 Medical Drive, Suite 100</p>
+                    <p class="provider-location">1.2 miles away • 123 Medical Drive, Suite 100</p>
                 </div>
 
-                <div class="provider-info">
+                <div class="provider-info-funnel">
                     <h3>About the Practice</h3>
-                    <p>Specialized in treating complex neurological conditions with a focus on patient-centered care. Our team of board-certified specialists provides comprehensive evaluations and personalized treatment plans.</p>
+                    <p>Trained in treating neurological conditions with a focus on patient-centered care. Our team of board-certified GPs provides comprehensive evaluations and personalized treatment plans.</p>
                     
                     <h3>Meet Your Provider</h3>
                     <div class="provider-profile">
                         <!-- <img src="doctor-avatar.jpg" alt="Dr. Sarah Tremblay" class="provider-avatar"> -->
                         <div class="provider-bio">
-                            <h4>Dr. Sarah Tremblay, MD</h4>
-                            <p>Board Certified Neurologist with 15+ years of experience in treating complex headache conditions.</p>
+                            <h4>Dr. Marie-Claude Bouchard</h4>
+                            <p>Board Certified GP with 15+ years of experience in treating complex headache conditions.</p>
                         </div>
                     </div>
                     
@@ -388,7 +387,7 @@
                 </div>
                 
                 <h2>Your Appointment is Confirmed!</h2>
-                <p>We've scheduled your visit with Dr. Sarah Tremblay at Neurological Center of Excellence.</p>
+                <p>We've scheduled your visit with Dr. Marie-Claude Bouchard at Downtown Family Practice.</p>
                 
                 <div class="appointment-details">
                     <div class="detail-item">
@@ -401,7 +400,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="label">Provider</span>
-                        <span class="value">Dr. Sarah Tremblay, MD</span>
+                        <span class="value">Dr. Marie-Claude Bouchard</span>
                     </div>
                 </div>
 

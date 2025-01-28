@@ -1,21 +1,28 @@
 // console.log('care-prompts.js loaded');
 
-let hasShownPrompt = false; // Flag to ensure we only show the prompt once
+// Use a more specific localStorage key
+let hasShownPrompt = localStorage.getItem('migraineCarePromptShown') === 'true';
+
+// Function to reset the prompt state
+window.resetMigrainePrompt = function() {
+    hasShownPrompt = false;
+    localStorage.removeItem('migraineCarePromptShown');
+    console.log('Migraine prompt reset');
+};
 
 // Function to check if migraine card is visible and set up the prompt
 function setupMigrainePrompt() {
-    // console.log('setupMigrainePrompt running');
     const migraineCard = document.querySelector('a.care-journey-card.care-card-migraines');
-    // console.log('migraineCard:', migraineCard);
-    // console.log('migraineCard display:', migraineCard && window.getComputedStyle(migraineCard).display);
     
     if (migraineCard && window.getComputedStyle(migraineCard).display === 'block' && !hasShownPrompt) {
         console.log('Setting up 5 second timeout for bottom sheet');
-        hasShownPrompt = true; // Set flag to prevent multiple prompts
+        
+        // Set both the variable and localStorage
+        hasShownPrompt = true;
+        localStorage.setItem('migraineCarePromptShown', 'true');
         
         // Clear the interval since we found the card
         if (window.migraineCheckInterval) {
-            // console.log('Clearing check interval');
             clearInterval(window.migraineCheckInterval);
         }
         
@@ -24,27 +31,23 @@ function setupMigrainePrompt() {
             if (migraineCard && window.getComputedStyle(migraineCard).display === 'block') {
                 openBottomSheet();
                 
-                // Add a small delay to ensure bottom sheet is open before updating content
                 setTimeout(() => {
                     const sheetContent = document.querySelector('.bottom-sheet-content .sheet-content');
                     if (sheetContent) {
                         sheetContent.innerHTML = `
-                        <div class="care-plan-ready-message">
+                        <div class="care-plan-ready-migraine">
                             <h1>Care Plan Sharing Available</h1>
-                            <p>Dr. X has made sharing available. Do you give permission to import into Dialogue? We can help you further now that we have diagnosis.</p>
+                            <p>Dr. Marie-Claude Bouchard has made sharing available. Do you give permission to import into Dialogue? We can help you further now that we have diagnosis.</p>
                             <div class="button-group">
                                 <button class="primary-button" onclick="handleImportChoice(true)">Yes, import my care plan</button>
                                 <button class="secondary-button" onclick="handleImportChoice(false)">No thanks</button>
                             </div>
                         </div>
                         `;
-                        // console.log('Bottom sheet content updated');
                     }
-                }, 100); // Small delay to ensure bottom sheet is open
-            } else {
-                hasShownPrompt = false; // Reset the flag since we didn't show the prompt
+                }, 100);
             }
-        }, 5000);
+        }, 2000);
     }
 }
 
@@ -52,28 +55,32 @@ function setupCarePlanReadyTransition() {
     const message = document.querySelector('.care-plan-ready-message');
     const button = document.querySelector('button.care-plan-ready');
     
-    console.log('Found message:', message);
-    console.log('Found button:', button);
+    // Check if transition has already happened
+    const hasTransitioned = localStorage.getItem('carePlanTransitionComplete') === 'true';
     
     if (message && button) {
-        // Initially hide the button
-        button.style.display = 'none';
-        console.log('Initially set button display to none');
-        
-        setTimeout(() => {
-            // Fade out message and show button
-            message.style.display = 'none';
-            button.style.display = 'block';
-            console.log('After 5s - Message display:', message.style.display);
-            console.log('After 5s - Button display:', button.style.display);
-        }, 5000);
-
-        // Clear the interval once we've found and set up the elements
+        // Clear the interval since we found our elements
         if (window.carePlanCheckInterval) {
             clearInterval(window.carePlanCheckInterval);
+            window.carePlanCheckInterval = null;
         }
-    } else {
-        console.log('Elements not found - message or button missing');
+
+        if (hasTransitioned) {
+            // If already transitioned, immediately set final state
+            message.classList.add('hidden');
+            button.classList.add('visible');
+        } else {
+            // Set initial state
+            message.classList.remove('hidden');
+            button.classList.add('hidden');
+            
+            setTimeout(() => {
+                message.classList.add('hidden');
+                button.classList.remove('hidden');
+                button.classList.add('visible');
+                localStorage.setItem('carePlanTransitionComplete', 'true');
+            }, 3000); // Changed to 3 seconds
+        }
     }
 }
 
@@ -93,9 +100,29 @@ window.handleImportChoice = function(accepted) {
 
 // Initial check when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-
-    // console.log('DOM Content Loaded - starting periodic checks');
-    // Store interval ID so we can clear it later
-    window.carePlanCheckInterval = setInterval(setupCarePlanReadyTransition, 500);
+    // Run setup immediately
+    setupCarePlanReadyTransition();
+    
+    // Only set interval if elements weren't found on first try
+    const message = document.querySelector('.care-plan-ready-message');
+    const button = document.querySelector('button.care-plan-ready');
+    
+    if (!message || !button) {
+        window.carePlanCheckInterval = setInterval(setupCarePlanReadyTransition, 500);
+    }
+    
+    // Existing migraine check
     window.migraineCheckInterval = setInterval(setupMigrainePrompt, 2000);
-}); 
+});
+
+// Add required CSS
+const style = document.createElement('style');
+style.textContent = `
+    .hidden {
+        display: none !important;
+    }
+    .visible {
+        display: block !important;
+    }
+`;
+document.head.appendChild(style); 

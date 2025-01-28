@@ -193,6 +193,14 @@ h3 {
     font-weight: var(--font-weight-xlarge);
     color: var(--text-primary);
 }
+
+h4{
+    font-family: 'Poynter', sans-serif;
+    color: var(--text-primary);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-large);
+}
+
 p{
     color: var(--text-primary);
     font-size: var(--font-size-medium);
@@ -576,6 +584,20 @@ body.onboarding .bottom-nav {
 }
 
 .care-plan-ready-message .button-group{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.care-plan-ready-migraine{
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.care-plan-ready-migraine .button-group{
     width: 100%;
     margin-top: 20px;
 }

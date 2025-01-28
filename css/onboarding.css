@@ -108,7 +108,7 @@
 .onboarding-logo {
     width: 45px;
     position: fixed;
-    top: 250px;
+    top: 175px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -10000;

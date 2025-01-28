@@ -334,23 +334,23 @@ function loadPage(pageName) {
             mainContent.innerHTML = html;
             
             // Check for care plan ready button after mycare page loads
-            if (pageName === 'mycare') {
-                // console.log('MyCare page loaded dynamically');
+            // if (pageName === 'mycare') {
+            //     // console.log('MyCare page loaded dynamically');
                 
-                // Simple 5 second timer to show care plan ready button
-                setTimeout(() => {
-                    const carePlanReadyButton = document.querySelector('.care-plan-ready');
-                    const carePlanReadyMessage = document.querySelector('.care-plan-ready-message');
+            //     // Simple 5 second timer to show care plan ready button
+            //     setTimeout(() => {
+            //         const carePlanReadyButton = document.querySelector('.care-plan-ready');
+            //         const carePlanReadyMessage = document.querySelector('.care-plan-ready-message');
                     
-                    if (carePlanReadyButton) {
-                        carePlanReadyButton.style.display = 'block';
-                    }
-                    if (carePlanReadyMessage) {
-                        carePlanReadyMessage.style.display = 'none';
-                    }
-                    // console.log('Button shown and message hidden');
-                }, 5000);
-            }
+            //         if (carePlanReadyButton) {
+            //             carePlanReadyButton.style.display = 'block';
+            //         }
+            //         if (carePlanReadyMessage) {
+            //             carePlanReadyMessage.style.display = 'none';
+            //         }
+            //         // console.log('Button shown and message hidden');
+            //     }, 1000);
+            // }
         });
 }
 function initializeMyCarePage() {
@@ -476,3 +476,29 @@ document.addEventListener('DOMContentLoaded', () => {
 //         loadContent('onboarding');
 //     }
 // });
+
+// Add this function to main.js
+function clearCache() {
+    // Clear all localStorage items
+    localStorage.clear();
+    
+    // Reset migraine prompt using the global function
+    if (window.resetMigrainePrompt) {
+        window.resetMigrainePrompt();
+    }
+    
+    // Show feedback to user
+    const clearCacheButton = document.querySelector('.clear-cache-button');
+    if (clearCacheButton) {
+        const originalText = clearCacheButton.textContent;
+        clearCacheButton.textContent = 'Cache Cleared!';
+        setTimeout(() => {
+            clearCacheButton.textContent = originalText;
+        }, 2000);
+    }
+    
+    // Reload the page after a brief delay
+    setTimeout(() => {
+        window.location.href = 'mycare.html';
+    }, 500);
+}
