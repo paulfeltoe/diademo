@@ -126,7 +126,7 @@ body {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     line-height: 1.6;
-    background-color: var(--background);
+    background: var(--background-body);
     overscroll-behavior: none;
 }
 header {
@@ -533,9 +533,7 @@ body.onboarding .bottom-nav {
     margin-bottom: 100px;
 }
 
-.care-plan-ready {
-    display: none;
-}
+
 
 .page-content{
     overflow-y: auto;
@@ -574,19 +572,7 @@ body.onboarding .bottom-nav {
     transform: scale(1);
 }
 
-.care-plan-ready-message{
-    text-align: center;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
-.care-plan-ready-message .button-group{
-    width: 100%;
-    margin-top: 20px;
-}
 
 .care-plan-ready-migraine{
     text-align: center;

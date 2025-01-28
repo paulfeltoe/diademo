@@ -153,19 +153,38 @@ textarea {
 
 .care-card {
     background: white;
-    border-radius: 12px;
+    border-radius: var(--border-radius-medium);
     padding: 20px;
     box-shadow: var(--box-shadow-medium-slight);
-    border: 1px solid var(--color-primary-dark);
+    /* border: 1px solid var(--color-primary-dark); */
     background-color: var(--color-primary);
-    color: white;
 }
 
 .care-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
+}
+
+.condition-icon {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.status-tag {
+    background: var(--color-primary-darkest);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-large);
+}
+
+.notification-icon {
+    margin-left: auto;
+    color: var(--warning-color);
+    font-size: 1.25rem;
 }
 
 .status-badge {
@@ -174,29 +193,19 @@ textarea {
     font-size: var(--font-size-medium);
 }
 
-.status-badge.active {
-    background: #e8f5e9;
-    color: #4CAF50;
-}
-
-.status-badge.completed {
-    background: #eeeeee;
-    color: #666;
-}
-
-.date {
-    color: #666;
-    font-size: var(--font-size-medium);
-}
 
 .care-card h3 {
-    color: white;
-    font-size: var(--font-size-large);
+    color: var(--color-primary-darkest);
+    font-size: var(--font-size-xxlarge);
 }
 
 .care-card p {
-    color: #666;
-    margin-bottom: 16px;
+    color: var(--color-primary);
+    font-size: var(--font-size-small);
+    background-color: var(--color-primary-darkest);
+    padding: 12px;
+    border-radius: var(--border-radius-medium);
+    line-height: 1.25;
 }
 
 /* .progress-bar {
@@ -211,8 +220,12 @@ textarea {
 } */
 
 .care-card-footer {
-    color: #666;
-    font-size: var(--font-size-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    color: var(--color-primary-darkest);
+    font-size: var(--font-size-small);
 }
 
 .search-container {
@@ -745,6 +758,30 @@ textarea {
     gap: 24px;
 }
 
+.summary-section .timestamp {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    display: flex;
+    text-align: center;
+}
+
+.timestamp {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    display: flex;
+    color: var(--color-primary-darkest);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-large);
+}
+
+.timestamp::before {
+    content: "\f017"; /* Font Awesome clock icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+
 /* .time-slot-group h3 {
     color: #666;
     font-size: 14px;
@@ -994,6 +1031,7 @@ textarea {
 
 .condition-icon {
     font-size: 24px;
+    color: var(--color-primary-darkest);
 }
 
 .condition-text {
@@ -1267,4 +1305,19 @@ textarea {
 
 .appointment-slots .time-slot{
 margin: var(--spacing-small);
+}
+
+.care-plan-ready{
+    border-radius: var(--border-radius-xxlarge);
+    margin-top: var(--spacing-small);
+}
+
+.care-plan-ready-message{
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: var(--spacing-small);
 }

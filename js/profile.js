@@ -123,31 +123,6 @@ function initializeProfile(mutations) {
     }
 }
 
-function clearCache() {
-    // Clear all localStorage items
-    localStorage.clear();
-    
-    // Reset migraine prompt using the global function
-    if (window.resetMigrainePrompt) {
-        window.resetMigrainePrompt();
-    }
-    
-    // Show feedback to user
-    const clearCacheButton = document.querySelector('.clear-cache-button');
-    if (clearCacheButton) {
-        const originalText = clearCacheButton.textContent;
-        clearCacheButton.textContent = 'Cache Cleared!';
-        setTimeout(() => {
-            clearCacheButton.textContent = originalText;
-        }, 2000);
-    }
-    
-    // Reload the page after a brief delay
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 500);
-}
-
 // Listen for both DOM content loaded and navigation events
 document.addEventListener('DOMContentLoaded', () => {
     initializeProfile();

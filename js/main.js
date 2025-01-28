@@ -33,9 +33,9 @@ async function loadContent(page) {
         } else if (page === 'funnel') {
             window.initializeFunnel();
         } else if (page === 'mycare') {
-            // console.log('MyCare page loaded, updating display');
-            updateDisplayState();  // Use our consolidated state update function
+            updateDisplayState();
             setupBottomSheet();
+            updateCarePlanState();
         } else if (page === 'journey') {
             setupJourneyNavigation();
         } else if (page === 'profile') {
@@ -324,35 +324,7 @@ function setupBottomSheet() {
 //     }
 // }
 
-function loadPage(pageName) {
-    const mainContent = document.getElementById('main-content');
-    if (!mainContent) return;
 
-    fetch(`${pageName}.html`)
-        .then(response => response.text())
-        .then(html => {
-            mainContent.innerHTML = html;
-            
-            // Check for care plan ready button after mycare page loads
-            // if (pageName === 'mycare') {
-            //     // console.log('MyCare page loaded dynamically');
-                
-            //     // Simple 5 second timer to show care plan ready button
-            //     setTimeout(() => {
-            //         const carePlanReadyButton = document.querySelector('.care-plan-ready');
-            //         const carePlanReadyMessage = document.querySelector('.care-plan-ready-message');
-                    
-            //         if (carePlanReadyButton) {
-            //             carePlanReadyButton.style.display = 'block';
-            //         }
-            //         if (carePlanReadyMessage) {
-            //             carePlanReadyMessage.style.display = 'none';
-            //         }
-            //         // console.log('Button shown and message hidden');
-            //     }, 1000);
-            // }
-        });
-}
 function initializeMyCarePage() {
     console.log('Initializing MyCare page');
     updateDisplayState();
@@ -479,7 +451,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add this function to main.js
 function clearCache() {
-    // Clear all localStorage items
     localStorage.clear();
     
     // Reset migraine prompt using the global function
@@ -499,6 +470,87 @@ function clearCache() {
     
     // Reload the page after a brief delay
     setTimeout(() => {
-        window.location.href = 'mycare.html';
+        window.location.href = 'index.html';
+        // After page loads, ensure we load mycare content
+        window.addEventListener('DOMContentLoaded', () => {
+            loadContent('mycare');
+        });
     }, 500);
 }
+
+function isElementVisible(element) {
+    if (!element) return false;
+    
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+function updateCarePlanState() {
+    const carePlanMessage = document.querySelector('.care-plan-ready-message');
+    const carePlanButton = document.querySelector('.care-plan-ready');
+    
+    if (!carePlanMessage || !carePlanButton) return;
+    
+    // Check if transition has already happened
+    const hasTransitioned = localStorage.getItem('carePlanTransitioned') === 'true';
+    
+    // Set initial states with transitions
+    carePlanMessage.style.transition = 'opacity 0.5s ease';
+    carePlanButton.style.transition = 'opacity 0.5s ease';
+    
+    if (hasTransitioned) {
+        // Show final state immediately
+        carePlanMessage.style.opacity = '0';
+        carePlanMessage.style.display = 'none';
+        carePlanButton.style.opacity = '1';
+        carePlanButton.style.display = 'block';
+    } else {
+        // Show initial state
+        carePlanMessage.style.opacity = '1';
+        carePlanMessage.style.display = 'block';
+        carePlanButton.style.opacity = '0';
+        carePlanButton.style.display = 'none';
+        
+        // Create an intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start transition after delay
+                    setTimeout(() => {
+                        // Fade out message
+                        carePlanMessage.style.opacity = '0';
+                        
+                        // After message fades out, show button
+                        setTimeout(() => {
+                            carePlanMessage.style.display = 'none';
+                            carePlanButton.style.display = 'block';
+                            
+                            // Trigger reflow
+                            carePlanButton.offsetHeight;
+                            
+                            // Fade in button
+                            carePlanButton.style.opacity = '1';
+                            
+                            // Save state
+                            localStorage.setItem('carePlanTransitioned', 'true');
+                        }, 500);
+                    }, 3000);
+                    
+                    // Stop observing once triggered
+                    observer.disconnect();
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger when at least 50% of the element is visible
+        });
+        
+        // Start observing the message
+        observer.observe(carePlanMessage);
+    }
+}
+

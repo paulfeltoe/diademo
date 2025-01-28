@@ -1354,7 +1354,7 @@ function filterClinics() {
 
     clinicCards.forEach(card => {
         // Get clinic data from the card
-        const distance = parseFloat(card.querySelector('p').textContent.split('miles')[0]);
+        const distance = parseFloat(card.querySelector('p').textContent.split('kilometers')[0]);
         const waitTime = card.querySelector('p').textContent.split('•')[1].trim();
         const rating = parseFloat(card.querySelector('.rating').textContent.split(' ')[0].replace('★', ''));
 

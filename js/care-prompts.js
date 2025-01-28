@@ -51,39 +51,6 @@ function setupMigrainePrompt() {
     }
 }
 
-function setupCarePlanReadyTransition() {
-    const message = document.querySelector('.care-plan-ready-message');
-    const button = document.querySelector('button.care-plan-ready');
-    
-    // Check if transition has already happened
-    const hasTransitioned = localStorage.getItem('carePlanTransitionComplete') === 'true';
-    
-    if (message && button) {
-        // Clear the interval since we found our elements
-        if (window.carePlanCheckInterval) {
-            clearInterval(window.carePlanCheckInterval);
-            window.carePlanCheckInterval = null;
-        }
-
-        if (hasTransitioned) {
-            // If already transitioned, immediately set final state
-            message.classList.add('hidden');
-            button.classList.add('visible');
-        } else {
-            // Set initial state
-            message.classList.remove('hidden');
-            button.classList.add('hidden');
-            
-            setTimeout(() => {
-                message.classList.add('hidden');
-                button.classList.remove('hidden');
-                button.classList.add('visible');
-                localStorage.setItem('carePlanTransitionComplete', 'true');
-            }, 3000); // Changed to 3 seconds
-        }
-    }
-}
-
 // Make handleImportChoice globally available
 window.handleImportChoice = function(accepted) {
     // console.log('Import choice made:', accepted);
@@ -100,29 +67,7 @@ window.handleImportChoice = function(accepted) {
 
 // Initial check when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Run setup immediately
-    setupCarePlanReadyTransition();
-    
-    // Only set interval if elements weren't found on first try
-    const message = document.querySelector('.care-plan-ready-message');
-    const button = document.querySelector('button.care-plan-ready');
-    
-    if (!message || !button) {
-        window.carePlanCheckInterval = setInterval(setupCarePlanReadyTransition, 500);
-    }
-    
     // Existing migraine check
     window.migraineCheckInterval = setInterval(setupMigrainePrompt, 2000);
 });
 
-// Add required CSS
-const style = document.createElement('style');
-style.textContent = `
-    .hidden {
-        display: none !important;
-    }
-    .visible {
-        display: block !important;
-    }
-`;
-document.head.appendChild(style); 

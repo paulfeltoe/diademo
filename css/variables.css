@@ -8,7 +8,8 @@
     --background: #ffffff;
     --background-white: white;
     --background-secondary: #c5c5c5;
-    --background-tertiary: linear-gradient(90deg, #EC9876 0%, #C4E6F1 100%);      
+    --background-tertiary: linear-gradient(90deg, #EC9876 0%, #C4E6F1 100%);   
+    --background-body: linear-gradient(0deg, #FFEFE2 0%, #ffffff 80%);    
     --surface: #f4f4f4;
     --text-primary: #333333;
     --text-secondary: #666666;
@@ -57,5 +58,8 @@
 
     --color-primary: #EC9876;
     --color-primary-dark: #DD7146;
+    --color-primary-darkest: #792c0d;
+
+    
 
 }
