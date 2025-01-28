@@ -329,6 +329,7 @@
     max-width: 400px;
     margin: 0 auto;
     margin-top: 16px;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 /* .onboarding .button-container button {

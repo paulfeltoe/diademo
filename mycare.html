@@ -16,11 +16,20 @@
 <div class="page-content">
     <div class="header-spacer">.</div>
     <div id="emptyState" class="empty-state">
+        <div class="empty-card info-card">
+            <i class="icon-empty fa-solid fa-handshake-angle condition-icon"></i>
+
+            <h2>Need support from a care provider?</h2>
+            <p>Personalized guidance is just a click away.</p>
+            <button class="primary-button" onclick="openBottomSheet()"><i class="fa-solid fa-circle-plus"></i> Get Care</button>
+        </div>
+        
         <div class="empty-card progress-card">
+            <i class="icon-empty fa-solid fa-list-check condition-icon"></i>
             <h2>Complete Your Setup</h2>
             <div class="setup-progress">
                 <div class="progress-item completed">
-                    <div class="progress-icon">✓</div>
+                    <i class="empty-icon-circle fa-regular fa-circle-check"></i>
                     <div class="progress-details">
                         <h3>Create Account</h3>
                         <p>Your account is ready to use</p>
@@ -28,7 +37,7 @@
                 </div>
                 
                 <div class="progress-item actionable">
-                    <div class="progress-icon">2</div>
+                    <i class="empty-icon-circle fa-regular fa-circle"></i>
                     <div class="progress-details">
                         <h3>Complete Health Profile</h3>
                         <p>Help us understand your health needs</p>
@@ -37,7 +46,7 @@
                 </div>
                 
                 <div class="progress-item pending">
-                    <div class="progress-icon">3</div>
+                    <i class="empty-icon-circle fa-regular fa-circle"></i>
                     <div class="progress-details">
                         <h3>Schedule First Visit</h3>
                         <p>Connect with a care provider</p>
@@ -45,16 +54,15 @@
                 </div>
             </div>
         </div>
+        
         <div class="empty-card info-card">
-            <h2>Need support from a care provider?</h2>
-            <p>Personalized guidance is just a click away.</p>
-            <button class="primary-button" onclick="openBottomSheet()">GET CARE NOW</button>
-        </div>
-        <div class="empty-card info-card">
+            <i class="icon-empty fa-solid fa-diamond-turn-right condition-icon"></i>
             <h2>Take a Quick Tour</h2>
             <!-- <img src="assets/images/video-tour.svg" alt="App tour video thumbnail"> -->
             <p>New to the app? Watch a 2-minute video to learn how to make the most of your care experience.</p>
-            <button class="secondary-button" onclick="startAppTour()">Watch Tour</button>
+            <button class="secondary-button" onclick="startAppTour()">
+                <i class="fa-solid fa-play"></i> Watch Tour
+            </button>
         </div>
     </div>
     <div id="filledState" class="filled-state">        
